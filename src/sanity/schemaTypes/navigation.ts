@@ -1,7 +1,5 @@
-import {TagIcon} from '@sanity/icons'
-import { IoShareSocialOutline } from 'react-icons/io5'
 import {defineField, defineType} from 'sanity'
-import { count } from '@/sanity/lib/utils'
+import { count } from '../lib/utils'
 
 export const navigation = defineType({
   name: 'navigation',
