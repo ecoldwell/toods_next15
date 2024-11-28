@@ -3,6 +3,7 @@ import { Header } from '@/components/Header'
 import { LiveVisualEditing } from '@/components/LiveVisualEditing'
 import { draftMode } from 'next/headers'
 import dynamic from 'next/dynamic';
+import { SanityLive } from "@/sanity/lib/live";
 
 
 export default function RootLayout({
@@ -21,6 +22,7 @@ export default function RootLayout({
             Disable preview mode
           </a>
         )}
+         
         <Header />
         {children}
         {draftMode().isEnabled && <LiveVisualEditing />}
