@@ -635,32 +635,54 @@
               {
                 "type": "object",
                 "attributes": {
-                  "_key": {
+                  "_ref": {
                     "type": "objectAttribute",
                     "value": {
                       "type": "string"
                     }
+                  },
+                  "_type": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string",
+                      "value": "reference"
+                    }
+                  },
+                  "_weak": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "boolean"
+                    },
+                    "optional": true
                   }
                 },
-                "rest": {
-                  "type": "inline",
-                  "name": "link"
-                }
+                "dereferencesTo": "link"
               },
               {
                 "type": "object",
                 "attributes": {
-                  "_key": {
+                  "_ref": {
                     "type": "objectAttribute",
                     "value": {
                       "type": "string"
                     }
+                  },
+                  "_type": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string",
+                      "value": "reference"
+                    }
+                  },
+                  "_weak": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "boolean"
+                    },
+                    "optional": true
                   }
                 },
-                "rest": {
-                  "type": "inline",
-                  "name": "link.list"
-                }
+                "dereferencesTo": "link.list"
               }
             ]
           }

@@ -51,3 +51,13 @@ export const POST_QUERY =
     ...@->{_id, title, slug} // get fields from the referenced post
   }
 }`)
+
+export const NAVIGATION_QUERY =
+  defineQuery(`*[_type == 'navigation']{
+title,
+  _id,
+  items[] {
+    _key,
+    _type,
+  }
+}`)

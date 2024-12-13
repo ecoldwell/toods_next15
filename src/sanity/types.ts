@@ -125,10 +125,16 @@ export type Navigation = {
   _rev: string;
   title?: string;
   items?: Array<{
-    _key: string;
-  } & Link | {
-    _key: string;
-  } & LinkList>;
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "link";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "link.list";
+  }>;
 };
 
 export type LinkList = {
@@ -526,6 +532,16 @@ export type POST_QUERYResult = {
     slug: Slug | null;
   }> | null;
 } | null;
+// Variable: NAVIGATION_QUERY
+// Query: *[_type == 'navigation']{title,  _id,  items[] {    _key,    _type,  }}
+export type NAVIGATION_QUERYResult = Array<{
+  title: string | null;
+  _id: string;
+  items: Array<{
+    _key: null;
+    _type: "reference";
+  }> | null;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -534,5 +550,6 @@ declare module "@sanity/client" {
     "*[_type == \"post\" && defined(slug.current)]|order(publishedAt desc)[0...12]{\n  _id,\n  title,\n  slug,\n  body,\n  mainImage,\n  publishedAt,\n  \"categories\": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  ),\n  author->{\n    name,\n    image\n  }\n}": POSTS_QUERYResult;
     "*[_type == \"post\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": POSTS_SLUGS_QUERYResult;
     "*[_type == \"post\" && slug.current == $slug][0]{\n  _id,\n  title,\n  body,\n  mainImage,\n  publishedAt,\n  \"categories\": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  ),\n  author->{\n    name,\n    image\n  },\n  relatedPosts[]{\n    _key, // required for drag and drop\n    ...@->{_id, title, slug} // get fields from the referenced post\n  }\n}": POST_QUERYResult;
+    "*[_type == 'navigation']{\ntitle,\n  _id,\n  items[] {\n    _key,\n    _type,\n  }\n}": NAVIGATION_QUERYResult;
   }
 }
