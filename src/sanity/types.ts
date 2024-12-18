@@ -68,6 +68,79 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type Media = {
+  _id: string;
+  _type: "media";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  eventType?: "in-person" | "virtual";
+  date?: string;
+  doorsOpen?: number;
+  venue?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "venue";
+  };
+  headline?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "artist";
+  };
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  details?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  tickets?: string;
+};
+
+export type Artist = {
+  _id: string;
+  _type: "artist";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+};
+
+export type Venue = {
+  _id: string;
+  _type: "venue";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+};
+
 export type SiteConfig = {
   _id: string;
   _type: "siteConfig";
@@ -125,16 +198,10 @@ export type Navigation = {
   _rev: string;
   title?: string;
   items?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "link";
-  } | {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "link.list";
-  }>;
+    _key: string;
+  } & Link | {
+    _key: string;
+  } & LinkList>;
 };
 
 export type LinkList = {
@@ -381,7 +448,7 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | SiteConfig | Navigation | LinkList | Link | Post | Author | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Media | Artist | Venue | SiteConfig | Navigation | LinkList | Link | Post | Author | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -532,16 +599,99 @@ export type POST_QUERYResult = {
     slug: Slug | null;
   }> | null;
 } | null;
+// Variable: LINK_QUERY
+// Query: *[_type == 'link']{	...,	internal->{ _type, title, metadata }  }
+export type LINK_QUERYResult = Array<never>;
 // Variable: NAVIGATION_QUERY
-// Query: *[_type == 'navigation']{title,  _id,  items[] {    _key,    _type,  }}
+// Query: *[_type == 'navigation']{title,  _id,  items[] {		LINK_QUERY,		link{ LINK_QUERY },		links[]{ LINK_QUERY }  }}
 export type NAVIGATION_QUERYResult = Array<{
   title: string | null;
   _id: string;
   items: Array<{
-    _key: null;
-    _type: "reference";
+    LINK_QUERY: null;
+    link: null;
+    links: null;
+  } | {
+    LINK_QUERY: null;
+    link: {
+      LINK_QUERY: null;
+    } | null;
+    links: Array<{
+      LINK_QUERY: null;
+    }> | null;
   }> | null;
 }>;
+// Variable: SITE_SETTINGS
+// Query: *[_type == 'siteSettings'][0]{  ...,  headerMenu->{ NAVIGATION_QUERY },  footerMenu->{ NAVIGATION_QUERY },  social->{ NAVIGATION_QUERY },  'ogimage': ogimage.asset->url}
+export type SITE_SETTINGSResult = null;
+// Variable: MEDIAHOME_QUERY
+// Query: *[  _type == "media"  && defined(slug.current)]{_id, name, slug, date}|order(date desc)
+export type MEDIAHOME_QUERYResult = Array<{
+  _id: string;
+  name: string | null;
+  slug: Slug | null;
+  date: string | null;
+}>;
+// Variable: MEDIA_QUERY
+// Query: *[  _type == "media" &&  slug.current == $slug][0]{...,"date": coalesce(date, now()),"doorsOpen": coalesce(doorsOpen, 0),headline->,venue->}
+export type MEDIA_QUERYResult = {
+  _id: string;
+  _type: "media";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  eventType?: "in-person" | "virtual";
+  date: string;
+  doorsOpen: number | 0;
+  venue: {
+    _id: string;
+    _type: "venue";
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    name?: string;
+  } | null;
+  headline: {
+    _id: string;
+    _type: "artist";
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    name?: string;
+  } | null;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  details?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  tickets?: string;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -550,6 +700,10 @@ declare module "@sanity/client" {
     "*[_type == \"post\" && defined(slug.current)]|order(publishedAt desc)[0...12]{\n  _id,\n  title,\n  slug,\n  body,\n  mainImage,\n  publishedAt,\n  \"categories\": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  ),\n  author->{\n    name,\n    image\n  }\n}": POSTS_QUERYResult;
     "*[_type == \"post\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": POSTS_SLUGS_QUERYResult;
     "*[_type == \"post\" && slug.current == $slug][0]{\n  _id,\n  title,\n  body,\n  mainImage,\n  publishedAt,\n  \"categories\": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  ),\n  author->{\n    name,\n    image\n  },\n  relatedPosts[]{\n    _key, // required for drag and drop\n    ...@->{_id, title, slug} // get fields from the referenced post\n  }\n}": POST_QUERYResult;
-    "*[_type == 'navigation']{\ntitle,\n  _id,\n  items[] {\n    _key,\n    _type,\n  }\n}": NAVIGATION_QUERYResult;
+    "*[_type == 'link']{\n\t...,\n\tinternal->{ _type, title, metadata }\n  }": LINK_QUERYResult;
+    "*[_type == 'navigation']{\ntitle,\n  _id,\n  items[] {\n\t\tLINK_QUERY,\n\t\tlink{ LINK_QUERY },\n\t\tlinks[]{ LINK_QUERY }\n\n  }\n}": NAVIGATION_QUERYResult;
+    "*[_type == 'siteSettings'][0]{\n  ...,\n  headerMenu->{ NAVIGATION_QUERY },\n  footerMenu->{ NAVIGATION_QUERY },\n  social->{ NAVIGATION_QUERY },\n  'ogimage': ogimage.asset->url\n}": SITE_SETTINGSResult;
+    "*[\n  _type == \"media\"\n  && defined(slug.current)\n]{_id, name, slug, date}|order(date desc)": MEDIAHOME_QUERYResult;
+    "*[\n  _type == \"media\" &&\n  slug.current == $slug\n][0]{\n...,\n\"date\": coalesce(date, now()),\n\"doorsOpen\": coalesce(doorsOpen, 0),\nheadline->,\nvenue->\n}": MEDIA_QUERYResult;
   }
 }

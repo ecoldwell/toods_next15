@@ -14,7 +14,7 @@ export const navigation = defineType({
 		defineField({
 			name: 'items',
 			type: 'array',
-			of: [{ type: "reference", to: [{ type: "link" }, { type: "link.list"} ]}],
+			of: [{ type: 'link' }, { type: 'link.list' }],
 		}),
 	],
 	preview: {
