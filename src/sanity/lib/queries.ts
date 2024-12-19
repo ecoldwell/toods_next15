@@ -72,7 +72,7 @@ title,
   }
 }`)
 
-export const SITE_SETTINGS = defineQuery(`*[_type == 'siteSettings'][0]{
+export const SITE_SETTINGS = defineQuery(`*[_type == 'siteConfig'][0]{
   ...,
   headerMenu->{ NAVIGATION_QUERY },
   footerMenu->{ NAVIGATION_QUERY },

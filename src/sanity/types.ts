@@ -622,8 +622,47 @@ export type NAVIGATION_QUERYResult = Array<{
   }> | null;
 }>;
 // Variable: SITE_SETTINGS
-// Query: *[_type == 'siteSettings'][0]{  ...,  headerMenu->{ NAVIGATION_QUERY },  footerMenu->{ NAVIGATION_QUERY },  social->{ NAVIGATION_QUERY },  'ogimage': ogimage.asset->url}
-export type SITE_SETTINGSResult = null;
+// Query: *[_type == 'siteConfig'][0]{  ...,  headerMenu->{ NAVIGATION_QUERY },  footerMenu->{ NAVIGATION_QUERY },  social->{ NAVIGATION_QUERY },  'ogimage': ogimage.asset->url}
+export type SITE_SETTINGSResult = {
+  _id: string;
+  _type: "siteConfig";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  headerMenu: {
+    NAVIGATION_QUERY: null;
+  } | null;
+  footerMenu: {
+    NAVIGATION_QUERY: null;
+  } | null;
+  social: {
+    NAVIGATION_QUERY: null;
+  } | null;
+  ogImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  favIcon?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  displayLastUpdated?: boolean;
+  ogimage: null;
+} | null;
 // Variable: MEDIAHOME_QUERY
 // Query: *[  _type == "media"  && defined(slug.current)]{_id, name, slug, date}|order(date desc)
 export type MEDIAHOME_QUERYResult = Array<{
@@ -702,7 +741,7 @@ declare module "@sanity/client" {
     "*[_type == \"post\" && slug.current == $slug][0]{\n  _id,\n  title,\n  body,\n  mainImage,\n  publishedAt,\n  \"categories\": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  ),\n  author->{\n    name,\n    image\n  },\n  relatedPosts[]{\n    _key, // required for drag and drop\n    ...@->{_id, title, slug} // get fields from the referenced post\n  }\n}": POST_QUERYResult;
     "*[_type == 'link']{\n\t...,\n\tinternal->{ _type, title, metadata }\n  }": LINK_QUERYResult;
     "*[_type == 'navigation']{\ntitle,\n  _id,\n  items[] {\n\t\tLINK_QUERY,\n\t\tlink{ LINK_QUERY },\n\t\tlinks[]{ LINK_QUERY }\n\n  }\n}": NAVIGATION_QUERYResult;
-    "*[_type == 'siteSettings'][0]{\n  ...,\n  headerMenu->{ NAVIGATION_QUERY },\n  footerMenu->{ NAVIGATION_QUERY },\n  social->{ NAVIGATION_QUERY },\n  'ogimage': ogimage.asset->url\n}": SITE_SETTINGSResult;
+    "*[_type == 'siteConfig'][0]{\n  ...,\n  headerMenu->{ NAVIGATION_QUERY },\n  footerMenu->{ NAVIGATION_QUERY },\n  social->{ NAVIGATION_QUERY },\n  'ogimage': ogimage.asset->url\n}": SITE_SETTINGSResult;
     "*[\n  _type == \"media\"\n  && defined(slug.current)\n]{_id, name, slug, date}|order(date desc)": MEDIAHOME_QUERYResult;
     "*[\n  _type == \"media\" &&\n  slug.current == $slug\n][0]{\n...,\n\"date\": coalesce(date, now()),\n\"doorsOpen\": coalesce(doorsOpen, 0),\nheadline->,\nvenue->\n}": MEDIA_QUERYResult;
   }
