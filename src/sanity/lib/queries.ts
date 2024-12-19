@@ -54,36 +54,36 @@ export const POST_QUERY =
   }
 }`)
 
-export const LINK_QUERY = 
-defineQuery(`*[_type == 'link']{
-	...,
-	internal->{ _type, title, metadata }
-  }`)
+// export const LINK_QUERY = 
+// defineQuery(`*[_type == 'link']{
+// 	...,
+// 	internal->{ _type, title, metadata }
+//   }`)
   
-export const NAVIGATION_QUERY =
-  defineQuery(`*[_type == 'navigation']{
-title,
-  _id,
-  items[] {
-		LINK_QUERY,
-		link{ LINK_QUERY },
-		links[]{ LINK_QUERY }
+// export const NAVIGATION_QUERY =
+//   defineQuery(`*[_type == 'navigation']{
+// title,
+//   _id,
+//   items[] {
+// 		LINK_QUERY,
+// 		link{ LINK_QUERY },
+// 		links[]{ LINK_QUERY }
 
-  }
-}`)
+//   }
+// }`)
 
-export const SITE_SETTINGS = defineQuery(`*[_type == 'siteSettings'][0]{
-  ...,
-  headerMenu->{ NAVIGATION_QUERY },
-  footerMenu->{ NAVIGATION_QUERY },
-  social->{ NAVIGATION_QUERY },
-  'ogimage': ogimage.asset->url
-}`)
+// export const SITE_SETTINGS = defineQuery(`*[_type == 'siteSettings'][0]{
+//   ...,
+//   headerMenu->{ NAVIGATION_QUERY },
+//   footerMenu->{ NAVIGATION_QUERY },
+//   social->{ NAVIGATION_QUERY },
+//   'ogimage': ogimage.asset->url
+// }`)
 
-export const MEDIAHOME_QUERY = defineQuery(`*[
-  _type == "media"
-  && defined(slug.current)
-]{_id, name, slug, date}|order(date desc)`);
+// export const MEDIAHOME_QUERY = defineQuery(`*[
+//   _type == "media"
+//   && defined(slug.current)
+// ]{_id, name, slug, date}|order(date desc)`);
 
 export const MEDIA_QUERY = defineQuery(`*[
   _type == "media" &&
@@ -95,3 +95,50 @@ export const MEDIA_QUERY = defineQuery(`*[
 headline->,
 venue->
 }`);
+
+export const SITE_SETTINGS_QUERY = defineQuery(`
+  *[_type == "siteSettings"][0]{
+    "headerNav": headerNav->{
+      title,
+      items[] {
+        _type == "link" => {
+          _type,
+          label,
+          url
+        },
+        _type == "link.list" => {
+          _type,
+          link {
+            label,
+            url
+          },
+          links[] {
+            label,
+            url
+          }
+        }
+      }
+    },
+    "footerNav": footerNav->{
+      title,
+      items[] {
+        _type == "link" => {
+          _type,
+          label,
+          url
+        },
+        _type == "link.list" => {
+          _type,
+          link {
+            label,
+            url
+          },
+          links[] {
+            label,
+            url
+          }
+        }
+      }
+    }
+  }
+`);

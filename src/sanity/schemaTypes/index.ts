@@ -7,11 +7,11 @@ import {authorType} from './authorType'
 import { link } from './objects/link'
 import { linkList } from './objects/link.list'
 import { navigation } from './navigation'
-import { siteConfig } from './siteConfig'
+import { siteSettings } from './siteConfig'
 import { mediaType } from './mediaType'
 import { artistType } from './artistType'
 import { venueType } from './venueType'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blockContentType, categoryType, postType, authorType, link, linkList, navigation, siteConfig, mediaType, artistType, venueType ],
+  types: [blockContentType, categoryType, postType, authorType, link, linkList, navigation, siteSettings, mediaType, artistType, venueType ],
 }
