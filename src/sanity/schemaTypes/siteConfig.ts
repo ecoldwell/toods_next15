@@ -14,7 +14,7 @@ export const siteConfig = defineType({
     defineField({
         name: 'headerMenu',
         type: 'reference',
-        to: [{ type: 'navigation' }],
+        to: { type: 'navigation' },
         group: 'navigation',
     }),
     defineField({

@@ -2,6 +2,7 @@ import { defineQuery } from 'next-sanity'
 import { sanityFetch } from '@/sanity/lib/live'
 import { groq } from 'next-sanity'
 
+
 export const POSTS_QUERY =
   defineQuery(`*[_type == "post" && defined(slug.current)]|order(publishedAt desc)[0...12]{
   _id,
@@ -54,12 +55,13 @@ export const POST_QUERY =
   }
 }`)
 
-export const LINK_QUERY = 
-defineQuery(`*[_type == 'link']{
-	...,
-	internal->{ _type, title, metadata }
-  }`)
-  
+export const LINK_QUERY = defineQuery(`
+  *[_type == 'link.list']{
+    ...,
+    internal->{ _type, title, metadata }
+  }
+`);
+
 export const NAVIGATION_QUERY =
   defineQuery(`*[_type == 'navigation']{
 title,
@@ -72,13 +74,46 @@ title,
   }
 }`)
 
-export const SITE_SETTINGS = defineQuery(`*[_type == 'siteConfig'][0]{
-  ...,
-  headerMenu->{ NAVIGATION_QUERY },
-  footerMenu->{ NAVIGATION_QUERY },
-  social->{ NAVIGATION_QUERY },
-  'ogimage': ogimage.asset->url
-}`)
+// export const SITE_SETTINGS = defineQuery(`*[_type == 'siteConfig'][0]{
+//   ...,
+//   headerMenu->{ NAVIGATION_QUERY },
+//   footerMenu->{ NAVIGATION_QUERY },
+//   social->{ NAVIGATION_QUERY },
+//   'ogimage': ogimage.asset->url
+// }`)
+
+export const SITE_SETTINGS = 
+  defineQuery(`*[_type == 'siteConfig'][0]{
+    ...,
+    headerMenu->{ 
+      title,
+      _id,
+      items[] {
+        label,
+        url,
+        internal->{ _type, title, metadata }
+      }
+    },
+    footerMenu->{ 
+      title,
+      _id,
+      items[] {
+        label,
+        url,
+        internal->{ _type, title, metadata }
+      }
+    },
+    social->{ 
+      title,
+      _id,
+      items[] {
+        label,
+        url,
+        internal->{ _type, title, metadata }
+      }
+    },
+    'ogimage': ogimage.asset->url
+  }`);
 
 export const MEDIAHOME_QUERY = defineQuery(`*[
   _type == "media"

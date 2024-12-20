@@ -622,7 +622,7 @@ export type NAVIGATION_QUERYResult = Array<{
   }> | null;
 }>;
 // Variable: SITE_SETTINGS
-// Query: *[_type == 'siteConfig'][0]{  ...,  headerMenu->{ NAVIGATION_QUERY },  footerMenu->{ NAVIGATION_QUERY },  social->{ NAVIGATION_QUERY },  'ogimage': ogimage.asset->url}
+// Query: *[_type == 'siteConfig'][0]{    ...,    headerMenu->{       title,      _id,      items[] {        label,        url,        internal->{ _type, title, metadata }      }    },    footerMenu->{       title,      _id,      items[] {        label,        url,        internal->{ _type, title, metadata }      }    },    social->{       title,      _id,      items[] {        label,        url,        internal->{ _type, title, metadata }      }    },    'ogimage': ogimage.asset->url  }
 export type SITE_SETTINGSResult = {
   _id: string;
   _type: "siteConfig";
@@ -630,13 +630,67 @@ export type SITE_SETTINGSResult = {
   _updatedAt: string;
   _rev: string;
   headerMenu: {
-    NAVIGATION_QUERY: null;
+    title: string | null;
+    _id: string;
+    items: Array<{
+      label: null;
+      url: null;
+      internal: null;
+    } | {
+      label: string | null;
+      url: null;
+      internal: {
+        _type: "category";
+        title: string | null;
+        metadata: null;
+      } | {
+        _type: "post";
+        title: string | null;
+        metadata: null;
+      } | null;
+    }> | null;
   } | null;
   footerMenu: {
-    NAVIGATION_QUERY: null;
+    title: string | null;
+    _id: string;
+    items: Array<{
+      label: null;
+      url: null;
+      internal: null;
+    } | {
+      label: string | null;
+      url: null;
+      internal: {
+        _type: "category";
+        title: string | null;
+        metadata: null;
+      } | {
+        _type: "post";
+        title: string | null;
+        metadata: null;
+      } | null;
+    }> | null;
   } | null;
   social: {
-    NAVIGATION_QUERY: null;
+    title: string | null;
+    _id: string;
+    items: Array<{
+      label: null;
+      url: null;
+      internal: null;
+    } | {
+      label: string | null;
+      url: null;
+      internal: {
+        _type: "category";
+        title: string | null;
+        metadata: null;
+      } | {
+        _type: "post";
+        title: string | null;
+        metadata: null;
+      } | null;
+    }> | null;
   } | null;
   ogImage?: {
     asset?: {
@@ -741,7 +795,7 @@ declare module "@sanity/client" {
     "*[_type == \"post\" && slug.current == $slug][0]{\n  _id,\n  title,\n  body,\n  mainImage,\n  publishedAt,\n  \"categories\": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  ),\n  author->{\n    name,\n    image\n  },\n  relatedPosts[]{\n    _key, // required for drag and drop\n    ...@->{_id, title, slug} // get fields from the referenced post\n  }\n}": POST_QUERYResult;
     "*[_type == 'link']{\n\t...,\n\tinternal->{ _type, title, metadata }\n  }": LINK_QUERYResult;
     "*[_type == 'navigation']{\ntitle,\n  _id,\n  items[] {\n\t\tLINK_QUERY,\n\t\tlink{ LINK_QUERY },\n\t\tlinks[]{ LINK_QUERY }\n\n  }\n}": NAVIGATION_QUERYResult;
-    "*[_type == 'siteConfig'][0]{\n  ...,\n  headerMenu->{ NAVIGATION_QUERY },\n  footerMenu->{ NAVIGATION_QUERY },\n  social->{ NAVIGATION_QUERY },\n  'ogimage': ogimage.asset->url\n}": SITE_SETTINGSResult;
+    "*[_type == 'siteConfig'][0]{\n    ...,\n    headerMenu->{ \n      title,\n      _id,\n      items[] {\n        label,\n        url,\n        internal->{ _type, title, metadata }\n      }\n    },\n    footerMenu->{ \n      title,\n      _id,\n      items[] {\n        label,\n        url,\n        internal->{ _type, title, metadata }\n      }\n    },\n    social->{ \n      title,\n      _id,\n      items[] {\n        label,\n        url,\n        internal->{ _type, title, metadata }\n      }\n    },\n    'ogimage': ogimage.asset->url\n  }": SITE_SETTINGSResult;
     "*[\n  _type == \"media\"\n  && defined(slug.current)\n]{_id, name, slug, date}|order(date desc)": MEDIAHOME_QUERYResult;
     "*[\n  _type == \"media\" &&\n  slug.current == $slug\n][0]{\n...,\n\"date\": coalesce(date, now()),\n\"doorsOpen\": coalesce(doorsOpen, 0),\nheadline->,\nvenue->\n}": MEDIA_QUERYResult;
   }

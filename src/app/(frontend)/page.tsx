@@ -1,7 +1,7 @@
 import { Title } from '@/components/Title'
 import Link from "next/link";
 import { MEDIAHOME_QUERY } from '@/sanity/lib/queries';
-import Navigation  from '@/components/NavBar/Navigation'
+import Menu  from '@/components/NavBar/Navigation'
 import { defineQuery } from "next-sanity";
 import { sanityFetch } from "@/sanity/lib/live";
 import { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal, AwaitedReactNode } from 'react';
@@ -17,7 +17,7 @@ export default async function Page() {
   return (
     <section className="container mx-auto grid grid-cols-1 gap-6 p-12">
       <Title>Toodinator</Title>
-      <Navigation></Navigation>
+      <Menu></Menu>
       <Link href="/posts">Posts index &rarr;</Link>
       <ul className="grid grid-cols-1 gap-12 lg:grid-cols-2">
         {events.map((media: { _id: Key | null | undefined; slug: { current: any; }; name: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | Iterable<ReactNode> | null | undefined; date: string | number | Date; }) => (
