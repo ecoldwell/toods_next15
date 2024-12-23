@@ -11,6 +11,7 @@ export const link = defineType({
 	  defineField({
 		name: 'label',
 		type: 'string',
+		title: 'Label'
 	  }),
 	  defineField({
 		name: 'type',
@@ -26,6 +27,7 @@ export const link = defineType({
 	  defineField({
 		name: 'internal',
 		type: 'reference',
+		title: 'Internal Reference',
 		to: [{ type: 'post' }, { type: 'category' }],
 		hidden: ({ parent }) => parent?.type !== 'internal',
 	  }),

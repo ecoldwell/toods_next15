@@ -6,10 +6,17 @@ export const navigation = defineType({
 	title: 'Navigation',
 	type: 'document',
 	fields: [
+		defineField({
+			name: 'title',
+			type: 'string',
+			validation: (Rule) => Rule.required(),
+		  }),
 	  defineField({
-		name: 'title',
-		type: 'string',
-		validation: (Rule) => Rule.required(),
+		name: 'slug',
+		type: 'slug',
+		options: {
+			source: 'title',
+		}
 	  }),
 	  defineField({
 		name: 'items',

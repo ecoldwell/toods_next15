@@ -197,6 +197,7 @@ export type Navigation = {
   _updatedAt: string;
   _rev: string;
   title?: string;
+  slug?: Slug;
   items?: Array<{
     _key: string;
   } & Link | {
@@ -600,29 +601,46 @@ export type POST_QUERYResult = {
   }> | null;
 } | null;
 // Variable: LINK_QUERY
-// Query: *[_type == 'link']{	...,	internal->{ _type, title, metadata }  }
+// Query: *[_type == 'link']{    ...,    internal->{ _type, title, metadata }  }
 export type LINK_QUERYResult = Array<never>;
+// Variable: LINK_LIST_QUERY
+// Query: *[_type == "link.list"]{    ...,    links[]{      label,      url,      internal->{ _type, title, metadata }    }  }
+export type LINK_LIST_QUERYResult = Array<never>;
 // Variable: NAVIGATION_QUERY
-// Query: *[_type == 'navigation']{title,  _id,  items[] {		LINK_QUERY,		link{ LINK_QUERY },		links[]{ LINK_QUERY }  }}
+// Query: *[_type == "navigation"]{    _id,    title,    items[]{      _type == "link" => {        label,        url,        internal->{ _type, title, metadata }      },      _type == "link.list" => {        links[]{          label,          url,          internal->{ _type, title, metadata }        }      }    }  }
 export type NAVIGATION_QUERYResult = Array<{
-  title: string | null;
   _id: string;
+  title: string | null;
   items: Array<{
-    LINK_QUERY: null;
-    link: null;
-    links: null;
-  } | {
-    LINK_QUERY: null;
-    link: {
-      LINK_QUERY: null;
+    label: string | null;
+    url: null;
+    internal: {
+      _type: "category";
+      title: string | null;
+      metadata: null;
+    } | {
+      _type: "post";
+      title: string | null;
+      metadata: null;
     } | null;
+  } | {
     links: Array<{
-      LINK_QUERY: null;
+      label: string | null;
+      url: null;
+      internal: {
+        _type: "category";
+        title: string | null;
+        metadata: null;
+      } | {
+        _type: "post";
+        title: string | null;
+        metadata: null;
+      } | null;
     }> | null;
   }> | null;
 }>;
 // Variable: SITE_SETTINGS
-// Query: *[_type == 'siteConfig'][0]{    ...,    headerMenu->{       title,      _id,      items[] {        label,        url,        internal->{ _type, title, metadata }      }    },    footerMenu->{       title,      _id,      items[] {        label,        url,        internal->{ _type, title, metadata }      }    },    social->{       title,      _id,      items[] {        label,        url,        internal->{ _type, title, metadata }      }    },    'ogimage': ogimage.asset->url  }
+// Query: *[_type == 'siteConfig'][0]{    ...,    headerMenu->{      title,      items[]{        _type == "link" => {          label,          url,          internal->{ _type, title, metadata }        },        _type == "link.list" => {          links[]{            label,            url,            internal->{ _type, title, metadata }          }        }      }    },    footerMenu->{      title,      items[]{        _type == "link" => {          label,          url,          internal->{ _type, title, metadata }        },        _type == "link.list" => {          links[]{            label,            url,            internal->{ _type, title, metadata }          }        }      }    },    social->{      title,      items[]{        _type == "link" => {          label,          url,          internal->{ _type, title, metadata }        },        _type == "link.list" => {          links[]{            label,            url,            internal->{ _type, title, metadata }          }        }      }    },    'ogimage': ogimage.asset->url  }
 export type SITE_SETTINGSResult = {
   _id: string;
   _type: "siteConfig";
@@ -631,12 +649,7 @@ export type SITE_SETTINGSResult = {
   _rev: string;
   headerMenu: {
     title: string | null;
-    _id: string;
     items: Array<{
-      label: null;
-      url: null;
-      internal: null;
-    } | {
       label: string | null;
       url: null;
       internal: {
@@ -648,16 +661,25 @@ export type SITE_SETTINGSResult = {
         title: string | null;
         metadata: null;
       } | null;
+    } | {
+      links: Array<{
+        label: string | null;
+        url: null;
+        internal: {
+          _type: "category";
+          title: string | null;
+          metadata: null;
+        } | {
+          _type: "post";
+          title: string | null;
+          metadata: null;
+        } | null;
+      }> | null;
     }> | null;
   } | null;
   footerMenu: {
     title: string | null;
-    _id: string;
     items: Array<{
-      label: null;
-      url: null;
-      internal: null;
-    } | {
       label: string | null;
       url: null;
       internal: {
@@ -669,16 +691,25 @@ export type SITE_SETTINGSResult = {
         title: string | null;
         metadata: null;
       } | null;
+    } | {
+      links: Array<{
+        label: string | null;
+        url: null;
+        internal: {
+          _type: "category";
+          title: string | null;
+          metadata: null;
+        } | {
+          _type: "post";
+          title: string | null;
+          metadata: null;
+        } | null;
+      }> | null;
     }> | null;
   } | null;
   social: {
     title: string | null;
-    _id: string;
     items: Array<{
-      label: null;
-      url: null;
-      internal: null;
-    } | {
       label: string | null;
       url: null;
       internal: {
@@ -690,6 +721,20 @@ export type SITE_SETTINGSResult = {
         title: string | null;
         metadata: null;
       } | null;
+    } | {
+      links: Array<{
+        label: string | null;
+        url: null;
+        internal: {
+          _type: "category";
+          title: string | null;
+          metadata: null;
+        } | {
+          _type: "post";
+          title: string | null;
+          metadata: null;
+        } | null;
+      }> | null;
     }> | null;
   } | null;
   ogImage?: {
@@ -793,9 +838,10 @@ declare module "@sanity/client" {
     "*[_type == \"post\" && defined(slug.current)]|order(publishedAt desc)[0...12]{\n  _id,\n  title,\n  slug,\n  body,\n  mainImage,\n  publishedAt,\n  \"categories\": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  ),\n  author->{\n    name,\n    image\n  }\n}": POSTS_QUERYResult;
     "*[_type == \"post\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": POSTS_SLUGS_QUERYResult;
     "*[_type == \"post\" && slug.current == $slug][0]{\n  _id,\n  title,\n  body,\n  mainImage,\n  publishedAt,\n  \"categories\": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  ),\n  author->{\n    name,\n    image\n  },\n  relatedPosts[]{\n    _key, // required for drag and drop\n    ...@->{_id, title, slug} // get fields from the referenced post\n  }\n}": POST_QUERYResult;
-    "*[_type == 'link']{\n\t...,\n\tinternal->{ _type, title, metadata }\n  }": LINK_QUERYResult;
-    "*[_type == 'navigation']{\ntitle,\n  _id,\n  items[] {\n\t\tLINK_QUERY,\n\t\tlink{ LINK_QUERY },\n\t\tlinks[]{ LINK_QUERY }\n\n  }\n}": NAVIGATION_QUERYResult;
-    "*[_type == 'siteConfig'][0]{\n    ...,\n    headerMenu->{ \n      title,\n      _id,\n      items[] {\n        label,\n        url,\n        internal->{ _type, title, metadata }\n      }\n    },\n    footerMenu->{ \n      title,\n      _id,\n      items[] {\n        label,\n        url,\n        internal->{ _type, title, metadata }\n      }\n    },\n    social->{ \n      title,\n      _id,\n      items[] {\n        label,\n        url,\n        internal->{ _type, title, metadata }\n      }\n    },\n    'ogimage': ogimage.asset->url\n  }": SITE_SETTINGSResult;
+    "\n  *[_type == 'link']{\n    ...,\n    internal->{ _type, title, metadata }\n  }\n": LINK_QUERYResult;
+    "\n  *[_type == \"link.list\"]{\n    ...,\n    links[]{\n      label,\n      url,\n      internal->{ _type, title, metadata }\n    }\n  }\n": LINK_LIST_QUERYResult;
+    "\n  *[_type == \"navigation\"]{\n    _id,\n    title,\n    items[]{\n      _type == \"link\" => {\n        label,\n        url,\n        internal->{ _type, title, metadata }\n      },\n      _type == \"link.list\" => {\n        links[]{\n          label,\n          url,\n          internal->{ _type, title, metadata }\n        }\n      }\n    }\n  }\n": NAVIGATION_QUERYResult;
+    "\n  *[_type == 'siteConfig'][0]{\n    ...,\n    headerMenu->{\n      title,\n      items[]{\n        _type == \"link\" => {\n          label,\n          url,\n          internal->{ _type, title, metadata }\n        },\n        _type == \"link.list\" => {\n          links[]{\n            label,\n            url,\n            internal->{ _type, title, metadata }\n          }\n        }\n      }\n    },\n    footerMenu->{\n      title,\n      items[]{\n        _type == \"link\" => {\n          label,\n          url,\n          internal->{ _type, title, metadata }\n        },\n        _type == \"link.list\" => {\n          links[]{\n            label,\n            url,\n            internal->{ _type, title, metadata }\n          }\n        }\n      }\n    },\n    social->{\n      title,\n      items[]{\n        _type == \"link\" => {\n          label,\n          url,\n          internal->{ _type, title, metadata }\n        },\n        _type == \"link.list\" => {\n          links[]{\n            label,\n            url,\n            internal->{ _type, title, metadata }\n          }\n        }\n      }\n    },\n    'ogimage': ogimage.asset->url\n  }\n": SITE_SETTINGSResult;
     "*[\n  _type == \"media\"\n  && defined(slug.current)\n]{_id, name, slug, date}|order(date desc)": MEDIAHOME_QUERYResult;
     "*[\n  _type == \"media\" &&\n  slug.current == $slug\n][0]{\n...,\n\"date\": coalesce(date, now()),\n\"doorsOpen\": coalesce(doorsOpen, 0),\nheadline->,\nvenue->\n}": MEDIA_QUERYResult;
   }
