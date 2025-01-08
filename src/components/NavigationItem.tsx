@@ -1,36 +1,36 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 type NavigationItemProps = {
-  id: string;
-  title: string | null; // Title can be null
-  link?: { url: string | null }; // Link can also be null
-  items?: NavigationItemProps[];
+  label: string;
+  url?: string;
+  internal?: { slug: { current: string } };
+  children?: NavigationItemProps[];
 };
 
-export function NavigationItem({ item }: { item: NavigationItemProps }): JSX.Element | null {
-  const { id, title, link, items } = item;
+export function NavigationItem({ item }: { item: NavigationItemProps }) {
+  const { label, url, internal, children } = item;
 
-  if (!title) return null;
+  const href = url ?? (internal ? `/${internal.slug.current}` : null);
+
+  if (!label || !href) return null;
 
   return (
-    <li className="list-none">
-      {link?.url ? (
-        <Link href={link.url} className="text-blue-500 hover:underline font-semibold">
-          {title}
-        </Link>
-      ) : (
-        <span className="font-semibold">{title}</span>
-      )}
-      {items && items.length > 0 ? (
-        <ul className="ml-4 space-y-1">
-          {items.map((subItem, index) => (
-            <NavigationItem
-              key={`${subItem.title ?? "untitled"}-${subItem.link?.url || index}`}
-              item={subItem}
-            />
+    <li className="relative group">
+      <a
+        href={href}
+        target={url ? '_blank' : '_self'} // External links open in a new tab
+        rel={url ? 'noopener noreferrer' : undefined}
+        className="text-blue-500 hover:underline font-semibold"
+      >
+        {label}
+      </a>
+      {children && children.length > 0 && (
+        <ul className="absolute hidden group-hover:block bg-white shadow-md">
+          {children.map((child, index) => (
+            <NavigationItem key={index} item={child} />
           ))}
         </ul>
-      ) : null}
+      )}
     </li>
   );
 }

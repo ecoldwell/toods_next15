@@ -640,127 +640,11 @@ export type NAVIGATION_QUERYResult = Array<{
   }> | null;
 }>;
 // Variable: SITE_SETTINGS
-// Query: *[_type == 'siteConfig'][0]{    ...,    headerMenu->{      title,      items[]{        _type == "link" => {          label,          url,          internal->{ _type, title, metadata }        },        _type == "link.list" => {          links[]{            label,            url,            internal->{ _type, title, metadata }          }        }      }    },    footerMenu->{      title,      items[]{        _type == "link" => {          label,          url,          internal->{ _type, title, metadata }        },        _type == "link.list" => {          links[]{            label,            url,            internal->{ _type, title, metadata }          }        }      }    },    social->{      title,      items[]{        _type == "link" => {          label,          url,          internal->{ _type, title, metadata }        },        _type == "link.list" => {          links[]{            label,            url,            internal->{ _type, title, metadata }          }        }      }    },    'ogimage': ogimage.asset->url  }
+// Query: *[_type == 'siteConfig'][0]{    headerNav->{    title,    items[]{      label,      url,      internal->{        slug      },      children[]    }  },  footerNav->{    title,    items[]{      label,      url,      internal->{        slug      },      children[]    }  },  socialLinks}
 export type SITE_SETTINGSResult = {
-  _id: string;
-  _type: "siteConfig";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  headerMenu: {
-    title: string | null;
-    items: Array<{
-      label: string | null;
-      url: null;
-      internal: {
-        _type: "category";
-        title: string | null;
-        metadata: null;
-      } | {
-        _type: "post";
-        title: string | null;
-        metadata: null;
-      } | null;
-    } | {
-      links: Array<{
-        label: string | null;
-        url: null;
-        internal: {
-          _type: "category";
-          title: string | null;
-          metadata: null;
-        } | {
-          _type: "post";
-          title: string | null;
-          metadata: null;
-        } | null;
-      }> | null;
-    }> | null;
-  } | null;
-  footerMenu: {
-    title: string | null;
-    items: Array<{
-      label: string | null;
-      url: null;
-      internal: {
-        _type: "category";
-        title: string | null;
-        metadata: null;
-      } | {
-        _type: "post";
-        title: string | null;
-        metadata: null;
-      } | null;
-    } | {
-      links: Array<{
-        label: string | null;
-        url: null;
-        internal: {
-          _type: "category";
-          title: string | null;
-          metadata: null;
-        } | {
-          _type: "post";
-          title: string | null;
-          metadata: null;
-        } | null;
-      }> | null;
-    }> | null;
-  } | null;
-  social: {
-    title: string | null;
-    items: Array<{
-      label: string | null;
-      url: null;
-      internal: {
-        _type: "category";
-        title: string | null;
-        metadata: null;
-      } | {
-        _type: "post";
-        title: string | null;
-        metadata: null;
-      } | null;
-    } | {
-      links: Array<{
-        label: string | null;
-        url: null;
-        internal: {
-          _type: "category";
-          title: string | null;
-          metadata: null;
-        } | {
-          _type: "post";
-          title: string | null;
-          metadata: null;
-        } | null;
-      }> | null;
-    }> | null;
-  } | null;
-  ogImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  favIcon?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  displayLastUpdated?: boolean;
-  ogimage: null;
+  headerNav: null;
+  footerNav: null;
+  socialLinks: null;
 } | null;
 // Variable: MEDIAHOME_QUERY
 // Query: *[  _type == "media"  && defined(slug.current)]{_id, name, slug, date}|order(date desc)
@@ -841,7 +725,7 @@ declare module "@sanity/client" {
     "\n  *[_type == 'link']{\n    ...,\n    internal->{ _type, title, metadata }\n  }\n": LINK_QUERYResult;
     "\n  *[_type == \"link.list\"]{\n    ...,\n    links[]{\n      label,\n      url,\n      internal->{ _type, title, metadata }\n    }\n  }\n": LINK_LIST_QUERYResult;
     "\n  *[_type == \"navigation\"]{\n    _id,\n    title,\n    items[]{\n      _type == \"link\" => {\n        label,\n        url,\n        internal->{ _type, title, metadata }\n      },\n      _type == \"link.list\" => {\n        links[]{\n          label,\n          url,\n          internal->{ _type, title, metadata }\n        }\n      }\n    }\n  }\n": NAVIGATION_QUERYResult;
-    "\n  *[_type == 'siteConfig'][0]{\n    ...,\n    headerMenu->{\n      title,\n      items[]{\n        _type == \"link\" => {\n          label,\n          url,\n          internal->{ _type, title, metadata }\n        },\n        _type == \"link.list\" => {\n          links[]{\n            label,\n            url,\n            internal->{ _type, title, metadata }\n          }\n        }\n      }\n    },\n    footerMenu->{\n      title,\n      items[]{\n        _type == \"link\" => {\n          label,\n          url,\n          internal->{ _type, title, metadata }\n        },\n        _type == \"link.list\" => {\n          links[]{\n            label,\n            url,\n            internal->{ _type, title, metadata }\n          }\n        }\n      }\n    },\n    social->{\n      title,\n      items[]{\n        _type == \"link\" => {\n          label,\n          url,\n          internal->{ _type, title, metadata }\n        },\n        _type == \"link.list\" => {\n          links[]{\n            label,\n            url,\n            internal->{ _type, title, metadata }\n          }\n        }\n      }\n    },\n    'ogimage': ogimage.asset->url\n  }\n": SITE_SETTINGSResult;
+    "\n  *[_type == 'siteConfig'][0]{\n    headerNav->{\n    title,\n    items[]{\n      label,\n      url,\n      internal->{\n        slug\n      },\n      children[]\n    }\n  },\n  footerNav->{\n    title,\n    items[]{\n      label,\n      url,\n      internal->{\n        slug\n      },\n      children[]\n    }\n  },\n  socialLinks}\n": SITE_SETTINGSResult;
     "*[\n  _type == \"media\"\n  && defined(slug.current)\n]{_id, name, slug, date}|order(date desc)": MEDIAHOME_QUERYResult;
     "*[\n  _type == \"media\" &&\n  slug.current == $slug\n][0]{\n...,\n\"date\": coalesce(date, now()),\n\"doorsOpen\": coalesce(doorsOpen, 0),\nheadline->,\nvenue->\n}": MEDIA_QUERYResult;
   }

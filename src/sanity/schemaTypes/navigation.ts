@@ -10,6 +10,8 @@ export const navigation = defineType({
 			name: 'title',
 			type: 'string',
 			validation: (Rule) => Rule.required(),
+			title: 'Title',
+      description: 'Name of this navigation menu (e.g., Header, Footer)',
 		  }),
 	  defineField({
 		name: 'slug',

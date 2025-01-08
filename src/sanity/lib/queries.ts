@@ -95,60 +95,29 @@ export const NAVIGATION_QUERY = defineQuery(`
 `);
 export const SITE_SETTINGS = defineQuery(`
   *[_type == 'siteConfig'][0]{
-    ...,
-    headerMenu->{
-      title,
-      items[]{
-        _type == "link" => {
-          label,
-          url,
-          internal->{ _type, title, metadata }
-        },
-        _type == "link.list" => {
-          links[]{
-            label,
-            url,
-            internal->{ _type, title, metadata }
-          }
-        }
-      }
-    },
-    footerMenu->{
-      title,
-      items[]{
-        _type == "link" => {
-          label,
-          url,
-          internal->{ _type, title, metadata }
-        },
-        _type == "link.list" => {
-          links[]{
-            label,
-            url,
-            internal->{ _type, title, metadata }
-          }
-        }
-      }
-    },
-    social->{
-      title,
-      items[]{
-        _type == "link" => {
-          label,
-          url,
-          internal->{ _type, title, metadata }
-        },
-        _type == "link.list" => {
-          links[]{
-            label,
-            url,
-            internal->{ _type, title, metadata }
-          }
-        }
-      }
-    },
-    'ogimage': ogimage.asset->url
-  }
+    headerNav->{
+    title,
+    items[]{
+      label,
+      url,
+      internal->{
+        slug
+      },
+      children[]
+    }
+  },
+  footerNav->{
+    title,
+    items[]{
+      label,
+      url,
+      internal->{
+        slug
+      },
+      children[]
+    }
+  },
+  socialLinks}
 `);
 
 // export const SITE_SETTINGS = defineQuery(`*[_type == 'siteConfig'][0]{
