@@ -1,38 +1,38 @@
-import { SITE_SETTINGS } from '@/sanity/lib/queries';
-import { SITE_SETTINGSResult } from '@/sanity/types';
-import { sanityFetch } from '@/sanity/lib/live';
-import { Key } from 'react';
+// import { SITE_SETTINGS } from '@/sanity/lib/queries';
+// import { SITE_SETTINGSResult } from '@/sanity/types';
+// import { sanityFetch } from '@/sanity/lib/live';
+// import { Key } from 'react';
 
-export default async function Navigation() {
-    const { data: siteSettings } = await sanityFetch({ query: SITE_SETTINGS });
-    console.log(siteSettings)
+// export default async function Navigation() {
+//     const { data: siteSettings } = await sanityFetch({ query: SITE_SETTINGS });
+//     console.log(siteSettings)
 
-    if (!siteSettings) return null;
+//     if (!siteSettings) return null;
 
-    const { headerMenu, footerMenu } = siteSettings;
+//     const { headerMenu, footerMenu } = siteSettings;
   
-    return (
-        <nav>
-          <h1>{headerMenu?.title}</h1>
-          {headerMenu?.items?.map((item) =>
-            item._type === 'link' ? (
-              <a href={item.url} key={item.label}>
-                {item.label}
-              </a>
-            ) : (
-              <div key={item._id}>
-                <h2>Dropdown</h2>
-                {item.links?.map((link) => (
-                  <a href={link.url} key={link.label}>
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            )
-          )}
-        </nav>
-      );
-    };
+//     return (
+//         <nav>
+//           <h1>{headerMenu?.title}</h1>
+//           {headerMenu?.items?.map((item) =>
+//             item._type === 'link' ? (
+//               <a href={item.url} key={item.label}>
+//                 {item.label}
+//               </a>
+//             ) : (
+//               <div key={item._id}>
+//                 <h2>Dropdown</h2>
+//                 {item.links?.map((link) => (
+//                   <a href={link.url} key={link.label}>
+//                     {link.label}
+//                   </a>
+//                 ))}
+//               </div>
+//             )
+//           )}
+//         </nav>
+//       );
+//     };
 
 
 // const renderItems = (items: any[] | null) => {
@@ -120,68 +120,68 @@ export default async function Navigation() {
 //         </nav>
 //     );import Link from "next/link";
 
-type NavigationItemProps = {
-    title: string | null; // Allow title to be nullable
-    link?: { url: string | null }; // Also ensure URL can be null if needed
-  items?: NavigationItemProps[];
-};
+// type NavigationItemProps = {
+//     title: string | null; // Allow title to be nullable
+//     link?: { url: string | null }; // Also ensure URL can be null if needed
+//   items?: NavigationItemProps[];
+// };
 
-export function NavigationItem({ item }: { item: NavigationItemProps }) {
-  const { title, link, items } = item;
+// export function NavigationItem({ item }: { item: NavigationItemProps }) {
+//   const { title, link, items } = item;
 
-  return (
-    <li className="list-none">
-      {link ? (
-        <Link
-          href={link.url}
-          className="text-blue-500 hover:underline font-semibold"
-        >
-          {title}
-        </Link>
-      ) : (
-        <span className="font-semibold">{title}</span>
-      )}
-      {items && items.length > 0 && (
-        <ul className="ml-4 space-y-1">
-          {items.map((subItem, index) => (
-            <NavigationItem
-              key={`${subItem.title}-${subItem.link?.url || index}`}
-              item={subItem}
-            />
-          ))}
-        </ul>
-      )}
-    </li>
-  );
-}
-
-import { sanityFetch } from "@/sanity/lib/live";
-import { NAVIGATION_QUERY } from "@/sanity/lib/queries";
-import { NavigationItem } from "./NavigationItem";
-import { notFound } from "next/navigation";
-
-export default async function Navigation() {
-  const { data: navigation } = await sanityFetch({
-    query: NAVIGATION_QUERY,
-  });
-
-  if (!navigation) {
-    notFound();
-  }
-
-  return (
-    <nav>
-      <ul className="space-y-4">
-        {navigation.map((navItem) => (
-          <NavigationItem
-            key={navItem._id}
-            item={navItem}
-          />
-        ))}
-      </ul>
-    </nav>
-  );
-}
-
-
+//   return (
+//     <li className="list-none">
+//       {link ? (
+//         <Link
+//           href={link.url}
+//           className="text-blue-500 hover:underline font-semibold"
+//         >
+//           {title}
+//         </Link>
+//       ) : (
+//         <span className="font-semibold">{title}</span>
+//       )}
+//       {items && items.length > 0 && (
+//         <ul className="ml-4 space-y-1">
+//           {items.map((subItem, index) => (
+//             <NavigationItem
+//               key={`${subItem.title}-${subItem.link?.url || index}`}
+//               item={subItem}
+//             />
+//           ))}
+//         </ul>
+//       )}
+//     </li>
+//   );
 // }
+
+// import { sanityFetch } from "@/sanity/lib/live";
+// import { NAVIGATION_QUERY } from "@/sanity/lib/queries";
+// import { NavigationItem } from "./NavigationItem";
+// import { notFound } from "next/navigation";
+
+// export default async function Navigation() {
+//   const { data: navigation } = await sanityFetch({
+//     query: NAVIGATION_QUERY,
+//   });
+
+//   if (!navigation) {
+//     notFound();
+//   }
+
+//   return (
+//     <nav>
+//       <ul className="space-y-4">
+//         {navigation.map((navItem) => (
+//           <NavigationItem
+//             key={navItem._id}
+//             item={navItem}
+//           />
+//         ))}
+//       </ul>
+//     </nav>
+//   );
+// }
+
+
+// // }

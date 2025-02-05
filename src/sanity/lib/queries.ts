@@ -207,3 +207,91 @@ export const MEDIA_QUERY = defineQuery(`*[
 headline->,
 venue->
 }`);
+
+
+ export const NAV_QUERY =
+  defineQuery(`*[_type == "navigation"]{
+ title,
+    items[] {
+      ...,
+      internal->{ _type, title, metadata, _key },
+    link {
+          ...,
+      internal->{ _type, title, metadata, _key },
+    },
+    links[] {
+            ...,
+      internal->{ _type, title, metadata, _key }
+    }
+    }
+}`)
+
+export const CTA_QUERY = 
+defineQuery(`*[_type == "cta"]{
+  ...,
+link { 
+  ...,
+  internal->{ _type, title, metadata }
+  }
+ }`)
+
+export const SITE_QUERY = 
+defineQuery(`*[_type == "site"][0]{
+  ...,
+  headerMenu->{  title,
+    items[] {
+      ...,
+      internal->{ _type, title, metadata, _key },
+    link {
+          ...,
+      internal->{ _type, title, metadata, _key },
+    },
+    links[] {
+            ...,
+      internal->{ _type, title, metadata, _key }
+    }
+    } },
+  footerMenu->{  title,
+    items[] {
+      ...,
+      internal->{ _type, title, metadata, _key },
+    link {
+          ...,
+      internal->{ _type, title, metadata, _key },
+    },
+    links[] {
+            ...,
+      internal->{ _type, title, metadata, _key }
+    }
+    } },
+  socialMenu->{  title,
+    items[] {
+      ...,
+      internal->{ _type, title, metadata, _key },
+    link {
+          ...,
+      internal->{ _type, title, metadata, _key },
+    },
+    links[] {
+            ...,
+      internal->{ _type, title, metadata, _key }
+    }
+    } },
+}`)
+
+export const HEADER_MENU =
+  defineQuery(`*[_type == "site"][0] {
+    _id,
+    _type,
+    title,
+    headerMenu{
+      _key, // required for drag and drop
+      ...@->{_id, title, slug, items[]{
+        ...,
+        internal->{ _type, title, metadata, _key },
+      
+      }} // get fields from the referenced post
+    }
+  }`)
+
+

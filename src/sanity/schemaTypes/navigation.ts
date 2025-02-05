@@ -1,7 +1,7 @@
-import {defineField, defineType} from 'sanity'
-import { count } from '../lib/utils'
+import { defineField, defineType } from 'sanity'
+import { count } from '@/sanity/lib/utils'
 
-export const navigation = defineType({
+export default defineType({
 	name: 'navigation',
 	title: 'Navigation',
 	type: 'document',
@@ -10,29 +10,30 @@ export const navigation = defineType({
 			name: 'title',
 			type: 'string',
 			validation: (Rule) => Rule.required(),
-		  }),
-	  defineField({
-		name: 'slug',
-		type: 'slug',
-		options: {
-			source: 'title',
-		}
-	  }),
-	  defineField({
-		name: 'items',
-		type: 'array',
-		of: [{ type: 'link' }, { type: 'link.list' }],
-	  }),
+		}),
+		defineField({
+			name: 'slug',
+			type: 'slug',
+			options: {
+				source: 'title',
+			  },
+		}),
+		defineField({
+			name: 'items',
+			type: 'array',
+			of: [{ type: 'link' }, { type: 'link.list' }],
+		}),
 	],
 	preview: {
-	  select: {
-		title: 'title',
-		items: 'items',
-	  },
-	  prepare: ({ title, items }) => ({
-		title,
-		subtitle: count(items),
-	  }),
+		select: {
+			title: 'title',
+			items: 'items',
+		},
+		prepare: ({ title, items }) => ({
+			title,
+			subtitle: count(items),
+		}),
 	},
-  });
+})
+
   

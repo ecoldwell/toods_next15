@@ -1,4 +1,36 @@
 import Link from 'next/link'
+import Image from "next/image";
+import Dropdown from "./Dropdown";
+
+export interface MenuItem {
+  title: string;
+  route?: string;
+  children?: MenuItem[];
+}
+
+const menuItems: MenuItem[] = [
+  {
+    title: "Home",
+    route: "/",
+  },
+  {
+    title: "Products",
+    children: [
+      {
+        title: "Hinkle Horns",
+        route: "/products/hinkle-horns",
+      },
+      {
+        title: "Doozers",
+        route: "/products/doozers",
+      },
+      {
+        title: "Zizzer-zazzers",
+        route: "/products/zizzer-zazzers",
+      },
+    ],
+  },
+];
 
 export function Header() {
   return (
@@ -28,6 +60,17 @@ export function Header() {
             </Link>
           </li>
         </ul>
+        <div className="flex gap-8 items-center text-white">
+        {menuItems.map((item) => {
+          return item.hasOwnProperty("children") ? (
+            <Dropdown item={item} />
+          ) : (
+            <Link className="hover:text-blue-500" href={item?.route || ""}>
+              {item.title}
+            </Link>
+          );
+        })}
+      </div>
       </header>
     </div>
   )

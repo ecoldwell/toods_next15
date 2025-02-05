@@ -68,6 +68,31 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type Metadata = {
+  _type: "metadata";
+  slug?: Slug;
+  title?: string;
+  description?: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  noIndex?: boolean;
+};
+
+export type Cta = {
+  _type: "cta";
+  link?: Link;
+  style?: "action" | "action-outline" | "ghost" | "link";
+};
+
 export type Media = {
   _id: string;
   _type: "media";
@@ -141,12 +166,16 @@ export type Venue = {
   name?: string;
 };
 
-export type SiteConfig = {
+export type Site = {
   _id: string;
-  _type: "siteConfig";
+  _type: "site";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  title?: string;
+  ctas?: Array<{
+    _key: string;
+  } & Cta>;
   headerMenu?: {
     _ref: string;
     _type: "reference";
@@ -165,7 +194,25 @@ export type SiteConfig = {
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "navigation";
   };
-  ogImage?: {
+  copyright?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  ogimage?: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -176,18 +223,6 @@ export type SiteConfig = {
     crop?: SanityImageCrop;
     _type: "image";
   };
-  favIcon?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  displayLastUpdated?: boolean;
 };
 
 export type Navigation = {
@@ -197,12 +232,14 @@ export type Navigation = {
   _updatedAt: string;
   _rev: string;
   title?: string;
-  slug?: Slug;
+  slug?: string;
   items?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
     _key: string;
-  } & Link | {
-    _key: string;
-  } & LinkList>;
+    [internalGroqTypeReferenceTo]?: "link";
+  }>;
 };
 
 export type LinkList = {
@@ -449,7 +486,7 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Media | Artist | Venue | SiteConfig | Navigation | LinkList | Link | Post | Author | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Metadata | Cta | Media | Artist | Venue | Site | Navigation | LinkList | Link | Post | Author | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -611,157 +648,11 @@ export type LINK_LIST_QUERYResult = Array<never>;
 export type NAVIGATION_QUERYResult = Array<{
   _id: string;
   title: string | null;
-  items: Array<{
-    label: string | null;
-    url: null;
-    internal: {
-      _type: "category";
-      title: string | null;
-      metadata: null;
-    } | {
-      _type: "post";
-      title: string | null;
-      metadata: null;
-    } | null;
-  } | {
-    links: Array<{
-      label: string | null;
-      url: null;
-      internal: {
-        _type: "category";
-        title: string | null;
-        metadata: null;
-      } | {
-        _type: "post";
-        title: string | null;
-        metadata: null;
-      } | null;
-    }> | null;
-  }> | null;
+  items: Array<{}> | null;
 }>;
 // Variable: SITE_SETTINGS
 // Query: *[_type == 'siteConfig'][0]{    ...,    headerMenu->{      title,      items[]{        _type == "link" => {          label,          url,          internal->{ _type, title, metadata }        },        _type == "link.list" => {          links[]{            label,            url,            internal->{ _type, title, metadata }          }        }      }    },    footerMenu->{      title,      items[]{        _type == "link" => {          label,          url,          internal->{ _type, title, metadata }        },        _type == "link.list" => {          links[]{            label,            url,            internal->{ _type, title, metadata }          }        }      }    },    social->{      title,      items[]{        _type == "link" => {          label,          url,          internal->{ _type, title, metadata }        },        _type == "link.list" => {          links[]{            label,            url,            internal->{ _type, title, metadata }          }        }      }    },    'ogimage': ogimage.asset->url  }
-export type SITE_SETTINGSResult = {
-  _id: string;
-  _type: "siteConfig";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  headerMenu: {
-    title: string | null;
-    items: Array<{
-      label: string | null;
-      url: null;
-      internal: {
-        _type: "category";
-        title: string | null;
-        metadata: null;
-      } | {
-        _type: "post";
-        title: string | null;
-        metadata: null;
-      } | null;
-    } | {
-      links: Array<{
-        label: string | null;
-        url: null;
-        internal: {
-          _type: "category";
-          title: string | null;
-          metadata: null;
-        } | {
-          _type: "post";
-          title: string | null;
-          metadata: null;
-        } | null;
-      }> | null;
-    }> | null;
-  } | null;
-  footerMenu: {
-    title: string | null;
-    items: Array<{
-      label: string | null;
-      url: null;
-      internal: {
-        _type: "category";
-        title: string | null;
-        metadata: null;
-      } | {
-        _type: "post";
-        title: string | null;
-        metadata: null;
-      } | null;
-    } | {
-      links: Array<{
-        label: string | null;
-        url: null;
-        internal: {
-          _type: "category";
-          title: string | null;
-          metadata: null;
-        } | {
-          _type: "post";
-          title: string | null;
-          metadata: null;
-        } | null;
-      }> | null;
-    }> | null;
-  } | null;
-  social: {
-    title: string | null;
-    items: Array<{
-      label: string | null;
-      url: null;
-      internal: {
-        _type: "category";
-        title: string | null;
-        metadata: null;
-      } | {
-        _type: "post";
-        title: string | null;
-        metadata: null;
-      } | null;
-    } | {
-      links: Array<{
-        label: string | null;
-        url: null;
-        internal: {
-          _type: "category";
-          title: string | null;
-          metadata: null;
-        } | {
-          _type: "post";
-          title: string | null;
-          metadata: null;
-        } | null;
-      }> | null;
-    }> | null;
-  } | null;
-  ogImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  favIcon?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  displayLastUpdated?: boolean;
-  ogimage: null;
-} | null;
+export type SITE_SETTINGSResult = null;
 // Variable: MEDIAHOME_QUERY
 // Query: *[  _type == "media"  && defined(slug.current)]{_id, name, slug, date}|order(date desc)
 export type MEDIAHOME_QUERYResult = Array<{
@@ -830,6 +721,118 @@ export type MEDIA_QUERYResult = {
   }>;
   tickets?: string;
 } | null;
+// Variable: NAV_QUERY
+// Query: *[_type == "navigation"]{ title,    items[] {      ...,      internal->{ _type, title, metadata, _key },    link {          ...,      internal->{ _type, title, metadata, _key },    },    links[] {            ...,      internal->{ _type, title, metadata, _key }    }    }}
+export type NAV_QUERYResult = Array<{
+  title: string | null;
+  items: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    internal: null;
+    link: null;
+    links: null;
+  }> | null;
+}>;
+// Variable: CTA_QUERY
+// Query: *[_type == "cta"]{  ...,link {   ...,  internal->{ _type, title, metadata }  } }
+export type CTA_QUERYResult = Array<never>;
+// Variable: SITE_QUERY
+// Query: *[_type == "site"][0]{  ...,  headerMenu->{  title,    items[] {      ...,      internal->{ _type, title, metadata, _key },    link {          ...,      internal->{ _type, title, metadata, _key },    },    links[] {            ...,      internal->{ _type, title, metadata, _key }    }    } },  footerMenu->{  title,    items[] {      ...,      internal->{ _type, title, metadata, _key },    link {          ...,      internal->{ _type, title, metadata, _key },    },    links[] {            ...,      internal->{ _type, title, metadata, _key }    }    } },  socialMenu->{  title,    items[] {      ...,      internal->{ _type, title, metadata, _key },    link {          ...,      internal->{ _type, title, metadata, _key },    },    links[] {            ...,      internal->{ _type, title, metadata, _key }    }    } },}
+export type SITE_QUERYResult = {
+  _id: string;
+  _type: "site";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  ctas?: Array<{
+    _key: string;
+  } & Cta>;
+  headerMenu: {
+    title: string | null;
+    items: Array<{
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      _key: string;
+      internal: null;
+      link: null;
+      links: null;
+    }> | null;
+  } | null;
+  footerMenu: {
+    title: string | null;
+    items: Array<{
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      _key: string;
+      internal: null;
+      link: null;
+      links: null;
+    }> | null;
+  } | null;
+  social?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "navigation";
+  };
+  copyright?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  ogimage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  socialMenu: null;
+} | null;
+// Variable: HEADER_MENU
+// Query: *[_type == "site"] {    _id,    _type,    title,    headerMenu{      _key, // required for drag and drop      ...@->{_id, title, slug, items[]{        ...,        internal->{ _type, title, metadata, _key },      link {            ...,        internal->{ _type, title, metadata, _key },      },      links[] {              ...,        internal->{ _type, title, metadata, _key }      }      }} // get fields from the referenced post    }  }
+export type HEADER_MENUResult = Array<{
+  _id: string;
+  _type: "site";
+  title: string | null;
+  headerMenu: {
+    _key: null;
+    _id: string;
+    title: string | null;
+    slug: string | null;
+    items: Array<{
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      _key: string;
+      internal: null;
+      link: null;
+      links: null;
+    }> | null;
+  } | null;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -844,5 +847,9 @@ declare module "@sanity/client" {
     "\n  *[_type == 'siteConfig'][0]{\n    ...,\n    headerMenu->{\n      title,\n      items[]{\n        _type == \"link\" => {\n          label,\n          url,\n          internal->{ _type, title, metadata }\n        },\n        _type == \"link.list\" => {\n          links[]{\n            label,\n            url,\n            internal->{ _type, title, metadata }\n          }\n        }\n      }\n    },\n    footerMenu->{\n      title,\n      items[]{\n        _type == \"link\" => {\n          label,\n          url,\n          internal->{ _type, title, metadata }\n        },\n        _type == \"link.list\" => {\n          links[]{\n            label,\n            url,\n            internal->{ _type, title, metadata }\n          }\n        }\n      }\n    },\n    social->{\n      title,\n      items[]{\n        _type == \"link\" => {\n          label,\n          url,\n          internal->{ _type, title, metadata }\n        },\n        _type == \"link.list\" => {\n          links[]{\n            label,\n            url,\n            internal->{ _type, title, metadata }\n          }\n        }\n      }\n    },\n    'ogimage': ogimage.asset->url\n  }\n": SITE_SETTINGSResult;
     "*[\n  _type == \"media\"\n  && defined(slug.current)\n]{_id, name, slug, date}|order(date desc)": MEDIAHOME_QUERYResult;
     "*[\n  _type == \"media\" &&\n  slug.current == $slug\n][0]{\n...,\n\"date\": coalesce(date, now()),\n\"doorsOpen\": coalesce(doorsOpen, 0),\nheadline->,\nvenue->\n}": MEDIA_QUERYResult;
+    "*[_type == \"navigation\"]{\n title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    }\n}": NAV_QUERYResult;
+    "*[_type == \"cta\"]{\n  ...,\nlink { \n  ...,\n  internal->{ _type, title, metadata }\n  }\n }": CTA_QUERYResult;
+    "*[_type == \"site\"][0]{\n  ...,\n  headerMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n  footerMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n  socialMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n}": SITE_QUERYResult;
+    "*[_type == \"site\"] {\n    _id,\n    _type,\n    title,\n    headerMenu{\n      _key, // required for drag and drop\n      ...@->{_id, title, slug, items[]{\n        ...,\n        internal->{ _type, title, metadata, _key },\n      link {\n            ...,\n        internal->{ _type, title, metadata, _key },\n      },\n      links[] {\n              ...,\n        internal->{ _type, title, metadata, _key }\n      }\n      }} // get fields from the referenced post\n    }\n  }": HEADER_MENUResult;
   }
 }
