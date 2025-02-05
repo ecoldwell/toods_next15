@@ -288,7 +288,19 @@ export const HEADER_MENU =
       _key, // required for drag and drop
       ...@->{_id, title, slug, items[]{
         ...,
-        internal->{ _type, title, metadata, _key },
+        _key,
+        _type,
+        label,
+        external,
+        internal->{ _type, title, metadata, _key, _id, slug },
+        links[] {
+          ...,
+        _key,
+        _type,
+        label,
+        external,
+        internal->{ _type, title, metadata, _key, _id, slug, label },
+        }
       
       }} // get fields from the referenced post
     }

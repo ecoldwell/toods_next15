@@ -2,82 +2,29 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { stegaClean } from 'next-sanity'
 import { ChevronDown } from "lucide-react";
 
+const getInternalLink = (internal) => {
+  console.log("Internal Link Data:", internal); // Debugging output
 
-// type NavigationItemProps = {
-//     title: string | null; // Allow title to be nullable
-//     link?: { url: string | null }; // Also ensure URL can be null if needed
-//   items?: NavigationItemProps[];
-// };
+  if (!internal || !internal._type) return "#"; // Prevent errors
 
-// export function NavigationItem({ item }: { item: NavigationItemProps }) {
-//   const { title, link, items } = item;
+  // Ensure we are using `slug.current`
+  const slug = internal.slug?.current || internal.id || internal._id;
+  if (!slug) return "#"; // If no valid identifier, return "#"
 
-//   return (
-//     <li className="list-none">
-//       {link ? (
-//         <Link
-//           href={link.url}
-//           className="text-blue-500 hover:underline font-semibold"
-//         >
-//           {title}
-//         </Link>
-//       ) : (
-//         <span className="font-semibold">{title}</span>
-//       )}
-//       {items && items.length > 0 && (
-//         <ul className="ml-4 space-y-1">
-//           {items.map((subItem, index) => (
-//             <NavigationItem
-//               key={`${subItem.title}-${subItem.link?.url || index}`}
-//               item={subItem}
-//             />
-//           ))}
-//         </ul>
-//       )}
-//     </li>
-//   );
-// }
-
-// type NavigationItemProps = {
-//   title: string;
-//   label: string | null; // Title can be null
-//   link?: { url: string | null }; // Link can also be null
-//   items?: NavigationItemProps[];
-//   _key: string;
-  
-// };
-
-// export function NavigationItem({ item }: { item: NavigationItemProps }): JSX.Element | null {
-//   const { title, link, items } = item;
-//   console.log(item, "helll")
- 
-
-//   if (!title) return null;
-
-//   return (
-//     <li className="list-none">
-//       {link?.url ? (
-//         <Link href={link.url} className="text-blue-500 hover:underline font-semibold">
-//           {title}
-//         </Link>
-//       ) : (
-//         <span className="font-semibold">{title}</span>
-//       )}
-//       {items && items.length > 0 ? (
-//         <ul className="ml-4 space-y-1">
-//           {items.map((subItem, index) => (
-//             <NavigationItem
-//               key={index}
-//               item={subItem}
-//             />
-//           ))}
-//         </ul>
-//       ) : null}
-//     </li>
-//   );
-// }
+  switch (internal._type) {
+    case "post":
+      return `/posts/${slug}`;
+    case "page":
+      return `/page/${slug}`;
+    case "category":
+      return `/category/${slug}`;
+    default:
+      return "#"; // Fallback if type is unknown
+  }
+};
 
 
 export const Menu = ({ menuItems }) => {
@@ -88,7 +35,7 @@ export const Menu = ({ menuItems }) => {
           <li key={item._key} className="relative">
             {/* Internal Link */}
             {item.type === "internal" && item.internal ? (
-              <Link href={`/posts/${item.internal._key}`} className="text-blue-600 hover:underline">
+              <Link href={getInternalLink(item.internal)} className="text-blue-600 hover:underline">
                 {item.label}
               </Link>
             ) : 
@@ -110,7 +57,7 @@ export const Menu = ({ menuItems }) => {
 };
 
 /** Dropdown Component */
-export const DropdownMenu = ({ item }) => {
+const DropdownMenu = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -124,10 +71,10 @@ export const DropdownMenu = ({ item }) => {
 
       {isOpen && (
         <ul className="absolute left-0 mt-2 w-48 bg-white border shadow-lg rounded-lg overflow-hidden">
-          {item.links.map((subItem, index) => (
-            <li key={index} className="border-b last:border-none">
-              {subItem.type === "internal" ? (
-                <Link href={`/posts/${subItem.internal._key}`} className="block px-4 py-2 hover:bg-gray-100">
+          {item.links.map((subItem) => (
+            <li key={subItem._key} className="border-b last:border-none">
+              {subItem.type === "internal" && subItem.internal ? (
+                <Link href={getInternalLink(subItem.internal)} className="block px-4 py-2 hover:bg-gray-100">
                   {subItem.label}
                 </Link>
               ) : (
@@ -142,3 +89,4 @@ export const DropdownMenu = ({ item }) => {
     </div>
   );
 };
+

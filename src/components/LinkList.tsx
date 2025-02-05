@@ -19,11 +19,11 @@ export default async function Navigation() {
   
   return (
     <nav>
-      <ul>
+      {/* <ul>
         {headerNavigation.map((_key, label) => (
           <li key={_key._key}></li>
         ))}
-      </ul>
+      </ul> */}
       <Menu menuItems={headerNavigation} />
       {/* {siteConfig.map((headerNav)=>{
         console.log(headerNav.items)
