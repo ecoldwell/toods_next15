@@ -232,14 +232,12 @@ export type Navigation = {
   _updatedAt: string;
   _rev: string;
   title?: string;
-  slug?: string;
+  slug?: Slug;
   items?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
     _key: string;
-    [internalGroqTypeReferenceTo]?: "link";
-  }>;
+  } & Link | {
+    _key: string;
+  } & LinkList>;
 };
 
 export type LinkList = {
@@ -637,22 +635,6 @@ export type POST_QUERYResult = {
     slug: Slug | null;
   }> | null;
 } | null;
-// Variable: LINK_QUERY
-// Query: *[_type == 'link']{    ...,    internal->{ _type, title, metadata }  }
-export type LINK_QUERYResult = Array<never>;
-// Variable: LINK_LIST_QUERY
-// Query: *[_type == "link.list"]{    ...,    links[]{      label,      url,      internal->{ _type, title, metadata }    }  }
-export type LINK_LIST_QUERYResult = Array<never>;
-// Variable: NAVIGATION_QUERY
-// Query: *[_type == "navigation"]{    _id,    title,    items[]{      _type == "link" => {        label,        url,        internal->{ _type, title, metadata }      },      _type == "link.list" => {        links[]{          label,          url,          internal->{ _type, title, metadata }        }      }    }  }
-export type NAVIGATION_QUERYResult = Array<{
-  _id: string;
-  title: string | null;
-  items: Array<{}> | null;
-}>;
-// Variable: SITE_SETTINGS
-// Query: *[_type == 'siteConfig'][0]{    ...,    headerMenu->{      title,      items[]{        _type == "link" => {          label,          url,          internal->{ _type, title, metadata }        },        _type == "link.list" => {          links[]{            label,            url,            internal->{ _type, title, metadata }          }        }      }    },    footerMenu->{      title,      items[]{        _type == "link" => {          label,          url,          internal->{ _type, title, metadata }        },        _type == "link.list" => {          links[]{            label,            url,            internal->{ _type, title, metadata }          }        }      }    },    social->{      title,      items[]{        _type == "link" => {          label,          url,          internal->{ _type, title, metadata }        },        _type == "link.list" => {          links[]{            label,            url,            internal->{ _type, title, metadata }          }        }      }    },    'ogimage': ogimage.asset->url  }
-export type SITE_SETTINGSResult = null;
 // Variable: MEDIAHOME_QUERY
 // Query: *[  _type == "media"  && defined(slug.current)]{_id, name, slug, date}|order(date desc)
 export type MEDIAHOME_QUERYResult = Array<{
@@ -726,11 +708,64 @@ export type MEDIA_QUERYResult = {
 export type NAV_QUERYResult = Array<{
   title: string | null;
   items: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
     _key: string;
+    _type: "link.list";
+    link: {
+      _type: "link";
+      label?: string;
+      type?: "external" | "internal";
+      internal: {
+        _type: "category";
+        title: string | null;
+        metadata: null;
+        _key: null;
+      } | {
+        _type: "post";
+        title: string | null;
+        metadata: null;
+        _key: null;
+      } | null;
+      external?: string;
+      params?: string;
+    } | null;
+    links: Array<{
+      _key: string;
+      _type: "link";
+      label?: string;
+      type?: "external" | "internal";
+      internal: {
+        _type: "category";
+        title: string | null;
+        metadata: null;
+        _key: null;
+      } | {
+        _type: "post";
+        title: string | null;
+        metadata: null;
+        _key: null;
+      } | null;
+      external?: string;
+      params?: string;
+    }> | null;
     internal: null;
+  } | {
+    _key: string;
+    _type: "link";
+    label?: string;
+    type?: "external" | "internal";
+    internal: {
+      _type: "category";
+      title: string | null;
+      metadata: null;
+      _key: null;
+    } | {
+      _type: "post";
+      title: string | null;
+      metadata: null;
+      _key: null;
+    } | null;
+    external?: string;
+    params?: string;
     link: null;
     links: null;
   }> | null;
@@ -753,11 +788,64 @@ export type SITE_QUERYResult = {
   headerMenu: {
     title: string | null;
     items: Array<{
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
       _key: string;
+      _type: "link.list";
+      link: {
+        _type: "link";
+        label?: string;
+        type?: "external" | "internal";
+        internal: {
+          _type: "category";
+          title: string | null;
+          metadata: null;
+          _key: null;
+        } | {
+          _type: "post";
+          title: string | null;
+          metadata: null;
+          _key: null;
+        } | null;
+        external?: string;
+        params?: string;
+      } | null;
+      links: Array<{
+        _key: string;
+        _type: "link";
+        label?: string;
+        type?: "external" | "internal";
+        internal: {
+          _type: "category";
+          title: string | null;
+          metadata: null;
+          _key: null;
+        } | {
+          _type: "post";
+          title: string | null;
+          metadata: null;
+          _key: null;
+        } | null;
+        external?: string;
+        params?: string;
+      }> | null;
       internal: null;
+    } | {
+      _key: string;
+      _type: "link";
+      label?: string;
+      type?: "external" | "internal";
+      internal: {
+        _type: "category";
+        title: string | null;
+        metadata: null;
+        _key: null;
+      } | {
+        _type: "post";
+        title: string | null;
+        metadata: null;
+        _key: null;
+      } | null;
+      external?: string;
+      params?: string;
       link: null;
       links: null;
     }> | null;
@@ -765,11 +853,64 @@ export type SITE_QUERYResult = {
   footerMenu: {
     title: string | null;
     items: Array<{
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
       _key: string;
+      _type: "link.list";
+      link: {
+        _type: "link";
+        label?: string;
+        type?: "external" | "internal";
+        internal: {
+          _type: "category";
+          title: string | null;
+          metadata: null;
+          _key: null;
+        } | {
+          _type: "post";
+          title: string | null;
+          metadata: null;
+          _key: null;
+        } | null;
+        external?: string;
+        params?: string;
+      } | null;
+      links: Array<{
+        _key: string;
+        _type: "link";
+        label?: string;
+        type?: "external" | "internal";
+        internal: {
+          _type: "category";
+          title: string | null;
+          metadata: null;
+          _key: null;
+        } | {
+          _type: "post";
+          title: string | null;
+          metadata: null;
+          _key: null;
+        } | null;
+        external?: string;
+        params?: string;
+      }> | null;
       internal: null;
+    } | {
+      _key: string;
+      _type: "link";
+      label?: string;
+      type?: "external" | "internal";
+      internal: {
+        _type: "category";
+        title: string | null;
+        metadata: null;
+        _key: null;
+      } | {
+        _type: "post";
+        title: string | null;
+        metadata: null;
+        _key: null;
+      } | null;
+      external?: string;
+      params?: string;
       link: null;
       links: null;
     }> | null;
@@ -812,8 +953,8 @@ export type SITE_QUERYResult = {
   socialMenu: null;
 } | null;
 // Variable: HEADER_MENU
-// Query: *[_type == "site"] {    _id,    _type,    title,    headerMenu{      _key, // required for drag and drop      ...@->{_id, title, slug, items[]{        ...,        internal->{ _type, title, metadata, _key },      link {            ...,        internal->{ _type, title, metadata, _key },      },      links[] {              ...,        internal->{ _type, title, metadata, _key }      }      }} // get fields from the referenced post    }  }
-export type HEADER_MENUResult = Array<{
+// Query: *[_type == "site"][0] {    _id,    _type,    title,    headerMenu{      _key, // required for drag and drop      ...@->{_id, title, slug, items[]{        ...,        _key,        _type,        label,        external,        internal->{ _type, title, metadata, _key, _id, slug },        links[] {          ...,        _key,        _type,        label,        external,        internal->{ _type, title, metadata, _key, _id, slug, label },        }            }} // get fields from the referenced post    }  }
+export type HEADER_MENUResult = {
   _id: string;
   _type: "site";
   title: string | null;
@@ -821,18 +962,65 @@ export type HEADER_MENUResult = Array<{
     _key: null;
     _id: string;
     title: string | null;
-    slug: string | null;
+    slug: Slug | null;
     items: Array<{
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
       _key: string;
+      _type: "link.list";
+      link?: Link;
+      links: Array<{
+        _key: string;
+        _type: "link";
+        label: string | null;
+        type?: "external" | "internal";
+        internal: {
+          _type: "category";
+          title: string | null;
+          metadata: null;
+          _key: null;
+          _id: string;
+          slug: Slug | null;
+          label: null;
+        } | {
+          _type: "post";
+          title: string | null;
+          metadata: null;
+          _key: null;
+          _id: string;
+          slug: Slug | null;
+          label: null;
+        } | null;
+        external: string | null;
+        params?: string;
+      }> | null;
+      label: null;
+      external: null;
       internal: null;
-      link: null;
+    } | {
+      _key: string;
+      _type: "link";
+      label: string | null;
+      type?: "external" | "internal";
+      internal: {
+        _type: "category";
+        title: string | null;
+        metadata: null;
+        _key: null;
+        _id: string;
+        slug: Slug | null;
+      } | {
+        _type: "post";
+        title: string | null;
+        metadata: null;
+        _key: null;
+        _id: string;
+        slug: Slug | null;
+      } | null;
+      external: string | null;
+      params?: string;
       links: null;
     }> | null;
   } | null;
-}>;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -841,15 +1029,11 @@ declare module "@sanity/client" {
     "*[_type == \"post\" && defined(slug.current)]|order(publishedAt desc)[0...12]{\n  _id,\n  title,\n  slug,\n  body,\n  mainImage,\n  publishedAt,\n  \"categories\": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  ),\n  author->{\n    name,\n    image\n  }\n}": POSTS_QUERYResult;
     "*[_type == \"post\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": POSTS_SLUGS_QUERYResult;
     "*[_type == \"post\" && slug.current == $slug][0]{\n  _id,\n  title,\n  body,\n  mainImage,\n  publishedAt,\n  \"categories\": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  ),\n  author->{\n    name,\n    image\n  },\n  relatedPosts[]{\n    _key, // required for drag and drop\n    ...@->{_id, title, slug} // get fields from the referenced post\n  }\n}": POST_QUERYResult;
-    "\n  *[_type == 'link']{\n    ...,\n    internal->{ _type, title, metadata }\n  }\n": LINK_QUERYResult;
-    "\n  *[_type == \"link.list\"]{\n    ...,\n    links[]{\n      label,\n      url,\n      internal->{ _type, title, metadata }\n    }\n  }\n": LINK_LIST_QUERYResult;
-    "\n  *[_type == \"navigation\"]{\n    _id,\n    title,\n    items[]{\n      _type == \"link\" => {\n        label,\n        url,\n        internal->{ _type, title, metadata }\n      },\n      _type == \"link.list\" => {\n        links[]{\n          label,\n          url,\n          internal->{ _type, title, metadata }\n        }\n      }\n    }\n  }\n": NAVIGATION_QUERYResult;
-    "\n  *[_type == 'siteConfig'][0]{\n    ...,\n    headerMenu->{\n      title,\n      items[]{\n        _type == \"link\" => {\n          label,\n          url,\n          internal->{ _type, title, metadata }\n        },\n        _type == \"link.list\" => {\n          links[]{\n            label,\n            url,\n            internal->{ _type, title, metadata }\n          }\n        }\n      }\n    },\n    footerMenu->{\n      title,\n      items[]{\n        _type == \"link\" => {\n          label,\n          url,\n          internal->{ _type, title, metadata }\n        },\n        _type == \"link.list\" => {\n          links[]{\n            label,\n            url,\n            internal->{ _type, title, metadata }\n          }\n        }\n      }\n    },\n    social->{\n      title,\n      items[]{\n        _type == \"link\" => {\n          label,\n          url,\n          internal->{ _type, title, metadata }\n        },\n        _type == \"link.list\" => {\n          links[]{\n            label,\n            url,\n            internal->{ _type, title, metadata }\n          }\n        }\n      }\n    },\n    'ogimage': ogimage.asset->url\n  }\n": SITE_SETTINGSResult;
     "*[\n  _type == \"media\"\n  && defined(slug.current)\n]{_id, name, slug, date}|order(date desc)": MEDIAHOME_QUERYResult;
     "*[\n  _type == \"media\" &&\n  slug.current == $slug\n][0]{\n...,\n\"date\": coalesce(date, now()),\n\"doorsOpen\": coalesce(doorsOpen, 0),\nheadline->,\nvenue->\n}": MEDIA_QUERYResult;
     "*[_type == \"navigation\"]{\n title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    }\n}": NAV_QUERYResult;
     "*[_type == \"cta\"]{\n  ...,\nlink { \n  ...,\n  internal->{ _type, title, metadata }\n  }\n }": CTA_QUERYResult;
     "*[_type == \"site\"][0]{\n  ...,\n  headerMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n  footerMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n  socialMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n}": SITE_QUERYResult;
-    "*[_type == \"site\"] {\n    _id,\n    _type,\n    title,\n    headerMenu{\n      _key, // required for drag and drop\n      ...@->{_id, title, slug, items[]{\n        ...,\n        internal->{ _type, title, metadata, _key },\n      link {\n            ...,\n        internal->{ _type, title, metadata, _key },\n      },\n      links[] {\n              ...,\n        internal->{ _type, title, metadata, _key }\n      }\n      }} // get fields from the referenced post\n    }\n  }": HEADER_MENUResult;
+    "*[_type == \"site\"][0] {\n    _id,\n    _type,\n    title,\n    headerMenu{\n      _key, // required for drag and drop\n      ...@->{_id, title, slug, items[]{\n        ...,\n        _key,\n        _type,\n        label,\n        external,\n        internal->{ _type, title, metadata, _key, _id, slug },\n        links[] {\n          ...,\n        _key,\n        _type,\n        label,\n        external,\n        internal->{ _type, title, metadata, _key, _id, slug, label },\n        }\n      \n      }} // get fields from the referenced post\n    }\n  }": HEADER_MENUResult;
   }
 }

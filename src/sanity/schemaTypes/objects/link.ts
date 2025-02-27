@@ -27,7 +27,7 @@ export default defineType({
 		defineField({
 			name: 'internal',
 			type: 'reference',
-			to: [{ type: 'post' }, { type: 'category' }],
+			to: [{ type: 'post' }, { type: 'category' }, {type: 'media'}],
 			hidden: ({ parent }) => parent?.type !== 'internal',
 		}),
 		defineField({

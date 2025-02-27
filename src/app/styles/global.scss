@@ -1,0 +1,55 @@
+@import "header.scss";
+@font-face {
+  font-family: 'Amiamie';
+  src: url('./fonts/Amiamie-Typeface-main/webfonts/Amiamie-Regular.woff2') format('woff2'),
+       url('./fonts/Amiamie-Typeface-main/webfonts/Amiamie-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Amiamie-Black';
+  src: url('./fonts/Amiamie-Typeface-main/webfonts/Amiamie-Black.woff2') format('woff2'),
+       url('./fonts/Amiamie-Typeface-main/webfonts/Amiamie-Black.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap');
+
+// <weight>: Use a value from 100 to 900
+// <width>: Use a value from 62 to 125
+// <uniquifier>: Use a unique and descriptive class name
+
+.archivo-body {
+  font-family: "Archivo", serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+$primary-color: #0070f3;
+$font-stack: 'Amiamie', Arial, sans-serif;
+
+body {
+  font-family: "Archivo", serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+  color: $primary-color;
+  background:red;
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
