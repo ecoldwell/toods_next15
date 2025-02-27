@@ -22,11 +22,24 @@ export const structure: StructureResolver = (S) =>
       .schemaType('media')
       .icon(CalendarIcon)
       .child(S.documentList().title('Past Events').filter('date < now()')),
+      S.divider(),
+      S.documentTypeListItem("page").title("Pages"),
+      S.documentTypeListItem("faq").title("FAQs"),
     S.divider(),
     S.documentTypeListItem('artist').title('Artists').icon(UsersIcon),
     S.documentTypeListItem('venue').title('Venues').icon(PinIcon),
+    S.listItem()
+    .id("site")
+    .schemaType("site")
+    .title("Site Settings")
+    .child(
+      S.editor()
+        .id("site")
+        .schemaType("site")
+        .documentId("site")
+    ),
       ...S.documentTypeListItems().filter(
-        (item) => item.getId() && !['post', 'category', 'author', 'media', 'artist', 'venue'].includes(item.getId()!),
+        (item) => item.getId() && !['post', 'category', 'author', 'media', 'artist', 'venue', "page", "faq", "site"].includes(item.getId()!),
       ),
       // S.documentTypeListItem('event').title('Events').icon(CalendarIcon),
       // S.documentTypeListItem('artist').title('Artists').icon(UsersIcon),

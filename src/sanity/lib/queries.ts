@@ -168,5 +168,29 @@ export const HEADER_MENU =
       }} // get fields from the referenced post
     }
   }`)
+export const PAGE_QUERY =
+  defineQuery(`*[_type == "page" && slug.current == $slug][0]{
+  ...,
+  content[]{
+    ...,
+    _type == "faqs" => {
+      ...,
+      faqs[]->
+    }
+  }
+}`);
 
+// ...all other queries
 
+export const HOME_PAGE_QUERY = defineQuery(`*[_id == "site"][0]{
+  homePage->{
+    ...,
+    content[]{
+      ...,
+      _type == "faqs" => {
+        ...,
+        faqs[]->
+      }
+    }      
+  }
+}`);

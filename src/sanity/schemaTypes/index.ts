@@ -13,8 +13,42 @@ import { artistType } from './artistType'
 import { venueType } from './venueType'
 import cta from './objects/cta'
 import metadata from './objects/metadata'
-import site from './site'
+import { siteSettingsType } from './site'
+
+import { pageType } from "./pageType";
+import { pageBuilderType } from "./pageBuilderType";
+import { faqType } from "./faqType";
+import { faqsType } from "./blocks/faqsType";
+import { featuresType } from "./blocks/featuresType";
+import { heroType } from "./blocks/heroType";
+import { splitImageType } from "./blocks/splitImageType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blockContentType, categoryType, postType, authorType, link, linkList, navigation, site, mediaType, artistType, venueType, cta, metadata ],
+  types: [
+    blockContentType, 
+    categoryType, 
+    postType, 
+    authorType, 
+    
+    link, 
+    linkList, 
+    navigation, 
+    siteSettingsType, 
+    cta, 
+    metadata, 
+    
+    mediaType, 
+    artistType, 
+    venueType,     
+    
+    
+    
+    pageType,
+    pageBuilderType,
+    faqType,
+    faqsType,
+    featuresType,
+    heroType,
+    splitImageType, 
+  ],
 }

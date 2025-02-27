@@ -1,9 +1,11 @@
 import { defineField, defineType } from 'sanity'
+import { ControlsIcon } from "@sanity/icons";
 
-export default defineType({
+export const siteSettingsType = defineType({
 	name: 'site',
 	title: 'Site settings',
 	type: 'document',
+	icon: ControlsIcon,
 	groups: [
 		{ name: 'general', title: 'General', default: true },
 		{ name: 'navigation', title: 'Navigation' },
@@ -80,6 +82,11 @@ export default defineType({
 			},
 			group: 'general',
 		}),
+		defineField({
+			name: "homePage",
+			type: "reference",
+			to: [{ type: "page" }],
+		  }),
 	],
 	preview: {
 		prepare: () => ({
