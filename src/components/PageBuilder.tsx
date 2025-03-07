@@ -4,6 +4,7 @@ import { Hero } from "@/components/blocks/Hero";
 import { Features } from "@/components/blocks/Features";
 import { SplitImage } from "@/components/blocks/SplitImage";
 import { FAQs } from "@/components/blocks/FAQs";
+import { FeaturedPosts } from "./blocks/FeaturedPosts";
 import { PAGE_QUERYResult } from "@/sanity/types";
 import { client } from "@/sanity/lib/client";
 import { createDataAttribute } from "next-sanity";
@@ -44,7 +45,7 @@ export function PageBuilder({
   }
 
   return (
-    <main
+    <main className = "masonry-container"
       data-sanity={createDataAttribute({
         ...createDataAttributeConfig,
         id: documentId,
@@ -54,7 +55,7 @@ export function PageBuilder({
     >
       {blocks.map((block) => {
         const DragHandle = ({ children }: { children: React.ReactNode }) => (
-          <div
+          <div className = "masonry-item"
             data-sanity={createDataAttribute({
               ...createDataAttributeConfig,
               id: documentId,
@@ -91,6 +92,12 @@ export function PageBuilder({
                 <FAQs {...block} />
               </DragHandle>
             );
+            case "featuredPosts":
+              return (
+                <DragHandle key={block._key}>
+                  <FeaturedPosts {...block} />
+                </DragHandle>
+              );
           default:
             // This is a fallback for when we don't have a block type
             return <div key={block._key}>Block not found: {block._type}</div>;

@@ -1,5 +1,5 @@
 import { defineType, defineArrayMember } from "sanity";
- 
+
 export const pageBuilderType = defineType({
   name: "pageBuilder",
   type: "array",
@@ -8,6 +8,7 @@ export const pageBuilderType = defineType({
     defineArrayMember({ type: "splitImage" }),
     defineArrayMember({ type: "features" }),
     defineArrayMember({ type: "faqs" }),
+    defineArrayMember({ type: "featuredPosts"}),
   ],
   options: {
     insertMenu: {

@@ -169,16 +169,32 @@ export const HEADER_MENU =
     }
   }`)
 export const PAGE_QUERY =
-  defineQuery(`*[_type == "page" && slug.current == $slug][0]{
-  ...,
-  content[]{
-    ...,
-    _type == "faqs" => {
+  defineQuery(`*[_type == "page"&& slug.current == $slug][0]{
+     ...,
+    content[]{
       ...,
-      faqs[]->
+      _type == "faqs" => {
+        ...,
+        faqs[]->
+      },
+      _type == "featuredPosts" => {
+        ...,
+        "posts": posts[]->{
+          _id,
+          _type,
+          title,
+          slug,
+          body,
+          mainImage {
+            asset->{
+              _id,
+              url
+            }
+          }
+        }
+      }
     }
-  }
-}`);
+      }`);
 
 // ...all other queries
 
@@ -190,7 +206,23 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "site"][0]{
       _type == "faqs" => {
         ...,
         faqs[]->
+      },
+      _type == "featuredPosts" => {
+        ...,
+        "posts": posts[]->{
+          _id,
+          _type,
+          title,
+          slug,
+          body,
+          mainImage {
+            asset->{
+              _id,
+              url
+            }
+          }
+        }
       }
-    }      
-  }
+    }
+      }
 }`);

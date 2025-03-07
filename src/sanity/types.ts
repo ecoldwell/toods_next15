@@ -68,6 +68,18 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type FeaturedPosts = {
+  _type: "featuredPosts";
+  title?: string;
+  posts?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "post";
+  }>;
+};
+
 export type SplitImage = {
   _type: "splitImage";
   orientation?: "imageLeft" | "imageRight";
@@ -201,7 +213,9 @@ export type PageBuilder = Array<{
   _key: string;
 } & Features | {
   _key: string;
-} & Faqs>;
+} & Faqs | {
+  _key: string;
+} & FeaturedPosts>;
 
 export type Metadata = {
   _type: "metadata";
@@ -652,7 +666,7 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | SplitImage | Hero | Features | Faqs | Faq | PageBuilder | Metadata | Cta | Site | Page | Navigation | LinkList | Link | Media | Artist | Venue | Post | Author | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | FeaturedPosts | SplitImage | Hero | Features | Faqs | Faq | PageBuilder | Metadata | Cta | Site | Page | Navigation | LinkList | Link | Media | Artist | Venue | Post | Author | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -1256,7 +1270,7 @@ export type HEADER_MENUResult = {
   } | null;
 } | null;
 // Variable: PAGE_QUERY
-// Query: *[_type == "page" && slug.current == $slug][0]{  ...,  content[]{    ...,    _type == "faqs" => {      ...,      faqs[]->    }  }}
+// Query: *[_type == "page"&& slug.current == $slug][0]{     ...,    content[]{      ...,      _type == "faqs" => {        ...,        faqs[]->      },      _type == "featuredPosts" => {        ...,        "posts": posts[]->{          _id,          _type,          title,          slug,          body,          mainImage {            asset->{              _id,              url            }          }        }      }    }      }
 export type PAGE_QUERYResult = {
   _id: string;
   _type: "page";
@@ -1306,6 +1320,52 @@ export type PAGE_QUERYResult = {
         _type: "image";
         _key: string;
       }>;
+    }> | null;
+  } | {
+    _key: string;
+    _type: "featuredPosts";
+    title?: string;
+    posts: Array<{
+      _id: string;
+      _type: "post";
+      title: string | null;
+      slug: Slug | null;
+      body: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+        listItem?: "bullet";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      } | {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+      }> | null;
+      mainImage: {
+        asset: {
+          _id: string;
+          url: string | null;
+        } | null;
+      } | null;
     }> | null;
   } | {
     _key: string;
@@ -1392,7 +1452,7 @@ export type PAGE_QUERYResult = {
   };
 } | null;
 // Variable: HOME_PAGE_QUERY
-// Query: *[_id == "site"][0]{  homePage->{    ...,    content[]{      ...,      _type == "faqs" => {        ...,        faqs[]->      }    }        }}
+// Query: *[_id == "site"][0]{  homePage->{    ...,    content[]{      ...,      _type == "faqs" => {        ...,        faqs[]->      },      _type == "featuredPosts" => {        ...,        "posts": posts[]->{          _id,          _type,          title,          slug,          body,          mainImage {            asset->{              _id,              url            }          }        }      }    }      }}
 export type HOME_PAGE_QUERYResult = {
   homePage: null;
 } | {
@@ -1445,6 +1505,52 @@ export type HOME_PAGE_QUERYResult = {
           _type: "image";
           _key: string;
         }>;
+      }> | null;
+    } | {
+      _key: string;
+      _type: "featuredPosts";
+      title?: string;
+      posts: Array<{
+        _id: string;
+        _type: "post";
+        title: string | null;
+        slug: Slug | null;
+        body: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+          listItem?: "bullet";
+          markDefs?: Array<{
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+        } | {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+          _key: string;
+        }> | null;
+        mainImage: {
+          asset: {
+            _id: string;
+            url: string | null;
+          } | null;
+        } | null;
       }> | null;
     } | {
       _key: string;
@@ -1545,7 +1651,7 @@ declare module "@sanity/client" {
     "*[_type == \"cta\"]{\n  ...,\nlink { \n  ...,\n  internal->{ _type, title, metadata }\n  }\n }": CTA_QUERYResult;
     "*[_type == \"site\"][0]{\n  ...,\n  headerMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n  footerMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n  socialMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n}": SITE_QUERYResult;
     "*[_type == \"site\"][0] {\n    _id,\n    _type,\n    title,\n    headerMenu{\n      _key, // required for drag and drop\n      ...@->{_id, title, slug, items[]{\n        ...,\n        _key,\n        _type,\n        label,\n        external,\n        internal->{ _type, title, metadata, _key, _id, slug },\n        links[] {\n          ...,\n        _key,\n        _type,\n        label,\n        external,\n        internal->{ _type, title, metadata, _key, _id, slug, label },\n        }\n      \n      }} // get fields from the referenced post\n    }\n  }": HEADER_MENUResult;
-    "*[_type == \"page\" && slug.current == $slug][0]{\n  ...,\n  content[]{\n    ...,\n    _type == \"faqs\" => {\n      ...,\n      faqs[]->\n    }\n  }\n}": PAGE_QUERYResult;
-    "*[_id == \"site\"][0]{\n  homePage->{\n    ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      }\n    }      \n  }\n}": HOME_PAGE_QUERYResult;
+    "*[_type == \"page\"&& slug.current == $slug][0]{\n     ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"featuredPosts\" => {\n        ...,\n        \"posts\": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n      }": PAGE_QUERYResult;
+    "*[_id == \"site\"][0]{\n  homePage->{\n    ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"featuredPosts\" => {\n        ...,\n        \"posts\": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n      }\n}": HOME_PAGE_QUERYResult;
   }
 }
