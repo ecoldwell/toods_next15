@@ -8,6 +8,7 @@ export const POSTS_QUERY =
   _id,
   title,
   slug,
+  color,
   body,
   mainImage,
   publishedAt,
@@ -34,6 +35,7 @@ export const POST_QUERY =
   defineQuery(`*[_type == "post" && slug.current == $slug][0]{
   _id,
   title,
+  color,
   body,
   mainImage,
   publishedAt,
@@ -184,6 +186,7 @@ export const PAGE_QUERY =
           _type,
           title,
           slug,
+          color,
           body,
           mainImage {
             asset->{
@@ -214,6 +217,7 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "site"][0]{
           _type,
           title,
           slug,
+          color,
           body,
           mainImage {
             asset->{

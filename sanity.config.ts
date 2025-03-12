@@ -15,6 +15,7 @@ import {structure} from './src/sanity/structure'
 import {defaultDocumentNode} from './src/sanity/defaultDocumentNode'
 import { presentationTool } from 'sanity/presentation'
 import { resolve } from '@/sanity/presentation/resolve'
+import { colorInput } from '@sanity/color-input'
 
 
 export default defineConfig({
@@ -36,6 +37,7 @@ export default defineConfig({
         },
       },
     }),
+    colorInput(),
   ],
   document: {
     newDocumentOptions: (prev) => prev.filter((item) => item.templateId !== "site"),

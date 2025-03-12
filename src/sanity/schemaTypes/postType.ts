@@ -19,6 +19,11 @@ export const postType = defineType({
       },
     }),
     defineField({
+        name: 'background_color',
+        title: 'Background For Title',
+        type: 'color',
+    }),
+    defineField({
       name: 'author',
       type: 'reference',
       to: {type: 'author'},
