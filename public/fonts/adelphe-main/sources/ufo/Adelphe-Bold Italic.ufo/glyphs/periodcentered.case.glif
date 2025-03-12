@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="periodcentered.case" format="2">
+  <advance width="188"/>
+  <outline>
+    <component base="periodcentered" xOffset="-2" yOffset="106" identifier="59FC3DD7"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2024-06-18 10:12:49 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>=periodcentered-30</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>=periodcentered-30</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>59FC3DD7</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

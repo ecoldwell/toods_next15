@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="braceleft" format="2">
+  <advance width="303"/>
+  <unicode hex="007B"/>
+  <outline>
+    <component base="accolade-bout" xOffset="-152" identifier="C25FD02A"/>
+    <component base="accolade-bout" yScale="-1" xOffset="-152" yOffset="556" identifier="685BE37F"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-15 10:00:54 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>685BE37F</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+        <key>C25FD02A</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

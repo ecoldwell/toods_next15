@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="t_liga" format="2">
+  <advance width="888"/>
+  <outline>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 12:39:34 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>t</string>
+    </dict>
+  </lib>
+</glyph>

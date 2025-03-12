@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="guilsinglright.case" format="2">
+  <advance width="336"/>
+  <outline>
+    <component base="guilsinglright" xOffset="19" yOffset="70"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-30 16:56:07 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>=|guilsinglleft</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>=|guilsinglleft</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

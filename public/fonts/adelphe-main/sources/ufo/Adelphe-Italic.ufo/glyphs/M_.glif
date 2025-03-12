@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="M" format="2">
+  <advance width="865"/>
+  <unicode hex="004D"/>
+  <outline>
+    <contour>
+      <point x="372" y="59" type="line"/>
+      <point x="749" y="607" type="line"/>
+      <point x="740" y="696" type="line"/>
+      <point x="734" y="700" type="line"/>
+      <point x="411" y="170" type="line"/>
+      <point x="437" y="180" type="line"/>
+      <point x="376" y="700" type="line"/>
+      <point x="212" y="700" type="line"/>
+      <point x="208" y="683" type="line"/>
+      <point x="287" y="667" type="line"/>
+      <point x="358" y="63" type="line"/>
+    </contour>
+    <contour>
+      <point x="-50" y="0" type="line"/>
+      <point x="184" y="0" type="line"/>
+      <point x="184" y="17" type="line"/>
+      <point x="113" y="33" type="line"/>
+      <point x="306" y="643" type="line"/>
+      <point x="291" y="678" type="line"/>
+      <point x="14" y="33" type="line"/>
+      <point x="-50" y="17" type="line"/>
+    </contour>
+    <contour>
+      <point x="543" y="0" type="line"/>
+      <point x="790" y="0" type="line"/>
+      <point x="790" y="17" type="line"/>
+      <point x="727" y="32" type="line"/>
+      <point x="816" y="667" type="line"/>
+      <point x="889" y="683" type="line"/>
+      <point x="892" y="700" type="line"/>
+      <point x="734" y="700" type="line"/>
+      <point x="634" y="35" type="line"/>
+      <point x="543" y="17" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 12:58:33 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>=H-20</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

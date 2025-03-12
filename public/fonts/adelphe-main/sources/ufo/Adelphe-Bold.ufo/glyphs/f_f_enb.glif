@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="f_f_enb" format="2">
+  <advance width="800"/>
+  <unicode hex="F2130"/>
+  <outline>
+    <component base="bout_ff" xOffset="-5" identifier="4309508B"/>
+    <component base="f-haut" xOffset="324" identifier="A6BCE828"/>
+    <component base="enb" xOffset="349" identifier="9458DECC"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 12:39:34 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>f</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>enb</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>4309508B</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+        <key>9458DECC</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+        <key>A6BCE828</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

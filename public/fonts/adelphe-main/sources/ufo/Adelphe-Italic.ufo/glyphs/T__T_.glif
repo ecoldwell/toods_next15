@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="T_T" format="2">
+  <advance width="1059"/>
+  <unicode hex="F4870"/>
+  <outline>
+    <contour>
+      <point x="118" y="0" type="line"/>
+      <point x="420" y="0" type="line"/>
+      <point x="422" y="18" type="line"/>
+      <point x="322" y="38" type="line"/>
+      <point x="518" y="700" type="line"/>
+      <point x="424" y="700" type="line"/>
+      <point x="229" y="41" type="line"/>
+      <point x="119" y="16" type="line"/>
+    </contour>
+    <contour>
+      <point x="692" y="658" type="line"/>
+      <point x="706" y="700" type="line"/>
+      <point x="210" y="700" type="line"/>
+      <point x="175" y="730" type="line"/>
+      <point x="157" y="728" type="line"/>
+      <point x="88" y="495" type="line"/>
+      <point x="105" y="489" type="line"/>
+      <point x="208" y="658" type="line"/>
+    </contour>
+    <contour>
+      <point x="499" y="0" type="line"/>
+      <point x="801" y="0" type="line"/>
+      <point x="803" y="18" type="line"/>
+      <point x="703" y="38" type="line"/>
+      <point x="899" y="700" type="line"/>
+      <point x="805" y="700" type="line"/>
+      <point x="610" y="41" type="line"/>
+      <point x="500" y="16" type="line"/>
+    </contour>
+    <contour>
+      <point x="1080" y="482" type="line"/>
+      <point x="1098" y="482" type="line"/>
+      <point x="1157" y="732" type="line"/>
+      <point x="1140" y="739" type="line"/>
+      <point x="1087" y="700" type="line"/>
+      <point x="588" y="700" type="line"/>
+      <point x="586" y="658" type="line"/>
+      <point x="1073" y="658" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-27 09:17:18 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>T</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>T</string>
+      <key>public.markColor</key>
+      <string>0.06,0.6,0.98,0.5</string>
+    </dict>
+  </lib>
+</glyph>

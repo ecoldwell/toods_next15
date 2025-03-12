@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="idieresisfem" format="2">
+  <advance width="276"/>
+  <outline>
+    <component base="idieresis" identifier="1B2C04AE"/>
+    <component base="dotbelowcomb" xOffset="2"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 12:44:57 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>idieresis</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>idieresis</string>
+      <key>public.markColor</key>
+      <string>0.06,0.6,0.98,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>1B2C04AE</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="L_E_U" format="2">
+  <advance width="1849"/>
+  <outline>
+    <component base="L_E" identifier="A7D505BD"/>
+    <component base="U" xOffset="1115"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2024-09-05 11:56:41 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>L</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>U</string>
+      <key>public.markColor</key>
+      <string>0,0.2,0.88,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>A7D505BD</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

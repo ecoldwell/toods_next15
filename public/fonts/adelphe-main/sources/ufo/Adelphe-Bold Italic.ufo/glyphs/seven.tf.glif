@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="seven.tf" format="2">
+  <advance width="560"/>
+  <outline>
+    <component base="seven" xOffset="55" identifier="1E131E2B"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-16 15:54:27 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>1E131E2B</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

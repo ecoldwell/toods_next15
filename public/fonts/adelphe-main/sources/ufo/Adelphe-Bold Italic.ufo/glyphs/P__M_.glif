@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="P_M" format="2">
+  <advance width="1118"/>
+  <unicode hex="F4010"/>
+  <outline>
+    <component base="P"/>
+    <contour>
+      <point x="765" y="0" type="line"/>
+      <point x="1057" y="0" type="line"/>
+      <point x="1057" y="17" type="line"/>
+      <point x="994" y="32" type="line"/>
+      <point x="1090" y="667" type="line"/>
+      <point x="1163" y="683" type="line"/>
+      <point x="1166" y="700" type="line"/>
+      <point x="960" y="700" type="line"/>
+      <point x="856" y="35" type="line"/>
+      <point x="765" y="17" type="line"/>
+    </contour>
+    <contour>
+      <point x="645" y="529" type="line"/>
+      <point x="517" y="455" type="line"/>
+      <point x="562" y="63" type="line"/>
+      <point x="576" y="59" type="line"/>
+      <point x="955" y="596" type="line"/>
+      <point x="965" y="700" type="line"/>
+      <point x="940" y="700" type="line"/>
+      <point x="615" y="169" type="line"/>
+      <point x="680" y="221" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 13:33:03 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>P</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>M</string>
+      <key>public.markColor</key>
+      <string>0.06,0.6,0.98,0.5</string>
+    </dict>
+  </lib>
+</glyph>

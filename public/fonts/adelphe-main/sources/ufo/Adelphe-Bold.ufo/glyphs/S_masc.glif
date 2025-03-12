@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="Smasc" format="2">
+  <advance width="576"/>
+  <unicode hex="F8990"/>
+  <outline>
+    <component base="circumflexbelowcomb.case" xOffset="151" yOffset="-9"/>
+    <component base="S"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-25 13:28:11 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>S</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>S</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

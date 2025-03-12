@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="empattement_bas_long" format="2">
+  <advance width="539"/>
+  <outline>
+    <contour>
+      <point x="7" y="-250" type="line"/>
+      <point x="296" y="-250" type="line"/>
+      <point x="296" y="-223" type="line"/>
+      <point x="219" y="-212"/>
+      <point x="202" y="-185"/>
+      <point x="202" y="-122" type="curve"/>
+      <point x="54" y="-122" type="line"/>
+      <point x="54" y="-180"/>
+      <point x="42" y="-216"/>
+      <point x="7" y="-223" type="curve"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-10 09:19:25 +0000</string>
+    </dict>
+  </lib>
+</glyph>

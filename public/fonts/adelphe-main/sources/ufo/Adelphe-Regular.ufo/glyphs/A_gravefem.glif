@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="Agravefem" format="2">
+  <advance width="642"/>
+  <unicode hex="F8101"/>
+  <outline>
+    <component base="dotbelowcomb" xOffset="178"/>
+    <component base="Agrave"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2024-09-02 10:28:25 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>A</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>A</string>
+      <key>public.markColor</key>
+      <string>0,0.2,0.88,0.5</string>
+    </dict>
+  </lib>
+</glyph>

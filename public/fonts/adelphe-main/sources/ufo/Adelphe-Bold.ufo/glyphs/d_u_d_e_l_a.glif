@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="d_u_d_e_l_a" format="2">
+  <advance width="1936"/>
+  <unicode hex="F1730"/>
+  <outline>
+    <component base="panse" xScale="-1" yScale="-1" xOffset="580" yOffset="230"/>
+    <contour>
+      <point x="345" y="-189" type="line"/>
+      <point x="493" y="-169" type="line"/>
+      <point x="493" y="666" type="line"/>
+      <point x="345" y="666" type="line"/>
+    </contour>
+    <component base="empattement_haut" xOffset="319" yOffset="5"/>
+    <component base="empattement_decale" xScale="-1" yScale="-1" xOffset="566" yOffset="223"/>
+    <component base="u" yScale="0.93" xOffset="559" yOffset="285"/>
+    <component base="e" yScale="0.93" xOffset="619" yOffset="-252"/>
+    <contour>
+      <point x="1211" y="-211" type="line"/>
+      <point x="1359" y="-211" type="line"/>
+      <point x="1359" y="646" type="line"/>
+      <point x="1211" y="646" type="line"/>
+    </contour>
+    <component base="empattement_haut" xOffset="1185" yOffset="5" identifier="595E72A9"/>
+    <component base="empattement_bas" xOffset="1149" yOffset="-250" identifier="5BA230D5"/>
+    <component base="a" xOffset="1412"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2024-09-05 12:00:09 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>d</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>a</string>
+      <key>public.markColor</key>
+      <string>0,0.2,0.88,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>595E72A9</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+        <key>5BA230D5</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

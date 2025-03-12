@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="m_p" format="2">
+  <advance width="1172"/>
+  <unicode hex="F3510"/>
+  <outline>
+    <component base="n"/>
+    <component base="epaule" xOffset="301" identifier="B2EF7D8B"/>
+    <component base="empattement_bas_long" xOffset="627"/>
+    <contour>
+      <point x="681" y="-138" type="line"/>
+      <point x="829" y="-138" type="line"/>
+      <point x="829" y="353" type="line"/>
+      <point x="681" y="353" type="line"/>
+    </contour>
+    <component base="panse" xOffset="592"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 08:50:59 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>m</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>p</string>
+      <key>public.markColor</key>
+      <string>0.06,0.6,0.98,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>B2EF7D8B</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

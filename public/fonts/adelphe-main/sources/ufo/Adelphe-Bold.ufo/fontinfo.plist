@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>ascender</key>
+    <integer>730</integer>
+    <key>capHeight</key>
+    <integer>700</integer>
+    <key>copyright</key>
+    <string>Eugénie Bidaut. All rights reserved.</string>
+    <key>descender</key>
+    <integer>-250</integer>
+    <key>familyName</key>
+    <string>Adelphe</string>
+    <key>italicAngle</key>
+    <integer>0</integer>
+    <key>openTypeHeadCreated</key>
+    <string>2022/03/10 11:22:59</string>
+    <key>openTypeNameDesigner</key>
+    <string>Eugénie Bidaut</string>
+    <key>openTypeNameDesignerURL</key>
+    <string>http://xn--eugniebidaut-deb.eu/</string>
+    <key>openTypeNameLicense</key>
+    <string>BBB CUTE</string>
+    <key>openTypeNameManufacturer</key>
+    <string>Bye Bye Binary</string>
+    <key>openTypeNameManufacturerURL</key>
+    <string>https://typotheque.byebyebinary.space</string>
+    <key>openTypeNameRecords</key>
+    <array>
+      <dict>
+        <key>encodingID</key>
+        <integer>1</integer>
+        <key>languageID</key>
+        <integer>1036</integer>
+        <key>nameID</key>
+        <integer>10</integer>
+        <key>platformID</key>
+        <integer>3</integer>
+        <key>string</key>
+        <string>L'Adelphe est une fonte inclusive réalisée réalisée par Eugénie Bidaut pendant son cursus à l'Atelier national de recherche typographique (Nancy, France). Elle propose 3 manières différentes de pratiquer l'écriture inclusive en français (Germinal, Floréal, Fructidor). Elle respecte le standard d'encodage de la Queer Unicode Initiative (QUNI) développé par la collective Bye Bye Binary.</string>
+      </dict>
+    </array>
+    <key>openTypeOS2CodePageRanges</key>
+    <array>
+      <integer>0</integer>
+      <integer>29</integer>
+      <integer>52</integer>
+      <integer>55</integer>
+      <integer>62</integer>
+      <integer>63</integer>
+    </array>
+    <key>openTypeOS2UnicodeRanges</key>
+    <array>
+      <integer>0</integer>
+      <integer>1</integer>
+      <integer>2</integer>
+      <integer>3</integer>
+      <integer>31</integer>
+      <integer>33</integer>
+    </array>
+    <key>openTypeOS2VendorID</key>
+    <string>ANRT</string>
+    <key>postscriptBlueValues</key>
+    <array>
+      <integer>-14</integer>
+      <integer>0</integer>
+      <integer>480</integer>
+      <integer>494</integer>
+      <integer>700</integer>
+      <integer>714</integer>
+      <integer>730</integer>
+      <integer>744</integer>
+    </array>
+    <key>postscriptFontName</key>
+    <string>Adelphe-Regular</string>
+    <key>postscriptOtherBlues</key>
+    <array>
+      <integer>-264</integer>
+      <integer>-250</integer>
+    </array>
+    <key>postscriptStemSnapH</key>
+    <array>
+      <integer>53</integer>
+    </array>
+    <key>postscriptStemSnapV</key>
+    <array>
+      <integer>148</integer>
+      <integer>158</integer>
+    </array>
+    <key>styleName</key>
+    <string>Bold</string>
+    <key>unitsPerEm</key>
+    <integer>1000</integer>
+    <key>versionMajor</key>
+    <integer>1</integer>
+    <key>versionMinor</key>
+    <integer>0</integer>
+    <key>xHeight</key>
+    <integer>480</integer>
+  </dict>
+</plist>

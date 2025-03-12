@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="fmasc_vfem" format="2">
+  <advance width="695"/>
+  <outline>
+    <contour>
+      <point x="10" y="30" type="curve"/>
+      <point x="41" y="38"/>
+      <point x="67" y="40"/>
+      <point x="91" y="38" type="curve"/>
+      <point x="138" y="195"/>
+      <point x="194" y="417"/>
+      <point x="227" y="549" type="curve" smooth="yes"/>
+      <point x="239" y="598"/>
+      <point x="255" y="643"/>
+      <point x="264" y="660" type="curve"/>
+      <point x="307" y="675"/>
+      <point x="343" y="663"/>
+      <point x="401" y="638" type="curve"/>
+      <point x="438" y="722" type="line"/>
+      <point x="406" y="737"/>
+      <point x="380" y="744"/>
+      <point x="354" y="744" type="curve" smooth="yes"/>
+      <point x="297" y="744"/>
+      <point x="170" y="649"/>
+      <point x="146" y="545" type="curve"/>
+      <point x="119" y="402"/>
+      <point x="59" y="185"/>
+    </contour>
+    <contour>
+      <point x="387" y="437" type="line"/>
+      <point x="412" y="480" type="line"/>
+      <point x="407" y="499" type="line"/>
+      <point x="167" y="488" type="line"/>
+      <point x="72" y="472" type="line"/>
+      <point x="73" y="455" type="line"/>
+      <point x="139" y="442" type="line"/>
+    </contour>
+    <component base="circumflexbelowcomb" xOffset="-154" yOffset="5"/>
+    <component base="dotbelowcomb" xOffset="253"/>
+    <contour>
+      <point x="363" y="-14" type="line"/>
+      <point x="543" y="136"/>
+      <point x="689" y="275"/>
+      <point x="689" y="387" type="curve" smooth="yes"/>
+      <point x="689" y="435"/>
+      <point x="673" y="464"/>
+      <point x="646" y="499" type="curve"/>
+      <point x="565" y="437" type="line"/>
+      <point x="586" y="408"/>
+      <point x="602" y="382"/>
+      <point x="602" y="346" type="curve" smooth="yes"/>
+      <point x="602" y="286"/>
+      <point x="515" y="150"/>
+      <point x="394" y="56" type="curve"/>
+      <point x="429" y="161"/>
+      <point x="460" y="352"/>
+      <point x="460" y="430" type="curve" smooth="yes"/>
+      <point x="460" y="443"/>
+      <point x="460" y="457"/>
+      <point x="459" y="475" type="curve"/>
+      <point x="407" y="499" type="line"/>
+      <point x="374" y="440" type="line"/>
+      <point x="376" y="303"/>
+      <point x="336" y="112"/>
+      <point x="307" y="17" type="curve"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 08:50:59 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>v</string>
+      <key>public.markColor</key>
+      <string>0.06,0.6,0.98,0.5</string>
+    </dict>
+  </lib>
+</glyph>

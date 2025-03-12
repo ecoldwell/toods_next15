@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="longs" format="2">
+  <advance width="341"/>
+  <unicode hex="017F"/>
+  <anchor x="161" y="0" name="bottom"/>
+  <outline>
+    <component base="empattement_bas_long" xOffset="16" yOffset="250"/>
+    <contour>
+      <point x="98" y="366" type="curve"/>
+      <point x="180" y="413" type="line"/>
+      <point x="164" y="470" type="line"/>
+      <point x="110" y="476" type="line"/>
+      <point x="30" y="446" type="line"/>
+      <point x="30" y="423" type="line"/>
+      <point x="81" y="421"/>
+      <point x="98" y="404"/>
+    </contour>
+    <component base="f-haut" xOffset="10"/>
+    <contour>
+      <point x="186" y="468" type="line"/>
+      <point x="98" y="468" type="line"/>
+      <point x="98" y="24" type="line"/>
+      <point x="186" y="24" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2024-09-05 11:56:17 +0000</string>
+      <key>public.markColor</key>
+      <string>0,0.2,0.88,0.5</string>
+    </dict>
+  </lib>
+</glyph>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="upArrow" format="2">
+  <advance width="540"/>
+  <unicode hex="2191"/>
+  <outline>
+    <component base="rightArrow" xScale="0" xyScale="1" yScale="0" yxScale="-1" xOffset="514" yOffset="-155"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-16 09:41:32 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

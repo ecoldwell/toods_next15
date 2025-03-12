@@ -1,58 +1,67 @@
-
-// .flow > * + * {
-//     margin-block-start: var(--flow-space, 1em);
-//   }
-  
-//   .masonry {
-//     --gutter: 0.25em;
-//     --flow-space: var(--gutter);
-//     --switcher-target-container-width: 50rem;
-//     section {
-//         width:100%;
-//     }
-//   }
-  
-
-// .switcher {
-//     display: flex;
-//     flex-wrap: wrap;
-//     gap: var(--gutter, 1em);
-//     align-items: var(--switcher-vertical-alignment, flex-start);
-//   }
-  
-//   .switcher > * {
-//     flex-grow: 1;
-//     flex-basis: calc(
-//       (var(--switcher-target-container-width, 40rem) - 100%) * 999
-//     );
-//   }
-
-//   .wrapper {
-//     max-width: 80rem;
-//     margin-inline: auto;
-//     padding-inline: var(--gutter);
-//   }
-
-//   .flow {
-//     width:50vw;
-//   }
-
+.masonry-container-wrapper {
+    padding: 0 2.5rem;
+}
 .masonry-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(40vw, 1fr)); /* Ensure items are 50vw */
+    display:flex;
     gap: 10px;
-    grid-auto-flow: dense; /* Helps fill gaps */
-    align-items: start; /* Prevents stretching */
+}
+.masonry-item {
+    padding-top: 4rem; /* might need to change this to nth-child */
+}
+// remove this element
+
+// .circle {
+//     position: absolute;
+//     /* width: 150px; */
+//     /* height: 150px; */
+//     background-color: #A5D6A7;
+//     border-radius: 50%;
+//     /* top: -50px; */
+//     /* left: -50px; */
+//     z-index: 99999999;
+//     width: 100%;
+//     height: 100%;
+//     top: 0;
+//     background-color: #B2E59E; /* Adjust color */
+//     clip-path: ellipse(50% 40% at 50% 50%);
+//     padding: 40px;
+// }
+.homepage_post_container {
+    .post_title_wrapper {
+    border-top: 3px solid black;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    inline-size: fit-content;
+    
+      
+    h1 {
+        font-size:3.25rem;
+        line-height:3rem;
+        padding: 20px 10px;
+        background-color: #B2E59E; /* Adjust color */
+        font-size: 2.25rem;
+        line-height: 3rem;
+        /* margin: 30px 10px; */
+        // 
+        // 
+        // testing this method
+        background-color: #B2E59E;
+        /* clip-path: ellipse(50% 40% at 50% 50%); */
+        padding: 50px 30px;
+        color: black;
+        border-bottom-left-radius: 50%;
+        border-radius: 48%;
+        // border: 3px solid black;
+      }
+    }
 }
 
-.masonry-item {
-    background: white;
-    padding: 20px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    align-self: start; /* Ensures items don't stretch vertically */
-    width: 100%; /* Allows items to be responsive inside grid */
-    
+.homepage_post_image_wrapper {
+    border: 3px solid black;
+    img {
+        border-radius: 50%;
+    }
 }
-  
+
+
   

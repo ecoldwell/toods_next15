@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="l_u" format="2">
+  <advance width="578"/>
+  <unicode hex="F3350"/>
+  <outline>
+    <contour>
+      <point x="63" y="239" type="line"/>
+      <point x="211" y="239" type="line"/>
+      <point x="211" y="645" type="line"/>
+      <point x="63" y="645" type="line"/>
+    </contour>
+    <component base="epaule" xScale="-1" yScale="-1" xOffset="591" yOffset="470"/>
+    <component base="empattement_decale" xScale="-1" yScale="-1" xOffset="572" yOffset="473"/>
+    <contour>
+      <point x="351" y="102" type="line"/>
+      <point x="499" y="102" type="line"/>
+      <point x="499" y="418" type="line"/>
+      <point x="351" y="418" type="line"/>
+    </contour>
+    <component base="empattement_haut" xOffset="37" yOffset="4"/>
+    <component base="empattement_haut" xOffset="325" yOffset="-256"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 08:50:59 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>l</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>u</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

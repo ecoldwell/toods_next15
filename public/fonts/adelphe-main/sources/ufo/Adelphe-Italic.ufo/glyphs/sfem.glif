@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="sfem" format="2">
+  <advance width="316"/>
+  <unicode hex="F8A80"/>
+  <outline>
+    <component base="dotbelowcomb" xOffset="15"/>
+    <component base="s"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 08:50:59 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>s</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>s</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

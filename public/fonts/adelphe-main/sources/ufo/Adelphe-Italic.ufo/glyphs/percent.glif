@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="percent" format="2">
+  <advance width="717"/>
+  <unicode hex="0025"/>
+  <outline>
+    <contour>
+      <point x="119" y="31" type="line"/>
+      <point x="162" y="1" type="line"/>
+      <point x="601" y="673" type="line"/>
+      <point x="557" y="700" type="line"/>
+    </contour>
+    <component base="degree" xOffset="-8" yOffset="-30"/>
+    <component base="degree" xOffset="312" yOffset="-444"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-22 15:26:10 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>degree</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>degree</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

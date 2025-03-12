@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="f_l" format="2">
+  <advance width="590"/>
+  <outline>
+    <component base="empattement_bas_long" xOffset="16" yOffset="250"/>
+    <component base="empattement_bas" xOffset="327"/>
+    <contour>
+      <point x="419" y="39" type="line"/>
+      <point x="507" y="39" type="line"/>
+      <point x="507" y="645" type="line"/>
+      <point x="419" y="645" type="line"/>
+    </contour>
+    <component base="ffut"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 08:50:59 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>f</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>l</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

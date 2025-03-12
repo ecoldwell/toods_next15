@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="five.osf" format="2">
+  <advance width="434"/>
+  <outline>
+    <contour>
+      <point x="376" y="373" type="line"/>
+      <point x="399" y="470" type="line"/>
+      <point x="103" y="470" type="line"/>
+      <point x="45" y="195" type="line"/>
+      <point x="116" y="168" type="line" smooth="yes"/>
+      <point x="228" y="125"/>
+      <point x="263" y="72"/>
+      <point x="263" y="6" type="curve" smooth="yes"/>
+      <point x="263" y="-84"/>
+      <point x="193" y="-169"/>
+      <point x="94" y="-235" type="curve"/>
+      <point x="108" y="-264" type="line"/>
+      <point x="246" y="-201"/>
+      <point x="363" y="-87"/>
+      <point x="363" y="38" type="curve" smooth="yes"/>
+      <point x="363" y="129"/>
+      <point x="301" y="200"/>
+      <point x="179" y="249" type="curve" smooth="yes"/>
+      <point x="116" y="274" type="line"/>
+      <point x="137" y="373" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 13:27:50 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="O_Idieresis" format="2">
+  <advance width="677"/>
+  <unicode hex="F3870"/>
+  <outline>
+    <component base="Odieresis" identifier="44E8A2E9"/>
+    <contour>
+      <point x="219" y="203" type="line"/>
+      <point x="438" y="203" type="line"/>
+      <point x="439" y="221" type="line"/>
+      <point x="368" y="241" type="line"/>
+      <point x="440" y="485" type="line"/>
+      <point x="515" y="505" type="line"/>
+      <point x="519" y="523" type="line"/>
+      <point x="316" y="523" type="line"/>
+      <point x="312" y="509" type="line"/>
+      <point x="365" y="487" type="line"/>
+      <point x="292" y="241" type="line"/>
+      <point x="220" y="221" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-25 15:42:37 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>O</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>O</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>44E8A2E9</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

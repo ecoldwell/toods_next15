@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="f_h" format="2">
+  <advance width="910"/>
+  <outline>
+    <component base="empattement_bas_long" xOffset="30" yOffset="250" identifier="22FB19CC"/>
+    <component base="empattement_bas" xOffset="352"/>
+    <component base="empattement_bas" xScale="-1" xOffset="909" identifier="4D5E893E"/>
+    <component base="epaule" xOffset="319" identifier="34D12C64"/>
+    <component base="ffut" xOffset="-5"/>
+    <contour>
+      <point x="414" y="615" type="line"/>
+      <point x="414" y="119" type="line"/>
+      <point x="562" y="119" type="line"/>
+      <point x="562" y="615" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 08:50:59 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>f</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>h</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>22FB19CC</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+        <key>34D12C64</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+        <key>4D5E893E</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

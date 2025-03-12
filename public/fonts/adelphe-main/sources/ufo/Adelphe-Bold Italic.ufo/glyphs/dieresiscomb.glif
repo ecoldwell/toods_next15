@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="dieresiscomb" format="2">
+  <advance width="460"/>
+  <unicode hex="0308"/>
+  <anchor x="243" y="480" name="_top"/>
+  <outline>
+    <component base="pointij" xScale="0.9588" yScale="0.9588" xOffset="1" yOffset="12" identifier="39E655B3"/>
+    <component base="pointij" xScale="0.9588" yScale="0.9588" xOffset="211" yOffset="12" identifier="E98D99E7"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-15 10:12:07 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>39E655B3</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+        <key>E98D99E7</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

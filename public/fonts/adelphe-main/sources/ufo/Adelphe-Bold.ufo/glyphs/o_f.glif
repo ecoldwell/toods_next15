@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="o_f" format="2">
+  <advance width="641"/>
+  <unicode hex="F3910"/>
+  <outline>
+    <component base="o"/>
+    <contour>
+      <point x="493" y="480" type="line"/>
+      <point x="509" y="420" type="line"/>
+      <point x="624" y="420" type="line"/>
+      <point x="648" y="461" type="line"/>
+      <point x="641" y="480" type="line"/>
+    </contour>
+    <component base="f-haut" xOffset="315"/>
+    <contour>
+      <point x="527" y="468" type="line"/>
+      <point x="379" y="468" type="line"/>
+      <point x="379" y="247" type="line"/>
+      <point x="527" y="244" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2024-09-05 12:00:09 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>o</string>
+      <key>public.markColor</key>
+      <string>0,0.2,0.88,0.5</string>
+    </dict>
+  </lib>
+</glyph>

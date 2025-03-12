@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="circumflexbelowcomb.case" format="2">
+  <advance width="278"/>
+  <anchor x="139" y="0" name="_bottom"/>
+  <outline>
+    <component base="circumflexcomb.case" yOffset="-792"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2024-06-18 10:12:49 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

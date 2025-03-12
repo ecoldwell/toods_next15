@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="n_enb.001" format="2">
+  <advance width="773"/>
+  <outline>
+    <component base="empattement_bas" xOffset="10"/>
+    <contour>
+      <point x="102" y="27" type="line"/>
+      <point x="190" y="27" type="line"/>
+      <point x="190" y="354" type="line"/>
+      <point x="102" y="354" type="line"/>
+    </contour>
+    <component base="empattement_decale" xOffset="-1" yOffset="-3"/>
+    <contour>
+      <point x="399" y="334" type="curve"/>
+      <point x="489" y="347" type="line"/>
+      <point x="489" y="429"/>
+      <point x="437" y="484"/>
+      <point x="364" y="484" type="curve" smooth="yes"/>
+      <point x="290" y="484"/>
+      <point x="214" y="411"/>
+      <point x="176" y="367" type="curve"/>
+      <point x="176" y="306" type="line"/>
+      <point x="205" y="344"/>
+      <point x="264" y="401"/>
+      <point x="323" y="401" type="curve" smooth="yes"/>
+      <point x="360" y="401"/>
+      <point x="392" y="376"/>
+    </contour>
+    <component base="enb" xOffset="363"/>
+    <contour>
+      <point x="342" y="0" type="line"/>
+      <point x="556" y="0" type="line"/>
+      <point x="556" y="27" type="line"/>
+      <point x="513" y="36"/>
+      <point x="493" y="53"/>
+      <point x="493" y="137" type="curve"/>
+      <point x="405" y="118" type="line"/>
+      <point x="405" y="53"/>
+      <point x="387" y="36"/>
+      <point x="342" y="27" type="curve"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 12:39:34 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>n</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>enb</string>
+      <key>public.markColor</key>
+      <string>0.75,0.75,0.75,0.5</string>
+    </dict>
+  </lib>
+</glyph>

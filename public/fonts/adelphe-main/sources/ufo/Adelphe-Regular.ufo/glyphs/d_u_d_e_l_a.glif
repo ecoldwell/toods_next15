@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="d_u_d_e_l_a" format="2">
+  <advance width="1809"/>
+  <unicode hex="F1730"/>
+  <outline>
+    <component base="panse" xScale="-1" yScale="-1" xOffset="549" yOffset="220"/>
+    <contour>
+      <point x="360" y="-147" type="line"/>
+      <point x="448" y="-147" type="line"/>
+      <point x="448" y="665" type="line"/>
+      <point x="360" y="665" type="line"/>
+    </contour>
+    <component base="empattement_haut" xOffset="304" yOffset="4"/>
+    <component base="empattement_decale" xScale="-1" yScale="-1" xOffset="551" yOffset="223"/>
+    <component base="u" yScale="0.93" xOffset="540" yOffset="294"/>
+    <component base="e" yScale="0.93" xOffset="600" yOffset="-252"/>
+    <contour>
+      <point x="1168" y="-211" type="line"/>
+      <point x="1256" y="-211" type="line"/>
+      <point x="1256" y="645" type="line"/>
+      <point x="1168" y="645" type="line"/>
+    </contour>
+    <component base="empattement_haut" xOffset="1112" yOffset="4"/>
+    <component base="empattement_bas" xOffset="1076" yOffset="-250"/>
+    <component base="a" xOffset="1320"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2024-09-05 12:00:09 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>d</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>a</string>
+      <key>public.markColor</key>
+      <string>0,0.2,0.88,0.5</string>
+    </dict>
+  </lib>
+</glyph>

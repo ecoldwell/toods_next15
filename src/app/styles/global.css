@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap");
+.og_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.masonry-container {
+  display: flex;
+  gap: 10px;
+}
+
+.circle {
+  position: absolute;
+  width: 150px; /* Adjust size */
+  height: 150px;
+  background-color: #A5D6A7;
+  border-radius: 50%;
+  top: -50px;
+  left: -50px;
+  z-index: -1;
+}
+
+@font-face {
+  font-family: "Amiamie";
+  src: url("./fonts/Amiamie-Typeface-main/webfonts/Amiamie-Regular.woff2") format("woff2"), url("./fonts/Amiamie-Typeface-main/webfonts/Amiamie-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Amiamie-Black";
+  src: url("./fonts/Amiamie-Typeface-main/webfonts/Amiamie-Black.woff2") format("woff2"), url("./fonts/Amiamie-Typeface-main/webfonts/Amiamie-Black.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Adelphe";
+  src: url("../fonts/adelphe-main/webfonts/Adelphe-FlorealRegular.woff2") format("woff2"), url("../fonts/adelphe-main/webfonts/Adelphe-FlorealRegular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  font-family: "Amiamie", Arial, sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  color: #0070f3;
+  background: red;
+}
+
+a {
+  color: #0070f3;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+a p {
+  font-family: "Amiamie", Arial, sans-serif;
+}/*# sourceMappingURL=global.css.map */

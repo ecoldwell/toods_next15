@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="questiondown.case" format="2">
+  <advance width="363"/>
+  <outline>
+    <component base="questiondown" xOffset="41" yOffset="153"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 12:39:34 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>questiondown</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>questiondown</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

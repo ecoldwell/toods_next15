@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="dotbelowcomb.case" format="2">
+  <advance width="270"/>
+  <anchor x="96" y="0" name="_bottom"/>
+  <outline>
+    <component base="dotbelowcomb" xOffset="17" yOffset="-7" identifier="F1AB4CDE"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2024-06-18 10:12:49 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>F1AB4CDE</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="C_Q" format="2">
+  <advance width="773"/>
+  <unicode hex="F1440"/>
+  <anchor x="372" y="666" name="top"/>
+  <outline>
+    <component base="C" identifier="569C81CB"/>
+    <component base="Q-queue" xOffset="740" identifier="5C1DD7A8"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 13:33:03 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>C</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>=Q-45</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>569C81CB</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+        <key>5C1DD7A8</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

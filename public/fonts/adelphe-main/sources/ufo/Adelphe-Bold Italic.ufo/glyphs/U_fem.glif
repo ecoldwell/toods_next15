@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="Ufem" format="2">
+  <advance width="674"/>
+  <unicode hex="F8B00"/>
+  <outline>
+    <component base="U" identifier="49D92F0A"/>
+    <component base="dotbelowcomb.case" xOffset="189" yOffset="-14" identifier="4428A0DF"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 13:33:03 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>U</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>U</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>4428A0DF</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+        <key>49D92F0A</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="h" format="2">
+  <advance width="536"/>
+  <unicode hex="0068"/>
+  <note>
+h
+</note>
+  <anchor x="269" y="0" name="bottom"/>
+  <outline>
+    <component base="empattement_bas" xScale="-1" xOffset="550" identifier="39117361"/>
+    <component base="l"/>
+    <component base="epaule" xOffset="-29" identifier="4CA8ADB0"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2024-09-02 09:43:47 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>l</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>n</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>39117361</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+        <key>4CA8ADB0</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

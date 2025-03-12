@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="currency" format="2">
+  <advance width="534"/>
+  <unicode hex="00A4"/>
+  <outline>
+    <component base="degree" xScale="1.1" yScale="1.1" xOffset="49" yOffset="-301"/>
+    <contour>
+      <point x="96" y="506" type="line"/>
+      <point x="197" y="404" type="line"/>
+      <point x="236" y="443" type="line"/>
+      <point x="135" y="544" type="line"/>
+    </contour>
+    <contour>
+      <point x="354" y="248" type="line"/>
+      <point x="456" y="146" type="line"/>
+      <point x="494" y="185" type="line"/>
+      <point x="393" y="287" type="line"/>
+    </contour>
+    <contour>
+      <point x="455" y="544" type="line"/>
+      <point x="353" y="443" type="line"/>
+      <point x="392" y="404" type="line"/>
+      <point x="494" y="506" type="line"/>
+    </contour>
+    <contour>
+      <point x="197" y="286" type="line"/>
+      <point x="96" y="185" type="line"/>
+      <point x="134" y="146" type="line"/>
+      <point x="236" y="247" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-22 16:41:56 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

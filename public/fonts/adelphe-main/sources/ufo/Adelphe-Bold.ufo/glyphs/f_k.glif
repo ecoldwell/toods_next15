@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="f_k" format="2">
+  <advance width="879"/>
+  <outline>
+    <component base="empattement_bas_long" xOffset="31" yOffset="250"/>
+    <component base="empattement_bas" xOffset="352"/>
+    <contour>
+      <point x="414" y="39" type="line"/>
+      <point x="562" y="39" type="line"/>
+      <point x="562" y="645" type="line"/>
+      <point x="414" y="645" type="line"/>
+    </contour>
+    <component base="ffut" xOffset="-5"/>
+    <component base="boutk" xOffset="626"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 08:50:59 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>f</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>k</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

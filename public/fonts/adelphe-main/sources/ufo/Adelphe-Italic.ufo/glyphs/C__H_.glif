@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="C_H" format="2">
+  <advance width="963"/>
+  <unicode hex="F1410"/>
+  <outline>
+    <component base="C"/>
+    <component base="I" xOffset="621"/>
+    <contour>
+      <point x="397" y="486" type="line"/>
+      <point x="334" y="241" type="line"/>
+      <point x="351" y="235" type="line"/>
+      <point x="411" y="324" type="line"/>
+      <point x="789" y="332" type="line"/>
+      <point x="794" y="363" type="line"/>
+      <point x="425" y="385" type="line"/>
+      <point x="415" y="485" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 13:33:03 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>C</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>H</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

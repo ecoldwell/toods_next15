@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="n" format="2">
+  <advance width="522"/>
+  <unicode hex="006E"/>
+  <note>
+n
+</note>
+  <anchor x="214" y="1" name="bottom"/>
+  <anchor x="338" y="485" name="top"/>
+  <outline>
+    <component base="fut" xOffset="12" identifier="2630F74D"/>
+    <component base="epaule-n" xOffset="-18"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 12:14:23 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>2630F74D</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

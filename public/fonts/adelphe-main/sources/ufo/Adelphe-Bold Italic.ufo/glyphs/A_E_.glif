@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="AE" format="2">
+  <advance width="1056"/>
+  <unicode hex="00C6"/>
+  <outline>
+    <contour>
+      <point x="-98" y="0" type="line"/>
+      <point x="177" y="0" type="line"/>
+      <point x="180" y="18" type="line"/>
+      <point x="97" y="34" type="line"/>
+      <point x="629" y="651" type="line"/>
+      <point x="619" y="663" type="line"/>
+      <point x="460" y="34" type="line"/>
+      <point x="350" y="18" type="line"/>
+      <point x="347" y="0" type="line"/>
+      <point x="654" y="0" type="line"/>
+      <point x="656" y="18" type="line"/>
+      <point x="548" y="33" type="line"/>
+      <point x="757" y="700" type="line"/>
+      <point x="631" y="700" type="line"/>
+      <point x="-37" y="32" type="line"/>
+      <point x="-96" y="18" type="line"/>
+    </contour>
+    <contour>
+      <point x="225" y="217" type="line"/>
+      <point x="508" y="217" type="line"/>
+      <point x="513" y="258" type="line"/>
+      <point x="241" y="258" type="line"/>
+    </contour>
+    <component base="E" xOffset="395" identifier="C4378BA9"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 09:35:12 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>A</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>E</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>C4378BA9</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

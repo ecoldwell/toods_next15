@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="cent" format="2">
+  <advance width="420"/>
+  <unicode hex="00A2"/>
+  <outline>
+    <component base="c" yOffset="112"/>
+    <contour>
+      <point x="213" y="700" type="line"/>
+      <point x="213" y="574" type="line"/>
+      <point x="263" y="574" type="line"/>
+      <point x="263" y="700" type="line"/>
+    </contour>
+    <contour>
+      <point x="213" y="128" type="line"/>
+      <point x="213" y="2" type="line"/>
+      <point x="263" y="2" type="line"/>
+      <point x="263" y="128" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 09:35:12 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>c</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

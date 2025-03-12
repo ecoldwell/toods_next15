@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="U_L" format="2">
+  <advance width="1010"/>
+  <unicode hex="F5050"/>
+  <outline>
+    <contour>
+      <point x="617" y="0" type="line"/>
+      <point x="976" y="0" type="line"/>
+      <point x="1000" y="229" type="line"/>
+      <point x="974" y="233" type="line"/>
+      <point x="934" y="111"/>
+      <point x="870" y="53"/>
+      <point x="750" y="53" type="curve" smooth="yes"/>
+      <point x="708" y="53"/>
+      <point x="684" y="62"/>
+      <point x="666" y="75" type="curve"/>
+      <point x="611" y="15" type="line"/>
+    </contour>
+    <component base="U"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 13:33:03 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>U</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>L</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

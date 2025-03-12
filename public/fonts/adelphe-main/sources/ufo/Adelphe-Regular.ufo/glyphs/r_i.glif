@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="r_i" format="2">
+  <advance width="601"/>
+  <unicode hex="F4570"/>
+  <outline>
+    <contour>
+      <point x="180" y="253" type="line"/>
+      <point x="217" y="388"/>
+      <point x="327" y="578"/>
+      <point x="434" y="578" type="curve" smooth="yes"/>
+      <point x="451" y="578"/>
+      <point x="468" y="572"/>
+      <point x="483" y="560" type="curve"/>
+      <point x="535" y="658" type="line"/>
+      <point x="524" y="674"/>
+      <point x="503" y="695"/>
+      <point x="467" y="695" type="curve" smooth="yes"/>
+      <point x="347" y="695"/>
+      <point x="203" y="442"/>
+      <point x="171" y="317" type="curve"/>
+    </contour>
+    <component base="empattement_bas_long" xOffset="20" yOffset="250"/>
+    <contour>
+      <point x="102" y="51" type="line"/>
+      <point x="190" y="51" type="line"/>
+      <point x="190" y="347" type="line"/>
+      <point x="102" y="347" type="line"/>
+    </contour>
+    <component base="empattement_decale" xOffset="-1"/>
+    <component base="empattement_bas" xScale="-1" xOffset="610"/>
+    <contour>
+      <point x="430" y="27" type="line"/>
+      <point x="518" y="27" type="line"/>
+      <point x="518" y="345" type="line"/>
+      <point x="430" y="345" type="line"/>
+    </contour>
+    <component base="empattement_haut" xOffset="374" yOffset="-256"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 08:50:59 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>r</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>i</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

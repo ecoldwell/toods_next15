@@ -1,0 +1,15 @@
+.masonry-container {
+  display: flex;
+  gap: 10px;
+}
+
+.circle {
+  position: absolute;
+  width: 150px; /* Adjust size */
+  height: 150px;
+  background-color: #A5D6A7;
+  border-radius: 50%;
+  top: -50px;
+  left: -50px;
+  z-index: -1;
+}/*# sourceMappingURL=masonry.css.map */

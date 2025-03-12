@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="f" format="2">
+  <advance width="341"/>
+  <unicode hex="0066"/>
+  <note>
+f
+</note>
+  <anchor x="161" y="0" name="bottom"/>
+  <outline>
+    <component base="empattement_bas_long" xOffset="16" yOffset="250"/>
+    <contour>
+      <point x="98" y="366" type="curve"/>
+      <point x="180" y="413" type="line"/>
+      <point x="305" y="413" type="line"/>
+      <point x="329" y="452" type="line"/>
+      <point x="322" y="470" type="line"/>
+      <point x="164" y="470" type="line"/>
+      <point x="110" y="476" type="line"/>
+      <point x="30" y="446" type="line"/>
+      <point x="30" y="423" type="line"/>
+      <point x="81" y="421"/>
+      <point x="98" y="404"/>
+    </contour>
+    <component base="f-haut" xOffset="10"/>
+    <contour>
+      <point x="186" y="468" type="line"/>
+      <point x="98" y="468" type="line"/>
+      <point x="98" y="24" type="line"/>
+      <point x="186" y="24" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 11:32:32 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

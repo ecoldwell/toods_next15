@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="Eacute" format="2">
+  <advance width="601"/>
+  <unicode hex="00C9"/>
+  <guideline x="484" y="877"/>
+  <outline>
+    <component base="E"/>
+    <component base="acutecomb.case" xOffset="245" yOffset="150"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 09:35:26 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

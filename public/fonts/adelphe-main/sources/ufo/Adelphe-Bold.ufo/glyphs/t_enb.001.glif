@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="t_enb.001" format="2">
+  <advance width="468"/>
+  <outline>
+    <component base="enb" xOffset="34" identifier="F31E5396"/>
+    <contour>
+      <point x="69" y="586" type="line"/>
+      <point x="69" y="352" type="line"/>
+      <point x="217" y="463" type="line"/>
+      <point x="217" y="586" type="line"/>
+    </contour>
+    <contour>
+      <point x="17" y="556" type="line"/>
+      <point x="314" y="556" type="line"/>
+      <point x="338" y="597" type="line"/>
+      <point x="331" y="616" type="line"/>
+      <point x="218" y="616" type="line"/>
+      <point x="218" y="743" type="line"/>
+      <point x="176" y="743" type="line"/>
+      <point x="10" y="588" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 12:39:34 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>t</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>enb</string>
+      <key>public.markColor</key>
+      <string>0.75,0.75,0.75,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>F31E5396</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

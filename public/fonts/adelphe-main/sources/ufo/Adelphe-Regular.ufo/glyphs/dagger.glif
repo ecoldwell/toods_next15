@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="dagger" format="2">
+  <advance width="347"/>
+  <unicode hex="2020"/>
+  <outline>
+    <contour>
+      <point x="174" y="541" type="curve" smooth="yes"/>
+      <point x="183" y="541"/>
+      <point x="190" y="548"/>
+      <point x="190" y="558" type="curve" smooth="yes"/>
+      <point x="190" y="567"/>
+      <point x="183" y="574"/>
+      <point x="174" y="574" type="curve" smooth="yes"/>
+      <point x="165" y="574"/>
+      <point x="158" y="567"/>
+      <point x="158" y="558" type="curve" smooth="yes"/>
+      <point x="158" y="548"/>
+      <point x="165" y="541"/>
+    </contour>
+    <component base="bout_asterisk" xScale="0.1392" xyScale="-0.9903" yScale="-0.1392" yxScale="-0.9903" xOffset="687" yOffset="939"/>
+    <component base="bout_asterisk" xOffset="-125" yOffset="11"/>
+    <contour>
+      <point x="165" y="-44" type="line"/>
+      <point x="185" y="-44" type="line"/>
+      <point x="237" y="388" type="line"/>
+      <point x="180" y="567" type="line"/>
+      <point x="165" y="567" type="line"/>
+      <point x="113" y="388" type="line"/>
+    </contour>
+    <component base="bout_asterisk" xScale="-0.1392" xyScale="-0.9903" yScale="-0.1392" yxScale="0.9903" xOffset="-340" yOffset="939"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-22 15:50:49 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>asterisk</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>asterisk</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

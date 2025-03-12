@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="northEastArrow" format="2">
+  <advance width="782"/>
+  <unicode hex="2197"/>
+  <outline>
+    <component base="rightArrow" xScale="0.7071" xyScale="0.7071" yScale="0.7071" yxScale="-0.7071" xOffset="247" yOffset="-136"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-16 09:41:32 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

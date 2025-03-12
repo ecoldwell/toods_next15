@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="j" format="2">
+  <advance width="276"/>
+  <unicode hex="006A"/>
+  <note>
+j
+</note>
+  <guideline x="471" y="509"/>
+  <anchor x="208" y="485" name="top"/>
+  <outline>
+    <contour>
+      <point x="-168" y="-264" type="line"/>
+      <point x="-62" y="-191"/>
+      <point x="100" y="-47"/>
+      <point x="153" y="68" type="curve"/>
+      <point x="177" y="130"/>
+      <point x="268" y="445"/>
+      <point x="272" y="476" type="curve"/>
+      <point x="170" y="509" type="line"/>
+      <point x="132" y="475"/>
+      <point x="74" y="421"/>
+      <point x="29" y="384" type="curve"/>
+      <point x="41" y="364" type="line"/>
+      <point x="76" y="386"/>
+      <point x="109" y="408"/>
+      <point x="136" y="425" type="curve"/>
+      <point x="129" y="395"/>
+      <point x="55" y="138"/>
+      <point x="30" y="65" type="curve"/>
+      <point x="-21" y="-59"/>
+      <point x="-93" y="-165"/>
+      <point x="-178" y="-249" type="curve"/>
+    </contour>
+    <component base="pointij" xScale="1.02" yScale="1.02" xOffset="60" yOffset="-20" identifier="9F5BD81C"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 11:38:11 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>9F5BD81C</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

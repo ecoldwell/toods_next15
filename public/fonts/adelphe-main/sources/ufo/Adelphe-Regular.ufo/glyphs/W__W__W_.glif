@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="W_W_W" format="2">
+  <advance width="2036"/>
+  <outline>
+    <component base="boutW"/>
+    <component base="boutW" xOffset="360"/>
+    <component base="boutW" xOffset="720"/>
+    <component base="W" xOffset="1080"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 12:39:34 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>W</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>W</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

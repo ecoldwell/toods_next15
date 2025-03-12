@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="s_l" format="2">
+  <advance width="422"/>
+  <unicode hex="F4760"/>
+  <outline>
+    <contour>
+      <point x="74" y="208" type="line"/>
+      <point x="222" y="208" type="line"/>
+      <point x="222" y="645" type="line"/>
+      <point x="74" y="645" type="line"/>
+    </contour>
+    <component base="empattement_haut" xOffset="48" yOffset="4"/>
+    <component base="s-liga" xOffset="-5"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-10 12:21:00 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

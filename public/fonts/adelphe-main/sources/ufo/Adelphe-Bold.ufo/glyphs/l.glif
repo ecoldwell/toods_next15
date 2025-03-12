@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="l" format="2">
+  <advance width="285"/>
+  <unicode hex="006C"/>
+  <note>
+l
+</note>
+  <anchor x="135" y="0" name="bottom"/>
+  <outline>
+    <contour>
+      <point x="63" y="39" type="line"/>
+      <point x="211" y="39" type="line"/>
+      <point x="211" y="645" type="line"/>
+      <point x="63" y="645" type="line"/>
+    </contour>
+    <component base="empattement_bas" xOffset="1" identifier="CC493034"/>
+    <component base="empattement_haut" xOffset="37" yOffset="4" identifier="237EAB41"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 12:27:30 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>237EAB41</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+        <key>CC493034</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="n" format="2">
+  <advance width="603"/>
+  <unicode hex="006E"/>
+  <note>
+n
+</note>
+  <anchor x="315" y="0" name="bottom"/>
+  <anchor x="316" y="470" name="top"/>
+  <outline>
+    <contour>
+      <point x="89" y="27" type="line"/>
+      <point x="237" y="27" type="line"/>
+      <point x="237" y="354" type="line"/>
+      <point x="89" y="354" type="line"/>
+    </contour>
+    <component base="empattement_bas" xOffset="27"/>
+    <component base="empattement_decale" xOffset="16" yOffset="10"/>
+    <component base="empattement_bas" xScale="-1" xOffset="602"/>
+    <component base="epaule" xOffset="12"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 12:14:23 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

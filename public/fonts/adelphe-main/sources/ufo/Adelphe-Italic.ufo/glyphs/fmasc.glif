@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="fmasc" format="2">
+  <advance width="235"/>
+  <unicode hex="F8450"/>
+  <outline>
+    <contour>
+      <point x="10" y="30" type="curve"/>
+      <point x="41" y="38"/>
+      <point x="67" y="40"/>
+      <point x="91" y="38" type="curve"/>
+      <point x="138" y="195"/>
+      <point x="194" y="417"/>
+      <point x="227" y="549" type="curve" smooth="yes"/>
+      <point x="239" y="598"/>
+      <point x="255" y="643"/>
+      <point x="264" y="660" type="curve"/>
+      <point x="307" y="675"/>
+      <point x="343" y="663"/>
+      <point x="401" y="638" type="curve"/>
+      <point x="438" y="722" type="line"/>
+      <point x="406" y="737"/>
+      <point x="380" y="744"/>
+      <point x="354" y="744" type="curve" smooth="yes"/>
+      <point x="297" y="744"/>
+      <point x="170" y="649"/>
+      <point x="146" y="545" type="curve"/>
+      <point x="119" y="402"/>
+      <point x="59" y="185"/>
+    </contour>
+    <component base="barreft" xOffset="-40" yOffset="28"/>
+    <component base="circumflexbelowcomb" xOffset="-154" yOffset="5"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 08:50:59 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>f</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

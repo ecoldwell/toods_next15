@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="Nfem" format="2">
+  <advance width="779"/>
+  <unicode hex="F8740"/>
+  <outline>
+    <component base="dotbelowcomb.case" xOffset="305"/>
+    <component base="N"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 09:35:12 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>N</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>N</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

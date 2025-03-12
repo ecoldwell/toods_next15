@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="C_Q" format="2">
+  <advance width="633"/>
+  <unicode hex="F1440"/>
+  <anchor x="336" y="0" name="bottom"/>
+  <outline>
+    <component base="C" identifier="2259B3BA"/>
+    <contour>
+      <point x="458" y="-176" type="curve"/>
+      <point x="580" y="-182"/>
+      <point x="706" y="-166"/>
+      <point x="823" y="-144" type="curve"/>
+      <point x="822" y="-122" type="line"/>
+      <point x="757" y="-119"/>
+      <point x="618" y="-105"/>
+      <point x="548" y="-95" type="curve"/>
+      <point x="492" y="-69"/>
+      <point x="422" y="-21"/>
+      <point x="370" y="15" type="curve"/>
+      <point x="339" y="8" type="line"/>
+      <point x="374" y="-58"/>
+      <point x="421" y="-138"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 13:33:03 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>C</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>=Q-45</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>2259B3BA</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

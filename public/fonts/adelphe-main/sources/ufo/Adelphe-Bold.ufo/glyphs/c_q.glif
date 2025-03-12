@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="c_q" format="2">
+  <advance width="434"/>
+  <unicode hex="F1540"/>
+  <outline>
+    <contour>
+      <point x="279" y="-191" type="line"/>
+      <point x="427" y="-191" type="line"/>
+      <point x="427" y="95" type="line"/>
+      <point x="279" y="37" type="line"/>
+    </contour>
+    <component base="empattement_bas_long" xScale="-1" xOffset="481"/>
+    <component base="c"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 08:50:59 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>c</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

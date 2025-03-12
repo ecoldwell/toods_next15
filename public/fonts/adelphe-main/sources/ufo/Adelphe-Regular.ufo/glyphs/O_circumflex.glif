@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="Ocircumflex" format="2">
+  <advance width="776"/>
+  <unicode hex="00D4"/>
+  <outline>
+    <component base="O"/>
+    <component base="circumflexcomb.case" xOffset="252" yOffset="149"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-15 10:01:12 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

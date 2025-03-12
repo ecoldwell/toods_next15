@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="asterism" format="2">
+  <advance width="784"/>
+  <unicode hex="2042"/>
+  <guideline x="392" y="364" angle="270"/>
+  <outline>
+    <component base="asterisk" xOffset="213"/>
+    <component base="asterisk" xOffset="430" yOffset="-404"/>
+    <component base="asterisk" yOffset="-404"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-16 17:04:58 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>asterisk</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>asterisk</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

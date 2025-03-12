@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="idotless" format="2">
+  <advance width="290"/>
+  <unicode hex="0131"/>
+  <anchor x="143" y="470" name="top"/>
+  <outline>
+    <contour>
+      <point x="79" y="27" type="line"/>
+      <point x="227" y="27" type="line"/>
+      <point x="227" y="345" type="line"/>
+      <point x="79" y="345" type="line"/>
+    </contour>
+    <component base="empattement_bas" xScale="-1" xOffset="289"/>
+    <component base="empattement_haut" xOffset="53" yOffset="-246"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 12:33:13 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>n</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>i</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="u_l" format="2">
+  <advance width="568"/>
+  <unicode hex="F5150"/>
+  <outline>
+    <contour>
+      <point x="356" y="92" type="line"/>
+      <point x="504" y="102" type="line"/>
+      <point x="504" y="678" type="line"/>
+      <point x="356" y="678" type="line"/>
+    </contour>
+    <component base="epaule" xScale="-1" yScale="-1" xOffset="596" yOffset="480"/>
+    <component base="empattement_haut" xOffset="42" yOffset="-246"/>
+    <component base="empattement_decale" xScale="-1" yScale="-1" xOffset="577" yOffset="470"/>
+    <component base="empattement_haut" xOffset="330" yOffset="4"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 08:50:59 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>u</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>d</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

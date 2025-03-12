@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="t_enb.001" format="2">
+  <advance width="797"/>
+  <outline>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 12:39:34 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>t</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>enb</string>
+      <key>public.markColor</key>
+      <string>0.75,0.75,0.75,0.5</string>
+    </dict>
+  </lib>
+</glyph>

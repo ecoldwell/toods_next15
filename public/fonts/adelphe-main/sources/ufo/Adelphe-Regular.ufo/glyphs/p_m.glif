@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="p_m" format="2">
+  <advance width="1120"/>
+  <unicode hex="F4110"/>
+  <outline>
+    <component base="p" identifier="7A015A36"/>
+    <component base="empattement_bas" xScale="-1" xOffset="842"/>
+    <component base="epaule" xOffset="263"/>
+    <component base="empattement_bas" xScale="-1" xOffset="1134" identifier="563987D4"/>
+    <component base="epaule" xOffset="555" identifier="19476418"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 08:50:59 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>p</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>m</string>
+      <key>public.markColor</key>
+      <string>0.06,0.6,0.98,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>19476418</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+        <key>563987D4</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+        <key>7A015A36</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="plus" format="2">
+  <advance width="510"/>
+  <unicode hex="002B"/>
+  <outline>
+    <contour>
+      <point x="62" y="405" type="line"/>
+      <point x="62" y="313" type="line"/>
+      <point x="508" y="313" type="line"/>
+      <point x="508" y="405" type="line"/>
+    </contour>
+    <contour>
+      <point x="331" y="582" type="line"/>
+      <point x="239" y="582" type="line"/>
+      <point x="239" y="136" type="line"/>
+      <point x="331" y="136" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-22 15:26:10 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

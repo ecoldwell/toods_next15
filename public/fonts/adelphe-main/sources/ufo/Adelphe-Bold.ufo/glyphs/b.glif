@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="b" format="2">
+  <advance width="552"/>
+  <unicode hex="0062"/>
+  <note>
+b
+</note>
+  <outline>
+    <contour>
+      <point x="201" y="-7" type="curve"/>
+      <point x="201" y="676" type="line"/>
+      <point x="53" y="676" type="line"/>
+      <point x="53" y="178" type="line" smooth="yes"/>
+      <point x="53" y="111"/>
+      <point x="52" y="80"/>
+      <point x="41" y="25" type="curve"/>
+      <point x="54" y="10" type="line"/>
+      <point x="112" y="10"/>
+      <point x="164" y="-1"/>
+    </contour>
+    <component base="empattement_haut" xOffset="27" yOffset="4"/>
+    <component base="panse" xOffset="-28"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 08:50:50 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>o</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

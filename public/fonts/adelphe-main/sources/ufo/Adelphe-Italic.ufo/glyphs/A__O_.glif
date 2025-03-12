@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="A_O" format="2">
+  <advance width="1074"/>
+  <unicode hex="F1030"/>
+  <outline>
+    <contour>
+      <point x="-87" y="0" type="line"/>
+      <point x="158" y="0" type="line"/>
+      <point x="161" y="18" type="line"/>
+      <point x="70" y="34" type="line"/>
+      <point x="470" y="651" type="line"/>
+      <point x="460" y="663" type="line"/>
+      <point x="454" y="227" type="line"/>
+      <point x="534" y="87" type="line"/>
+      <point x="549" y="700" type="line"/>
+      <point x="472" y="700" type="line"/>
+      <point x="-26" y="32" type="line"/>
+      <point x="-85" y="18" type="line"/>
+    </contour>
+    <contour>
+      <point x="176" y="217" type="line"/>
+      <point x="459" y="217" type="line"/>
+      <point x="464" y="258" type="line"/>
+      <point x="192" y="258" type="line"/>
+    </contour>
+    <component base="O" xOffset="397"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 09:35:12 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>A</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>O</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

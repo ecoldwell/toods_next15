@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="d" format="2">
+  <advance width="543"/>
+  <unicode hex="0064"/>
+  <note>
+d
+</note>
+  <guideline x="462" y="499"/>
+  <anchor x="196" y="0" name="bottom"/>
+  <anchor x="236" y="480" name="top"/>
+  <outline>
+    <component base="l" xOffset="257" identifier="B936CD1F"/>
+    <component base="panse_adq" xOffset="-28"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2024-09-02 09:46:32 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>o</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>B936CD1F</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

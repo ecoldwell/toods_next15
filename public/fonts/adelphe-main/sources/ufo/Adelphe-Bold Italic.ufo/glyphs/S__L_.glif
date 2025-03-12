@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="S_L" format="2">
+  <advance width="838"/>
+  <unicode hex="F4660"/>
+  <outline>
+    <component base="S" identifier="CC570FA2"/>
+    <contour>
+      <point x="521" y="438" type="line"/>
+      <point x="539" y="436" type="line"/>
+      <point x="637" y="662" type="line"/>
+      <point x="729" y="682" type="line"/>
+      <point x="733" y="700" type="line"/>
+      <point x="459" y="700" type="line"/>
+      <point x="457" y="689" type="line"/>
+      <point x="507" y="642" type="line"/>
+    </contour>
+    <contour>
+      <point x="378" y="0" type="line"/>
+      <point x="747" y="0" type="line"/>
+      <point x="809" y="196" type="line"/>
+      <point x="793" y="203" type="line"/>
+      <point x="643" y="58" type="line"/>
+      <point x="409" y="37" type="line"/>
+      <point x="375" y="13" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 13:33:03 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>S</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>L</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>CC570FA2</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

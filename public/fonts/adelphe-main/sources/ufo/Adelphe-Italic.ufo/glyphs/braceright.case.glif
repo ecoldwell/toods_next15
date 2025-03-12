@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="braceright.case" format="2">
+  <advance width="288"/>
+  <outline>
+    <component base="braceright" xOffset="19" yOffset="70"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-20 15:12:38 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>braceright</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>braceright</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

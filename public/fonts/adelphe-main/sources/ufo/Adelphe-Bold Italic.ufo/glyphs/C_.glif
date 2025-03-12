@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="C" format="2">
+  <advance width="599"/>
+  <unicode hex="0043"/>
+  <anchor x="330" y="0" name="bottom"/>
+  <outline>
+    <contour>
+      <point x="296" y="-13" type="curve" smooth="yes"/>
+      <point x="350" y="-13"/>
+      <point x="449" y="0"/>
+      <point x="478" y="6" type="curve"/>
+      <point x="542" y="201" type="line"/>
+      <point x="525" y="208" type="line"/>
+      <point x="455" y="124" type="line" smooth="yes"/>
+      <point x="380" y="35"/>
+      <point x="341" y="28"/>
+      <point x="326" y="28" type="curve" smooth="yes"/>
+      <point x="234" y="28"/>
+      <point x="193" y="155"/>
+      <point x="193" y="248" type="curve" smooth="yes"/>
+      <point x="193" y="435"/>
+      <point x="340" y="670"/>
+      <point x="473" y="670" type="curve" smooth="yes"/>
+      <point x="507" y="670"/>
+      <point x="524" y="662"/>
+      <point x="548" y="646" type="curve"/>
+      <point x="604" y="477" type="line"/>
+      <point x="621" y="479" type="line"/>
+      <point x="661" y="676" type="line"/>
+      <point x="595" y="708"/>
+      <point x="547" y="713"/>
+      <point x="497" y="713" type="curve" smooth="yes"/>
+      <point x="287" y="713"/>
+      <point x="40" y="438"/>
+      <point x="40" y="224" type="curve" smooth="yes"/>
+      <point x="40" y="107"/>
+      <point x="137" y="-13"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 11:16:16 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>O</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

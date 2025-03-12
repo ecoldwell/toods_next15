@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="t_t" format="2">
+  <advance width="691"/>
+  <unicode hex="F4970"/>
+  <outline>
+    <component base="t" identifier="C34EC0F6"/>
+    <component base="t_liga" xOffset="353" identifier="1F079711"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 08:50:59 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>t</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>t</string>
+      <key>public.markColor</key>
+      <string>0.06,0.6,0.98,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>1F079711</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+        <key>C34EC0F6</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

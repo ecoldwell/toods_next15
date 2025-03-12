@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="F_V" format="2">
+  <advance width="1179"/>
+  <unicode hex="F2050"/>
+  <anchor x="226" y="0" name="bottom"/>
+  <anchor x="-31" y="700" name="top"/>
+  <outline>
+    <contour>
+      <point x="-47" y="0" type="line"/>
+      <point x="267" y="0" type="line"/>
+      <point x="268" y="18" type="line"/>
+      <point x="178" y="38" type="line"/>
+      <point x="370" y="682" type="line"/>
+      <point x="458" y="682" type="line"/>
+      <point x="462" y="700" type="line"/>
+      <point x="164" y="700" type="line"/>
+      <point x="160" y="686" type="line"/>
+      <point x="227" y="664" type="line"/>
+      <point x="40" y="37" type="line"/>
+      <point x="-46" y="18" type="line"/>
+    </contour>
+    <contour>
+      <point x="460" y="219" type="line"/>
+      <point x="523" y="464" type="line"/>
+      <point x="506" y="470" type="line"/>
+      <point x="417" y="379" type="line"/>
+      <point x="264" y="356" type="line"/>
+      <point x="259" y="331" type="line"/>
+      <point x="401" y="321" type="line"/>
+      <point x="442" y="220" type="line"/>
+    </contour>
+    <contour>
+      <point x="681" y="488" type="line"/>
+      <point x="699" y="491" type="line"/>
+      <point x="729" y="700" type="line"/>
+      <point x="328" y="700" type="line"/>
+      <point x="315" y="673" type="line"/>
+      <point x="644" y="643" type="line"/>
+    </contour>
+    <component base="V" xOffset="472" identifier="554866F1"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 13:33:03 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>F</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>V</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>554866F1</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

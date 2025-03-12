@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="S_L" format="2">
+  <advance width="838"/>
+  <unicode hex="F4660"/>
+  <outline>
+    <component base="S" identifier="323EA4B7"/>
+    <contour>
+      <point x="488" y="436" type="line"/>
+      <point x="502" y="433" type="line"/>
+      <point x="608" y="662" type="line"/>
+      <point x="700" y="682" type="line"/>
+      <point x="704" y="700" type="line"/>
+      <point x="450" y="700" type="line"/>
+      <point x="446" y="686" type="line"/>
+      <point x="498" y="637" type="line"/>
+    </contour>
+    <contour>
+      <point x="369" y="0" type="line"/>
+      <point x="745" y="0" type="line"/>
+      <point x="799" y="172" type="line"/>
+      <point x="783" y="179" type="line"/>
+      <point x="693" y="68" type="line"/>
+      <point x="410" y="37" type="line"/>
+      <point x="368" y="10" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 13:33:03 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>S</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>L</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>323EA4B7</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

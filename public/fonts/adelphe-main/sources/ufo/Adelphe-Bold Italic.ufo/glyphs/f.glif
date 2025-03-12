@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="f" format="2">
+  <advance width="299"/>
+  <unicode hex="0066"/>
+  <note>
+f
+</note>
+  <guideline x="443" y="499"/>
+  <anchor x="55" y="5" name="bottom"/>
+  <outline>
+    <contour>
+      <point x="-134" y="-262" type="curve" smooth="yes"/>
+      <point x="-66" y="-262"/>
+      <point x="97" y="-107"/>
+      <point x="123" y="-22" type="curve" smooth="yes"/>
+      <point x="174" y="145"/>
+      <point x="241" y="402"/>
+      <point x="278" y="549" type="curve" smooth="yes"/>
+      <point x="290" y="598"/>
+      <point x="306" y="651"/>
+      <point x="316" y="674" type="curve"/>
+      <point x="357" y="668"/>
+      <point x="408" y="648"/>
+      <point x="462" y="618" type="curve"/>
+      <point x="512" y="726" type="line"/>
+      <point x="480" y="741"/>
+      <point x="431" y="744"/>
+      <point x="405" y="744" type="curve" smooth="yes"/>
+      <point x="348" y="744"/>
+      <point x="172" y="649"/>
+      <point x="148" y="545" type="curve"/>
+      <point x="118" y="392"/>
+      <point x="51" y="155"/>
+      <point x="5" y="-7" type="curve" smooth="yes"/>
+      <point x="-19" y="-90"/>
+      <point x="-40" y="-154"/>
+      <point x="-59" y="-182" type="curve"/>
+      <point x="-87" y="-180"/>
+      <point x="-129" y="-154"/>
+      <point x="-180" y="-117" type="curve"/>
+      <point x="-245" y="-239" type="line"/>
+      <point x="-194" y="-257"/>
+      <point x="-159" y="-262"/>
+    </contour>
+    <component base="barreft" xOffset="-40" yOffset="28"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 11:32:32 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

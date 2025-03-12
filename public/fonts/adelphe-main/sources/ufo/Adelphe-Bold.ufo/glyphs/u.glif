@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="u" format="2">
+  <advance width="583"/>
+  <unicode hex="0075"/>
+  <note>
+u
+</note>
+  <anchor x="283" y="0" name="bottom"/>
+  <anchor x="290" y="470" name="top"/>
+  <outline>
+    <contour>
+      <point x="356" y="102" type="line"/>
+      <point x="504" y="102" type="line"/>
+      <point x="504" y="418" type="line"/>
+      <point x="356" y="418" type="line"/>
+    </contour>
+    <component base="epaule" xScale="-1" yScale="-1" xOffset="596" yOffset="480"/>
+    <component base="empattement_haut" xOffset="42" yOffset="-246"/>
+    <component base="empattement_decale" xScale="-1" yScale="-1" xOffset="577" yOffset="470"/>
+    <component base="empattement_haut" xOffset="330" yOffset="-246"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 12:36:54 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>=|n</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>n</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

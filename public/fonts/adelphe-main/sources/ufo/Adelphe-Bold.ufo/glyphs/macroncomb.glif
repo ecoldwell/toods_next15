@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="macroncomb" format="2">
+  <advance width="364"/>
+  <unicode hex="0304"/>
+  <anchor x="186" y="470" name="_top"/>
+  <outline>
+    <contour>
+      <point x="45" y="570" type="line"/>
+      <point x="319" y="570" type="line"/>
+      <point x="319" y="653" type="line"/>
+      <point x="45" y="653" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-15 10:12:07 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

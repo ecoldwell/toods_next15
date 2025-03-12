@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="l_e" format="2">
+  <advance width="449"/>
+  <unicode hex="F3311"/>
+  <outline>
+    <contour>
+      <point x="50" y="175" type="line"/>
+      <point x="231" y="374" type="line"/>
+      <point x="291" y="585" type="line"/>
+      <point x="170" y="589" type="line"/>
+    </contour>
+    <component base="empattement_montante" xScale="0.918" yScale="1.02" xOffset="-243" yOffset="-21"/>
+    <component base="e" xOffset="49"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 08:50:59 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>l</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>e</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

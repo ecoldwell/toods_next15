@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="endash" format="2">
+  <advance width="487"/>
+  <unicode hex="2013"/>
+  <outline>
+    <contour>
+      <point x="19" y="268" type="line"/>
+      <point x="494" y="268" type="line"/>
+      <point x="494" y="313" type="line"/>
+      <point x="19" y="313" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 11:47:12 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

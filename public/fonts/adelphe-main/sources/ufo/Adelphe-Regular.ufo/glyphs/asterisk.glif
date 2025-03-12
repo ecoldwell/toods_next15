@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="asterisk" format="2">
+  <advance width="354"/>
+  <unicode hex="002A"/>
+  <outline>
+    <contour>
+      <point x="180" y="541" type="curve" smooth="yes"/>
+      <point x="189" y="541"/>
+      <point x="196" y="548"/>
+      <point x="196" y="558" type="curve" smooth="yes"/>
+      <point x="196" y="567"/>
+      <point x="189" y="574"/>
+      <point x="180" y="574" type="curve" smooth="yes"/>
+      <point x="171" y="574"/>
+      <point x="164" y="567"/>
+      <point x="164" y="558" type="curve" smooth="yes"/>
+      <point x="164" y="548"/>
+      <point x="171" y="541"/>
+    </contour>
+    <component base="bout_asterisk" xScale="-0.8192" xyScale="0.5736" yScale="-0.8192" yxScale="-0.5736" xOffset="737" yOffset="836"/>
+    <component base="bout_asterisk" xScale="0.2588" xyScale="0.9659" yScale="0.2588" yxScale="-0.9659" xOffset="640" yOffset="127"/>
+    <component base="bout_asterisk" xScale="-0.8192" xyScale="-0.5736" yScale="-0.8192" yxScale="0.5736" xOffset="110" yOffset="1179"/>
+    <component base="bout_asterisk" xOffset="-119" yOffset="11"/>
+    <component base="bout_asterisk" xScale="0.2588" xyScale="-0.9659" yScale="0.2588" yxScale="0.9659" xOffset="-436" yOffset="704"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-15 10:00:54 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="heavyasterisk" format="2">
+  <advance width="592"/>
+  <unicode hex="2731"/>
+  <outline>
+    <component base="asterisk" xScale="1.42" yScale="1.42" xOffset="-115" yOffset="-531"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-15 10:00:54 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

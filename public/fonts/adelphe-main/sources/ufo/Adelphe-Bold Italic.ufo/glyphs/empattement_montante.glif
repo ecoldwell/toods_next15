@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="empattement_montante" format="2">
+  <advance width="546"/>
+  <outline>
+    <contour>
+      <point x="555" y="510" type="line"/>
+      <point x="626" y="733" type="line"/>
+      <point x="615" y="745" type="line"/>
+      <point x="550" y="726"/>
+      <point x="459" y="695"/>
+      <point x="344" y="638" type="curve"/>
+      <point x="350" y="622" type="line"/>
+      <point x="399" y="633"/>
+      <point x="428" y="639"/>
+      <point x="463" y="643" type="curve"/>
+      <point x="427" y="528" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-10 12:21:26 +0000</string>
+    </dict>
+  </lib>
+</glyph>

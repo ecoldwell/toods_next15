@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="Qfem" format="2">
+  <advance width="810"/>
+  <unicode hex="F8900"/>
+  <outline>
+    <component base="Q"/>
+    <component base="dotaccentcomb" xOffset="238" yOffset="186"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 13:33:03 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>Q</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>Q</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="h" format="2">
+  <advance width="559"/>
+  <unicode hex="0068"/>
+  <note>
+h
+</note>
+  <guideline x="447" y="499"/>
+  <anchor x="198" y="1" name="bottom"/>
+  <outline>
+    <component base="empattement_montante" xScale="0.918" yScale="1.02" xOffset="-243" yOffset="-21" identifier="249FDAFD"/>
+    <component base="fut-long" xOffset="-10"/>
+    <component base="epaule-n" xOffset="-2"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2024-09-02 09:43:47 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>l</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>n</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>249FDAFD</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

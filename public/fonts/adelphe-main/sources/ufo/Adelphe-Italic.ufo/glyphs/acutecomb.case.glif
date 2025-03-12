@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="acutecomb.case" format="2">
+  <advance width="211"/>
+  <guideline x="184" y="550"/>
+  <anchor x="194" y="550" name="_top"/>
+  <outline>
+    <component base="acutecomb" xScale="0.9397" xyScale="-0.342" yScale="0.9397" yxScale="0.342" xOffset="-151" yOffset="115" identifier="042C801B"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2024-06-18 10:12:49 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>042C801B</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

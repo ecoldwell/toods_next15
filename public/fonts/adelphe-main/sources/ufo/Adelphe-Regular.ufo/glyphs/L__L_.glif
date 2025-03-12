@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="L_L" format="2">
+  <advance width="1034"/>
+  <unicode hex="F3220"/>
+  <outline>
+    <component base="L" xOffset="452"/>
+    <contour>
+      <point x="30" y="0" type="line"/>
+      <point x="659" y="0" type="line"/>
+      <point x="570" y="141" type="line"/>
+      <point x="570" y="67"/>
+      <point x="525" y="52"/>
+      <point x="386" y="52" type="curve" smooth="yes"/>
+      <point x="233" y="52"/>
+      <point x="216" y="85"/>
+      <point x="216" y="141" type="curve" smooth="yes"/>
+      <point x="216" y="557" type="line" smooth="yes"/>
+      <point x="216" y="643"/>
+      <point x="253" y="664"/>
+      <point x="303" y="673" type="curve"/>
+      <point x="303" y="700" type="line"/>
+      <point x="30" y="700" type="line"/>
+      <point x="30" y="673" type="line"/>
+      <point x="87" y="662"/>
+      <point x="118" y="643"/>
+      <point x="118" y="557" type="curve" smooth="yes"/>
+      <point x="118" y="143" type="line" smooth="yes"/>
+      <point x="118" y="57"/>
+      <point x="87" y="38"/>
+      <point x="30" y="27" type="curve"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 13:33:03 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>L</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>L</string>
+      <key>public.markColor</key>
+      <string>0.06,0.6,0.98,0.5</string>
+    </dict>
+  </lib>
+</glyph>

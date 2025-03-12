@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="fut-long" format="2">
+  <advance width="483"/>
+  <outline>
+    <contour>
+      <point x="34" y="-14" type="line"/>
+      <point x="91" y="14" type="line"/>
+      <point x="261" y="615" type="line"/>
+      <point x="189" y="619" type="line"/>
+      <point x="8" y="12" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-10 12:26:59 +0000</string>
+    </dict>
+  </lib>
+</glyph>

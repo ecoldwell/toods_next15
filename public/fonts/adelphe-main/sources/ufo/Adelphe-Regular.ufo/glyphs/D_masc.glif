@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="Dmasc" format="2">
+  <advance width="737"/>
+  <unicode hex="F81D0"/>
+  <outline>
+    <component base="circumflexbelowcomb" xOffset="216"/>
+    <component base="D"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2024-09-02 10:29:12 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>D</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>D</string>
+      <key>public.markColor</key>
+      <string>0,0.2,0.88,0.5</string>
+    </dict>
+  </lib>
+</glyph>

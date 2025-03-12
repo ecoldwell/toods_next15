@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="o_idieresis.001" format="2">
+  <advance width="506"/>
+  <outline>
+    <contour>
+      <point x="205" y="437" type="line"/>
+      <point x="293" y="437" type="line"/>
+      <point x="293" y="485" type="line" smooth="yes"/>
+      <point x="293" y="533"/>
+      <point x="295" y="608"/>
+      <point x="300" y="637" type="curve"/>
+      <point x="279" y="654" type="line"/>
+      <point x="238" y="631"/>
+      <point x="178" y="600"/>
+      <point x="132" y="582" type="curve"/>
+      <point x="135" y="558" type="line"/>
+      <point x="185" y="555"/>
+      <point x="205" y="534"/>
+      <point x="205" y="485" type="curve" smooth="yes"/>
+    </contour>
+    <component base="dieresiscomb" xOffset="100" yOffset="130" identifier="3CFC2E8D"/>
+    <component base="o"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 12:39:34 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>o</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>o</string>
+      <key>public.markColor</key>
+      <string>0.75,0.75,0.75,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>3CFC2E8D</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

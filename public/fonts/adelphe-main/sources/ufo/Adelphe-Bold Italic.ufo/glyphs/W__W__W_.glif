@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="W_W_W" format="2">
+  <advance width="2027"/>
+  <outline>
+    <contour>
+      <point x="1524" y="0" type="line"/>
+      <point x="1646" y="0" type="line"/>
+      <point x="2122" y="667" type="line"/>
+      <point x="2183" y="682" type="line"/>
+      <point x="2185" y="700" type="line"/>
+      <point x="1905" y="700" type="line"/>
+      <point x="1902" y="682" type="line"/>
+      <point x="1995" y="666" type="line"/>
+      <point x="1648" y="49" type="line"/>
+      <point x="1660" y="37" type="line"/>
+      <point x="1699" y="665" type="line"/>
+      <point x="1807" y="682" type="line"/>
+      <point x="1810" y="700" type="line"/>
+      <point x="1505" y="700" type="line"/>
+      <point x="1503" y="682" type="line"/>
+      <point x="1563" y="666" type="line"/>
+    </contour>
+    <contour>
+      <point x="1193" y="0" type="line"/>
+      <point x="1315" y="0" type="line"/>
+      <point x="1651" y="478" type="line"/>
+      <point x="1599" y="548" type="line"/>
+      <point x="1317" y="51" type="line"/>
+      <point x="1329" y="37" type="line"/>
+      <point x="1338" y="665" type="line"/>
+      <point x="1426" y="682" type="line"/>
+      <point x="1429" y="700" type="line"/>
+      <point x="1144" y="700" type="line"/>
+      <point x="1142" y="682" type="line"/>
+      <point x="1202" y="666" type="line"/>
+    </contour>
+    <contour>
+      <point x="847" y="0" type="line"/>
+      <point x="969" y="0" type="line"/>
+      <point x="1305" y="478" type="line"/>
+      <point x="1253" y="548" type="line"/>
+      <point x="971" y="51" type="line"/>
+      <point x="983" y="37" type="line"/>
+      <point x="992" y="665" type="line"/>
+      <point x="1080" y="682" type="line"/>
+      <point x="1083" y="700" type="line"/>
+      <point x="798" y="700" type="line"/>
+      <point x="796" y="682" type="line"/>
+      <point x="856" y="666" type="line"/>
+    </contour>
+    <contour>
+      <point x="501" y="0" type="line"/>
+      <point x="623" y="0" type="line"/>
+      <point x="959" y="478" type="line"/>
+      <point x="907" y="548" type="line"/>
+      <point x="625" y="51" type="line"/>
+      <point x="637" y="37" type="line"/>
+      <point x="646" y="665" type="line"/>
+      <point x="734" y="682" type="line"/>
+      <point x="737" y="700" type="line"/>
+      <point x="452" y="700" type="line"/>
+      <point x="450" y="682" type="line"/>
+      <point x="510" y="666" type="line"/>
+    </contour>
+    <contour>
+      <point x="155" y="0" type="line"/>
+      <point x="277" y="0" type="line"/>
+      <point x="613" y="478" type="line"/>
+      <point x="561" y="548" type="line"/>
+      <point x="279" y="51" type="line"/>
+      <point x="291" y="37" type="line"/>
+      <point x="300" y="665" type="line"/>
+      <point x="388" y="682" type="line"/>
+      <point x="391" y="700" type="line"/>
+      <point x="106" y="700" type="line"/>
+      <point x="104" y="682" type="line"/>
+      <point x="164" y="666" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 12:39:34 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>W</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>W</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

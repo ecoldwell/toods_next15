@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="empattement_decale" format="2">
+  <advance width="577"/>
+  <outline>
+    <contour>
+      <point x="103" y="308" type="curve"/>
+      <point x="189" y="315" type="line"/>
+      <point x="189" y="363"/>
+      <point x="182" y="435"/>
+      <point x="178" y="472" type="curve"/>
+      <point x="158" y="484" type="line"/>
+      <point x="117" y="461"/>
+      <point x="64" y="431"/>
+      <point x="26" y="411" type="curve"/>
+      <point x="32" y="387" type="line"/>
+      <point x="81" y="386"/>
+      <point x="98" y="362"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-10 09:19:25 +0000</string>
+    </dict>
+  </lib>
+</glyph>

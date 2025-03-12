@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="a_u_l_a" format="2">
+  <advance width="1449"/>
+  <unicode hex="F1150"/>
+  <outline>
+    <component base="agrave"/>
+    <component base="u_l" xOffset="466" identifier="0F9B3F52"/>
+    <component base="a" xOffset="983"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2024-09-05 12:00:09 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>a</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>a</string>
+      <key>public.markColor</key>
+      <string>0,0.2,0.88,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>0F9B3F52</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

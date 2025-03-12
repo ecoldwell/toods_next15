@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="O_T" format="2">
+  <advance width="796"/>
+  <unicode hex="F3840"/>
+  <outline>
+    <contour>
+      <point x="405" y="-14" type="curve" smooth="yes"/>
+      <point x="556" y="-14"/>
+      <point x="676" y="112"/>
+      <point x="676" y="263" type="curve" smooth="yes"/>
+      <point x="676" y="414"/>
+      <point x="556" y="539"/>
+      <point x="405" y="539" type="curve" smooth="yes"/>
+      <point x="253" y="539"/>
+      <point x="133" y="414"/>
+      <point x="133" y="263" type="curve" smooth="yes"/>
+      <point x="133" y="112"/>
+      <point x="253" y="-14"/>
+    </contour>
+    <contour>
+      <point x="437" y="35" type="curve" smooth="yes"/>
+      <point x="355" y="35"/>
+      <point x="269" y="157"/>
+      <point x="269" y="296" type="curve" smooth="yes"/>
+      <point x="269" y="391"/>
+      <point x="304" y="490"/>
+      <point x="374" y="490" type="curve" smooth="yes"/>
+      <point x="457" y="490"/>
+      <point x="540" y="370"/>
+      <point x="540" y="228" type="curve" smooth="yes"/>
+      <point x="540" y="133"/>
+      <point x="507" y="35"/>
+    </contour>
+    <contour>
+      <point x="332" y="509" type="line"/>
+      <point x="470" y="509" type="line"/>
+      <point x="470" y="665" type="line"/>
+      <point x="332" y="665" type="line"/>
+    </contour>
+    <component base="mi_barre_T" xOffset="86"/>
+    <component base="mi_barre_T" xScale="-1" xOffset="710"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-30 16:44:55 +0000</string>
+      <key>public.markColor</key>
+      <string>0.06,0.6,0.98,0.5</string>
+    </dict>
+  </lib>
+</glyph>

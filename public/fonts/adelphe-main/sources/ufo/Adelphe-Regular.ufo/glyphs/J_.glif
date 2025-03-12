@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="J" format="2">
+  <advance width="330"/>
+  <unicode hex="004A"/>
+  <outline>
+    <contour>
+      <point x="14" y="-255" type="line"/>
+      <point x="117" y="-195"/>
+      <point x="213" y="-69"/>
+      <point x="213" y="60" type="curve" smooth="yes"/>
+      <point x="213" y="623" type="line"/>
+      <point x="115" y="623" type="line"/>
+      <point x="115" y="76" type="line" smooth="yes"/>
+      <point x="115" y="-46"/>
+      <point x="97" y="-147"/>
+      <point x="0" y="-231" type="curve"/>
+    </contour>
+    <contour>
+      <point x="115" y="557" type="curve"/>
+      <point x="213" y="557" type="line"/>
+      <point x="213" y="643"/>
+      <point x="247" y="662"/>
+      <point x="300" y="673" type="curve"/>
+      <point x="300" y="700" type="line"/>
+      <point x="17" y="700" type="line"/>
+      <point x="17" y="673" type="line"/>
+      <point x="85" y="663"/>
+      <point x="115" y="643"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 11:19:12 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>H</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

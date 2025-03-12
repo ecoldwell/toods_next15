@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="bout_asterisk" format="2">
+  <advance width="600"/>
+  <outline>
+    <contour>
+      <point x="287" y="557" type="line"/>
+      <point x="310" y="557" type="line"/>
+      <point x="343" y="700" type="line"/>
+      <point x="331" y="719" type="line"/>
+      <point x="248" y="719" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-10 09:19:25 +0000</string>
+    </dict>
+  </lib>
+</glyph>

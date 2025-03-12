@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="r_s" format="2">
+  <advance width="462"/>
+  <unicode hex="F45C0"/>
+  <outline>
+    <component base="s-liga"/>
+    <contour>
+      <point x="211" y="297" type="line"/>
+      <point x="242" y="346"/>
+      <point x="278" y="359"/>
+      <point x="310" y="359" type="curve" smooth="yes"/>
+      <point x="348" y="359"/>
+      <point x="372" y="335"/>
+      <point x="392" y="315" type="curve"/>
+      <point x="442" y="430" type="line"/>
+      <point x="431" y="451"/>
+      <point x="397" y="488"/>
+      <point x="353" y="488" type="curve" smooth="yes"/>
+      <point x="296" y="488"/>
+      <point x="228" y="392"/>
+      <point x="202" y="329" type="curve"/>
+    </contour>
+    <component base="empattement_decale" xOffset="6" yOffset="10"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-25 14:13:29 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

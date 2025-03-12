@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="barreft" format="2">
+  <advance width="297"/>
+  <outline>
+    <contour>
+      <point x="317" y="409" type="line"/>
+      <point x="342" y="452" type="line"/>
+      <point x="337" y="471" type="line"/>
+      <point x="207" y="460" type="line"/>
+      <point x="112" y="444" type="line"/>
+      <point x="113" y="427" type="line"/>
+      <point x="179" y="414" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-25 13:01:39 +0000</string>
+    </dict>
+  </lib>
+</glyph>

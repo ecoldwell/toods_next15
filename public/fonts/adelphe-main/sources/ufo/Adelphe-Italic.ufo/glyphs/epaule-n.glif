@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="epaule-n" format="2">
+  <advance width="490"/>
+  <guideline x="458" y="499"/>
+  <outline>
+    <contour>
+      <point x="346" y="-14" type="curve"/>
+      <point x="385" y="20"/>
+      <point x="402" y="49"/>
+      <point x="487" y="121" type="curve"/>
+      <point x="477" y="138" type="line"/>
+      <point x="432" y="113"/>
+      <point x="409" y="96"/>
+      <point x="382" y="75" type="curve"/>
+      <point x="394" y="173"/>
+      <point x="503" y="392"/>
+      <point x="503" y="457" type="curve" smooth="yes"/>
+      <point x="503" y="480"/>
+      <point x="492" y="499"/>
+      <point x="470" y="499" type="curve" smooth="yes"/>
+      <point x="407" y="499"/>
+      <point x="264" y="346"/>
+      <point x="137" y="161" type="curve"/>
+      <point x="146" y="127" type="line"/>
+      <point x="186" y="185"/>
+      <point x="343" y="371"/>
+      <point x="418" y="409" type="curve"/>
+      <point x="377" y="292"/>
+      <point x="306" y="130"/>
+      <point x="292" y="35" type="curve" smooth="yes"/>
+      <point x="289" y="15"/>
+      <point x="327" y="-14"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-25 12:49:47 +0000</string>
+    </dict>
+  </lib>
+</glyph>

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="one.osf" format="2">
+  <advance width="246"/>
+  <outline>
+    <contour>
+      <point x="-52" y="0" type="line"/>
+      <point x="164" y="0" type="line"/>
+      <point x="167" y="18" type="line"/>
+      <point x="99" y="34" type="line"/>
+      <point x="222" y="449" type="line"/>
+      <point x="296" y="467" type="line"/>
+      <point x="299" y="485" type="line"/>
+      <point x="83" y="485" type="line"/>
+      <point x="79" y="467" type="line"/>
+      <point x="144" y="449" type="line"/>
+      <point x="21" y="36" type="line"/>
+      <point x="-51" y="16" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 08:50:59 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>n</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>=|n</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

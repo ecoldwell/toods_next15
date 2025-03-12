@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="l_enb.001" format="2">
+  <advance width="453"/>
+  <outline>
+    <component base="enb" xOffset="43"/>
+    <component base="empattement_haut" xOffset="22" identifier="195CCE18"/>
+    <contour>
+      <point x="78" y="590" type="line"/>
+      <point x="78" y="347" type="line"/>
+      <point x="166" y="413" type="line"/>
+      <point x="166" y="590" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 12:39:34 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>l</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>enb</string>
+      <key>public.markColor</key>
+      <string>0.75,0.75,0.75,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>195CCE18</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="accolade-bout.001" format="2">
+  <advance width="600"/>
+  <outline>
+    <contour>
+      <point x="451" y="729" type="line"/>
+      <point x="397" y="724"/>
+      <point x="240" y="678"/>
+      <point x="240" y="543" type="curve" smooth="yes"/>
+      <point x="240" y="395" type="line" smooth="yes"/>
+      <point x="240" y="335"/>
+      <point x="236" y="302"/>
+      <point x="192" y="293" type="curve"/>
+      <point x="192" y="265" type="line"/>
+      <point x="255" y="265"/>
+      <point x="388" y="287"/>
+      <point x="388" y="399" type="curve" smooth="yes"/>
+      <point x="388" y="562" type="line" smooth="yes"/>
+      <point x="388" y="639"/>
+      <point x="398" y="687"/>
+      <point x="456" y="701" type="curve"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-10 09:19:25 +0000</string>
+    </dict>
+  </lib>
+</glyph>

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="f-haut" format="2">
+  <advance width="509"/>
+  <outline>
+    <contour>
+      <point x="88" y="460" type="line"/>
+      <point x="176" y="460" type="line"/>
+      <point x="176" y="577" type="line" smooth="yes"/>
+      <point x="176" y="648"/>
+      <point x="202" y="682"/>
+      <point x="247" y="682" type="curve" smooth="yes"/>
+      <point x="296" y="682"/>
+      <point x="334" y="648"/>
+      <point x="365" y="614" type="curve"/>
+      <point x="431" y="696" type="line"/>
+      <point x="390" y="728"/>
+      <point x="349" y="744"/>
+      <point x="293" y="744" type="curve" smooth="yes"/>
+      <point x="188" y="744"/>
+      <point x="88" y="659"/>
+      <point x="88" y="541" type="curve" smooth="yes"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-10 09:19:25 +0000</string>
+    </dict>
+  </lib>
+</glyph>

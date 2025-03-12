@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="o_t" format="2">
+  <advance width="663"/>
+  <unicode hex="F3940"/>
+  <outline>
+    <component base="o"/>
+    <component base="barreft" xOffset="388" yOffset="28"/>
+    <contour>
+      <point x="560" y="233" type="curve" smooth="yes"/>
+      <point x="624" y="455"/>
+      <point x="667" y="571"/>
+      <point x="692" y="626" type="curve"/>
+      <point x="676" y="636" type="line"/>
+      <point x="556" y="480" type="line"/>
+      <point x="533" y="405"/>
+      <point x="505" y="305"/>
+      <point x="486" y="229" type="curve" smooth="yes"/>
+      <point x="458" y="119"/>
+      <point x="428" y="52"/>
+      <point x="397" y="19" type="curve"/>
+      <point x="355" y="35"/>
+      <point x="300" y="119"/>
+      <point x="279" y="167" type="curve"/>
+      <point x="235" y="104" type="line"/>
+      <point x="248" y="68"/>
+      <point x="319" y="-14"/>
+      <point x="365" y="-14" type="curve" smooth="yes"/>
+      <point x="422" y="-14"/>
+      <point x="506" y="46"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 08:50:59 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>o</string>
+      <key>public.markColor</key>
+      <string>0.06,0.6,0.98,0.5</string>
+    </dict>
+  </lib>
+</glyph>

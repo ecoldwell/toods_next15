@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="pmasc" format="2">
+  <advance width="463"/>
+  <unicode hex="F88D0"/>
+  <outline>
+    <component base="p" identifier="C8B0D185"/>
+    <component base="circumflexcomb" xOffset="107"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 12:44:29 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>p</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>p</string>
+      <key>public.markColor</key>
+      <string>0.06,0.6,0.98,0.5</string>
+      <key>public.objectLibs</key>
+      <dict>
+        <key>C8B0D185</key>
+        <dict>
+          <key>com.schriftgestaltung.alignment</key>
+          <integer>-1</integer>
+        </dict>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

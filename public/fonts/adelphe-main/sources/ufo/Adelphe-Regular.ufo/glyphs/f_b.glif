@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="f_b" format="2">
+  <advance width="868"/>
+  <outline>
+    <contour>
+      <point x="507" y="-2" type="curve"/>
+      <point x="507" y="676" type="line"/>
+      <point x="419" y="676" type="line"/>
+      <point x="419" y="178" type="line" smooth="yes"/>
+      <point x="419" y="111"/>
+      <point x="418" y="80"/>
+      <point x="407" y="25" type="curve"/>
+      <point x="420" y="10" type="line"/>
+      <point x="448" y="10"/>
+      <point x="473" y="5"/>
+    </contour>
+    <component base="panse" xOffset="319"/>
+    <component base="empattement_bas_long" xOffset="16" yOffset="250"/>
+    <component base="ffut"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-07 08:50:59 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>f</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>b</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

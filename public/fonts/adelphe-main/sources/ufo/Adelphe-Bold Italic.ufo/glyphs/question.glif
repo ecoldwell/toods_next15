@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="question" format="2">
+  <advance width="388"/>
+  <unicode hex="003F"/>
+  <guideline x="265" y="231"/>
+  <outline>
+    <contour>
+      <point x="347" y="598" type="curve" smooth="yes"/>
+      <point x="347" y="465"/>
+      <point x="173" y="332"/>
+      <point x="143" y="236" type="curve"/>
+      <point x="179" y="231" type="line"/>
+      <point x="209" y="317"/>
+      <point x="485" y="472"/>
+      <point x="485" y="629" type="curve" smooth="yes"/>
+      <point x="485" y="650"/>
+      <point x="417" y="712"/>
+      <point x="355" y="712" type="curve" smooth="yes"/>
+      <point x="254" y="712"/>
+      <point x="81" y="569"/>
+      <point x="81" y="507" type="curve" smooth="yes"/>
+      <point x="81" y="494"/>
+      <point x="87" y="481"/>
+      <point x="96" y="469" type="curve"/>
+      <point x="233" y="531" type="line"/>
+      <point x="228" y="539"/>
+      <point x="223" y="548"/>
+      <point x="223" y="561" type="curve" smooth="yes"/>
+      <point x="223" y="611"/>
+      <point x="263" y="659"/>
+      <point x="305" y="670" type="curve"/>
+      <point x="332" y="659"/>
+      <point x="347" y="632"/>
+    </contour>
+    <component base="period" xOffset="65"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 11:33:42 +0000</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

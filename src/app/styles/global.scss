@@ -3,20 +3,102 @@
 
 @font-face {
   font-family: 'Amiamie';
-  src: url('./fonts/Amiamie-Typeface-main/webfonts/Amiamie-Regular.woff2') format('woff2'),
-       url('./fonts/Amiamie-Typeface-main/webfonts/Amiamie-Regular.woff') format('woff');
+  src: url('/fonts/Amiamie-Typeface-main/webfonts/Amiamie-Regular.woff2') format('woff2'),
+       url('/fonts/Amiamie-Typeface-main/webfonts/Amiamie-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
-
 
 @font-face {
-  font-family: 'Amiamie-Black';
-  src: url('./fonts/Amiamie-Typeface-main/webfonts/Amiamie-Black.woff2') format('woff2'),
-       url('./fonts/Amiamie-Typeface-main/webfonts/Amiamie-Black.woff') format('woff');
+  font-family: 'Amiamie';
+  src: url('/fonts/Amiamie-Typeface-main/webfonts/Amiamie-Italic.woff2') format('woff2'),
+       url('/fonts/Amiamie-Typeface-main/webfonts/Amiamie-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Amiamie Round';
+  src: url('/fonts/Amiamie-Typeface-main/webfonts/Amiamie-RegularRound.woff2') format('woff2'),
+       url('/fonts/Amiamie-Typeface-main/webfonts/Amiamie-RegularRound.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
+
+@font-face {
+  font-family: 'Amiamie Round';
+  src: url('/fonts/Amiamie-Typeface-main/webfonts/Amiamie-ItalicRound.woff2') format('woff2'),
+       url('/fonts/Amiamie-Typeface-main/webfonts/Amiamie-ItalicRound.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Amiamie Black';
+  src: url('/fonts/Amiamie-Typeface-main/webfonts/Amiamie-Black.woff2') format('woff2'),
+       url('/fonts/Amiamie-Typeface-main/webfonts/Amiamie-Black.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Amiamie Black';
+  src: url('/fonts/Amiamie-Typeface-main/webfonts/Amiamie-BlackItalic.woff2') format('woff2'),
+       url('/fonts/Amiamie-Typeface-main/webfonts/Amiamie-BlackItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Adelphe';
+  src: url('/fonts/adelphe-main/webfonts/Adelphe-GerminalRegular.woff2') format('woff2'),
+       url('/fonts/adelphe-main/webfonts/Adelphe-GerminalRegular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Adelphe';
+  src: url('/fonts/adelphe-main/webfonts/Adelphe-GerminalRegularItalic.woff2') format('woff2'),
+       url('/fonts/adelphe-main/webfonts/Adelphe-GerminalRegularItalic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Adelphe';
+  src: url('/fonts/adelphe-main/webfonts/Adelphe-GerminalBold.woff2') format('woff2'),
+       url('/fonts/adelphe-main/webfonts/Adelphe-GerminalBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Adelphe';
+  src: url('/fonts/adelphe-main/webfonts/Adelphe-GerminalBoldItalic.woff2') format('woff2'),
+       url('/fonts/adelphe-main/webfonts/Adelphe-GerminalBoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+
+// @font-face {
+//   font-family: 'Adelphe';
+//   src: url('../fonts/adelphe-main/webfonts/Adelphe-FlorealRegular.woff2') format('woff2'),
+//        url('../fonts/adelphe-main/webfonts/Adelphe-FlorealRegular.woff') format('woff');
+//   font-weight: normal;
+//   font-style: normal;
+// }
 
 @import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap');
 
@@ -34,10 +116,11 @@
 }
 
 $primary-color: #0070f3;
-$font-stack: 'Amiamie', Arial, sans-serif;
+$font-stack: 'Amiamie Round', Arial, sans-serif;
+$font-headings: 'Adelphe', Arial, sans-serif;
 
 body {
-  font-family: "Archivo", serif;
+  font-family: $font-stack;
   font-optical-sizing: auto;
   font-weight: normal;
   font-style: normal;
@@ -45,6 +128,16 @@ body {
     "wdth" 100;
   color: $primary-color;
   background:red;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: $font-headings;
+    font-weight: bold;
+    letter-spacing: 0.02em;
+  }
 }
 
 a {

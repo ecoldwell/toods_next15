@@ -9,6 +9,7 @@ import { PAGE_QUERYResult } from "@/sanity/types";
 import { client } from "@/sanity/lib/client";
 import { createDataAttribute } from "next-sanity";
 import { useOptimistic } from "next-sanity/hooks";
+import Masonry from 'react-masonry-css';
 
 type PageBuilderProps = {
   content: NonNullable<PAGE_QUERYResult>["content"];
@@ -21,6 +22,13 @@ export const createDataAttributeConfig = {
   projectId,
   dataset,
   baseUrl: typeof stega.studioUrl === "string" ? stega.studioUrl : "",
+};
+
+const breakpointColumnsObj = {
+  default: 2,
+  1100: 2,
+  700: 1,
+  500: 1
 };
 
 export function PageBuilder({
@@ -45,7 +53,7 @@ export function PageBuilder({
   }
 
   return (
-    <main className = "masonry-container"
+    <main className = "masonry-container-wrapper"
       data-sanity={createDataAttribute({
         ...createDataAttributeConfig,
         id: documentId,
@@ -53,6 +61,11 @@ export function PageBuilder({
         path: "content",
       }).toString()}
     >
+   <Masonry
+    breakpointCols={breakpointColumnsObj}
+    className="masonry-container"
+    columnClassName="masonry-column"
+  >
       {blocks.map((block) => {
         const DragHandle = ({ children }: { children: React.ReactNode }) => (
           <div className = "masonry-item"
@@ -102,7 +115,9 @@ export function PageBuilder({
             // This is a fallback for when we don't have a block type
             return <div key={block._key}>Block not found: {block._type}</div>;
         }
+        
       })}
+      </Masonry>
     </main>
   );
 }

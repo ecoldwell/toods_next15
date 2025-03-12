@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="daggerdbl" format="2">
+  <advance width="427"/>
+  <unicode hex="2021"/>
+  <outline>
+    <contour>
+      <point x="305" y="566" type="curve"/>
+      <point x="229" y="471" type="line"/>
+      <point x="233" y="352" type="line"/>
+      <point x="250" y="348" type="line"/>
+      <point x="331" y="459" type="line"/>
+      <point x="320" y="566" type="line"/>
+      <point x="374" y="557"/>
+      <point x="414" y="550"/>
+      <point x="459" y="558" type="curve"/>
+      <point x="472" y="572" type="line"/>
+      <point x="469" y="643" type="line"/>
+      <point x="418" y="608"/>
+      <point x="380" y="603"/>
+      <point x="328" y="587" type="curve"/>
+      <point x="355" y="633"/>
+      <point x="382" y="680"/>
+      <point x="399" y="726" type="curve"/>
+      <point x="393" y="744" type="line"/>
+      <point x="317" y="744" type="line"/>
+      <point x="321" y="692"/>
+      <point x="315" y="641"/>
+      <point x="309" y="589" type="curve"/>
+      <point x="278" y="610"/>
+      <point x="240" y="632"/>
+      <point x="209" y="643" type="curve"/>
+      <point x="191" y="637" type="line"/>
+      <point x="154" y="557" type="line"/>
+      <point x="201" y="567"/>
+      <point x="249" y="566"/>
+    </contour>
+    <contour>
+      <point x="178" y="134" type="curve"/>
+      <point x="254" y="229" type="line"/>
+      <point x="250" y="348" type="line"/>
+      <point x="233" y="352" type="line"/>
+      <point x="152" y="241" type="line"/>
+      <point x="163" y="134" type="line"/>
+      <point x="109" y="143"/>
+      <point x="69" y="150"/>
+      <point x="24" y="142" type="curve"/>
+      <point x="11" y="128" type="line"/>
+      <point x="14" y="57" type="line"/>
+      <point x="65" y="92"/>
+      <point x="103" y="97"/>
+      <point x="155" y="113" type="curve"/>
+      <point x="128" y="67"/>
+      <point x="101" y="20"/>
+      <point x="84" y="-26" type="curve"/>
+      <point x="90" y="-44" type="line"/>
+      <point x="166" y="-44" type="line"/>
+      <point x="162" y="8"/>
+      <point x="168" y="59"/>
+      <point x="174" y="111" type="curve"/>
+      <point x="205" y="90"/>
+      <point x="243" y="68"/>
+      <point x="274" y="57" type="curve"/>
+      <point x="292" y="63" type="line"/>
+      <point x="329" y="143" type="line"/>
+      <point x="282" y="133"/>
+      <point x="234" y="134"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-06-22 15:50:49 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>dagger</string>
+      <key>com.schriftgestaltung.Glyphs.rightMetricsKey</key>
+      <string>dagger</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>

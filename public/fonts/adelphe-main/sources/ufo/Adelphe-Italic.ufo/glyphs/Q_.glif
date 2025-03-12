@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="Q" format="2">
+  <advance width="681"/>
+  <unicode hex="0051"/>
+  <anchor x="336" y="0" name="bottom"/>
+  <anchor x="548" y="666" name="top"/>
+  <outline>
+    <contour>
+      <point x="458" y="-160" type="curve"/>
+      <point x="580" y="-168"/>
+      <point x="705" y="-157"/>
+      <point x="823" y="-141" type="curve"/>
+      <point x="822" y="-122" type="line"/>
+      <point x="757" y="-124"/>
+      <point x="618" y="-105"/>
+      <point x="548" y="-95" type="curve"/>
+      <point x="492" y="-69"/>
+      <point x="421" y="-19"/>
+      <point x="370" y="15" type="curve"/>
+      <point x="335" y="7" type="line"/>
+      <point x="375" y="-59"/>
+      <point x="419" y="-118"/>
+    </contour>
+    <component base="O"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.lastChange</key>
+      <string>2022-07-11 11:13:11 +0000</string>
+      <key>com.schriftgestaltung.Glyphs.leftMetricsKey</key>
+      <string>O</string>
+      <key>public.markColor</key>
+      <string>0.04,0.57,0.04,0.5</string>
+    </dict>
+  </lib>
+</glyph>
