@@ -704,12 +704,12 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
-// Query: *[_type == "post" && defined(slug.current)]|order(publishedAt desc)[0...12]{  _id,  title,  slug,  color,  body,  mainImage,  publishedAt,  "categories": coalesce(    categories[]->{      _id,      slug,      title    },    []  ),  author->{    name,    image  }}
+// Query: *[_type == "post" && defined(slug.current)]|order(publishedAt desc)[0...12]{  _id,  title,  slug,  background_color,  body,  mainImage,  publishedAt,  "categories": coalesce(    categories[]->{      _id,      slug,      title    },    []  ),  author->{    name,    image  }}
 export type POSTS_QUERYResult = Array<{
   _id: string;
   title: string | null;
   slug: Slug | null;
-  color: null;
+  background_color: Color | null;
   body: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -1306,7 +1306,7 @@ export type HEADER_MENUResult = {
   } | null;
 } | null;
 // Variable: PAGE_QUERY
-// Query: *[_type == "page"&& slug.current == $slug][0]{     ...,    content[]{      ...,      _type == "faqs" => {        ...,        faqs[]->      },      _type == "featuredPosts" => {        ...,        "posts": posts[]->{          _id,          _type,          title,          slug,          color,          body,          mainImage {            asset->{              _id,              url            }          }        }      }    }      }
+// Query: *[_type == "page"&& slug.current == $slug][0]{     ...,    content[]{      ...,      _type == "faqs" => {        ...,        faqs[]->      },      _type == "featuredPosts" => {        ...,        "posts": posts[]->{          _id,          _type,          title,          slug,          background_color,          body,          mainImage {            asset->{              _id,              url            }          }        }      }    }      }
 export type PAGE_QUERYResult = {
   _id: string;
   _type: "page";
@@ -1366,7 +1366,7 @@ export type PAGE_QUERYResult = {
       _type: "post";
       title: string | null;
       slug: Slug | null;
-      color: null;
+      background_color: Color | null;
       body: Array<{
         children?: Array<{
           marks?: Array<string>;
@@ -1489,7 +1489,7 @@ export type PAGE_QUERYResult = {
   };
 } | null;
 // Variable: HOME_PAGE_QUERY
-// Query: *[_id == "site"][0]{  homePage->{    ...,    content[]{      ...,      _type == "faqs" => {        ...,        faqs[]->      },      _type == "featuredPosts" => {        ...,        "posts": posts[]->{          _id,          _type,          title,          slug,          body,          mainImage {            asset->{              _id,              url            }          }        }      }    }      }}
+// Query: *[_id == "site"][0]{  homePage->{    ...,    content[]{      ...,      _type == "faqs" => {        ...,        faqs[]->      },      _type == "featuredPosts" => {        ...,        "posts": posts[]->{          _id,          _type,          title,          slug,          background_color,          body,          mainImage {            asset->{              _id,              url            }          }        }      }    }      }}
 export type HOME_PAGE_QUERYResult = {
   homePage: null;
 } | {
@@ -1552,6 +1552,7 @@ export type HOME_PAGE_QUERYResult = {
         _type: "post";
         title: string | null;
         slug: Slug | null;
+        background_color: Color | null;
         body: Array<{
           children?: Array<{
             marks?: Array<string>;
@@ -1679,7 +1680,7 @@ export type HOME_PAGE_QUERYResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"post\" && defined(slug.current)]|order(publishedAt desc)[0...12]{\n  _id,\n  title,\n  slug,\n  color,\n  body,\n  mainImage,\n  publishedAt,\n  \"categories\": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  ),\n  author->{\n    name,\n    image\n  }\n}": POSTS_QUERYResult;
+    "*[_type == \"post\" && defined(slug.current)]|order(publishedAt desc)[0...12]{\n  _id,\n  title,\n  slug,\n  background_color,\n  body,\n  mainImage,\n  publishedAt,\n  \"categories\": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  ),\n  author->{\n    name,\n    image\n  }\n}": POSTS_QUERYResult;
     "*[_type == \"post\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": POSTS_SLUGS_QUERYResult;
     "*[_type == \"post\" && slug.current == $slug][0]{\n  _id,\n  title,\n  color,\n  body,\n  mainImage,\n  publishedAt,\n  \"categories\": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  ),\n  author->{\n    name,\n    image\n  },\n  relatedPosts[]{\n    _key, // required for drag and drop\n    ...@->{_id, title, slug} // get fields from the referenced post\n  }\n}": POST_QUERYResult;
     "*[\n  _type == \"media\"\n  && defined(slug.current)\n]{_id, name, slug, date}|order(date desc)": MEDIAHOME_QUERYResult;
@@ -1688,7 +1689,7 @@ declare module "@sanity/client" {
     "*[_type == \"cta\"]{\n  ...,\nlink { \n  ...,\n  internal->{ _type, title, metadata }\n  }\n }": CTA_QUERYResult;
     "*[_type == \"site\"][0]{\n  ...,\n  headerMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n  footerMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n  socialMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n}": SITE_QUERYResult;
     "*[_type == \"site\"][0] {\n    _id,\n    _type,\n    title,\n    headerMenu{\n      _key, // required for drag and drop\n      ...@->{_id, title, slug, items[]{\n        ...,\n        _key,\n        _type,\n        label,\n        external,\n        internal->{ _type, title, metadata, _key, _id, slug },\n        links[] {\n          ...,\n        _key,\n        _type,\n        label,\n        external,\n        internal->{ _type, title, metadata, _key, _id, slug, label },\n        }\n      \n      }} // get fields from the referenced post\n    }\n  }": HEADER_MENUResult;
-    "*[_type == \"page\"&& slug.current == $slug][0]{\n     ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"featuredPosts\" => {\n        ...,\n        \"posts\": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n      }": PAGE_QUERYResult;
-    "*[_id == \"site\"][0]{\n  homePage->{\n    ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"featuredPosts\" => {\n        ...,\n        \"posts\": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n      }\n}": HOME_PAGE_QUERYResult;
+    "*[_type == \"page\"&& slug.current == $slug][0]{\n     ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"featuredPosts\" => {\n        ...,\n        \"posts\": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n      }": PAGE_QUERYResult;
+    "*[_id == \"site\"][0]{\n  homePage->{\n    ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"featuredPosts\" => {\n        ...,\n        \"posts\": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n      }\n}": HOME_PAGE_QUERYResult;
   }
 }

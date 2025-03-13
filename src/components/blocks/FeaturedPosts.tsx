@@ -6,8 +6,12 @@ type FeaturedPostsProps = Extract<
   { _type: "featuredPosts" }
 >;
 
+
 export function FeaturedPosts({ posts = [], title }: FeaturedPostsProps) {
     console.log(posts, "what is the posts"); // Debugging: Check structure
+    const backgroundColor = posts?.map((post, index) => (
+      post.background_color?.hex
+    ))
   
     return (
       <section className="container mx-auto flex flex-col gap-8">
@@ -19,7 +23,7 @@ export function FeaturedPosts({ posts = [], title }: FeaturedPostsProps) {
                 {/* testing out a way to have the dynamic background colour */}
                 <div className="post_title_wrapper">
                   <div className="eclipse"></div>
-                  <h1 className="post_title">
+                  <h1 className="post_title" style={{ background: backgroundColor}}>
                     {post.title}
                  </h1>
                 </div>
