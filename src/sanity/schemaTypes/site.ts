@@ -17,15 +17,15 @@ export const siteSettingsType = defineType({
 			group: 'general',
 			validation: (Rule) => Rule.required(),
 		}),
-		// defineField({
-		// 	name: 'logo',
-		// 	type: 'logo',
-		// 	options: {
-		// 		collapsable: true,
-		// 		collapsed: true,
-		// 	},
-		// 	group: 'general',
-		// }),
+		defineField({
+			name: 'logo',
+			type: 'logo',
+			options: {
+				collapsable: true,
+				collapsed: true,
+			},
+			group: 'general',
+		}),
 		// defineField({
 		// 	name: 'announcements',
 		// 	type: 'array',

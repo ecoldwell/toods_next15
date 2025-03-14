@@ -3,7 +3,7 @@
 }
 .masonry-container {
     display:flex;
-    gap: 10px;
+    gap: 25px;
 }
 .masonry-item {
     padding-top: 4rem; /* might need to change this to nth-child */
@@ -26,7 +26,7 @@
 //     clip-path: ellipse(50% 40% at 50% 50%);
 //     padding: 40px;
 // }
-.homepage_post_container {
+.post_container {
     .post_title_wrapper {
     border-top: 3px solid black;
     border-left: 3px solid black;
@@ -39,16 +39,39 @@
         line-height: 3rem;
         padding: 35px;
         color: black;
-        border-bottom-left-radius: 50%;
         border-radius: 45%;
       }
     }
 }
 
-.homepage_post_image_wrapper {
+.post_image_wrapper {
     border: 3px solid black;
     img {
-        border-radius: 50%;
+        border-radius: 45%;
+    }
+}
+
+.post_text_wrapper {
+    border: 3px solid;
+    border-top:0px solid;
+    padding:35px;
+}
+
+// HERO STYLES
+
+.hero_wrapper {
+    position:relative;
+    text-align:center;
+    .hero_content {
+        position: absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+        padding: 35px;
+        h1 {
+            line-height: 1.1;
+        }
     }
 }
 

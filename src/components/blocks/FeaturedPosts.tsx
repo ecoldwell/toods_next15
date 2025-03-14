@@ -17,7 +17,7 @@ export function FeaturedPosts({ posts = [], title }: FeaturedPostsProps) {
       <section className="container mx-auto flex flex-col gap-8">
   
         {posts.length > 0 ? (
-          <div className="homepage_post_container">
+          <div className="post_container">
             {posts.map((post, index) => (
               <div key={post._id || `post-${index}`} className="flex flex-col">
                 {/* testing out a way to have the dynamic background colour */}
@@ -31,7 +31,7 @@ export function FeaturedPosts({ posts = [], title }: FeaturedPostsProps) {
                 {/* {post.slug?.current && (
                   <p className="text-lg text-slate-600">/{post.slug.current}</p>
                 )} */}
-                <div className="homepage_post_image_wrapper">
+                <div className="post_image_wrapper">
                 {post.mainImage?.asset?.url && (
                   <img
                     src={post.mainImage.asset.url}
@@ -41,7 +41,7 @@ export function FeaturedPosts({ posts = [], title }: FeaturedPostsProps) {
                 )}
                 </div>
                 {post.body ? (
-                        <div className="lg:col-span-7 lg:col-start-6 prose lg:prose-lg">
+                        <div className="lg:col-span-7 lg:col-start-6 prose lg:prose-lg post_text_wrapper">
                           <PortableText value={post.body} />
                         </div>
                       ): null }

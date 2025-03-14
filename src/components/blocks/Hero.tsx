@@ -11,10 +11,10 @@ type HeroProps = Extract<
 
 export function Hero({ title, text, image }: HeroProps) {
   return (
-    <section className="isolate w-full aspect-[2/1] py-16 relative overflow-hidden">
-      <div className="relative flex flex-col justify-center items-center gap-8 h-full z-20">
+    <section className="hero_wrapper post_image_wrapper">
+      <div className="flex flex-col justify-center z-20 hero_content">
         {title ? (
-          <h1 className="text-2xl md:text-4xl lg:text-6xl font-semibold text-white text-pretty max-w-3xl">
+          <h1 className="text-2xl md:text-4xl lg:text-6xl font-semibold text-pretty max-w-3xl">
             {title}
           </h1>
         ) : null}
@@ -22,16 +22,17 @@ export function Hero({ title, text, image }: HeroProps) {
           {text ? <PortableText value={text} /> : null}
         </div>
       </div>
-      <div className="circle" />
+      <div className="post_image_wrapper_no_border">
       {image ? (
         <Image
-          className="absolute inset-0 object-cover blur-sm"
-          src={urlFor(image).width(1600).height(800).url()}
+          className="w-full h-auto rounded-lg"
+          src={urlFor(image).width(1600).height(1200).url()}
           width={1600}
-          height={800}
+          height={1200}
           alt=""
         />
       ) : null}
+      </div>
     </section>
   );
 }

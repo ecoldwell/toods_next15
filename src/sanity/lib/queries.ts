@@ -230,3 +230,25 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "site"][0]{
     }
       }
 }`);
+
+export const LOGO_QUERY = 
+defineQuery(`*[_id == "site"] {
+  ...,
+  logo {
+  type,
+  name,
+ "default": image.default.asset->{
+      _id,
+      url
+    },
+    "light": image.light.asset->{
+      _id,
+      url
+    },
+    "dark": image.dark.asset->{
+      _id,
+      url
+    }
+
+}
+}`)

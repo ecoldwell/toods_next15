@@ -22,7 +22,9 @@ import { faqsType } from "./blocks/faqsType";
 import { featuresType } from "./blocks/featuresType";
 import { heroType } from "./blocks/heroType";
 import { splitImageType } from "./blocks/splitImageType";
-import { featuredPosts } from './blocks/featuredPosts'
+import { featuredPosts } from './blocks/featuredPosts';
+import logo from './documents/logo'
+
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -37,6 +39,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     siteSettingsType, 
     cta, 
     metadata, 
+    logo,
     
     mediaType, 
     artistType, 
