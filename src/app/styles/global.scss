@@ -127,7 +127,12 @@ body {
   font-variation-settings:
     "wdth" 100;
   color: $primary-color;
-  background:red;
+  // background:red;
+  section {
+    max-width:1500px;
+    margin: 0 auto;
+    // CHECK THIS WITH DESIGN
+  }
   h1,
   h2,
   h3,

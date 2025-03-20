@@ -6,16 +6,10 @@ export function Header() {
   return (
     <div className="header_wrapper">
       <header className="og_header">
-      <LogoHeader></LogoHeader>
-        {/* <Link
-          className="text-pink-700 md:text-xl font-bold tracking-tight"
-          href="/"
-        >
-          Toodinator
-        </Link> */}
+        <LogoHeader></LogoHeader>
         <Navigation></Navigation>
-
-        <ul className="flex items-center gap-4 font-semibold text-slate-700">
+      </header>
+      <ul className="flex items-center gap-4 font-semibold text-slate-700">
           <li>
             <Link
               className="hover:text-pink-500 transition-colors"
@@ -33,7 +27,6 @@ export function Header() {
             </Link>
           </li>
         </ul>
-      </header>
     </div>
   )
 }

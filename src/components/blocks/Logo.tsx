@@ -13,7 +13,7 @@ type LogoProps = {
         {/* {name && <h2 className="text-lg font-semibold">{name}</h2>} */}
         {defaultLogo && (
           <Image src={defaultLogo} alt={`${name} - Default`} className="h-auto" 
-          width={400}
+          width={200}
           height={400}/>
         )}
         {/* {light && (
