@@ -1,18 +1,20 @@
 import Link from 'next/link'
 import Navigation from './LinkList'
-import { Logo } from './blocks/Logo'
+import LogoHeader from './DesktopLogo'
+
 export function Header() {
   return (
-    <div className="from-pink-50 to-white bg-gradient-to-b p-6">
+    <div className="header_wrapper">
       <header className="og_header">
-        <Link
+      <LogoHeader></LogoHeader>
+        {/* <Link
           className="text-pink-700 md:text-xl font-bold tracking-tight"
           href="/"
         >
           Toodinator
-        </Link>
+        </Link> */}
         <Navigation></Navigation>
-        <Logo></Logo>
+
         <ul className="flex items-center gap-4 font-semibold text-slate-700">
           <li>
             <Link

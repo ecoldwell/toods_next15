@@ -232,12 +232,10 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "site"][0]{
 }`);
 
 export const LOGO_QUERY = 
-defineQuery(`*[_id == "site"] {
-  ...,
+defineQuery(`*[_id == "site"][0] {
   logo {
-  type,
-  name,
- "default": image.default.asset->{
+    name,
+    "default": image.default.asset->{
       _id,
       url
     },
@@ -249,6 +247,5 @@ defineQuery(`*[_id == "site"] {
       _id,
       url
     }
-
-}
+  }
 }`)
