@@ -22,10 +22,10 @@ if (!logos?.logo) {
     <nav>
       <Link href="/">
       <Logo 
-        name={logos.logo.name}
         default={logos.logo.default?.url}
-        light={logos.logo.light?.url}
-        dark={logos.logo.dark?.url}
+        // removing this feature for now
+        // light={logos.logo.light?.url}
+        // dark={logos.logo.dark?.url}
       />
       </Link>
 

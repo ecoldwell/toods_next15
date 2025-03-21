@@ -21,7 +21,6 @@ export const siteSettingsType = defineType({
 			name: 'logo',
 			type: 'logo',
 			options: {
-				collapsable: true,
 				collapsed: true,
 			},
 			group: 'general',

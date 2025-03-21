@@ -5,7 +5,14 @@ import Link from "next/link";
 import { stegaClean } from 'next-sanity'
 import { ChevronDown } from "lucide-react";
 
-const getInternalLink = (internal) => {
+type InternalLink = {
+  _type: string;
+  slug?: { current?: string };
+  id?: string;
+  _id?: string;
+};
+
+const getInternalLink = (internal: InternalLink): string => {
   console.log("Internal Link Data:", internal); // Debugging output
 
   if (!internal || !internal._type) return "#"; // Prevent errors
@@ -28,8 +35,23 @@ const getInternalLink = (internal) => {
   }
 };
 
+type MenuItem = {
+  _key: string;
+  label?: string;
+  type?: "internal" | "external";
+  internal?: InternalLink;  // Reuse the InternalLink type
+  external?: string;
+  _type?: "link" | "link.list";
+  links?: MenuItem[];       // For dropdowns
+  link?: {                  // Add the missing link property
+    label?: string;
+    internal?: InternalLink;
+    external?: string;
+  };
+};
 
-export const Menu = ({ menuItems }) => {
+
+export const Menu = ({ menuItems }: { menuItems: MenuItem[] }) => {
   return (
     <nav className="bg-white shadow-md p-4">
       <ul className="flex gap-6">
@@ -59,21 +81,26 @@ export const Menu = ({ menuItems }) => {
 };
 
 /** Dropdown Component */
-const DropdownMenu = ({ item }) => {
+const DropdownMenu = ({ item }: { item: MenuItem }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  console.log("Dropdown item:", item); // Debug to confirm structure
 
   return (
     <div className="relative">
       <button
         className="flex items-center gap-2 text-gray-800 font-semibold hover:text-blue-600"
         onClick={() => setIsOpen(!isOpen)}
+        key={item._key}
       >
-        {item.link.label} <ChevronDown className="w-4 h-4" />
+        {/* Use the label from item.link.label */}
+        {item.link?.label || "Menu"}  
+        <ChevronDown className="w-4 h-4" />
       </button>
 
       {isOpen && (
         <ul className="absolute left-0 mt-2 w-48 bg-white border shadow-lg rounded-lg overflow-hidden">
-          {item.links.map((subItem) => (
+          {item.links?.map((subItem) => (
             <li key={subItem._key} className="border-b last:border-none">
               {subItem.type === "internal" && subItem.internal ? (
                 <Link href={getInternalLink(subItem.internal)} className="block px-4 py-2 hover:bg-gray-100">
@@ -91,4 +118,3 @@ const DropdownMenu = ({ item }) => {
     </div>
   );
 };
-

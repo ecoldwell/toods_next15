@@ -113,7 +113,7 @@ export function PageBuilder({
               );
           default:
             // This is a fallback for when we don't have a block type
-            return <div key={block._key}>Block not found: {block._type}</div>;
+            // return <div key={block._key}>Block not found: {block._type}</div>;
         }
         
       })}

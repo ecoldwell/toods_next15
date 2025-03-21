@@ -1,14 +1,14 @@
 .masonry-container-wrapper {
     padding: 0 2.5rem;
     .masonry-item {
-        padding-top: 4rem; /* might need to change this to nth-child */
+        margin-top: 4rem; /* might need to change this to nth-child */
     }
 
 .masonry-container {
     display:flex;
     gap: 25px;
     div:nth-child(1) {
-        padding-top:0rem;
+        margin-top:0rem;
     }
 }
 }
