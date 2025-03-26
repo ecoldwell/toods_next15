@@ -438,6 +438,7 @@ export type LinkList = {
 export type Link = {
   _type: "link";
   label?: string;
+  background_color?: Color;
   type?: "internal" | "external";
   internal?: {
     _ref: string;
@@ -1014,6 +1015,7 @@ export type NAV_QUERYResult = Array<{
     link: {
       _type: "link";
       label?: string;
+      background_color?: Color;
       type?: "external" | "internal";
       internal: {
         _type: "category";
@@ -1038,6 +1040,7 @@ export type NAV_QUERYResult = Array<{
       _key: string;
       _type: "link";
       label?: string;
+      background_color?: Color;
       type?: "external" | "internal";
       internal: {
         _type: "category";
@@ -1063,6 +1066,7 @@ export type NAV_QUERYResult = Array<{
     _key: string;
     _type: "link";
     label?: string;
+    background_color?: Color;
     type?: "external" | "internal";
     internal: {
       _type: "category";
@@ -1148,6 +1152,7 @@ export type SITE_QUERYResult = {
       link: {
         _type: "link";
         label?: string;
+        background_color?: Color;
         type?: "external" | "internal";
         internal: {
           _type: "category";
@@ -1172,6 +1177,7 @@ export type SITE_QUERYResult = {
         _key: string;
         _type: "link";
         label?: string;
+        background_color?: Color;
         type?: "external" | "internal";
         internal: {
           _type: "category";
@@ -1197,6 +1203,7 @@ export type SITE_QUERYResult = {
       _key: string;
       _type: "link";
       label?: string;
+      background_color?: Color;
       type?: "external" | "internal";
       internal: {
         _type: "category";
@@ -1228,6 +1235,7 @@ export type SITE_QUERYResult = {
       link: {
         _type: "link";
         label?: string;
+        background_color?: Color;
         type?: "external" | "internal";
         internal: {
           _type: "category";
@@ -1252,6 +1260,7 @@ export type SITE_QUERYResult = {
         _key: string;
         _type: "link";
         label?: string;
+        background_color?: Color;
         type?: "external" | "internal";
         internal: {
           _type: "category";
@@ -1277,6 +1286,7 @@ export type SITE_QUERYResult = {
       _key: string;
       _type: "link";
       label?: string;
+      background_color?: Color;
       type?: "external" | "internal";
       internal: {
         _type: "category";
@@ -1344,7 +1354,7 @@ export type SITE_QUERYResult = {
   socialMenu: null;
 } | null;
 // Variable: HEADER_MENU
-// Query: *[_type == "site"][0] {    _id,    _type,    title,    headerMenu{      _key, // required for drag and drop      ...@->{_id, title, slug, items[]{        ...,        _key,        _type,        label,        external,        internal->{ _type, title, metadata, _key, _id, slug },        links[] {          ...,        _key,        _type,        label,        external,        internal->{ _type, title, metadata, _key, _id, slug, label },        }            }} // get fields from the referenced post    }  }
+// Query: *[_type == "site"][0] {    _id,    _type,    title,    headerMenu{      _key, // required for drag and drop      ...@->{_id, title, slug, items[]{        ...,        _key,        _type,        label,        background_color,        external,        internal->{ _type, title, metadata, _key, _id, slug },        links[] {          ...,        _key,        _type,        label,        background_color,        external,        internal->{ _type, title, metadata, _key, _id, slug, label },        }            }} // get fields from the referenced post    }  }
 export type HEADER_MENUResult = {
   _id: string;
   _type: "site";
@@ -1362,6 +1372,7 @@ export type HEADER_MENUResult = {
         _key: string;
         _type: "link";
         label: string | null;
+        background_color: Color | null;
         type?: "external" | "internal";
         internal: {
           _type: "category";
@@ -1392,12 +1403,14 @@ export type HEADER_MENUResult = {
         params?: string;
       }> | null;
       label: null;
+      background_color: null;
       external: null;
       internal: null;
     } | {
       _key: string;
       _type: "link";
       label: string | null;
+      background_color: Color | null;
       type?: "external" | "internal";
       internal: {
         _type: "category";
@@ -1831,7 +1844,7 @@ declare module "@sanity/client" {
     "*[_type == \"navigation\"]{\n title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    }\n}": NAV_QUERYResult;
     "*[_type == \"cta\"]{\n  ...,\nlink { \n  ...,\n  internal->{ _type, title, metadata }\n  }\n }": CTA_QUERYResult;
     "*[_type == \"site\"][0]{\n  ...,\n  headerMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n  footerMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n  socialMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n}": SITE_QUERYResult;
-    "*[_type == \"site\"][0] {\n    _id,\n    _type,\n    title,\n    headerMenu{\n      _key, // required for drag and drop\n      ...@->{_id, title, slug, items[]{\n        ...,\n        _key,\n        _type,\n        label,\n        external,\n        internal->{ _type, title, metadata, _key, _id, slug },\n        links[] {\n          ...,\n        _key,\n        _type,\n        label,\n        external,\n        internal->{ _type, title, metadata, _key, _id, slug, label },\n        }\n      \n      }} // get fields from the referenced post\n    }\n  }": HEADER_MENUResult;
+    "*[_type == \"site\"][0] {\n    _id,\n    _type,\n    title,\n    headerMenu{\n      _key, // required for drag and drop\n      ...@->{_id, title, slug, items[]{\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{ _type, title, metadata, _key, _id, slug },\n        links[] {\n          ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{ _type, title, metadata, _key, _id, slug, label },\n        }\n      \n      }} // get fields from the referenced post\n    }\n  }": HEADER_MENUResult;
     "*[_type == \"page\"&& slug.current == $slug][0]{\n     ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"featuredPosts\" => {\n        ...,\n        \"posts\": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n      }": PAGE_QUERYResult;
     "*[_id == \"site\"][0]{\n  homePage->{\n    ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"featuredPosts\" => {\n        ...,\n        \"posts\": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n      }\n}": HOME_PAGE_QUERYResult;
     "*[_id == \"site\"][0] {\n  logo {\n    name,\n    \"default\": image.default.asset->{\n      _id,\n      url\n    },\n    \"light\": image.light.asset->{\n      _id,\n      url\n    },\n    \"dark\": image.dark.asset->{\n      _id,\n      url\n    }\n  }\n}": LOGO_QUERYResult;

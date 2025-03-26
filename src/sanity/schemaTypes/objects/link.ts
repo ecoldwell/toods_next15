@@ -14,6 +14,11 @@ export default defineType({
 
 		}),
 		defineField({
+			name: 'background_color',
+			title: 'Background For Title',
+			type: 'color',
+		}),
+		defineField({
 			name: 'type',
 			type: 'string',
 			options: {

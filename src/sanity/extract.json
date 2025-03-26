@@ -2634,6 +2634,14 @@
           },
           "optional": true
         },
+        "background_color": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "color"
+          },
+          "optional": true
+        },
         "type": {
           "type": "objectAttribute",
           "value": {

@@ -156,6 +156,7 @@ export const HEADER_MENU =
         _key,
         _type,
         label,
+        background_color,
         external,
         internal->{ _type, title, metadata, _key, _id, slug },
         links[] {
@@ -163,6 +164,7 @@ export const HEADER_MENU =
         _key,
         _type,
         label,
+        background_color,
         external,
         internal->{ _type, title, metadata, _key, _id, slug, label },
         }
