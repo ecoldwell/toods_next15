@@ -54,8 +54,8 @@ type MenuItem = {
 
 export const Menu = ({ menuItems }: { menuItems: MenuItem[] }) => {
   return (
-    <nav className="bg-white shadow-md p-4">
-      <ul className="flex gap-6">
+    <nav className="">
+      <ul className="flex header_navigation">
         {menuItems.map((item) => {
           console.log("Menu item:", item);  // Debug output
 
@@ -66,14 +66,15 @@ export const Menu = ({ menuItems }: { menuItems: MenuItem[] }) => {
             item.link?.background_color?.hex || "#fff";        // From link fallback
 
           return (
-            <li key={item._key} className="relative">
-              
+            <li key={item._key} className="nav_item">
+              {/* testing position absolite with styling background */}
+              <div style={{ background: linkBackground }} className="nav_link_feature_color"></div>
               {/* Internal Link */}
               {item.type === "internal" && item.internal ? (
                 <Link 
                   href={getInternalLink(item.internal)} 
-                  style={{ background: linkBackground }}
-                  className="text-blue-600 hover:underline p-2 rounded"
+                  // style={{ background: linkBackground }}
+                  className="text-white hover:underline p-2 rounded"
                 >
                   {item.label}
                 </Link>
@@ -109,7 +110,7 @@ const DropdownMenu = ({ item }: { item: MenuItem }) => {
   console.log("Dropdown item:", item); // Debug to confirm structure
 
   return (
-    <div className="relative">
+    <div className="dropdown_wrapper">
       <button
         className="flex items-center gap-2 text-gray-800 font-semibold hover:text-blue-600"
         onClick={() => setIsOpen(!isOpen)}
@@ -122,9 +123,9 @@ const DropdownMenu = ({ item }: { item: MenuItem }) => {
       {isOpen && (
         <ul className="absolute left-0 mt-2 w-48 bg-white border shadow-lg rounded-lg overflow-hidden">
           {item.links?.map((subItem) => (
-            <li key={subItem._key} className="border-b last:border-none">
+            <li key={subItem._key} className="border-b last:border-none link_title_wraper">
               {subItem.type === "internal" && subItem.internal ? (
-                <Link href={getInternalLink(subItem.internal)} className="block px-4 py-2 hover:bg-gray-100">
+                <Link href={getInternalLink(subItem.internal)} className="block px-4 py-2 hover:bg-gray-100 link_title">
                   {subItem.label}
                 </Link>
               ) : (

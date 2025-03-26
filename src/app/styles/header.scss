@@ -6,3 +6,32 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.header_navigation {
+    .nav_item {
+        position:relative;
+        padding:15px;
+        border-top:3px solid #333;
+        border-left:3px solid #333;
+        border-bottom:3px solid #333;
+        &:last-child {
+            border-right: 3px solid #333;
+        }
+        a {
+            position: relative;
+            font-family: 'Amiamie Round';
+            font-style: italic;
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+        }
+    }
+    .nav_link_feature_color {
+        position: absolute;
+        top:0;
+        bottom:0;
+        right:0;
+        left:0;
+        border-radius: 45%;
+
+    }
+}
