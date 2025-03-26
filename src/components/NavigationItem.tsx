@@ -10,7 +10,8 @@ type InternalLink = {
   slug?: { current?: string };
   id?: string;
   _id?: string;
-  background_color?: { hex?: string };  // Add background_color property
+  background_color?: { hex?: string };
+  text_color?: { hex?: string };
 };
 
 const getInternalLink = (internal: InternalLink): string => {
@@ -39,17 +40,19 @@ type MenuItem = {
   _key: string;
   label?: string;
   type?: "internal" | "external";
-  internal?: InternalLink;  // Reuse the InternalLink type
+  internal?: InternalLink;
   external?: string;
   _type?: "link" | "link.list";
-  links?: MenuItem[];       
-  link?: {                  
+  links?: MenuItem[];
+  link?: {
     label?: string;
     internal?: InternalLink;
     external?: string;
-    background_color?: { hex?: string }; 
+    background_color?: { hex?: string };
+    text_color?: { hex?: string };
   };
-  background_color?: { hex?: string };  // Add background_color here
+  background_color?: { hex?: string };
+  text_color?: { hex?: string };
 };
 
 export const Menu = ({ menuItems }: { menuItems: MenuItem[] }) => {
@@ -57,41 +60,39 @@ export const Menu = ({ menuItems }: { menuItems: MenuItem[] }) => {
     <nav className="">
       <ul className="flex header_navigation">
         {menuItems.map((item) => {
-          console.log("Menu item:", item);  // Debug output
-
-          // Try to access background color from multiple sources safely
           const linkBackground = 
-            item.background_color?.hex ||                      // Directly on item
-            item.internal?.background_color?.hex ||            // From internal link
-            item.link?.background_color?.hex || "#fff";        // From link fallback
+            item.background_color?.hex ||                      
+            item.internal?.background_color?.hex ||            
+            item.link?.background_color?.hex || "#fff";        
+
+          const textColor = 
+            item.text_color?.hex || 
+            item.internal?.text_color?.hex || 
+            item.link?.text_color?.hex || "#000";
 
           return (
             <li key={item._key} className="nav_item">
-              {/* testing position absolite with styling background */}
               <div style={{ background: linkBackground }} className="nav_link_feature_color"></div>
-              {/* Internal Link */}
               {item.type === "internal" && item.internal ? (
                 <Link 
                   href={getInternalLink(item.internal)} 
-                  // style={{ background: linkBackground }}
-                  className="text-white hover:underline p-2 rounded"
+                  className="hover:underline p-2 rounded"
+                  style={{ color: textColor }}
                 >
                   {item.label}
                 </Link>
               ) : 
-              /* External Link */
               item.type === "external" && item.external ? (
                 <a 
                   href={item.external} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  style={{ background: linkBackground }}
-                  className="text-green-600 hover:underline p-2 rounded"
+                  className="hover:underline p-2 rounded"
+                  style={{ color: textColor }}
                 >
                   {item.label}
                 </a>
               ) : 
-              /* Dropdown (Link List) */
               item._type === "link.list" ? (
                 <DropdownMenu item={item} />
               ) : null}
@@ -106,18 +107,23 @@ export const Menu = ({ menuItems }: { menuItems: MenuItem[] }) => {
 /** Dropdown Component */
 const DropdownMenu = ({ item }: { item: MenuItem }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const textColor = 
+    item.text_color?.hex || 
+    item.internal?.text_color?.hex || 
+    item.link?.text_color?.hex || "#000";
 
   console.log("Dropdown item:", item); // Debug to confirm structure
 
   return (
     <div className="dropdown_wrapper">
       <button
-        className="flex items-center gap-2 text-gray-800 font-semibold hover:text-blue-600"
+        className="flex items-center"
         onClick={() => setIsOpen(!isOpen)}
         key={item._key}
+        style={{ color: textColor }}
       >
         {item.link?.label || "Menu"}  
-        <ChevronDown className="w-4 h-4" />
+     
       </button>
 
       {isOpen && (
@@ -125,11 +131,19 @@ const DropdownMenu = ({ item }: { item: MenuItem }) => {
           {item.links?.map((subItem) => (
             <li key={subItem._key} className="border-b last:border-none link_title_wraper">
               {subItem.type === "internal" && subItem.internal ? (
-                <Link href={getInternalLink(subItem.internal)} className="block px-4 py-2 hover:bg-gray-100 link_title">
+                <Link 
+                  href={getInternalLink(subItem.internal)} 
+                  className="block px-4 py-2 hover:bg-gray-100 link_title" 
+                  style={{ color: textColor }}
+                >
                   {subItem.label}
                 </Link>
               ) : (
-                <a href={subItem.external} className="block px-4 py-2 hover:bg-gray-100">
+                <a 
+                  href={subItem.external} 
+                  className="block px-4 py-2 hover:bg-gray-100" 
+                  style={{ color: textColor }}
+                >
                   {subItem.label}
                 </a>
               )}

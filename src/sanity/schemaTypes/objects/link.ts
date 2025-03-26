@@ -19,6 +19,12 @@ export default defineType({
 			type: 'color',
 		}),
 		defineField({
+			name: 'text_color',
+			title: 'Text Color',
+			type: 'color',
+			description: 'Color for link text',
+		}),
+		defineField({
 			name: 'type',
 			type: 'string',
 			options: {

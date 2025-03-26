@@ -23,6 +23,12 @@ export default defineType({
 			type: 'array',
 			of: [{ type: 'link' }, { type: 'link.list' }],
 		}),
+		defineField({
+			name: 'textColor',
+			title: 'Text Color',
+			type: 'color',
+			description: 'Color for navigation text',
+		}),
 	],
 	preview: {
 		select: {
