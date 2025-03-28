@@ -7,12 +7,6 @@ interface Event {
   name: string;
   slug: { current: string };
   date: string;
-  headline: {
-    name: string;
-  };
-  venue: {
-    name: string;
-  };
 }
 
 export default async function EventsPage() {
@@ -22,7 +16,7 @@ export default async function EventsPage() {
     <section className="container mx-auto grid grid-cols-1 gap-6 p-12">
       <h1 className="text-4xl font-bold">Upcoming Events</h1>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {events?.map((event: Event) => (
+        {events?.map((event) => (
           <Link
             key={event._id}
             href={`/events/${event.slug.current}`}
@@ -34,12 +28,6 @@ export default async function EventsPage() {
                 {new Date(event.date).toLocaleDateString()}
               </p>
               <p className="text-xl font-bold text-white sm:text-2xl">{event.name}</p>
-              {event.headline && (
-                <p className="mt-2 text-sm text-white/80">with {event.headline.name}</p>
-              )}
-              {event.venue && (
-                <p className="mt-1 text-sm text-white/60">at {event.venue.name}</p>
-              )}
             </div>
           </Link>
         ))}
