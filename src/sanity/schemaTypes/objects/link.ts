@@ -38,7 +38,7 @@ export default defineType({
 		defineField({
 			name: 'internal',
 			type: 'reference',
-			to: [{ type: 'post' }, { type: 'category' }, {type: 'media'}],
+			to: [{ type: 'post' }, { type: 'category' }, { type: 'event' }],
 			hidden: ({ parent }) => parent?.type !== 'internal',
 		}),
 		defineField({
@@ -65,14 +65,15 @@ export default defineType({
 			label: 'label',
 			_type: 'internal._type',
 			title: 'internal.title',
-			slug: 'internal.metadata.slug.current',
+			slug: 'internal.slug.current',
 			external: 'external',
 			params: 'params',
 		},
 		prepare: ({ label, _type, title, slug, external, params }) => ({
 			title: label || title,
 			subtitle: [
-				_type === 'posts.post' ? '/posts' : null,
+				_type === 'post' ? '/posts' : null,
+				_type === 'event' ? '/events' : null,
 				external || (slug && (slug === 'index' ? '/' : `/${slug}`)),
 				params,
 			]

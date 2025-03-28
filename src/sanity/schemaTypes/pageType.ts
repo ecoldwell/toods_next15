@@ -16,11 +16,31 @@ export const pageType = defineType({
       type: "slug",
       options: {
         source: "title",
+        maxLength: 96,
       },
     }),
     defineField({
       name: "content",
-      type: "pageBuilder",
+      type: "array",
+      of: [{ type: 'block' }],
+    }),
+    defineField({
+      name: "excerpt",
+      type: "text",
+    }),
+    defineField({
+      name: "coverImage",
+      type: "image",
+    }),
+    defineField({
+      name: "upcomingEvents",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "event" }],
+        },
+      ],
     }),
     defineField({
       name: "mainImage",
