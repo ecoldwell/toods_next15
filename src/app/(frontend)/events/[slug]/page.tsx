@@ -3,7 +3,7 @@ import { sanityFetch } from "@/sanity/lib/live";
 import imageUrlBuilder from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { defineQuery, PortableText } from "next-sanity";
-import {MEDIA_QUERY} from '@/sanity/lib/queries'
+import { EVENT_QUERY } from '@/sanity/lib/queries'
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -28,11 +28,11 @@ const urlFor = (source: SanityImageSource) =>
 export default async function EventPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }) {
   const { data: event } = await sanityFetch({
-    query: MEDIA_QUERY,
-    params: await params,
+    query: EVENT_QUERY,
+    params,
   });
   if (!event) {
     notFound();
@@ -60,7 +60,7 @@ export default async function EventPage({
   return (
     <main className="container mx-auto grid gap-12 p-12">
       <div className="mb-4">
-        <Link href="/">← Back to events</Link>
+        <Link href="/events">← Back to events</Link>
       </div>
       <div className="grid items-top gap-12 sm:grid-cols-2">
         <Image

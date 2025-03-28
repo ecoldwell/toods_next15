@@ -10,12 +10,20 @@ export const structure: StructureResolver = (S) =>
         .title('Upcoming Events')
         .schemaType('event')
         .icon(CalendarIcon)
-        .child(S.documentList().title('Upcoming Events').filter('date >= now()')),
+        .child(
+          S.documentList()
+            .title('Upcoming Events')
+            .filter('_type == "event" && date >= now()')
+        ),
       S.listItem()
         .title('Past Events')
         .schemaType('event')
         .icon(CalendarIcon)
-        .child(S.documentList().title('Past Events').filter('date < now()')),
+        .child(
+          S.documentList()
+            .title('Past Events')
+            .filter('_type == "event" && date < now()')
+        ),
       S.divider(),
       S.documentTypeListItem('artist').title('Artists').icon(UsersIcon),
       S.documentTypeListItem('venue').title('Venues').icon(PinIcon),
