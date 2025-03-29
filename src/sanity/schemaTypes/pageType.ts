@@ -21,26 +21,7 @@ export const pageType = defineType({
     }),
     defineField({
       name: "content",
-      type: "array",
-      of: [{ type: 'block' }],
-    }),
-    defineField({
-      name: "excerpt",
-      type: "text",
-    }),
-    defineField({
-      name: "coverImage",
-      type: "image",
-    }),
-    defineField({
-      name: "upcomingEvents",
-      type: "array",
-      of: [
-        {
-          type: "reference",
-          to: [{ type: "event" }],
-        },
-      ],
+      type: "pageBuilder",
     }),
     defineField({
       name: "mainImage",
