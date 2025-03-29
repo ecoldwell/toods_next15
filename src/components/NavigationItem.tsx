@@ -25,7 +25,7 @@ const getInternalLink = (internal: InternalLink): string => {
   switch (internal._type) {
     case "post":
       return `/posts/${slug}`;
-    case "media":
+    case "event":
       return `/events/${slug}`;
     case "page":
       return `/page/${slug}`;

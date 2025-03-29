@@ -65,7 +65,7 @@ export default defineType({
 			label: 'label',
 			_type: 'internal._type',
 			title: 'internal.title',
-			slug: 'internal.slug.current',
+			slug: 'internal.metadata.slug.current',
 			external: 'external',
 			params: 'params',
 		},
@@ -73,7 +73,7 @@ export default defineType({
 			title: label || title,
 			subtitle: [
 				_type === 'post' ? '/posts' : null,
-				_type === 'event' ? '/events' : null,
+				// _type === 'event' ? '/events' : null,
 				external || (slug && (slug === 'index' ? '/' : `/${slug}`)),
 				params,
 			]
