@@ -17,10 +17,10 @@ type InternalLink = {
 const getInternalLink = (internal: InternalLink): string => {
   console.log("Internal Link Data:", internal); // Debugging output
 
-  if (!internal || !internal._type) return "#"; // Prevent errors
+  if (!internal || !internal._type) return "#";
 
   const slug = internal.slug?.current || internal.id || internal._id;
-  if (!slug) return "#"; // If no valid identifier, return "#"
+  if (!slug) return "#";
 
   switch (internal._type) {
     case "post":
@@ -31,8 +31,21 @@ const getInternalLink = (internal: InternalLink): string => {
       return `/page/${slug}`;
     case "category":
       return `/category/${slug}`;
+    case "artist":
+      return `/artists/${slug}`;
+    case "platform":
+      return `/platforms/${slug}`;
+    case "synchronization":
+      return `/synchronizations/${slug}`;
+    // Add base routes for content types
+    case "artists":
+      return `/artists`;
+    case "platforms":
+      return `/platforms`;
+    case "synchronizations":
+      return `/synchronizations`;
     default:
-      return "#"; // Fallback if type is unknown
+      return "#";
   }
 };
 

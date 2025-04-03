@@ -166,7 +166,7 @@ export const HEADER_MENU =
     _type,
     title,
     headerMenu{
-      _key, // required for drag and drop
+      _key,
       ...@->{_id, title, slug, items[]{
         ...,
         _key,
@@ -174,18 +174,34 @@ export const HEADER_MENU =
         label,
         background_color,
         external,
-        internal->{ _type, title, metadata, _key, _id, slug },
+        internal->{ 
+          _type, 
+          title, 
+          name,  // Added for artist name
+          metadata, 
+          _key, 
+          _id, 
+          slug 
+        },
         links[] {
           ...,
-        _key,
-        _type,
-        label,
-        background_color,
-        external,
-        internal->{ _type, title, metadata, _key, _id, slug, label },
+          _key,
+          _type,
+          label,
+          background_color,
+          external,
+          internal->{ 
+            _type, 
+            title,
+            name,  // Added for artist name 
+            metadata, 
+            _key, 
+            _id, 
+            slug, 
+            label 
+          }
         }
-      
-      }} // get fields from the referenced post
+      }}
     }
   }`)
 export const PAGE_QUERY =
