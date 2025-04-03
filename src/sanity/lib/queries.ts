@@ -267,3 +267,98 @@ defineQuery(`*[_id == "site"][0] {
     }
   }
 }`)
+
+export const artistsQuery = defineQuery(groq`
+  *[_type == "artist"] | order(publishedAt desc) {
+    _id,
+    name,
+    slug,
+    mainImage,
+    publishedAt,
+    categories[]->
+  }
+`)
+
+export const artistQuery = defineQuery(groq`
+  *[_type == "artist" && slug.current == $slug][0] {
+    _id,
+    name,
+    mainImage,
+    body,
+    publishedAt,
+    categories[]->,
+    "relatedArtists": relatedArtists[]->{ name, slug }
+  }
+`)
+
+export const platformsQuery = defineQuery(groq`
+  *[_type == "platform"] | order(publishedAt desc) {
+    _id,
+    title,
+    slug,
+    mainImage,
+    platformType,
+    platformUrl,
+    publishedAt,
+    categories[]->
+  }
+`)
+
+export const platformQuery = defineQuery(groq`
+  *[_type == "platform" && slug.current == $slug][0] {
+    _id,
+    title,
+    mainImage,
+    platformType,
+    platformUrl,
+    publishedAt,
+    body,
+    categories[]->
+  }
+`)
+
+export const SYNCHRONIZATIONS_QUERY = defineQuery(`*[
+  _type == "synchronization"
+  && defined(slug.current)
+]{
+  _id,
+  title,
+  slug,
+  date,
+  artist->{
+    name,
+    slug
+  },
+  platform->{
+    title,
+    platformType
+  },
+  venue->{
+    name
+  }
+}|order(date desc)`)
+
+export const SYNCHRONIZATION_QUERY = defineQuery(`*[
+  _type == "synchronization" &&
+  slug.current == $slug
+][0]{
+  _id,
+  title,
+  date,
+  description,
+  artist->{
+    name,
+    slug,
+    mainImage
+  },
+  platform->{
+    title,
+    platformType,
+    platformUrl
+  },
+  venue->{
+    name,
+    address
+  },
+  categories[]->
+}`)

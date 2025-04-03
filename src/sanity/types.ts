@@ -2127,6 +2127,188 @@ export type LOGO_QUERYResult = {
     } | null;
   } | null;
 } | null;
+// Variable: artistsQuery
+// Query: *[_type == "artist"] | order(publishedAt desc) {    _id,    name,    slug,    mainImage,    publishedAt,    categories[]->  }
+export type ArtistsQueryResult = Array<{
+  _id: string;
+  name: string | null;
+  slug: Slug | null;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  publishedAt: string | null;
+  categories: Array<{
+    _id: string;
+    _type: "category";
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    title?: string;
+    slug?: Slug;
+    description?: string;
+  }> | null;
+}>;
+// Variable: artistQuery
+// Query: *[_type == "artist" && slug.current == $slug][0] {    _id,    name,    mainImage,    body,    publishedAt,    categories[]->,    "relatedArtists": relatedArtists[]->{ name, slug }  }
+export type ArtistQueryResult = {
+  _id: string;
+  name: string | null;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  body: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }> | null;
+  publishedAt: string | null;
+  categories: Array<{
+    _id: string;
+    _type: "category";
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    title?: string;
+    slug?: Slug;
+    description?: string;
+  }> | null;
+  relatedArtists: Array<{
+    name: string | null;
+    slug: Slug | null;
+  }> | null;
+} | null;
+// Variable: platformsQuery
+// Query: *[_type == "platform"] | order(publishedAt desc) {    _id,    title,    slug,    mainImage,    platformType,    platformUrl,    publishedAt,    categories[]->  }
+export type PlatformsQueryResult = Array<{
+  _id: string;
+  title: string | null;
+  slug: Slug | null;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  platformType: "instagram" | "other" | "soundcloud" | "spotify" | "youtube" | null;
+  platformUrl: string | null;
+  publishedAt: string | null;
+  categories: Array<{
+    _id: string;
+    _type: "category";
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    title?: string;
+    slug?: Slug;
+    description?: string;
+  }> | null;
+}>;
+// Variable: platformQuery
+// Query: *[_type == "platform" && slug.current == $slug][0] {    _id,    title,    mainImage,    platformType,    platformUrl,    publishedAt,    body,    categories[]->  }
+export type PlatformQueryResult = {
+  _id: string;
+  title: string | null;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  platformType: "instagram" | "other" | "soundcloud" | "spotify" | "youtube" | null;
+  platformUrl: string | null;
+  publishedAt: string | null;
+  body: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }> | null;
+  categories: Array<{
+    _id: string;
+    _type: "category";
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    title?: string;
+    slug?: Slug;
+    description?: string;
+  }> | null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -2146,5 +2328,9 @@ declare module "@sanity/client" {
     "*[_type == \"page\"&& slug.current == $slug][0]{\n     ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"featuredPosts\" => {\n        ...,\n        \"posts\": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n      }": PAGE_QUERYResult;
     "*[_id == \"site\"][0]{\n  homePage->{\n    ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"featuredPosts\" => {\n        ...,\n        \"posts\": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n      }\n}": HOME_PAGE_QUERYResult;
     "*[_id == \"site\"][0] {\n  logo {\n    name,\n    \"default\": image.default.asset->{\n      _id,\n      url\n    },\n    \"light\": image.light.asset->{\n      _id,\n      url\n    },\n    \"dark\": image.dark.asset->{\n      _id,\n      url\n    }\n  }\n}": LOGO_QUERYResult;
+    "\n  *[_type == \"artist\"] | order(publishedAt desc) {\n    _id,\n    name,\n    slug,\n    mainImage,\n    publishedAt,\n    categories[]->\n  }\n": ArtistsQueryResult;
+    "\n  *[_type == \"artist\" && slug.current == $slug][0] {\n    _id,\n    name,\n    mainImage,\n    body,\n    publishedAt,\n    categories[]->,\n    \"relatedArtists\": relatedArtists[]->{ name, slug }\n  }\n": ArtistQueryResult;
+    "\n  *[_type == \"platform\"] | order(publishedAt desc) {\n    _id,\n    title,\n    slug,\n    mainImage,\n    platformType,\n    platformUrl,\n    publishedAt,\n    categories[]->\n  }\n": PlatformsQueryResult;
+    "\n  *[_type == \"platform\" && slug.current == $slug][0] {\n    _id,\n    title,\n    mainImage,\n    platformType,\n    platformUrl,\n    publishedAt,\n    body,\n    categories[]->\n  }\n": PlatformQueryResult;
   }
 }
