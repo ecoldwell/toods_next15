@@ -284,16 +284,16 @@ defineQuery(`*[_id == "site"][0] {
   }
 }`)
 
-export const artistsQuery = defineQuery(groq`
-  *[_type == "artist"] | order(publishedAt desc) {
+export const artistsQuery = defineQuery(`*[_type == "artist"] {
+  _id,
+  name,
+  slug,
+  mainImage,
+  categories[]->{ 
     _id,
-    name,
-    slug,
-    mainImage,
-    publishedAt,
-    categories[]->
+    title
   }
-`)
+}`);
 
 export const artistQuery = defineQuery(groq`
   *[_type == "artist" && slug.current == $slug][0] {

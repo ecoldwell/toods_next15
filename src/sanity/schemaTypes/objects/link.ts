@@ -32,8 +32,21 @@ export default defineType({
 				list: [
 					{ title: 'internal', value: 'internal' },
 					{ title: 'external', value: 'external' },
+					{ title: 'collection', value: 'collection' },
 				],
 			},
+		}),
+		defineField({
+			name: 'collection',
+			type: 'string',
+			options: {
+				list: [
+					{ title: 'All Artists', value: 'artists' },
+					{ title: 'All Platforms', value: 'platforms' },
+					{ title: 'All Synchronizations', value: 'synchronizations' },
+				],
+			},
+			hidden: ({ parent }) => parent?.type !== 'collection',
 		}),
 		defineField({
 			name: 'internal',
@@ -42,6 +55,7 @@ export default defineType({
 				{ type: 'post' },
 				{ type: 'category' },
 				{ type: 'event' },
+				{ type: 'page' },
 				{ type: 'artist' },
 				{ type: 'platform' },
 				{ type: 'synchronization' }

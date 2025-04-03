@@ -10,7 +10,7 @@ export default async function Page() {
     <main className="container mx-auto grid grid-cols-1 gap-6 p-12">
       <Title>Artists</Title>
       <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {artists.map((artist) => (
+        {artists?.map((artist) => (
           <ArtistPreview key={artist._id} {...artist} />
         ))}
       </div>

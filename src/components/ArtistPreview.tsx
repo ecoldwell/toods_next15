@@ -3,6 +3,10 @@ import Image from 'next/image'
 import { urlFor } from '@/sanity/lib/image'
 
 export default function ArtistPreview({ name, slug, mainImage, categories }) {
+  if (!slug?.current) {
+    return null; // Or some fallback UI
+  }
+
   return (
     <div className="flex flex-col overflow-hidden rounded-lg shadow-lg">
       {mainImage && (
@@ -11,20 +15,20 @@ export default function ArtistPreview({ name, slug, mainImage, categories }) {
             className="object-cover"
             src={urlFor(mainImage).url()}
             fill
-            alt={name}
+            alt={name || ''}
           />
         </div>
       )}
       <div className="flex flex-1 flex-col justify-between bg-white p-6">
         <div className="flex-1">
           <Link href={`/artists/${slug.current}`}>
-            <h3 className="text-xl font-semibold text-gray-900">{name}</h3>
+            <h3 className="text-xl font-semibold text-gray-900">{name || 'Untitled'}</h3>
           </Link>
           {categories?.length > 0 && (
             <div className="mt-2 flex gap-2">
               {categories.map((category) => (
-                <span key={category} className="text-sm text-gray-500">
-                  {category}
+                <span key={category._id} className="text-sm text-gray-500">
+                  {category.title || ''}
                 </span>
               ))}
             </div>

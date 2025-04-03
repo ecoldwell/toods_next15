@@ -390,28 +390,6 @@ export type Site = {
   };
 };
 
-export type Page = {
-  _id: string;
-  _type: "page";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  slug?: Slug;
-  content?: PageBuilder;
-  mainImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-};
-
 export type Navigation = {
   _id: string;
   _type: "navigation";
@@ -440,7 +418,8 @@ export type Link = {
   label?: string;
   background_color?: Color;
   text_color?: Color;
-  type?: "internal" | "external";
+  type?: "internal" | "external" | "collection";
+  collection?: "artists" | "platforms" | "synchronizations";
   internal?: {
     _ref: string;
     _type: "reference";
@@ -460,6 +439,11 @@ export type Link = {
     _ref: string;
     _type: "reference";
     _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "page";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "artist";
   } | {
     _ref: string;
@@ -474,6 +458,28 @@ export type Link = {
   };
   external?: string;
   params?: string;
+};
+
+export type Page = {
+  _id: string;
+  _type: "page";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  content?: PageBuilder;
+  mainImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
 };
 
 export type Event = {
@@ -1003,7 +1009,7 @@ export type HslaColor = {
   a?: number;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | FeaturedPosts | SplitImage | Hero | Features | Faqs | Faq | PageBuilder | Logo | Metadata | Cta | Site | Page | Navigation | LinkList | Link | Event | Synchronization | Venue | Platform | Artist | Post | Author | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Color | RgbaColor | HsvaColor | HslaColor;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | FeaturedPosts | SplitImage | Hero | Features | Faqs | Faq | PageBuilder | Logo | Metadata | Cta | Site | Navigation | LinkList | Link | Page | Event | Synchronization | Venue | Platform | Artist | Post | Author | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Color | RgbaColor | HsvaColor | HslaColor;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -1317,7 +1323,8 @@ export type NAV_QUERYResult = Array<{
       label?: string;
       background_color?: Color;
       text_color?: Color;
-      type?: "external" | "internal";
+      type?: "collection" | "external" | "internal";
+      collection?: "artists" | "platforms" | "synchronizations";
       internal: {
         _type: "artist";
         title: null;
@@ -1331,6 +1338,11 @@ export type NAV_QUERYResult = Array<{
       } | {
         _type: "event";
         title: null;
+        metadata: null;
+        _key: null;
+      } | {
+        _type: "page";
+        title: string | null;
         metadata: null;
         _key: null;
       } | {
@@ -1358,7 +1370,8 @@ export type NAV_QUERYResult = Array<{
       label?: string;
       background_color?: Color;
       text_color?: Color;
-      type?: "external" | "internal";
+      type?: "collection" | "external" | "internal";
+      collection?: "artists" | "platforms" | "synchronizations";
       internal: {
         _type: "artist";
         title: null;
@@ -1372,6 +1385,11 @@ export type NAV_QUERYResult = Array<{
       } | {
         _type: "event";
         title: null;
+        metadata: null;
+        _key: null;
+      } | {
+        _type: "page";
+        title: string | null;
         metadata: null;
         _key: null;
       } | {
@@ -1400,7 +1418,8 @@ export type NAV_QUERYResult = Array<{
     label?: string;
     background_color?: Color;
     text_color?: Color;
-    type?: "external" | "internal";
+    type?: "collection" | "external" | "internal";
+    collection?: "artists" | "platforms" | "synchronizations";
     internal: {
       _type: "artist";
       title: null;
@@ -1414,6 +1433,11 @@ export type NAV_QUERYResult = Array<{
     } | {
       _type: "event";
       title: null;
+      metadata: null;
+      _key: null;
+    } | {
+      _type: "page";
+      title: string | null;
       metadata: null;
       _key: null;
     } | {
@@ -1502,7 +1526,8 @@ export type SITE_QUERYResult = {
         label?: string;
         background_color?: Color;
         text_color?: Color;
-        type?: "external" | "internal";
+        type?: "collection" | "external" | "internal";
+        collection?: "artists" | "platforms" | "synchronizations";
         internal: {
           _type: "artist";
           title: null;
@@ -1516,6 +1541,11 @@ export type SITE_QUERYResult = {
         } | {
           _type: "event";
           title: null;
+          metadata: null;
+          _key: null;
+        } | {
+          _type: "page";
+          title: string | null;
           metadata: null;
           _key: null;
         } | {
@@ -1543,7 +1573,8 @@ export type SITE_QUERYResult = {
         label?: string;
         background_color?: Color;
         text_color?: Color;
-        type?: "external" | "internal";
+        type?: "collection" | "external" | "internal";
+        collection?: "artists" | "platforms" | "synchronizations";
         internal: {
           _type: "artist";
           title: null;
@@ -1557,6 +1588,11 @@ export type SITE_QUERYResult = {
         } | {
           _type: "event";
           title: null;
+          metadata: null;
+          _key: null;
+        } | {
+          _type: "page";
+          title: string | null;
           metadata: null;
           _key: null;
         } | {
@@ -1585,7 +1621,8 @@ export type SITE_QUERYResult = {
       label?: string;
       background_color?: Color;
       text_color?: Color;
-      type?: "external" | "internal";
+      type?: "collection" | "external" | "internal";
+      collection?: "artists" | "platforms" | "synchronizations";
       internal: {
         _type: "artist";
         title: null;
@@ -1599,6 +1636,11 @@ export type SITE_QUERYResult = {
       } | {
         _type: "event";
         title: null;
+        metadata: null;
+        _key: null;
+      } | {
+        _type: "page";
+        title: string | null;
         metadata: null;
         _key: null;
       } | {
@@ -1633,7 +1675,8 @@ export type SITE_QUERYResult = {
         label?: string;
         background_color?: Color;
         text_color?: Color;
-        type?: "external" | "internal";
+        type?: "collection" | "external" | "internal";
+        collection?: "artists" | "platforms" | "synchronizations";
         internal: {
           _type: "artist";
           title: null;
@@ -1647,6 +1690,11 @@ export type SITE_QUERYResult = {
         } | {
           _type: "event";
           title: null;
+          metadata: null;
+          _key: null;
+        } | {
+          _type: "page";
+          title: string | null;
           metadata: null;
           _key: null;
         } | {
@@ -1674,7 +1722,8 @@ export type SITE_QUERYResult = {
         label?: string;
         background_color?: Color;
         text_color?: Color;
-        type?: "external" | "internal";
+        type?: "collection" | "external" | "internal";
+        collection?: "artists" | "platforms" | "synchronizations";
         internal: {
           _type: "artist";
           title: null;
@@ -1688,6 +1737,11 @@ export type SITE_QUERYResult = {
         } | {
           _type: "event";
           title: null;
+          metadata: null;
+          _key: null;
+        } | {
+          _type: "page";
+          title: string | null;
           metadata: null;
           _key: null;
         } | {
@@ -1716,7 +1770,8 @@ export type SITE_QUERYResult = {
       label?: string;
       background_color?: Color;
       text_color?: Color;
-      type?: "external" | "internal";
+      type?: "collection" | "external" | "internal";
+      collection?: "artists" | "platforms" | "synchronizations";
       internal: {
         _type: "artist";
         title: null;
@@ -1730,6 +1785,11 @@ export type SITE_QUERYResult = {
       } | {
         _type: "event";
         title: null;
+        metadata: null;
+        _key: null;
+      } | {
+        _type: "page";
+        title: string | null;
         metadata: null;
         _key: null;
       } | {
@@ -1818,7 +1878,8 @@ export type HEADER_MENUResult = {
         label: string | null;
         background_color: Color | null;
         text_color?: Color;
-        type?: "external" | "internal";
+        type?: "collection" | "external" | "internal";
+        collection?: "artists" | "platforms" | "synchronizations";
         internal: {
           _type: "artist";
           title: null;
@@ -1841,6 +1902,15 @@ export type HEADER_MENUResult = {
           _type: "event";
           title: null;
           name: string | null;
+          metadata: null;
+          _key: null;
+          _id: string;
+          slug: Slug | null;
+          label: null;
+        } | {
+          _type: "page";
+          title: string | null;
+          name: null;
           metadata: null;
           _key: null;
           _id: string;
@@ -1887,7 +1957,8 @@ export type HEADER_MENUResult = {
       label: string | null;
       background_color: Color | null;
       text_color?: Color;
-      type?: "external" | "internal";
+      type?: "collection" | "external" | "internal";
+      collection?: "artists" | "platforms" | "synchronizations";
       internal: {
         _type: "artist";
         title: null;
@@ -1908,6 +1979,14 @@ export type HEADER_MENUResult = {
         _type: "event";
         title: null;
         name: string | null;
+        metadata: null;
+        _key: null;
+        _id: string;
+        slug: Slug | null;
+      } | {
+        _type: "page";
+        title: string | null;
+        name: null;
         metadata: null;
         _key: null;
         _id: string;
@@ -2335,7 +2414,7 @@ export type LOGO_QUERYResult = {
   } | null;
 } | null;
 // Variable: artistsQuery
-// Query: *[_type == "artist"] | order(publishedAt desc) {    _id,    name,    slug,    mainImage,    publishedAt,    categories[]->  }
+// Query: *[_type == "artist"] {  _id,  name,  slug,  mainImage,  categories[]->{ title }}
 export type ArtistsQueryResult = Array<{
   _id: string;
   name: string | null;
@@ -2351,16 +2430,8 @@ export type ArtistsQueryResult = Array<{
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
-  publishedAt: string | null;
   categories: Array<{
-    _id: string;
-    _type: "category";
-    _createdAt: string;
-    _updatedAt: string;
-    _rev: string;
-    title?: string;
-    slug?: Slug;
-    description?: string;
+    title: string | null;
   }> | null;
 }>;
 // Variable: artistQuery
@@ -2625,7 +2696,7 @@ declare module "@sanity/client" {
     "*[_type == \"page\"&& slug.current == $slug][0]{\n     ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"featuredPosts\" => {\n        ...,\n        \"posts\": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n      }": PAGE_QUERYResult;
     "*[_id == \"site\"][0]{\n  homePage->{\n    ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"featuredPosts\" => {\n        ...,\n        \"posts\": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n      }\n}": HOME_PAGE_QUERYResult;
     "*[_id == \"site\"][0] {\n  logo {\n    name,\n    \"default\": image.default.asset->{\n      _id,\n      url\n    },\n    \"light\": image.light.asset->{\n      _id,\n      url\n    },\n    \"dark\": image.dark.asset->{\n      _id,\n      url\n    }\n  }\n}": LOGO_QUERYResult;
-    "\n  *[_type == \"artist\"] | order(publishedAt desc) {\n    _id,\n    name,\n    slug,\n    mainImage,\n    publishedAt,\n    categories[]->\n  }\n": ArtistsQueryResult;
+    "*[_type == \"artist\"] {\n  _id,\n  name,\n  slug,\n  mainImage,\n  categories[]->{ title }\n}": ArtistsQueryResult;
     "\n  *[_type == \"artist\" && slug.current == $slug][0] {\n    _id,\n    name,\n    mainImage,\n    body,\n    publishedAt,\n    categories[]->,\n    \"relatedArtists\": relatedArtists[]->{ name, slug }\n  }\n": ArtistQueryResult;
     "\n  *[_type == \"platform\"] | order(publishedAt desc) {\n    _id,\n    title,\n    slug,\n    mainImage,\n    platformType,\n    platformUrl,\n    publishedAt,\n    categories[]->\n  }\n": PlatformsQueryResult;
     "\n  *[_type == \"platform\" && slug.current == $slug][0] {\n    _id,\n    title,\n    mainImage,\n    platformType,\n    platformUrl,\n    publishedAt,\n    body,\n    categories[]->\n  }\n": PlatformQueryResult;

@@ -15,13 +15,24 @@ type InternalLink = {
 };
 
 const getInternalLink = (internal: InternalLink): string => {
-  console.log("Internal Link Data:", internal); // Debugging output
-
   if (!internal || !internal._type) return "#";
 
-  const slug = internal.slug?.current || internal.id || internal._id;
-  if (!slug) return "#";
+  // If there's no slug, it's a link to the index page
+  if (!internal.slug?.current) {
+    switch (internal._type) {
+      case "artist":
+        return "/artists";
+      case "platform":
+        return "/platforms";
+      case "synchronization":
+        return "/synchronizations";
+      default:
+        return "#";
+    }
+  }
 
+  // Otherwise, link to the specific item
+  const slug = internal.slug.current;
   switch (internal._type) {
     case "post":
       return `/posts/${slug}`;
@@ -37,13 +48,6 @@ const getInternalLink = (internal: InternalLink): string => {
       return `/platforms/${slug}`;
     case "synchronization":
       return `/synchronizations/${slug}`;
-    // Add base routes for content types
-    case "artists":
-      return `/artists`;
-    case "platforms":
-      return `/platforms`;
-    case "synchronizations":
-      return `/synchronizations`;
     default:
       return "#";
   }
@@ -52,7 +56,7 @@ const getInternalLink = (internal: InternalLink): string => {
 type MenuItem = {
   _key: string;
   label?: string;
-  type?: "internal" | "external";
+  type?: "internal" | "external" | "collection";
   internal?: InternalLink;
   external?: string;
   _type?: "link" | "link.list";
@@ -106,6 +110,15 @@ export const Menu = ({ menuItems }: { menuItems: MenuItem[] }) => {
                   {item.label}
                 </a>
               ) : 
+              item.type === "collection" ? (
+                <Link 
+                  href={getLink(item)} 
+                  className="hover:underline p-2 rounded"
+                  style={{ color: textColor }}
+                >
+                  {item.label}
+                </Link>
+              ) :
               item._type === "link.list" ? (
                 <DropdownMenu item={item} />
               ) : null}
@@ -166,4 +179,29 @@ const DropdownMenu = ({ item }: { item: MenuItem }) => {
       )}
     </div>
   );
+};
+
+const getLink = (item: any): string => {
+  if (item.type === 'collection') {
+    switch (item.collection) {
+      case 'artists':
+        return '/artists';
+      case 'platforms':
+        return '/platforms';
+      case 'synchronizations':
+        return '/synchronizations';
+      default:
+        return '#';
+    }
+  }
+
+  if (item.type === 'internal' && item.internal) {
+    return getInternalLink(item.internal);
+  }
+
+  if (item.type === 'external' && item.external) {
+    return item.external;
+  }
+
+  return '#';
 };
