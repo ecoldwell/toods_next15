@@ -22,6 +22,8 @@ import { heroType } from "./blocks/heroType"
 import { splitImageType } from "./blocks/splitImageType"
 import { featuredPosts } from './blocks/featuredPosts'
 import logo from './documents/logo'
+import {platformType} from './platformType'
+import {synchronizationType} from './synchronizationType'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -30,6 +32,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     postType,
     authorType,
     artistType,
+    platformType,
+    synchronizationType,
     eventType,
     venueType,
     link,

@@ -1,9 +1,9 @@
 import {defineField, defineType} from 'sanity'
 import {PlayIcon} from '@sanity/icons'
 
-export const mediaType = defineType({
-  name: 'media',
-  title: 'Media',
+export const platformType = defineType({
+  name: 'platform',
+  title: 'Platform',
   type: 'document',
   icon: PlayIcon,
   fields: [
@@ -29,15 +29,15 @@ export const mediaType = defineType({
       },
     }),
     defineField({
-      name: 'mediaType',
+      name: 'platformType',
       type: 'string',
       options: {
-        list: ['video', 'audio', 'image'],
+        list: ['youtube', 'spotify', 'soundcloud', 'instagram', 'other'],
         layout: 'radio',
       },
     }),
     defineField({
-      name: 'mediaUrl',
+      name: 'platformUrl',
       type: 'url',
     }),
     defineField({
@@ -54,4 +54,4 @@ export const mediaType = defineType({
       of: [{type: 'reference', to: {type: 'category'}}],
     }),
   ],
-})
+}) 
