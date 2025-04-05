@@ -311,12 +311,28 @@ export const platformsQuery = defineQuery(groq`
   *[_type == "platform"] | order(publishedAt desc) {
     _id,
     title,
-    slug,
-    mainImage,
+    slug {
+      current
+    },
+    mainImage {
+      asset,
+      hotspot,
+      crop,
+      _type
+    },
     platformType,
     platformUrl,
     publishedAt,
-    categories[]->
+    categories[]-> {
+      _id,
+      _type,
+      _createdAt,
+      _updatedAt,
+      _rev,
+      title,
+      slug,
+      description
+    }
   }
 `)
 

@@ -6,12 +6,15 @@ import { notFound } from 'next/navigation'
 export default async function Page({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }) {
-  const {data: artist} = await sanityFetch({query: artistQuery, params: await params})
+  const { data: artist } = await sanityFetch({ 
+    query: artistQuery,
+    params: { slug: params.slug }
+  });
 
   if (!artist) {
-    notFound()
+    notFound();
   }
 
   return (

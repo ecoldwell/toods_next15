@@ -2414,7 +2414,7 @@ export type LOGO_QUERYResult = {
   } | null;
 } | null;
 // Variable: artistsQuery
-// Query: *[_type == "artist"] {  _id,  name,  slug,  mainImage,  categories[]->{ title }}
+// Query: *[_type == "artist"] {  _id,  name,  slug,  mainImage,  categories[]->{     _id,    title  }}
 export type ArtistsQueryResult = Array<{
   _id: string;
   name: string | null;
@@ -2431,6 +2431,7 @@ export type ArtistsQueryResult = Array<{
     _type: "image";
   } | null;
   categories: Array<{
+    _id: string;
     title: string | null;
   }> | null;
 }>;
@@ -2497,20 +2498,22 @@ export type ArtistQueryResult = {
   }> | null;
 } | null;
 // Variable: platformsQuery
-// Query: *[_type == "platform"] | order(publishedAt desc) {    _id,    title,    slug,    mainImage,    platformType,    platformUrl,    publishedAt,    categories[]->  }
+// Query: *[_type == "platform"] | order(publishedAt desc) {    _id,    title,    slug {      current    },    mainImage {      asset,      hotspot,      crop,      _type    },    platformType,    platformUrl,    publishedAt,    categories[]-> {      _id,      _type,      _createdAt,      _updatedAt,      _rev,      title,      slug,      description    }  }
 export type PlatformsQueryResult = Array<{
   _id: string;
   title: string | null;
-  slug: Slug | null;
+  slug: {
+    current: string | null;
+  } | null;
   mainImage: {
-    asset?: {
+    asset: {
       _ref: string;
       _type: "reference";
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
+    } | null;
+    hotspot: SanityImageHotspot | null;
+    crop: SanityImageCrop | null;
     _type: "image";
   } | null;
   platformType: "instagram" | "other" | "soundcloud" | "spotify" | "youtube" | null;
@@ -2522,9 +2525,9 @@ export type PlatformsQueryResult = Array<{
     _createdAt: string;
     _updatedAt: string;
     _rev: string;
-    title?: string;
-    slug?: Slug;
-    description?: string;
+    title: string | null;
+    slug: Slug | null;
+    description: string | null;
   }> | null;
 }>;
 // Variable: platformQuery
@@ -2696,9 +2699,9 @@ declare module "@sanity/client" {
     "*[_type == \"page\"&& slug.current == $slug][0]{\n     ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"featuredPosts\" => {\n        ...,\n        \"posts\": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n      }": PAGE_QUERYResult;
     "*[_id == \"site\"][0]{\n  homePage->{\n    ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"featuredPosts\" => {\n        ...,\n        \"posts\": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n      }\n}": HOME_PAGE_QUERYResult;
     "*[_id == \"site\"][0] {\n  logo {\n    name,\n    \"default\": image.default.asset->{\n      _id,\n      url\n    },\n    \"light\": image.light.asset->{\n      _id,\n      url\n    },\n    \"dark\": image.dark.asset->{\n      _id,\n      url\n    }\n  }\n}": LOGO_QUERYResult;
-    "*[_type == \"artist\"] {\n  _id,\n  name,\n  slug,\n  mainImage,\n  categories[]->{ title }\n}": ArtistsQueryResult;
+    "*[_type == \"artist\"] {\n  _id,\n  name,\n  slug,\n  mainImage,\n  categories[]->{ \n    _id,\n    title\n  }\n}": ArtistsQueryResult;
     "\n  *[_type == \"artist\" && slug.current == $slug][0] {\n    _id,\n    name,\n    mainImage,\n    body,\n    publishedAt,\n    categories[]->,\n    \"relatedArtists\": relatedArtists[]->{ name, slug }\n  }\n": ArtistQueryResult;
-    "\n  *[_type == \"platform\"] | order(publishedAt desc) {\n    _id,\n    title,\n    slug,\n    mainImage,\n    platformType,\n    platformUrl,\n    publishedAt,\n    categories[]->\n  }\n": PlatformsQueryResult;
+    "\n  *[_type == \"platform\"] | order(publishedAt desc) {\n    _id,\n    title,\n    slug {\n      current\n    },\n    mainImage {\n      asset,\n      hotspot,\n      crop,\n      _type\n    },\n    platformType,\n    platformUrl,\n    publishedAt,\n    categories[]-> {\n      _id,\n      _type,\n      _createdAt,\n      _updatedAt,\n      _rev,\n      title,\n      slug,\n      description\n    }\n  }\n": PlatformsQueryResult;
     "\n  *[_type == \"platform\" && slug.current == $slug][0] {\n    _id,\n    title,\n    mainImage,\n    platformType,\n    platformUrl,\n    publishedAt,\n    body,\n    categories[]->\n  }\n": PlatformQueryResult;
     "*[\n  _type == \"synchronization\"\n  && defined(slug.current)\n]{\n  _id,\n  title,\n  slug,\n  date,\n  artist->{\n    name,\n    slug\n  },\n  platform->{\n    title,\n    platformType\n  },\n  venue->{\n    name\n  }\n}|order(date desc)": SYNCHRONIZATIONS_QUERYResult;
     "*[\n  _type == \"synchronization\" &&\n  slug.current == $slug\n][0]{\n  _id,\n  title,\n  date,\n  description,\n  artist->{\n    name,\n    slug,\n    mainImage\n  },\n  platform->{\n    title,\n    platformType,\n    platformUrl\n  },\n  venue->{\n    name,\n    address\n  },\n  categories[]->\n}": SYNCHRONIZATION_QUERYResult;

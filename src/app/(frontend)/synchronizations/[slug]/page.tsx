@@ -21,6 +21,12 @@ export default async function Page({
     notFound();
   }
 
+  const transformedCategories = sync.categories?.map(category => ({
+    _id: category._id,
+    slug: category.slug,
+    title: category.title
+  }));
+
   return (
     <main className="container mx-auto grid grid-cols-1 gap-6 p-12">
       <article className="grid lg:grid-cols-12 gap-y-12">
@@ -34,7 +40,7 @@ export default async function Page({
                 day: 'numeric',
               })}
             </time>
-            {sync.categories && <Categories categories={sync.categories} />}
+            {transformedCategories && <Categories categories={transformedCategories} />}
           </div>
           <h1 className="text-4xl font-bold">{sync.title}</h1>
         </header>

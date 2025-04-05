@@ -1,8 +1,21 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { urlFor } from '@/sanity/lib/image'
+import type { Platform } from '@/sanity/types'
 
-export default function PlatformPreview({ title, slug, mainImage, platformType }) {
+type PlatformPreviewProps = {
+  _id: string;
+  title?: string;
+  slug?: Platform['slug'];
+  mainImage?: Platform['mainImage'];
+  platformType?: Platform['platformType'];
+}
+
+export default function PlatformPreview({ title, slug, mainImage, platformType }: PlatformPreviewProps) {
+  if (!slug?.current) {
+    return null;
+  }
+
   return (
     <div className="flex flex-col overflow-hidden rounded-lg shadow-lg">
       {mainImage && (
@@ -11,7 +24,7 @@ export default function PlatformPreview({ title, slug, mainImage, platformType }
             className="object-cover"
             src={urlFor(mainImage).url()}
             fill
-            alt={title}
+            alt={title || ''}
           />
         </div>
       )}
@@ -21,7 +34,7 @@ export default function PlatformPreview({ title, slug, mainImage, platformType }
             {platformType}
           </span>
           <Link href={`/platforms/${slug.current}`}>
-            <h3 className="mt-2 text-xl font-semibold text-gray-900">{title}</h3>
+            <h3 className="mt-2 text-xl font-semibold text-gray-900">{title || 'Untitled'}</h3>
           </Link>
         </div>
       </div>
