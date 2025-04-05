@@ -8,7 +8,7 @@ export const collectionPage = defineType({
     {
       name: 'title',
       type: 'string',
-      initialValue: (context) => {
+      initialValue: (context: { parent?: { _type: string } }) => {
         switch(context.parent?._type) {
           case 'artistsCollection': return 'All Artists'
           case 'platformsCollection': return 'All Platforms'

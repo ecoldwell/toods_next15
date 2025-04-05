@@ -1,10 +1,18 @@
 import { POST_QUERYResult } from '@/sanity/types'
 
+type Category = {
+  _id: string;
+  slug?: { current?: string };
+  title?: string;
+}
+
 type CategoriesProps = {
-  categories: NonNullable<POST_QUERYResult>['categories']
+  categories: Category[] | null | undefined;
 }
 
 export function Categories({ categories }: CategoriesProps) {
+  if (!categories) return null;
+  
   return categories.map((category) => (
     <span
       key={category._id}

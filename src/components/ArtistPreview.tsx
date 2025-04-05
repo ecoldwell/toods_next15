@@ -1,8 +1,28 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { urlFor } from '@/sanity/lib/image'
+import { ArtistsQueryResult, SanityImageHotspot, SanityImageCrop, Slug } from '@/sanity/types'
 
-export default function ArtistPreview({ name, slug, mainImage, categories }) {
+type ArtistPreviewProps = {
+  name: string | null;
+  slug: Slug | null;
+  mainImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+    } | null;
+    hotspot: SanityImageHotspot | null;
+    crop: SanityImageCrop | null;
+    _type: "image";
+  } | null;
+  categories: Array<{
+    _id: string;
+    title: string | null;
+  }> | null;
+}
+
+export default function ArtistPreview({ name, slug, mainImage, categories }: ArtistPreviewProps) {
   if (!slug?.current) {
     return null; // Or some fallback UI
   }
