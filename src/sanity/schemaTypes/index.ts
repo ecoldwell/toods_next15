@@ -24,6 +24,9 @@ import { featuredPosts } from './blocks/featuredPosts'
 import logo from './documents/logo'
 import {platformType} from './platformType'
 import {synchronizationType} from './synchronizationType'
+import { featuredArtists } from './blocks/featuredArtists'
+import { featuredPlatforms } from './blocks/featuredPlatforms'
+import { featuredSynchronicity } from './blocks/featuredSynchronicity'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -50,6 +53,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     featuresType,
     heroType,
     splitImageType,
-    featuredPosts
+    featuredPosts,
+    featuredArtists,
+    featuredPlatforms,
+    featuredSynchronicity
   ],
 }

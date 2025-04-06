@@ -5,6 +5,9 @@ import { Features } from "@/components/blocks/Features";
 import { SplitImage } from "@/components/blocks/SplitImage";
 import { FAQs } from "@/components/blocks/FAQs";
 import { FeaturedPosts } from "./blocks/FeaturedPosts";
+import { FeaturedArtists } from "./blocks/FeaturedArtists";
+import { FeaturedPlatforms } from "./blocks/FeaturedPlatforms";
+// import { FeaturedSynchronicity } from "./blocks/FeaturedSynchronicity";
 import { PAGE_QUERYResult } from "@/sanity/types";
 import { client } from "@/sanity/lib/client";
 import { createDataAttribute } from "next-sanity";
@@ -111,6 +114,24 @@ export function PageBuilder({
                   <FeaturedPosts {...block} />
                 </DragHandle>
               );
+            case "featuredArtists":
+              return (
+                <DragHandle key={block._key}>
+                  <FeaturedArtists {...block} />
+                </DragHandle>
+              );
+            case "featuredPlatforms":
+              return (
+                <DragHandle key={block._key}>
+                  <FeaturedPlatforms {...block} />
+                </DragHandle>
+              );
+            // case "featuredSynchronicity":
+            //   return (
+            //     <DragHandle key={block._key}>
+            //       <FeaturedSynchronicity {...block} />
+            //     </DragHandle>
+            //   );
           default:
             // This is a fallback for when we don't have a block type
             // return <div key={block._key}>Block not found: {block._type}</div>;

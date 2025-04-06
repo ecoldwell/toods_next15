@@ -229,9 +229,60 @@ export const PAGE_QUERY =
             }
           }
         }
+      },
+      _type == "featuredArtists" => {
+        ...,
+        "artists": artists[]->{
+          _id,
+          _type,
+          title,
+          slug,
+          background_color,
+          body,
+          mainImage {
+            asset->{
+              _id,
+              url
+            }
+          }
+        }
+      },
+      _type == "featuredPlatforms" => {
+        ...,
+        "platforms": platforms[]->{
+          _id,
+          _type,
+          title,
+          slug,
+          background_color,
+          body,
+          mainImage {
+            asset->{
+              _id,
+              url
+            }
+          }
+        }
+      },
+      _type == "featuredSynchronicity" => {
+        ...,
+        "synchronicity": synchronicity[]->{
+          _id,
+          _type,
+          title,
+          slug,
+          background_color,
+          body,
+          mainImage {
+            asset->{
+              _id,
+              url
+            }
+          }
+        }
       }
     }
-      }`);
+  }`);
 
 // ...all other queries
 
@@ -260,9 +311,60 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "site"][0]{
             }
           }
         }
+      },
+      _type == "featuredArtists" => {
+        ...,
+        "artists": artists[]->{
+          _id,
+          _type,
+          title,
+          slug,
+          background_color,
+          body,
+          mainImage {
+            asset->{
+              _id,
+              url
+            }
+          }
+        }
+      },
+      _type == "featuredPlatforms" => {
+        ...,
+        "platforms": platforms[]->{
+          _id,
+          _type,
+          title,
+          slug,
+          background_color,
+          body,
+          mainImage {
+            asset->{
+              _id,
+              url
+            }
+          }
+        }
+      },
+      _type == "featuredSynchronicity" => {
+        ...,
+        "synchronicity": synchronicity[]->{
+          _id,
+          _type,
+          title,
+          slug,
+          background_color,
+          body,
+          mainImage {
+            asset->{
+              _id,
+              url
+            }
+          }
+        }
       }
     }
-      }
+  }
 }`);
 
 export const LOGO_QUERY = 

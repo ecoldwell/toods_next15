@@ -68,6 +68,42 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type FeaturedSynchronicity = {
+  _type: "featuredSynchronicity";
+  title?: string;
+  synchronicity?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "synchronization";
+  }>;
+};
+
+export type FeaturedPlatforms = {
+  _type: "featuredPlatforms";
+  title?: string;
+  platforms?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "platform";
+  }>;
+};
+
+export type FeaturedArtists = {
+  _type: "featuredArtists";
+  title?: string;
+  artists?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "artist";
+  }>;
+};
+
 export type FeaturedPosts = {
   _type: "featuredPosts";
   title?: string;
@@ -215,7 +251,13 @@ export type PageBuilder = Array<{
   _key: string;
 } & Faqs | {
   _key: string;
-} & FeaturedPosts>;
+} & FeaturedPosts | {
+  _key: string;
+} & FeaturedArtists | {
+  _key: string;
+} & FeaturedPlatforms | {
+  _key: string;
+} & FeaturedSynchronicity>;
 
 export type Logo = {
   _id: string;
@@ -1009,7 +1051,7 @@ export type HslaColor = {
   a?: number;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | FeaturedPosts | SplitImage | Hero | Features | Faqs | Faq | PageBuilder | Logo | Metadata | Cta | Site | Navigation | LinkList | Link | Page | Event | Synchronization | Venue | Platform | Artist | Post | Author | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Color | RgbaColor | HsvaColor | HslaColor;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | FeaturedSynchronicity | FeaturedPlatforms | FeaturedArtists | FeaturedPosts | SplitImage | Hero | Features | Faqs | Faq | PageBuilder | Logo | Metadata | Cta | Site | Navigation | LinkList | Link | Page | Event | Synchronization | Venue | Platform | Artist | Post | Author | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Color | RgbaColor | HsvaColor | HslaColor;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -2023,7 +2065,7 @@ export type HEADER_MENUResult = {
   } | null;
 } | null;
 // Variable: PAGE_QUERY
-// Query: *[_type == "page"&& slug.current == $slug][0]{     ...,    content[]{      ...,      _type == "faqs" => {        ...,        faqs[]->      },      _type == "featuredPosts" => {        ...,        "posts": posts[]->{          _id,          _type,          title,          slug,          background_color,          body,          mainImage {            asset->{              _id,              url            }          }        }      }    }      }
+// Query: *[_type == "page"&& slug.current == $slug][0]{     ...,    content[]{      ...,      _type == "faqs" => {        ...,        faqs[]->      },      _type == "featuredPosts" => {        ...,        "posts": posts[]->{          _id,          _type,          title,          slug,          background_color,          body,          mainImage {            asset->{              _id,              url            }          }        }      },      _type == "featuredArtists" => {        ...,        "artists": artists[]->{          _id,          _type,          title,          slug,          background_color,          body,          mainImage {            asset->{              _id,              url            }          }        }      },      _type == "featuredPlatforms" => {        ...,        "platforms": platforms[]->{          _id,          _type,          title,          slug,          background_color,          body,          mainImage {            asset->{              _id,              url            }          }        }      },      _type == "featuredSynchronicity" => {        ...,        "synchronicity": synchronicity[]->{          _id,          _type,          title,          slug,          background_color,          body,          mainImage {            asset->{              _id,              url            }          }        }      }    }  }
 export type PAGE_QUERYResult = {
   _id: string;
   _type: "page";
@@ -2076,6 +2118,100 @@ export type PAGE_QUERYResult = {
     }> | null;
   } | {
     _key: string;
+    _type: "featuredArtists";
+    title?: string;
+    artists: Array<{
+      _id: string;
+      _type: "artist";
+      title: null;
+      slug: Slug | null;
+      background_color: Color | null;
+      body: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+        listItem?: "bullet";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      } | {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+      }> | null;
+      mainImage: {
+        asset: {
+          _id: string;
+          url: string | null;
+        } | null;
+      } | null;
+    }> | null;
+  } | {
+    _key: string;
+    _type: "featuredPlatforms";
+    title?: string;
+    platforms: Array<{
+      _id: string;
+      _type: "platform";
+      title: string | null;
+      slug: Slug | null;
+      background_color: Color | null;
+      body: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+        listItem?: "bullet";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      } | {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+      }> | null;
+      mainImage: {
+        asset: {
+          _id: string;
+          url: string | null;
+        } | null;
+      } | null;
+    }> | null;
+  } | {
+    _key: string;
     _type: "featuredPosts";
     title?: string;
     posts: Array<{
@@ -2120,6 +2256,19 @@ export type PAGE_QUERYResult = {
           url: string | null;
         } | null;
       } | null;
+    }> | null;
+  } | {
+    _key: string;
+    _type: "featuredSynchronicity";
+    title?: string;
+    synchronicity: Array<{
+      _id: string;
+      _type: "synchronization";
+      title: string | null;
+      slug: Slug | null;
+      background_color: null;
+      body: null;
+      mainImage: null;
     }> | null;
   } | {
     _key: string;
@@ -2262,6 +2411,28 @@ export type HOME_PAGE_QUERYResult = {
       }> | null;
     } | {
       _key: string;
+      _type: "featuredArtists";
+      title?: string;
+      artists?: Array<{
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: "artist";
+      }>;
+    } | {
+      _key: string;
+      _type: "featuredPlatforms";
+      title?: string;
+      platforms?: Array<{
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: "platform";
+      }>;
+    } | {
+      _key: string;
       _type: "featuredPosts";
       title?: string;
       posts: Array<{
@@ -2307,6 +2478,17 @@ export type HOME_PAGE_QUERYResult = {
           } | null;
         } | null;
       }> | null;
+    } | {
+      _key: string;
+      _type: "featuredSynchronicity";
+      title?: string;
+      synchronicity?: Array<{
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: "synchronization";
+      }>;
     } | {
       _key: string;
       _type: "features";
@@ -2696,7 +2878,7 @@ declare module "@sanity/client" {
     "*[_type == \"cta\"]{\n  ...,\nlink { \n  ...,\n  internal->{ _type, title, metadata }\n  }\n }": CTA_QUERYResult;
     "*[_type == \"site\"][0]{\n  ...,\n  headerMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n  footerMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n  socialMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n}": SITE_QUERYResult;
     "*[_type == \"site\"][0] {\n    _id,\n    _type,\n    title,\n    headerMenu{\n      _key,\n      ...@->{_id, title, slug, items[]{\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{ \n          _type, \n          title, \n          name,  // Added for artist name\n          metadata, \n          _key, \n          _id, \n          slug \n        },\n        links[] {\n          ...,\n          _key,\n          _type,\n          label,\n          background_color,\n          external,\n          internal->{ \n            _type, \n            title,\n            name,  // Added for artist name \n            metadata, \n            _key, \n            _id, \n            slug, \n            label \n          }\n        }\n      }}\n    }\n  }": HEADER_MENUResult;
-    "*[_type == \"page\"&& slug.current == $slug][0]{\n     ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"featuredPosts\" => {\n        ...,\n        \"posts\": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n      }": PAGE_QUERYResult;
+    "*[_type == \"page\"&& slug.current == $slug][0]{\n     ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"featuredPosts\" => {\n        ...,\n        \"posts\": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredArtists\" => {\n        ...,\n        \"artists\": artists[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredPlatforms\" => {\n        ...,\n        \"platforms\": platforms[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredSynchronicity\" => {\n        ...,\n        \"synchronicity\": synchronicity[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n  }": PAGE_QUERYResult;
     "*[_id == \"site\"][0]{\n  homePage->{\n    ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"featuredPosts\" => {\n        ...,\n        \"posts\": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n      }\n}": HOME_PAGE_QUERYResult;
     "*[_id == \"site\"][0] {\n  logo {\n    name,\n    \"default\": image.default.asset->{\n      _id,\n      url\n    },\n    \"light\": image.light.asset->{\n      _id,\n      url\n    },\n    \"dark\": image.dark.asset->{\n      _id,\n      url\n    }\n  }\n}": LOGO_QUERYResult;
     "*[_type == \"artist\"] {\n  _id,\n  name,\n  slug,\n  mainImage,\n  categories[]->{ \n    _id,\n    title\n  }\n}": ArtistsQueryResult;

@@ -1,6 +1,7 @@
 import { PAGE_QUERYResult } from "@/sanity/types";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
+import Link from "next/link";
 
 type FeaturedPostsProps = Extract<
   NonNullable<NonNullable<PAGE_QUERYResult>["content"]>[number],
@@ -11,7 +12,7 @@ export function FeaturedPosts({ posts = [], title }: FeaturedPostsProps) {
   console.log(posts, "what is the posts"); // Debugging: Check structure
 
   return (
-    <section className="container mx-auto flex flex-col gap-8">
+    <Link href={`/posts/${posts[0].slug?.current}`} className="container mx-auto flex flex-col gap-8">
       {posts.length > 0 ? (
         <div className="post_container">
           {posts.map((post, index) => {
@@ -54,6 +55,6 @@ export function FeaturedPosts({ posts = [], title }: FeaturedPostsProps) {
           No featured posts available.
         </p>
       )}
-    </section>
+    </Link>
   );
 }
