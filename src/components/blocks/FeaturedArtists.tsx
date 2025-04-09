@@ -31,7 +31,7 @@ export function FeaturedArtists({ artists = [], title }: FeaturedArtistsProps) {
                 {artist.mainImage?.asset?.url && (
                   <Image
                     src={artist.mainImage.asset.url}
-                    alt={artist.title || "Artist post image"}
+                    alt={artist.name || "Artist post image"}
                     className="w-full h-auto rounded-lg"
                     width={400}
                     height={400}
