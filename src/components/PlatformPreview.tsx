@@ -8,10 +8,10 @@ type PlatformPreviewProps = {
   title?: string;
   slug?: Platform['slug'];
   mainImage?: Platform['mainImage'];
-  platformType?: Platform['platformType'];
+  background_color?: Platform['background_color'];
 }
 
-export default function PlatformPreview({ title, slug, mainImage, platformType }: PlatformPreviewProps) {
+export default function PlatformPreview({ title, slug, mainImage, background_color }: PlatformPreviewProps) {
   if (!slug?.current) {
     return null;
   }
@@ -30,9 +30,7 @@ export default function PlatformPreview({ title, slug, mainImage, platformType }
       )}
       <div className="flex flex-1 flex-col justify-between bg-white p-6">
         <div className="flex-1">
-          <span className="text-sm font-medium text-indigo-600">
-            {platformType}
-          </span>
+
           <Link href={`/platforms/${slug.current}`}>
             <h3 className="mt-2 text-xl font-semibold text-gray-900">{title || 'Untitled'}</h3>
           </Link>
