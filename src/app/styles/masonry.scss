@@ -10,6 +10,7 @@
     div:nth-child(1) {
         margin-top:0rem;
     }
+
 }
 }
 
@@ -46,6 +47,9 @@
         padding: 35px;
         color: black;
         border-radius: 45%;
+        &:hover {
+            text-decoration: underline;
+        }
       }
     }
 }
