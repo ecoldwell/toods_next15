@@ -28,14 +28,14 @@ export const platformType = defineType({
         hotspot: true,
       },
     }),
-    defineField({
-      name: 'platformType',
-      type: 'string',
-      options: {
-        list: ['youtube', 'spotify', 'soundcloud', 'instagram', 'other'],
-        layout: 'radio',
-      },
-    }),
+    // defineField({
+    //   name: 'platformType',
+    //   type: 'string',
+    //   options: {
+    //     list: ['youtube', 'spotify', 'soundcloud', 'instagram', 'other'],
+    //     layout: 'radio',
+    //   },
+    // }),
     defineField({
       name: 'platformUrl',
       type: 'url',

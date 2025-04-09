@@ -235,7 +235,7 @@ export const PAGE_QUERY =
         "artists": artists[]->{
           _id,
           _type,
-          title,
+          name,
           slug,
           background_color,
           body,
@@ -317,7 +317,7 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "site"][0]{
         "artists": artists[]->{
           _id,
           _type,
-          title,
+          name,
           slug,
           background_color,
           body,

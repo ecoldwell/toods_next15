@@ -17,6 +17,18 @@ export const synchronizationType = defineType({
       options: {source: 'title'},
     }),
     defineField({
+      name: 'background_color',
+      title: 'Background For Title',
+      type: 'color',
+    }),
+    defineField({
+      name: 'mainImage',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
       name: 'artist',
       type: 'reference',
       to: [{type: 'artist'}],
