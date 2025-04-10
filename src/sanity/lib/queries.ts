@@ -38,6 +38,7 @@ export const POST_QUERY =
   color,
   body,
   mainImage,
+  background_color,
   publishedAt,
   "categories": coalesce(
     categories[]->{
@@ -445,6 +446,7 @@ export const platformQuery = defineQuery(groq`
   *[_type == "platform" && slug.current == $slug][0] {
     _id,
     title,
+    slug,
     background_color,
     mainImage,
     platformType,
@@ -465,12 +467,24 @@ export const SYNCHRONIZATIONS_QUERY = defineQuery(`*[
   background_color,
   date,
   artist->{
+    _id,
     name,
-    slug
+    mainImage,
+    background_color,
+    body,
+    publishedAt,
+    categories[]->,
   },
   platform->{
+    _id,
     title,
-    platformType
+    slug,
+    background_color,
+    mainImage,
+    platformType,
+    platformUrl,
+    publishedAt,
+    body,
   },
   venue->{
     name
@@ -487,14 +501,25 @@ export const SYNCHRONIZATION_QUERY = defineQuery(`*[
   date,
   description,
   artist->{
+    _id,
     name,
     slug,
-    mainImage
+    mainImage,
+    background_color,
+    body,
+    publishedAt,
+    categories[]->,
   },
   platform->{
+    _id,
     title,
+    slug,
+    background_color,
+    mainImage,
     platformType,
-    platformUrl
+    platformUrl,
+    publishedAt,
+    body,
   },
   venue->{
     name,
