@@ -1,0 +1,23 @@
+.post_container {
+    display:flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    .post_image {
+        padding:1vw;
+        width: 100%;
+        img {
+            width:100%;
+        }
+    }
+    .post_content {
+        padding:1vw;
+        width:100%;
+        .post_text_wrapper{
+            border:3px solid;
+        }
+    }
+    @include mobile {
+        flex-direction:column-reverse;
+    }
+}

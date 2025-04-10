@@ -391,6 +391,7 @@ export const artistsQuery = defineQuery(`*[_type == "artist"] {
   name,
   slug,
   mainImage,
+  background_color,
   categories[]->{ 
     _id,
     title
@@ -402,6 +403,7 @@ export const artistQuery = defineQuery(groq`
     _id,
     name,
     mainImage,
+    background_color,
     body,
     publishedAt,
     categories[]->,

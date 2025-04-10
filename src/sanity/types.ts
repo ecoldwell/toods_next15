@@ -2691,7 +2691,7 @@ export type LOGO_QUERYResult = {
   } | null;
 } | null;
 // Variable: artistsQuery
-// Query: *[_type == "artist"] {  _id,  name,  slug,  mainImage,  categories[]->{     _id,    title  }}
+// Query: *[_type == "artist"] {  _id,  name,  slug,  mainImage,  background_color,  categories[]->{     _id,    title  }}
 export type ArtistsQueryResult = Array<{
   _id: string;
   name: string | null;
@@ -2707,13 +2707,14 @@ export type ArtistsQueryResult = Array<{
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
+  background_color: Color | null;
   categories: Array<{
     _id: string;
     title: string | null;
   }> | null;
 }>;
 // Variable: artistQuery
-// Query: *[_type == "artist" && slug.current == $slug][0] {    _id,    name,    mainImage,    body,    publishedAt,    categories[]->,    "relatedArtists": relatedArtists[]->{ name, slug }  }
+// Query: *[_type == "artist" && slug.current == $slug][0] {    _id,    name,    mainImage,    background_color,    body,    publishedAt,    categories[]->,    "relatedArtists": relatedArtists[]->{ name, slug }  }
 export type ArtistQueryResult = {
   _id: string;
   name: string | null;
@@ -2728,6 +2729,7 @@ export type ArtistQueryResult = {
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
+  background_color: Color | null;
   body: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -2976,8 +2978,8 @@ declare module "@sanity/client" {
     "*[_type == \"page\"&& slug.current == $slug][0]{\n     ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"featuredPosts\" => {\n        ...,\n        \"posts\": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredArtists\" => {\n        ...,\n        \"artists\": artists[]->{\n          _id,\n          _type,\n          name,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredPlatforms\" => {\n        ...,\n        \"platforms\": platforms[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredSynchronicity\" => {\n        ...,\n        \"synchronicity\": synchronicity[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n  }": PAGE_QUERYResult;
     "*[_id == \"site\"][0]{\n  homePage->{\n    ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"featuredPosts\" => {\n        ...,\n        \"posts\": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredArtists\" => {\n        ...,\n        \"artists\": artists[]->{\n          _id,\n          _type,\n          name,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredPlatforms\" => {\n        ...,\n        \"platforms\": platforms[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredSynchronicity\" => {\n        ...,\n        \"synchronicity\": synchronicity[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n  }\n}": HOME_PAGE_QUERYResult;
     "*[_id == \"site\"][0] {\n  logo {\n    name,\n    \"default\": image.default.asset->{\n      _id,\n      url\n    },\n    \"light\": image.light.asset->{\n      _id,\n      url\n    },\n    \"dark\": image.dark.asset->{\n      _id,\n      url\n    }\n  }\n}": LOGO_QUERYResult;
-    "*[_type == \"artist\"] {\n  _id,\n  name,\n  slug,\n  mainImage,\n  categories[]->{ \n    _id,\n    title\n  }\n}": ArtistsQueryResult;
-    "\n  *[_type == \"artist\" && slug.current == $slug][0] {\n    _id,\n    name,\n    mainImage,\n    body,\n    publishedAt,\n    categories[]->,\n    \"relatedArtists\": relatedArtists[]->{ name, slug }\n  }\n": ArtistQueryResult;
+    "*[_type == \"artist\"] {\n  _id,\n  name,\n  slug,\n  mainImage,\n  background_color,\n  categories[]->{ \n    _id,\n    title\n  }\n}": ArtistsQueryResult;
+    "\n  *[_type == \"artist\" && slug.current == $slug][0] {\n    _id,\n    name,\n    mainImage,\n    background_color,\n    body,\n    publishedAt,\n    categories[]->,\n    \"relatedArtists\": relatedArtists[]->{ name, slug }\n  }\n": ArtistQueryResult;
     "\n  *[_type == \"platform\"] | order(publishedAt desc) {\n    _id,\n    title,\n    slug {\n      current\n    },\n    mainImage {\n      asset,\n      hotspot,\n      crop,\n      _type\n    },\n    platformType,\n    platformUrl,\n    publishedAt,\n    categories[]-> {\n      _id,\n      _type,\n      _createdAt,\n      _updatedAt,\n      _rev,\n      title,\n      slug,\n      description\n    }\n  }\n": PlatformsQueryResult;
     "\n  *[_type == \"platform\" && slug.current == $slug][0] {\n    _id,\n    title,\n    mainImage,\n    platformType,\n    platformUrl,\n    publishedAt,\n    body,\n    categories[]->\n  }\n": PlatformQueryResult;
     "*[\n  _type == \"synchronization\"\n  && defined(slug.current)\n]{\n  _id,\n  title,\n  slug,\n  date,\n  artist->{\n    name,\n    slug\n  },\n  platform->{\n    title,\n    platformType\n  },\n  venue->{\n    name\n  }\n}|order(date desc)": SYNCHRONIZATIONS_QUERYResult;
