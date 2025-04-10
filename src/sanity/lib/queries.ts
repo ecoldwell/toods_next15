@@ -415,6 +415,7 @@ export const platformsQuery = defineQuery(groq`
   *[_type == "platform"] | order(publishedAt desc) {
     _id,
     title,
+    background_color,
     slug {
       current
     },
@@ -444,6 +445,7 @@ export const platformQuery = defineQuery(groq`
   *[_type == "platform" && slug.current == $slug][0] {
     _id,
     title,
+    background_color,
     mainImage,
     platformType,
     platformUrl,
@@ -460,6 +462,7 @@ export const SYNCHRONIZATIONS_QUERY = defineQuery(`*[
   _id,
   title,
   slug,
+  background_color,
   date,
   artist->{
     name,
@@ -480,6 +483,7 @@ export const SYNCHRONIZATION_QUERY = defineQuery(`*[
 ][0]{
   _id,
   title,
+  background_color,
   date,
   description,
   artist->{

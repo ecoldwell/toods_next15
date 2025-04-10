@@ -2777,10 +2777,11 @@ export type ArtistQueryResult = {
   }> | null;
 } | null;
 // Variable: platformsQuery
-// Query: *[_type == "platform"] | order(publishedAt desc) {    _id,    title,    slug {      current    },    mainImage {      asset,      hotspot,      crop,      _type    },    platformType,    platformUrl,    publishedAt,    categories[]-> {      _id,      _type,      _createdAt,      _updatedAt,      _rev,      title,      slug,      description    }  }
+// Query: *[_type == "platform"] | order(publishedAt desc) {    _id,    title,    background_color,    slug {      current    },    mainImage {      asset,      hotspot,      crop,      _type    },    platformType,    platformUrl,    publishedAt,    categories[]-> {      _id,      _type,      _createdAt,      _updatedAt,      _rev,      title,      slug,      description    }  }
 export type PlatformsQueryResult = Array<{
   _id: string;
   title: string | null;
+  background_color: Color | null;
   slug: {
     current: string | null;
   } | null;
@@ -2810,10 +2811,11 @@ export type PlatformsQueryResult = Array<{
   }> | null;
 }>;
 // Variable: platformQuery
-// Query: *[_type == "platform" && slug.current == $slug][0] {    _id,    title,    mainImage,    platformType,    platformUrl,    publishedAt,    body,    categories[]->  }
+// Query: *[_type == "platform" && slug.current == $slug][0] {    _id,    title,    background_color,    mainImage,    platformType,    platformUrl,    publishedAt,    body,    categories[]->  }
 export type PlatformQueryResult = {
   _id: string;
   title: string | null;
+  background_color: Color | null;
   mainImage: {
     asset?: {
       _ref: string;
@@ -2870,11 +2872,12 @@ export type PlatformQueryResult = {
   }> | null;
 } | null;
 // Variable: SYNCHRONIZATIONS_QUERY
-// Query: *[  _type == "synchronization"  && defined(slug.current)]{  _id,  title,  slug,  date,  artist->{    name,    slug  },  platform->{    title,    platformType  },  venue->{    name  }}|order(date desc)
+// Query: *[  _type == "synchronization"  && defined(slug.current)]{  _id,  title,  slug,  background_color,  date,  artist->{    name,    slug  },  platform->{    title,    platformType  },  venue->{    name  }}|order(date desc)
 export type SYNCHRONIZATIONS_QUERYResult = Array<{
   _id: string;
   title: string | null;
   slug: Slug | null;
+  background_color: Color | null;
   date: string | null;
   artist: {
     name: string | null;
@@ -2889,10 +2892,11 @@ export type SYNCHRONIZATIONS_QUERYResult = Array<{
   } | null;
 }>;
 // Variable: SYNCHRONIZATION_QUERY
-// Query: *[  _type == "synchronization" &&  slug.current == $slug][0]{  _id,  title,  date,  description,  artist->{    name,    slug,    mainImage  },  platform->{    title,    platformType,    platformUrl  },  venue->{    name,    address  },  categories[]->}
+// Query: *[  _type == "synchronization" &&  slug.current == $slug][0]{  _id,  title,  background_color,  date,  description,  artist->{    name,    slug,    mainImage  },  platform->{    title,    platformType,    platformUrl  },  venue->{    name,    address  },  categories[]->}
 export type SYNCHRONIZATION_QUERYResult = {
   _id: string;
   title: string | null;
+  background_color: Color | null;
   date: string | null;
   description: Array<{
     children?: Array<{
@@ -2980,9 +2984,9 @@ declare module "@sanity/client" {
     "*[_id == \"site\"][0] {\n  logo {\n    name,\n    \"default\": image.default.asset->{\n      _id,\n      url\n    },\n    \"light\": image.light.asset->{\n      _id,\n      url\n    },\n    \"dark\": image.dark.asset->{\n      _id,\n      url\n    }\n  }\n}": LOGO_QUERYResult;
     "*[_type == \"artist\"] {\n  _id,\n  name,\n  slug,\n  mainImage,\n  background_color,\n  categories[]->{ \n    _id,\n    title\n  }\n}": ArtistsQueryResult;
     "\n  *[_type == \"artist\" && slug.current == $slug][0] {\n    _id,\n    name,\n    mainImage,\n    background_color,\n    body,\n    publishedAt,\n    categories[]->,\n    \"relatedArtists\": relatedArtists[]->{ name, slug }\n  }\n": ArtistQueryResult;
-    "\n  *[_type == \"platform\"] | order(publishedAt desc) {\n    _id,\n    title,\n    slug {\n      current\n    },\n    mainImage {\n      asset,\n      hotspot,\n      crop,\n      _type\n    },\n    platformType,\n    platformUrl,\n    publishedAt,\n    categories[]-> {\n      _id,\n      _type,\n      _createdAt,\n      _updatedAt,\n      _rev,\n      title,\n      slug,\n      description\n    }\n  }\n": PlatformsQueryResult;
-    "\n  *[_type == \"platform\" && slug.current == $slug][0] {\n    _id,\n    title,\n    mainImage,\n    platformType,\n    platformUrl,\n    publishedAt,\n    body,\n    categories[]->\n  }\n": PlatformQueryResult;
-    "*[\n  _type == \"synchronization\"\n  && defined(slug.current)\n]{\n  _id,\n  title,\n  slug,\n  date,\n  artist->{\n    name,\n    slug\n  },\n  platform->{\n    title,\n    platformType\n  },\n  venue->{\n    name\n  }\n}|order(date desc)": SYNCHRONIZATIONS_QUERYResult;
-    "*[\n  _type == \"synchronization\" &&\n  slug.current == $slug\n][0]{\n  _id,\n  title,\n  date,\n  description,\n  artist->{\n    name,\n    slug,\n    mainImage\n  },\n  platform->{\n    title,\n    platformType,\n    platformUrl\n  },\n  venue->{\n    name,\n    address\n  },\n  categories[]->\n}": SYNCHRONIZATION_QUERYResult;
+    "\n  *[_type == \"platform\"] | order(publishedAt desc) {\n    _id,\n    title,\n    background_color,\n    slug {\n      current\n    },\n    mainImage {\n      asset,\n      hotspot,\n      crop,\n      _type\n    },\n    platformType,\n    platformUrl,\n    publishedAt,\n    categories[]-> {\n      _id,\n      _type,\n      _createdAt,\n      _updatedAt,\n      _rev,\n      title,\n      slug,\n      description\n    }\n  }\n": PlatformsQueryResult;
+    "\n  *[_type == \"platform\" && slug.current == $slug][0] {\n    _id,\n    title,\n    background_color,\n    mainImage,\n    platformType,\n    platformUrl,\n    publishedAt,\n    body,\n    categories[]->\n  }\n": PlatformQueryResult;
+    "*[\n  _type == \"synchronization\"\n  && defined(slug.current)\n]{\n  _id,\n  title,\n  slug,\n  background_color,\n  date,\n  artist->{\n    name,\n    slug\n  },\n  platform->{\n    title,\n    platformType\n  },\n  venue->{\n    name\n  }\n}|order(date desc)": SYNCHRONIZATIONS_QUERYResult;
+    "*[\n  _type == \"synchronization\" &&\n  slug.current == $slug\n][0]{\n  _id,\n  title,\n  background_color,\n  date,\n  description,\n  artist->{\n    name,\n    slug,\n    mainImage\n  },\n  platform->{\n    title,\n    platformType,\n    platformUrl\n  },\n  venue->{\n    name,\n    address\n  },\n  categories[]->\n}": SYNCHRONIZATION_QUERYResult;
   }
 }
