@@ -8,6 +8,9 @@ type TransformedArtist = {
   _id: string;
   name: string;
   slug: { _type: 'slug'; current: string } | null;
+  background_color: {
+    hex: string;
+  };
   mainImage: {
     asset: {
       _ref: string;
@@ -36,9 +39,8 @@ export default async function Page() {
   })) as TransformedArtist[];
 
   return (
-    <main className="container mx-auto grid grid-cols-1 gap-6 p-12">
-      <Title>Artists</Title>
-      <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+    <main className="main_wrapper">
+      <div className="collection_wrapper">
         {transformedArtists?.map((artist: TransformedArtist) => (
           <ArtistPreview key={artist._id} {...artist} />
         ))}

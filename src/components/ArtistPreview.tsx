@@ -6,6 +6,9 @@ import { ArtistsQueryResult, SanityImageHotspot, SanityImageCrop, Slug } from '@
 type ArtistPreviewProps = {
   name: string | null;
   slug: Slug | null;
+  background_color: {
+    hex: string;
+  };
   mainImage: {
     asset: {
       _ref: string;
@@ -22,15 +25,17 @@ type ArtistPreviewProps = {
   }> | null;
 }
 
-export default function ArtistPreview({ name, slug, mainImage, categories }: ArtistPreviewProps) {
+export default function ArtistPreview({ name, slug, mainImage, categories, background_color }: ArtistPreviewProps) {
   if (!slug?.current) {
     return null; // Or some fallback UI
+    console.log(background_color, "background colour object")
   }
-
+  console.log(background_color.hex , "background colour object")
+  const backgroundColor = background_color.hex;
   return (
-    <div className="flex flex-col overflow-hidden rounded-lg shadow-lg">
+    <div className="single_post">
       {mainImage && (
-        <div className="relative h-48">
+        <div className="relative single_post_image">
           <Image
             className="object-cover"
             src={urlFor(mainImage).url()}
@@ -39,21 +44,10 @@ export default function ArtistPreview({ name, slug, mainImage, categories }: Art
           />
         </div>
       )}
-      <div className="flex flex-1 flex-col justify-between bg-white p-6">
-        <div className="flex-1">
-          <Link href={`/artists/${slug.current}`}>
-            <h3 className="text-xl font-semibold text-gray-900">{name || 'Untitled'}</h3>
+      <div>
+          <Link href={`/artists/${slug.current}`} className="single_post_title">
+            <h1 className="post_title" style={{ background: backgroundColor }}>{name || 'Untitled'}</h1>
           </Link>
-          {categories?.length > 0 && (
-            <div className="mt-2 flex gap-2">
-              {categories.map((category) => (
-                <span key={category._id} className="text-sm text-gray-500">
-                  {category.title || ''}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
       </div>
     </div>
   )

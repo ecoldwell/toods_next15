@@ -387,7 +387,7 @@ defineQuery(`*[_id == "site"][0] {
   }
 }`)
 
-export const artistsQuery = defineQuery(`*[_type == "artist"] {
+export const artistsQuery = defineQuery(`*[_type == "artist" && defined(slug.current)]|order(publishedAt desc)[0...12] {
   _id,
   name,
   slug,
