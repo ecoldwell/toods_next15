@@ -58,7 +58,7 @@ export default async function EventPage({
   ).toLocaleTimeString();
 
   return (
-    <main className="container mx-auto grid gap-12 p-12">
+    <main className="main_wrapper">
       <div className="mb-4">
         <Link href="/events">← Back to events</Link>
       </div>

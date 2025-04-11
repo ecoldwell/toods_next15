@@ -18,7 +18,7 @@ export default async function Page({
   }
 
   return (
-    <main>
+    <main className="main_wrapper">
       <Artist {...artist} />
     </main>
   )

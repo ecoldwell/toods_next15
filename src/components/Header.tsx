@@ -9,7 +9,7 @@ export function Header() {
         <LogoHeader></LogoHeader>
         <Navigation></Navigation>
       </header>
-      <ul className="flex items-center gap-4 font-semibold text-slate-700">
+      {/* <ul className="flex items-center gap-4 font-semibold text-slate-700">
           <li>
             <Link
               className="hover:text-pink-500 transition-colors"
@@ -26,7 +26,7 @@ export function Header() {
               Sanity Studio
             </Link>
           </li>
-        </ul>
+        </ul> */}
     </div>
   )
 }

@@ -18,7 +18,7 @@ export default async function Page() {
   })) as Platform[];
 
   return (
-    <main className="container mx-auto grid grid-cols-1 gap-6 p-12">
+    <main className="main_wrapper">
       <Title>Platforms</Title>
       <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {transformedPlatforms?.map((platform: Platform) => (
