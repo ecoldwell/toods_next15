@@ -74,7 +74,7 @@ type MenuItem = {
 
 export const Menu = ({ menuItems }: { menuItems: MenuItem[] }) => {
   return (
-    <nav className="">
+    <nav className="header_menu">
       <ul className="flex header_navigation">
         {menuItems.map((item) => {
           const linkBackground = 

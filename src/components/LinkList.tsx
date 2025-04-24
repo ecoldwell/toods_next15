@@ -19,8 +19,10 @@ export default async function Navigation() {
   const headerNavigation = siteConfig.headerMenu.items;
 
   return (
-    <nav>
-      <Menu menuItems={headerNavigation} />
-    </nav>
+    <div>
+      <div className="mobile_menu">MENU</div>
+        <Menu menuItems={headerNavigation} />
+    </div>
+
   );
 }
