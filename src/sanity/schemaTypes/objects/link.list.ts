@@ -15,6 +15,11 @@ export default defineType({
 			type: 'array',
 			of: [{ type: 'link' }],
 		}),
+		defineField({
+			name: 'background_dropdown',
+			title: 'Background For dropdown',
+			type: 'color',
+		}),
 	],
 	preview: {
 		select: {

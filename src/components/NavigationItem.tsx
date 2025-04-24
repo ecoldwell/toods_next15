@@ -70,6 +70,7 @@ type MenuItem = {
   };
   background_color?: { hex?: string };
   text_color?: { hex?: string };
+  background_dropdown?: {hex?: string };
 };
 
 export const Menu = ({ menuItems }: { menuItems: MenuItem[] }) => {
@@ -138,6 +139,9 @@ const DropdownMenu = ({ item }: { item: MenuItem }) => {
     item.internal?.text_color?.hex || 
     item.link?.text_color?.hex || "#000";
 
+    const dropdownBackground = 
+    item.background_dropdown?.hex || "#000";                          
+
   console.log("Dropdown item:", item); // Debug to confirm structure
 
   return (
@@ -153,7 +157,7 @@ const DropdownMenu = ({ item }: { item: MenuItem }) => {
       </button>
 
       {isOpen && (
-        <ul className="absolute left-0 mt-2 w-48 bg-white border shadow-lg rounded-lg overflow-hidden">
+        <ul className="dropdown_ul" style={{ background: dropdownBackground }}>
           {item.links?.map((subItem) => (
             <li key={subItem._key} className="border-b last:border-none link_title_wraper">
               {subItem.type === "internal" && subItem.internal ? (

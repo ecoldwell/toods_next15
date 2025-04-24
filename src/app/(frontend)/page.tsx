@@ -1,7 +1,7 @@
 import { Title } from '@/components/Title'
 import Link from "next/link";
 import { MEDIAHOME_QUERY } from '@/sanity/lib/queries';
-import  Navigation  from '@/components/LinkList';
+import  Navigation  from '@/components/HeaderMenu';
 import { defineQuery } from "next-sanity";
 import { sanityFetch } from "@/sanity/lib/live";
 import { PageBuilder } from "@/components/PageBuilder";

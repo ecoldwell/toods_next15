@@ -54,6 +54,18 @@ export const siteSettingsType = defineType({
 			group: 'navigation',
 		}),
 		defineField({
+			name: 'mobileMenu',
+			type: 'reference',
+			to: [{ type: 'navigation' }],
+			group: 'navigation',
+		}),
+		defineField({
+			name: 'fixedMenu',
+			type: 'reference',
+			to: [{ type: 'navigation' }],
+			group: 'navigation',
+		}),
+		defineField({
 			name: 'social',
 			type: 'reference',
 			to: [{ type: 'navigation' }],

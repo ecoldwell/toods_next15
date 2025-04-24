@@ -60,3 +60,29 @@
         display:block;
     }
 }
+
+.dropdown_ul {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 9999999999999999999999999999;
+    // background: springgreen;
+    border: solid;
+    li {
+        border-color:black;
+    
+        &:hover {
+            a{
+                text-decoration: underline;
+            }
+       
+            
+        }
+    }
+}
+
+.fixed_menu {
+    position: fixed;
+    bottom: 4rem;
+    z-index: 99999999;
+}

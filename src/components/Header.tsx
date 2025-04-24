@@ -1,6 +1,7 @@
 import Link from 'next/link'
-import Navigation from './LinkList'
+import Navigation from './HeaderMenu'
 import LogoHeader from './DesktopLogo'
+import FixedNavigation from './menus/FixedMenu'
 
 export function Header() {
   return (
@@ -8,6 +9,7 @@ export function Header() {
       <header className="og_header">
         <LogoHeader></LogoHeader>
         <Navigation></Navigation>
+        <FixedNavigation></FixedNavigation>
       </header>
       {/* <ul className="flex items-center gap-4 font-semibold text-slate-700">
           <li>

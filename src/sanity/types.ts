@@ -389,6 +389,18 @@ export type Site = {
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "navigation";
   };
+  mobileMenu?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "navigation";
+  };
+  fixedMenu?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "navigation";
+  };
   social?: {
     _ref: string;
     _type: "reference";
@@ -453,6 +465,7 @@ export type LinkList = {
   links?: Array<{
     _key: string;
   } & Link>;
+  background_dropdown?: Color;
 };
 
 export type Link = {
@@ -1465,6 +1478,7 @@ export type NAV_QUERYResult = Array<{
       external?: string;
       params?: string;
     }> | null;
+    background_dropdown?: Color;
     internal: null;
   } | {
     _key: string;
@@ -1520,7 +1534,7 @@ export type NAV_QUERYResult = Array<{
 // Query: *[_type == "cta"]{  ...,link {   ...,  internal->{ _type, title, metadata }  } }
 export type CTA_QUERYResult = Array<never>;
 // Variable: SITE_QUERY
-// Query: *[_type == "site"][0]{  ...,  headerMenu->{  title,    items[] {      ...,      internal->{ _type, title, metadata, _key },    link {          ...,      internal->{ _type, title, metadata, _key },    },    links[] {            ...,      internal->{ _type, title, metadata, _key }    }    } },  footerMenu->{  title,    items[] {      ...,      internal->{ _type, title, metadata, _key },    link {          ...,      internal->{ _type, title, metadata, _key },    },    links[] {            ...,      internal->{ _type, title, metadata, _key }    }    } },  socialMenu->{  title,    items[] {      ...,      internal->{ _type, title, metadata, _key },    link {          ...,      internal->{ _type, title, metadata, _key },    },    links[] {            ...,      internal->{ _type, title, metadata, _key }    }    } },}
+// Query: *[_type == "site"][0]{  ...,  headerMenu->{  title,    items[] {      ...,      internal->{ _type, title, metadata, _key },    link {          ...,      internal->{ _type, title, metadata, _key },    },    links[] {            ...,      internal->{ _type, title, metadata, _key }    }    } },    fixedMenu->{  title,    items[] {      ...,      internal->{ _type, title, metadata, _key },    link {          ...,      internal->{ _type, title, metadata, _key },    },    links[] {            ...,      internal->{ _type, title, metadata, _key }    }    } },  footerMenu->{  title,    items[] {      ...,      internal->{ _type, title, metadata, _key },    link {          ...,      internal->{ _type, title, metadata, _key },    },    links[] {            ...,      internal->{ _type, title, metadata, _key }    }    } },  socialMenu->{  title,    items[] {      ...,      internal->{ _type, title, metadata, _key },    link {          ...,      internal->{ _type, title, metadata, _key },    },    links[] {            ...,      internal->{ _type, title, metadata, _key }    }    } },}
 export type SITE_QUERYResult = {
   _id: string;
   _type: "site";
@@ -1668,6 +1682,7 @@ export type SITE_QUERYResult = {
         external?: string;
         params?: string;
       }> | null;
+      background_dropdown?: Color;
       internal: null;
     } | {
       _key: string;
@@ -1817,6 +1832,163 @@ export type SITE_QUERYResult = {
         external?: string;
         params?: string;
       }> | null;
+      background_dropdown?: Color;
+      internal: null;
+    } | {
+      _key: string;
+      _type: "link";
+      label?: string;
+      background_color?: Color;
+      text_color?: Color;
+      type?: "collection" | "external" | "internal";
+      collection?: "artists" | "platforms" | "synchronizations";
+      internal: {
+        _type: "artist";
+        title: null;
+        metadata: null;
+        _key: null;
+      } | {
+        _type: "category";
+        title: string | null;
+        metadata: null;
+        _key: null;
+      } | {
+        _type: "event";
+        title: null;
+        metadata: null;
+        _key: null;
+      } | {
+        _type: "page";
+        title: string | null;
+        metadata: null;
+        _key: null;
+      } | {
+        _type: "platform";
+        title: string | null;
+        metadata: null;
+        _key: null;
+      } | {
+        _type: "post";
+        title: string | null;
+        metadata: null;
+        _key: null;
+      } | {
+        _type: "synchronization";
+        title: string | null;
+        metadata: null;
+        _key: null;
+      } | null;
+      external?: string;
+      params?: string;
+      link: null;
+      links: null;
+    }> | null;
+  } | null;
+  mobileMenu?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "navigation";
+  };
+  fixedMenu: {
+    title: string | null;
+    items: Array<{
+      _key: string;
+      _type: "link.list";
+      link: {
+        _type: "link";
+        label?: string;
+        background_color?: Color;
+        text_color?: Color;
+        type?: "collection" | "external" | "internal";
+        collection?: "artists" | "platforms" | "synchronizations";
+        internal: {
+          _type: "artist";
+          title: null;
+          metadata: null;
+          _key: null;
+        } | {
+          _type: "category";
+          title: string | null;
+          metadata: null;
+          _key: null;
+        } | {
+          _type: "event";
+          title: null;
+          metadata: null;
+          _key: null;
+        } | {
+          _type: "page";
+          title: string | null;
+          metadata: null;
+          _key: null;
+        } | {
+          _type: "platform";
+          title: string | null;
+          metadata: null;
+          _key: null;
+        } | {
+          _type: "post";
+          title: string | null;
+          metadata: null;
+          _key: null;
+        } | {
+          _type: "synchronization";
+          title: string | null;
+          metadata: null;
+          _key: null;
+        } | null;
+        external?: string;
+        params?: string;
+      } | null;
+      links: Array<{
+        _key: string;
+        _type: "link";
+        label?: string;
+        background_color?: Color;
+        text_color?: Color;
+        type?: "collection" | "external" | "internal";
+        collection?: "artists" | "platforms" | "synchronizations";
+        internal: {
+          _type: "artist";
+          title: null;
+          metadata: null;
+          _key: null;
+        } | {
+          _type: "category";
+          title: string | null;
+          metadata: null;
+          _key: null;
+        } | {
+          _type: "event";
+          title: null;
+          metadata: null;
+          _key: null;
+        } | {
+          _type: "page";
+          title: string | null;
+          metadata: null;
+          _key: null;
+        } | {
+          _type: "platform";
+          title: string | null;
+          metadata: null;
+          _key: null;
+        } | {
+          _type: "post";
+          title: string | null;
+          metadata: null;
+          _key: null;
+        } | {
+          _type: "synchronization";
+          title: string | null;
+          metadata: null;
+          _key: null;
+        } | null;
+        external?: string;
+        params?: string;
+      }> | null;
+      background_dropdown?: Color;
       internal: null;
     } | {
       _key: string;
@@ -1912,7 +2084,7 @@ export type SITE_QUERYResult = {
   socialMenu: null;
 } | null;
 // Variable: HEADER_MENU
-// Query: *[_type == "site"][0] {    _id,    _type,    title,    headerMenu{      _key,      ...@->{_id, title, slug, items[]{        ...,        _key,        _type,        label,        background_color,        external,        internal->{           _type,           title,           name,  // Added for artist name          metadata,           _key,           _id,           slug         },        links[] {          ...,          _key,          _type,          label,          background_color,          external,          internal->{             _type,             title,            name,  // Added for artist name             metadata,             _key,             _id,             slug,             label           }        }      }}    }  }
+// Query: *[_type == "site"][0] {    _id,    _type,    title,    headerMenu {      _key,      ...@->{_id, title, slug, items[]{        ...,        _key,        _type,        label,        background_color,        external,        internal->{           _type,           title,           name,  // Added for artist name          metadata,           _key,           _id,           slug         },        links[] {          ...,          _key,          _type,          label,          background_color,          external,          internal->{             _type,             title,            name,  // Added for artist name             metadata,             _key,             _id,             slug,             label           }        }      }}    }  }
 export type HEADER_MENUResult = {
   _id: string;
   _type: "site";
@@ -2001,6 +2173,7 @@ export type HEADER_MENUResult = {
         external: string | null;
         params?: string;
       }> | null;
+      background_dropdown?: Color;
       label: null;
       background_color: null;
       external: null;
@@ -2073,6 +2246,336 @@ export type HEADER_MENUResult = {
       external: string | null;
       params?: string;
       links: null;
+    }> | null;
+  } | null;
+} | null;
+// Variable: MOBILE_MENU
+// Query: *[_type == "site"][0] {  mobileMenu{    _key,    ...@->{_id, title, slug, items[]{      ...,      _key,      _type,      label,      background_color,      external,      internal->{         _type,         title,         name,  // Added for artist name        metadata,         _key,         _id,         slug       },      links[] {        ...,        _key,        _type,        label,        background_color,        external,        internal->{           _type,           title,          name,  // Added for artist name           metadata,           _key,           _id,           slug,           label         }      }    }}  }}
+export type MOBILE_MENUResult = {
+  mobileMenu: {
+    _key: null;
+    _id: string;
+    title: string | null;
+    slug: Slug | null;
+    items: Array<{
+      _key: string;
+      _type: "link.list";
+      link?: Link;
+      links: Array<{
+        _key: string;
+        _type: "link";
+        label: string | null;
+        background_color: Color | null;
+        text_color?: Color;
+        type?: "collection" | "external" | "internal";
+        collection?: "artists" | "platforms" | "synchronizations";
+        internal: {
+          _type: "artist";
+          title: null;
+          name: string | null;
+          metadata: null;
+          _key: null;
+          _id: string;
+          slug: Slug | null;
+          label: null;
+        } | {
+          _type: "category";
+          title: string | null;
+          name: null;
+          metadata: null;
+          _key: null;
+          _id: string;
+          slug: Slug | null;
+          label: null;
+        } | {
+          _type: "event";
+          title: null;
+          name: string | null;
+          metadata: null;
+          _key: null;
+          _id: string;
+          slug: Slug | null;
+          label: null;
+        } | {
+          _type: "page";
+          title: string | null;
+          name: null;
+          metadata: null;
+          _key: null;
+          _id: string;
+          slug: Slug | null;
+          label: null;
+        } | {
+          _type: "platform";
+          title: string | null;
+          name: null;
+          metadata: null;
+          _key: null;
+          _id: string;
+          slug: Slug | null;
+          label: null;
+        } | {
+          _type: "post";
+          title: string | null;
+          name: null;
+          metadata: null;
+          _key: null;
+          _id: string;
+          slug: Slug | null;
+          label: null;
+        } | {
+          _type: "synchronization";
+          title: string | null;
+          name: null;
+          metadata: null;
+          _key: null;
+          _id: string;
+          slug: Slug | null;
+          label: null;
+        } | null;
+        external: string | null;
+        params?: string;
+      }> | null;
+      background_dropdown?: Color;
+      label: null;
+      background_color: null;
+      external: null;
+      internal: null;
+    } | {
+      _key: string;
+      _type: "link";
+      label: string | null;
+      background_color: Color | null;
+      text_color?: Color;
+      type?: "collection" | "external" | "internal";
+      collection?: "artists" | "platforms" | "synchronizations";
+      internal: {
+        _type: "artist";
+        title: null;
+        name: string | null;
+        metadata: null;
+        _key: null;
+        _id: string;
+        slug: Slug | null;
+      } | {
+        _type: "category";
+        title: string | null;
+        name: null;
+        metadata: null;
+        _key: null;
+        _id: string;
+        slug: Slug | null;
+      } | {
+        _type: "event";
+        title: null;
+        name: string | null;
+        metadata: null;
+        _key: null;
+        _id: string;
+        slug: Slug | null;
+      } | {
+        _type: "page";
+        title: string | null;
+        name: null;
+        metadata: null;
+        _key: null;
+        _id: string;
+        slug: Slug | null;
+      } | {
+        _type: "platform";
+        title: string | null;
+        name: null;
+        metadata: null;
+        _key: null;
+        _id: string;
+        slug: Slug | null;
+      } | {
+        _type: "post";
+        title: string | null;
+        name: null;
+        metadata: null;
+        _key: null;
+        _id: string;
+        slug: Slug | null;
+      } | {
+        _type: "synchronization";
+        title: string | null;
+        name: null;
+        metadata: null;
+        _key: null;
+        _id: string;
+        slug: Slug | null;
+      } | null;
+      external: string | null;
+      params?: string;
+      links: null;
+    }> | null;
+  } | null;
+} | null;
+// Variable: FIXED_MENU
+// Query: *[_type == "site"][1] {  _id, _type,  title,  fixedMenu{    _key,    ...@->{_id, title, slug, items[]{      ...,      _key,      _type,      label,      background_color,      external,      internal->{         _type,         title,         name,  // Added for artist name        metadata,         _key,         _id,         slug       },      links[] {        ...,        _key,        _type,        label,        background_color,        external,        internal->{           _type,           title,          name,  // Added for artist name           metadata,           _key,           _id,           slug,           label         }      },      background_dropdown,    }}  }}
+export type FIXED_MENUResult = {
+  _id: string;
+  _type: "site";
+  title: string | null;
+  fixedMenu: {
+    _key: null;
+    _id: string;
+    title: string | null;
+    slug: Slug | null;
+    items: Array<{
+      _key: string;
+      _type: "link.list";
+      link?: Link;
+      links: Array<{
+        _key: string;
+        _type: "link";
+        label: string | null;
+        background_color: Color | null;
+        text_color?: Color;
+        type?: "collection" | "external" | "internal";
+        collection?: "artists" | "platforms" | "synchronizations";
+        internal: {
+          _type: "artist";
+          title: null;
+          name: string | null;
+          metadata: null;
+          _key: null;
+          _id: string;
+          slug: Slug | null;
+          label: null;
+        } | {
+          _type: "category";
+          title: string | null;
+          name: null;
+          metadata: null;
+          _key: null;
+          _id: string;
+          slug: Slug | null;
+          label: null;
+        } | {
+          _type: "event";
+          title: null;
+          name: string | null;
+          metadata: null;
+          _key: null;
+          _id: string;
+          slug: Slug | null;
+          label: null;
+        } | {
+          _type: "page";
+          title: string | null;
+          name: null;
+          metadata: null;
+          _key: null;
+          _id: string;
+          slug: Slug | null;
+          label: null;
+        } | {
+          _type: "platform";
+          title: string | null;
+          name: null;
+          metadata: null;
+          _key: null;
+          _id: string;
+          slug: Slug | null;
+          label: null;
+        } | {
+          _type: "post";
+          title: string | null;
+          name: null;
+          metadata: null;
+          _key: null;
+          _id: string;
+          slug: Slug | null;
+          label: null;
+        } | {
+          _type: "synchronization";
+          title: string | null;
+          name: null;
+          metadata: null;
+          _key: null;
+          _id: string;
+          slug: Slug | null;
+          label: null;
+        } | null;
+        external: string | null;
+        params?: string;
+      }> | null;
+      background_dropdown: Color | null;
+      label: null;
+      background_color: null;
+      external: null;
+      internal: null;
+    } | {
+      _key: string;
+      _type: "link";
+      label: string | null;
+      background_color: Color | null;
+      text_color?: Color;
+      type?: "collection" | "external" | "internal";
+      collection?: "artists" | "platforms" | "synchronizations";
+      internal: {
+        _type: "artist";
+        title: null;
+        name: string | null;
+        metadata: null;
+        _key: null;
+        _id: string;
+        slug: Slug | null;
+      } | {
+        _type: "category";
+        title: string | null;
+        name: null;
+        metadata: null;
+        _key: null;
+        _id: string;
+        slug: Slug | null;
+      } | {
+        _type: "event";
+        title: null;
+        name: string | null;
+        metadata: null;
+        _key: null;
+        _id: string;
+        slug: Slug | null;
+      } | {
+        _type: "page";
+        title: string | null;
+        name: null;
+        metadata: null;
+        _key: null;
+        _id: string;
+        slug: Slug | null;
+      } | {
+        _type: "platform";
+        title: string | null;
+        name: null;
+        metadata: null;
+        _key: null;
+        _id: string;
+        slug: Slug | null;
+      } | {
+        _type: "post";
+        title: string | null;
+        name: null;
+        metadata: null;
+        _key: null;
+        _id: string;
+        slug: Slug | null;
+      } | {
+        _type: "synchronization";
+        title: string | null;
+        name: null;
+        metadata: null;
+        _key: null;
+        _id: string;
+        slug: Slug | null;
+      } | null;
+      external: string | null;
+      params?: string;
+      links: null;
+      background_dropdown: null;
     }> | null;
   } | null;
 } | null;
@@ -3166,8 +3669,10 @@ declare module "@sanity/client" {
     "*[\n  _type == \"media\" &&\n  slug.current == $slug\n][0]{\n...,\n\"date\": coalesce(date, now()),\n\"doorsOpen\": coalesce(doorsOpen, 0),\nheadline->,\nvenue->\n}": MEDIA_QUERYResult;
     "*[_type == \"navigation\"]{\n title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    }\n}": NAV_QUERYResult;
     "*[_type == \"cta\"]{\n  ...,\nlink { \n  ...,\n  internal->{ _type, title, metadata }\n  }\n }": CTA_QUERYResult;
-    "*[_type == \"site\"][0]{\n  ...,\n  headerMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n  footerMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n  socialMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n}": SITE_QUERYResult;
-    "*[_type == \"site\"][0] {\n    _id,\n    _type,\n    title,\n    headerMenu{\n      _key,\n      ...@->{_id, title, slug, items[]{\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{ \n          _type, \n          title, \n          name,  // Added for artist name\n          metadata, \n          _key, \n          _id, \n          slug \n        },\n        links[] {\n          ...,\n          _key,\n          _type,\n          label,\n          background_color,\n          external,\n          internal->{ \n            _type, \n            title,\n            name,  // Added for artist name \n            metadata, \n            _key, \n            _id, \n            slug, \n            label \n          }\n        }\n      }}\n    }\n  }": HEADER_MENUResult;
+    "*[_type == \"site\"][0]{\n  ...,\n  headerMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n    fixedMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n  footerMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n  socialMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n}": SITE_QUERYResult;
+    "*[_type == \"site\"][0] {\n    _id,\n    _type,\n    title,\n    headerMenu {\n      _key,\n      ...@->{_id, title, slug, items[]{\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{ \n          _type, \n          title, \n          name,  // Added for artist name\n          metadata, \n          _key, \n          _id, \n          slug \n        },\n        links[] {\n          ...,\n          _key,\n          _type,\n          label,\n          background_color,\n          external,\n          internal->{ \n            _type, \n            title,\n            name,  // Added for artist name \n            metadata, \n            _key, \n            _id, \n            slug, \n            label \n          }\n        }\n      }}\n    }\n  }": HEADER_MENUResult;
+    "*[_type == \"site\"][0] {\n  mobileMenu{\n    _key,\n    ...@->{_id, title, slug, items[]{\n      ...,\n      _key,\n      _type,\n      label,\n      background_color,\n      external,\n      internal->{ \n        _type, \n        title, \n        name,  // Added for artist name\n        metadata, \n        _key, \n        _id, \n        slug \n      },\n      links[] {\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{ \n          _type, \n          title,\n          name,  // Added for artist name \n          metadata, \n          _key, \n          _id, \n          slug, \n          label \n        }\n      }\n    }}\n  }\n}": MOBILE_MENUResult;
+    "*[_type == \"site\"][1] {\n  _id,\n _type,\n  title,\n  fixedMenu{\n    _key,\n    ...@->{_id, title, slug, items[]{\n      ...,\n      _key,\n      _type,\n      label,\n      background_color,\n      external,\n      internal->{ \n        _type, \n        title, \n        name,  // Added for artist name\n        metadata, \n        _key, \n        _id, \n        slug \n      },\n      links[] {\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{ \n          _type, \n          title,\n          name,  // Added for artist name \n          metadata, \n          _key, \n          _id, \n          slug, \n          label \n        }\n      },\n      background_dropdown,\n    }}\n  }\n}": FIXED_MENUResult;
     "*[_type == \"page\"&& slug.current == $slug][0]{\n     ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"featuredPosts\" => {\n        ...,\n        \"posts\": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredArtists\" => {\n        ...,\n        \"artists\": artists[]->{\n          _id,\n          _type,\n          name,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredPlatforms\" => {\n        ...,\n        \"platforms\": platforms[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredSynchronicity\" => {\n        ...,\n        \"synchronicity\": synchronicity[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n  }": PAGE_QUERYResult;
     "*[_id == \"site\"][0]{\n  homePage->{\n    ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"featuredPosts\" => {\n        ...,\n        \"posts\": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredArtists\" => {\n        ...,\n        \"artists\": artists[]->{\n          _id,\n          _type,\n          name,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredPlatforms\" => {\n        ...,\n        \"platforms\": platforms[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredSynchronicity\" => {\n        ...,\n        \"synchronicity\": synchronicity[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n  }\n}": HOME_PAGE_QUERYResult;
     "*[_id == \"site\"][0] {\n  logo {\n    name,\n    \"default\": image.default.asset->{\n      _id,\n      url\n    },\n    \"light\": image.light.asset->{\n      _id,\n      url\n    },\n    \"dark\": image.dark.asset->{\n      _id,\n      url\n    }\n  }\n}": LOGO_QUERYResult;
