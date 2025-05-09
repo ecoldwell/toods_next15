@@ -1,9 +1,11 @@
 import { sanityFetch } from "@/sanity/lib/live";
 import { notFound } from "next/navigation";
 import { HEADER_MENU } from "@/sanity/lib/queries";
-import { Menu } from './NavigationItem';
+import { Menu } from '../NavigationItem';
+import LogoHeader from "../DesktopLogo";
+import  MobileHamburger  from './MobileHamburger'
 
-export default async function Navigation() {
+export default async function MobileHeader() {
   const { data: siteConfig } = await sanityFetch({
     query: HEADER_MENU,
   });
@@ -18,17 +20,21 @@ export default async function Navigation() {
 
   const headerNavigation = siteConfig.headerMenu.items;
 
+  function showNav() {
+    console.log("increment like count")
+  }
+
+
+ 
+
   return (
-    <div className="desktop_nav_wrapper">
-      {/* <div className="mobile_menu" id="menuToggle">
-    <input type="checkbox" id="hamburger" />
-      <label htmlFor="hamburger" className="hamburger">
-          <span className="line"></span>
-          <span className="line"></span>
-          <span className="line"></span>
-      </label>
-      </div> */}
-        <Menu menuItems={headerNavigation} />
+    <div className="mobile_header_container">
+      {/* <div className="mobile_header"> */}
+        {/* <LogoHeader></LogoHeader> */}
+        <MobileHamburger></MobileHamburger>
+       {/* </div> */}
+      <Menu menuItems={headerNavigation} />
+    
     </div>
 
   );

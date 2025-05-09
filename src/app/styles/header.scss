@@ -1,3 +1,5 @@
+@import "variables.scss";
+
 .header_wrapper {
     padding: 2.5rem;
 }
@@ -54,13 +56,6 @@
 }
 
 
-.mobile_menu {
-    display:none;
-    @include mobile {
-        display:block;
-    }
-}
-
 .dropdown_ul {
     position: absolute;
     left: 0;
@@ -85,4 +80,46 @@
     position: fixed;
     bottom: 4rem;
     z-index: 99999999;
+}
+
+// .desktop_nav_wrapper {
+//     @include mobile {
+//         display:none !important;
+//     }
+// }
+
+// MOBILE HEADER
+
+.mobile_header_container {
+    display:none;
+    flex-direction:column;
+    .mobile_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    }
+}
+
+#hamburger:checked + .mobile_overlay{
+    display:block;
+}
+
+
+.mobile_header_container {
+    @include mobile {
+        display:flex;
+        .header_menu {
+            display:none;
+        }
+    }
+
+}
+
+// NEW MOBILE MENU STYLE/FUNCTION ///// CLEANING CODE UP 
+
+.desktop_nav_wrapper {
+    @include mobile {
+        display:none;
+    }
 }

@@ -14,11 +14,11 @@ export function Hero({ title, text, image }: HeroProps) {
     <section className="hero_wrapper post_image_wrapper">
       <div className="flex flex-col justify-center z-20 hero_content">
         {title ? (
-          <h1 className="text-2xl md:text-4xl lg:text-6xl font-semibold text-pretty max-w-3xl">
+          <h1 className="">
             {title}
           </h1>
         ) : null}
-        <div className="prose-lg lg:prose-xl prose-invert flex items-center">
+        <div className="">
           {text ? <PortableText value={text} /> : null}
         </div>
       </div>

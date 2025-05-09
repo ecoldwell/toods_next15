@@ -2,15 +2,21 @@ import Link from 'next/link'
 import Navigation from './HeaderMenu'
 import LogoHeader from './DesktopLogo'
 import FixedNavigation from './menus/FixedMenu'
+import MobileHeader from './menus/MobileHeader'
 
 export function Header() {
   return (
     <div className="header_wrapper">
       <header className="og_header">
+     
         <LogoHeader></LogoHeader>
         <Navigation></Navigation>
-        <FixedNavigation></FixedNavigation>
+        <MobileHeader></MobileHeader>
+
+
       </header>
+              <FixedNavigation></FixedNavigation>
+        
       {/* <ul className="flex items-center gap-4 font-semibold text-slate-700">
           <li>
             <Link

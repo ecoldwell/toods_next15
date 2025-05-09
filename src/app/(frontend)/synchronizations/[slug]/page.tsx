@@ -30,6 +30,7 @@ export default async function Page({
   const backgroundColor = sync.background_color?.hex || "#fff";
 
   return (
+    <main className="main_wrapper">
     <div className="post_container syncro_wrapper">
       <div className="post_image">
       <div className="artist">
@@ -99,6 +100,7 @@ export default async function Page({
         </div>
       </div>
     </div>
+    </main>
 
   );
 } 
