@@ -123,3 +123,34 @@
         display:none;
     }
 }
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.mobile_menu_icon {
+    display:none;
+    @include mobile {
+        display:block;
+    }
+}
+
+.mobile_overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    z-index:9999999;
+    .og_header {
+        flex-direction:column;
+        .mobile_header_container ul {
+            flex-direction:column;
+        }
+    }
+}

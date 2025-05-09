@@ -3,14 +3,18 @@ import Navigation from './HeaderMenu'
 import LogoHeader from './DesktopLogo'
 import FixedNavigation from './menus/FixedMenu'
 import MobileHeader from './menus/MobileHeader'
+import MobileHamburger from './menus/MobileHamburger'
 
 export function Header() {
   return (
-    <div className="header_wrapper">
+    <div className="header_wrapper" id="fixed_menu">
       <header className="og_header">
-     
+      <div className="header">
         <LogoHeader></LogoHeader>
         <Navigation></Navigation>
+        <MobileHamburger></MobileHamburger>
+      </div>
+
         <MobileHeader></MobileHeader>
 
 

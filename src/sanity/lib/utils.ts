@@ -15,5 +15,7 @@ function listenerFunction(this: HTMLElement, ev: Event) {
 	ev.preventDefault();
 	console.log("i have been clicked and I know this")
 	const mobileNav = (<HTMLInputElement>document.getElementById("overlayToggleMenu"))
+	const mobileOverlay = (<HTMLInputElement>document.getElementById("fixed_menu"))
 	mobileNav.style.display = "flex";
+	mobileOverlay.classList.add("mobile_overlay");
   }
