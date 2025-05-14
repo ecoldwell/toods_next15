@@ -116,6 +116,8 @@
 
 }
 
+
+
 // NEW MOBILE MENU STYLE/FUNCTION ///// CLEANING CODE UP 
 
 .desktop_nav_wrapper {
@@ -153,4 +155,8 @@
             flex-direction:column;
         }
     }
+}
+
+.menu_active {
+    display:flex !important;
 }
