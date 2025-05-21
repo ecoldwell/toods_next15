@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { mobileOverlayToggle } from "@/sanity/lib/utils";
 import  MobileHamburger from './MobileHamburger'
 
 type InternalLink = {
