@@ -168,5 +168,18 @@
     display:flex !important;
     ul {
         flex-direction:column;
+        width:100%;
+        align-items:end;
+        .nav_item {
+            border:none !important;
+            padding:0;
+            margin:10px;
+            .nav_link_feature_color{
+                background: none !important;
+            }
+            a {
+                color: black!important;
+            }
+        }
     }
 }
