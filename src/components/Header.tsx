@@ -9,16 +9,17 @@ export function Header() {
   return (
     <div className="header_wrapper" id="fixed_menu">
       <header className="og_header">
-      <div className="header">
+      <div className="desktop_nav_wrapper">
         <LogoHeader></LogoHeader>
         <Navigation></Navigation>
-        <MobileHamburger></MobileHamburger>
+        {/* <MobileHamburger></MobileHamburger> */}
       </div>
-
-        <MobileHeader></MobileHeader>
+      <MobileHeader></MobileHeader>
+        
 
 
       </header>
+    
               <FixedNavigation></FixedNavigation>
         
       {/* <ul className="flex items-center gap-4 font-semibold text-slate-700">

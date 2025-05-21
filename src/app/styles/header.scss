@@ -90,14 +90,21 @@
 
 // MOBILE HEADER
 
-.mobile_header_container {
+.mobile_nav_wrapper {
     display:none;
     flex-direction:column;
+    width:100%;
     .mobile_header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    }
+    @include mobile {
+        display:flex;
+        .header_menu {
+            display:none;
+        }
     }
 }
 
@@ -106,15 +113,15 @@
 }
 
 
-.mobile_header_container {
-    @include mobile {
-        display:flex;
-        .header_menu {
-            display:none;
-        }
-    }
+// .mobile_header_container {
+//     @include mobile {
+//         display:flex;
+//         .header_menu {
+//             display:none;
+//         }
+//     }
 
-}
+// }
 
 
 
@@ -159,4 +166,7 @@
 
 .menu_active {
     display:flex !important;
+    ul {
+        flex-direction:column;
+    }
 }

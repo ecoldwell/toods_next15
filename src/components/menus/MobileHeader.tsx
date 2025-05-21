@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { HEADER_MENU } from "@/sanity/lib/queries";
 import { Menu } from '../NavigationItem';
 import { MobileOverlay } from './MobileOverlay'
+import LogoHeader from "./MobileLogo";
+import MobileHamburger from "./MobileHamburger";
 
 export default async function MobileHeader() {
   const { data: siteConfig } = await sanityFetch({
@@ -27,10 +29,11 @@ export default async function MobileHeader() {
  
 
   return (
-    <div className="mobile_header_container">
-      {/* <div className="mobile_header"> */}
-        {/* <LogoHeader></LogoHeader> */}
-       {/* </div> */}
+    <div className="mobile_nav_wrapper">
+      <div className="mobile_header">
+        <LogoHeader></LogoHeader>
+        <MobileHamburger></MobileHamburger>
+       </div>
       <MobileOverlay menuItems={headerNavigation} />
     
     </div>
