@@ -28,8 +28,9 @@ export const createDataAttributeConfig = {
 };
 
 const breakpointColumnsObj = {
-  default: 2,
-  1100: 2,
+  default: 3,
+  // 1700: 3,
+  1500: 2,
   700: 1,
   500: 1
 };
