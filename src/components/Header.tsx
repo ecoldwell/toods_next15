@@ -5,6 +5,7 @@ import FixedNavigation from './menus/FixedMenu'
 import MobileHeader from './menus/MobileHeader'
 import MobileHamburger from './menus/MobileHamburger'
 
+
 export function Header() {
   return (
     <div className="header_wrapper" id="fixed_menu">
@@ -21,6 +22,7 @@ export function Header() {
       </header>
     
               <FixedNavigation></FixedNavigation>
+
         
       {/* <ul className="flex items-center gap-4 font-semibold text-slate-700">
           <li>

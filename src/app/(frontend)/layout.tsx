@@ -4,6 +4,8 @@ import { DisableDraftMode } from "@/components/DisableDraftMode";
 import { Header } from "@/components/Header";
 import { SanityLive } from "@/sanity/lib/live";
 import "@/app/styles/global.scss"
+import { Footer } from "@/components/Footer";
+
 
 export default async function FrontendLayout({
   children,
@@ -14,6 +16,8 @@ export default async function FrontendLayout({
     <section className="bg-white min-h-screen og_body">
       <Header />
       {children}
+
+      <Footer></Footer>
       <SanityLive />
       {draftMode().isEnabled && (
         <>

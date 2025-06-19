@@ -2579,6 +2579,173 @@ export type FIXED_MENUResult = {
     }> | null;
   } | null;
 } | null;
+// Variable: FOOTER_MENU
+// Query: *[_type == "site"][1] {  _id, _type,  title,  footerMenu{    _key,    ...@->{_id, title, slug, items[]{      ...,      _key,      _type,      label,      background_color,      external,      internal->{         _type,         title,         name,  // Added for artist name        metadata,         _key,         _id,         slug       },      links[] {        ...,        _key,        _type,        label,        background_color,        external,        internal->{           _type,           title,          name,  // Added for artist name           metadata,           _key,           _id,           slug,           label         }      },      background_dropdown,    }}  }}
+export type FOOTER_MENUResult = {
+  _id: string;
+  _type: "site";
+  title: string | null;
+  footerMenu: {
+    _key: null;
+    _id: string;
+    title: string | null;
+    slug: Slug | null;
+    items: Array<{
+      _key: string;
+      _type: "link.list";
+      link?: Link;
+      links: Array<{
+        _key: string;
+        _type: "link";
+        label: string | null;
+        background_color: Color | null;
+        text_color?: Color;
+        type?: "collection" | "external" | "internal";
+        collection?: "artists" | "platforms" | "synchronizations";
+        internal: {
+          _type: "artist";
+          title: null;
+          name: string | null;
+          metadata: null;
+          _key: null;
+          _id: string;
+          slug: Slug | null;
+          label: null;
+        } | {
+          _type: "category";
+          title: string | null;
+          name: null;
+          metadata: null;
+          _key: null;
+          _id: string;
+          slug: Slug | null;
+          label: null;
+        } | {
+          _type: "event";
+          title: null;
+          name: string | null;
+          metadata: null;
+          _key: null;
+          _id: string;
+          slug: Slug | null;
+          label: null;
+        } | {
+          _type: "page";
+          title: string | null;
+          name: null;
+          metadata: null;
+          _key: null;
+          _id: string;
+          slug: Slug | null;
+          label: null;
+        } | {
+          _type: "platform";
+          title: string | null;
+          name: null;
+          metadata: null;
+          _key: null;
+          _id: string;
+          slug: Slug | null;
+          label: null;
+        } | {
+          _type: "post";
+          title: string | null;
+          name: null;
+          metadata: null;
+          _key: null;
+          _id: string;
+          slug: Slug | null;
+          label: null;
+        } | {
+          _type: "synchronization";
+          title: string | null;
+          name: null;
+          metadata: null;
+          _key: null;
+          _id: string;
+          slug: Slug | null;
+          label: null;
+        } | null;
+        external: string | null;
+        params?: string;
+      }> | null;
+      background_dropdown: Color | null;
+      label: null;
+      background_color: null;
+      external: null;
+      internal: null;
+    } | {
+      _key: string;
+      _type: "link";
+      label: string | null;
+      background_color: Color | null;
+      text_color?: Color;
+      type?: "collection" | "external" | "internal";
+      collection?: "artists" | "platforms" | "synchronizations";
+      internal: {
+        _type: "artist";
+        title: null;
+        name: string | null;
+        metadata: null;
+        _key: null;
+        _id: string;
+        slug: Slug | null;
+      } | {
+        _type: "category";
+        title: string | null;
+        name: null;
+        metadata: null;
+        _key: null;
+        _id: string;
+        slug: Slug | null;
+      } | {
+        _type: "event";
+        title: null;
+        name: string | null;
+        metadata: null;
+        _key: null;
+        _id: string;
+        slug: Slug | null;
+      } | {
+        _type: "page";
+        title: string | null;
+        name: null;
+        metadata: null;
+        _key: null;
+        _id: string;
+        slug: Slug | null;
+      } | {
+        _type: "platform";
+        title: string | null;
+        name: null;
+        metadata: null;
+        _key: null;
+        _id: string;
+        slug: Slug | null;
+      } | {
+        _type: "post";
+        title: string | null;
+        name: null;
+        metadata: null;
+        _key: null;
+        _id: string;
+        slug: Slug | null;
+      } | {
+        _type: "synchronization";
+        title: string | null;
+        name: null;
+        metadata: null;
+        _key: null;
+        _id: string;
+        slug: Slug | null;
+      } | null;
+      external: string | null;
+      params?: string;
+      links: null;
+      background_dropdown: null;
+    }> | null;
+  } | null;
+} | null;
 // Variable: PAGE_QUERY
 // Query: *[_type == "page"&& slug.current == $slug][0]{     ...,    content[]{      ...,      _type == "faqs" => {        ...,        faqs[]->      },      _type == "featuredPosts" => {        ...,        "posts": posts[]->{          _id,          _type,          title,          slug,          background_color,          body,          mainImage {            asset->{              _id,              url            }          }        }      },      _type == "featuredArtists" => {        ...,        "artists": artists[]->{          _id,          _type,          name,          slug,          background_color,          body,          mainImage {            asset->{              _id,              url            }          }        }      },      _type == "featuredPlatforms" => {        ...,        "platforms": platforms[]->{          _id,          _type,          title,          slug,          background_color,          body,          mainImage {            asset->{              _id,              url            }          }        }      },      _type == "featuredSynchronicity" => {        ...,        "synchronicity": synchronicity[]->{          _id,          _type,          title,          slug,          background_color,          body,          mainImage {            asset->{              _id,              url            }          }        }      }    }  }
 export type PAGE_QUERYResult = {
@@ -3673,6 +3840,7 @@ declare module "@sanity/client" {
     "*[_type == \"site\"][0] {\n    _id,\n    _type,\n    title,\n    headerMenu {\n      _key,\n      ...@->{_id, title, slug, items[]{\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{ \n          _type, \n          title, \n          name,  // Added for artist name\n          metadata, \n          _key, \n          _id, \n          slug \n        },\n        links[] {\n          ...,\n          _key,\n          _type,\n          label,\n          background_color,\n          external,\n          internal->{ \n            _type, \n            title,\n            name,  // Added for artist name \n            metadata, \n            _key, \n            _id, \n            slug, \n            label \n          }\n        }\n      }}\n    }\n  }": HEADER_MENUResult;
     "*[_type == \"site\"][0] {\n  mobileMenu{\n    _key,\n    ...@->{_id, title, slug, items[]{\n      ...,\n      _key,\n      _type,\n      label,\n      background_color,\n      external,\n      internal->{ \n        _type, \n        title, \n        name,  // Added for artist name\n        metadata, \n        _key, \n        _id, \n        slug \n      },\n      links[] {\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{ \n          _type, \n          title,\n          name,  // Added for artist name \n          metadata, \n          _key, \n          _id, \n          slug, \n          label \n        }\n      }\n    }}\n  }\n}": MOBILE_MENUResult;
     "*[_type == \"site\"][1] {\n  _id,\n _type,\n  title,\n  fixedMenu{\n    _key,\n    ...@->{_id, title, slug, items[]{\n      ...,\n      _key,\n      _type,\n      label,\n      background_color,\n      external,\n      internal->{ \n        _type, \n        title, \n        name,  // Added for artist name\n        metadata, \n        _key, \n        _id, \n        slug \n      },\n      links[] {\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{ \n          _type, \n          title,\n          name,  // Added for artist name \n          metadata, \n          _key, \n          _id, \n          slug, \n          label \n        }\n      },\n      background_dropdown,\n    }}\n  }\n}": FIXED_MENUResult;
+    "*[_type == \"site\"][1] {\n  _id,\n _type,\n  title,\n  footerMenu{\n    _key,\n    ...@->{_id, title, slug, items[]{\n      ...,\n      _key,\n      _type,\n      label,\n      background_color,\n      external,\n      internal->{ \n        _type, \n        title, \n        name,  // Added for artist name\n        metadata, \n        _key, \n        _id, \n        slug \n      },\n      links[] {\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{ \n          _type, \n          title,\n          name,  // Added for artist name \n          metadata, \n          _key, \n          _id, \n          slug, \n          label \n        }\n      },\n      background_dropdown,\n    }}\n  }\n}": FOOTER_MENUResult;
     "*[_type == \"page\"&& slug.current == $slug][0]{\n     ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"featuredPosts\" => {\n        ...,\n        \"posts\": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredArtists\" => {\n        ...,\n        \"artists\": artists[]->{\n          _id,\n          _type,\n          name,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredPlatforms\" => {\n        ...,\n        \"platforms\": platforms[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredSynchronicity\" => {\n        ...,\n        \"synchronicity\": synchronicity[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n  }": PAGE_QUERYResult;
     "*[_id == \"site\"][0]{\n  homePage->{\n    ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"featuredPosts\" => {\n        ...,\n        \"posts\": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredArtists\" => {\n        ...,\n        \"artists\": artists[]->{\n          _id,\n          _type,\n          name,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredPlatforms\" => {\n        ...,\n        \"platforms\": platforms[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredSynchronicity\" => {\n        ...,\n        \"synchronicity\": synchronicity[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n  }\n}": HOME_PAGE_QUERYResult;
     "*[_id == \"site\"][0] {\n  logo {\n    name,\n    \"default\": image.default.asset->{\n      _id,\n      url\n    },\n    \"light\": image.light.asset->{\n      _id,\n      url\n    },\n    \"dark\": image.dark.asset->{\n      _id,\n      url\n    }\n  }\n}": LOGO_QUERYResult;

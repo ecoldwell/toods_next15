@@ -307,6 +307,52 @@ defineQuery(`*[_type == "site"][1] {
   }
 }`)
 
+export const FOOTER_MENU =
+defineQuery(`*[_type == "site"][1] {
+  _id,
+ _type,
+  title,
+  footerMenu{
+    _key,
+    ...@->{_id, title, slug, items[]{
+      ...,
+      _key,
+      _type,
+      label,
+      background_color,
+      external,
+      internal->{ 
+        _type, 
+        title, 
+        name,  // Added for artist name
+        metadata, 
+        _key, 
+        _id, 
+        slug 
+      },
+      links[] {
+        ...,
+        _key,
+        _type,
+        label,
+        background_color,
+        external,
+        internal->{ 
+          _type, 
+          title,
+          name,  // Added for artist name 
+          metadata, 
+          _key, 
+          _id, 
+          slug, 
+          label 
+        }
+      },
+      background_dropdown,
+    }}
+  }
+}`)
+
 export const PAGE_QUERY =
   defineQuery(`*[_type == "page"&& slug.current == $slug][0]{
      ...,
