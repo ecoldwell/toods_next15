@@ -46,7 +46,7 @@ export default function ArtistPreview({ name, slug, mainImage, categories, backg
       )}
       <div>
           <Link href={`/artists/${slug.current}`} className="single_post_title">
-            <h1 className="post_title" style={{ background: backgroundColor }}>{name || 'Untitled'}</h1>
+            <h1 className=" shape" style={{ background: backgroundColor }}>{name || 'Untitled'}</h1>
           </Link>
       </div>
     </div>

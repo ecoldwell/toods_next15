@@ -25,7 +25,7 @@ export function FeaturedPosts({ posts = [], title }: FeaturedPostsProps) {
               <div className="post_title_wrapper">
                 <div className="eclipse"></div>
                 {/* Apply the dynamic background color */}
-                <h1 className="post_title" style={{ background: backgroundColor }}>
+                <h1 className="post_title shape" style={{ background: backgroundColor }}>
                   {post.title}
                 </h1>
               </div>

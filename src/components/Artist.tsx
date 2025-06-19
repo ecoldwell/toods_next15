@@ -42,7 +42,7 @@ export function Artist(props: NonNullable<ArtistQueryResult>) {
           <PublishedAt publishedAt={publishedAt} /> */}
         </div>
         <div className="post_title_wrapper max-w-3xl">
-    <h1 className="post_title" style={{ background: backgroundColor }}>
+    <h1 className="post_title shape" style={{ background: backgroundColor }}>
       {props.name}
     </h1>
     </div>

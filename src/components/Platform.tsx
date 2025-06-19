@@ -41,7 +41,7 @@ export function Platform(props: NonNullable<PlatformQueryResult>) {
               <PublishedAt publishedAt={publishedAt} /> */}
             </div>
             <div className="post_title_wrapper max-w-3xl">
-        <h1 className="post_title" style={{ background: backgroundColor }}>
+        <h1 className="post_title shape" style={{ background: backgroundColor }}>
           {props.title}
         </h1>
         </div>

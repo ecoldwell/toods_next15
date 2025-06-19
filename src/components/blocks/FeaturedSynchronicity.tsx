@@ -22,7 +22,7 @@ export function FeaturedSynchronicity({ synchronicity = [], title }: FeaturedSyn
               <div className="post_title_wrapper">
                 <div className="eclipse"></div>
                 {/* Apply the dynamic background color */}
-                <h1 className="post_title" style={{ background: backgroundColor }}>
+                <h1 className="post_title shape" style={{ background: backgroundColor }}>
                   {synchronization.title}
                 </h1>
               </div>

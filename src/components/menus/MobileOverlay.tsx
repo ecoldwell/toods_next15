@@ -95,7 +95,7 @@ export const MobileOverlay = ({ menuItems }: { menuItems: MenuItem[] }) => {
               {item.type === "internal" && item.internal ? (
                 <Link 
                   href={getInternalLink(item.internal)} 
-                  className="hover:underline p-2 rounded"
+                  className="hover:underline rounded"
                   style={{ color: textColor }}
                 >
                   {item.label}
@@ -106,7 +106,7 @@ export const MobileOverlay = ({ menuItems }: { menuItems: MenuItem[] }) => {
                   href={item.external} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="hover:underline p-2 rounded"
+                  className="hover:underline rounded"
                   style={{ color: textColor }}
                 >
                   {item.label}
@@ -115,14 +115,49 @@ export const MobileOverlay = ({ menuItems }: { menuItems: MenuItem[] }) => {
               item.type === "collection" ? (
                 <Link 
                   href={getLink(item)} 
-                  className="hover:underline p-2 rounded"
+                  className="hover:underline rounded"
                   style={{ color: textColor }}
                 >
                   {item.label}
                 </Link>
               ) :
               item._type === "link.list" ? (
-                <DropdownMenu item={item} />
+                <div className="dropdown_wrapper">
+                <button
+                  className="flex items-center"
+                  key={item._key}
+                  style={{ color: textColor }}
+                >
+                  {item.link?.label || "Menu"}  
+               
+                </button>
+          
+             
+                  <ul className="mobile_dropdown_ul">
+                    {item.links?.map((subItem) => (
+                      <li key={subItem._key} className="border-b last:border-none link_title_wraper">
+                        {subItem.type === "internal" && subItem.internal ? (
+                          <Link 
+                            href={getInternalLink(subItem.internal)} 
+                            className="block hover:bg-gray-100 link_title" 
+                            style={{ color: textColor }}
+                          >
+                            {subItem.label}
+                          </Link>
+                        ) : (
+                          <a 
+                            href={subItem.external} 
+                            className="block hover:bg-gray-100" 
+                            style={{ color: textColor }}
+                          >
+                            {subItem.label}
+                          </a>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+            
+              </div>
               ) : null}
             </li>
           );
@@ -159,13 +194,13 @@ const DropdownMenu = ({ item }: { item: MenuItem }) => {
       </button>
 
       {isOpen && (
-        <ul className="dropdown_ul" style={{ background: dropdownBackground }}>
+        <ul className="mobile_dropdown_ul">
           {item.links?.map((subItem) => (
             <li key={subItem._key} className="border-b last:border-none link_title_wraper">
               {subItem.type === "internal" && subItem.internal ? (
                 <Link 
                   href={getInternalLink(subItem.internal)} 
-                  className="block px-4 py-2 hover:bg-gray-100 link_title" 
+                  className="block hover:bg-gray-100 link_title" 
                   style={{ color: textColor }}
                 >
                   {subItem.label}
@@ -173,7 +208,7 @@ const DropdownMenu = ({ item }: { item: MenuItem }) => {
               ) : (
                 <a 
                   href={subItem.external} 
-                  className="block px-4 py-2 hover:bg-gray-100" 
+                  className="block hover:bg-gray-100" 
                   style={{ color: textColor }}
                 >
                   {subItem.label}

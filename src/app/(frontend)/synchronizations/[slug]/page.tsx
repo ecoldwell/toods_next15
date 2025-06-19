@@ -88,7 +88,7 @@ export default async function Page({
       <div className="post_content">
       <div className="sync_wrapper">
       <header className="post_title_wrapper">
-          <h1 className="post_title" style={{ background: backgroundColor }}>{sync.title}</h1>
+          <h1 className="post_title shape" style={{ background: backgroundColor }}>{sync.title}</h1>
         </header>
         <div>
         {sync.description && (
