@@ -1,8 +1,9 @@
 'use client'
 
 import { useLiveMode } from '@sanity/react-loader'
-import { createClient, VisualEditing } from 'next-sanity'
+import { createClient } from 'next-sanity'
 import { useEffect } from 'react'
+import { VisualEditing } from 'next-sanity/visual-editing'
 
 import { apiVersion, dataset, projectId } from '@/sanity/env'
 

@@ -1,9 +1,14 @@
 "use client";
 
-import { useDraftModeEnvironment } from "next-sanity/hooks";
+import { useIsPresentationTool } from '@sanity/visual-editing/react'
 
 export function DisableDraftMode() {
-  const environment = useDraftModeEnvironment();
+  const environment = useIsPresentationTool()
+
+    // If it's inside the Sanity Presentation iframe, do not render
+    if (environment) return null
+
+    return <div>Outside Studio Content</div>
 
   // Only show the disable draft mode button when outside of Presentation Tool
   if (environment !== "live" && environment !== "unknown") {

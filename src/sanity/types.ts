@@ -12,108 +12,82 @@
  * ---------------------------------------------------------------------------------
  */
 
-// Source: schema.json
-export type SanityImagePaletteSwatch = {
-  _type: "sanity.imagePaletteSwatch";
-  background?: string;
-  foreground?: string;
-  population?: number;
-  title?: string;
-};
+export declare const internalGroqTypeReferenceTo: unique symbol;
 
-export type SanityImagePalette = {
-  _type: "sanity.imagePalette";
-  darkMuted?: SanityImagePaletteSwatch;
-  lightVibrant?: SanityImagePaletteSwatch;
-  darkVibrant?: SanityImagePaletteSwatch;
-  vibrant?: SanityImagePaletteSwatch;
-  dominant?: SanityImagePaletteSwatch;
-  lightMuted?: SanityImagePaletteSwatch;
-  muted?: SanityImagePaletteSwatch;
-};
-
-export type SanityImageDimensions = {
-  _type: "sanity.imageDimensions";
-  height?: number;
-  width?: number;
-  aspectRatio?: number;
-};
-
-export type SanityFileAsset = {
-  _id: string;
-  _type: "sanity.fileAsset";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  originalFilename?: string;
-  label?: string;
-  title?: string;
-  description?: string;
-  altText?: string;
-  sha1hash?: string;
-  extension?: string;
-  mimeType?: string;
-  size?: number;
-  assetId?: string;
-  uploadId?: string;
-  path?: string;
-  url?: string;
-  source?: SanityAssetSourceData;
-};
-
-export type Geopoint = {
-  _type: "geopoint";
-  lat?: number;
-  lng?: number;
-  alt?: number;
+// Source: src/sanity/extract.json
+export type SynchronizationReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "synchronization";
 };
 
 export type FeaturedSynchronicity = {
   _type: "featuredSynchronicity";
   title?: string;
-  synchronicity?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "synchronization";
-  }>;
+  synchronicity?: Array<
+    {
+      _key: string;
+    } & SynchronizationReference
+  >;
+};
+
+export type PlatformReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "platform";
 };
 
 export type FeaturedPlatforms = {
   _type: "featuredPlatforms";
   title?: string;
-  platforms?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "platform";
-  }>;
+  platforms?: Array<
+    {
+      _key: string;
+    } & PlatformReference
+  >;
+};
+
+export type ArtistReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "artist";
 };
 
 export type FeaturedArtists = {
   _type: "featuredArtists";
   title?: string;
-  artists?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "artist";
-  }>;
+  artists?: Array<
+    {
+      _key: string;
+    } & ArtistReference
+  >;
+};
+
+export type PostReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "post";
 };
 
 export type FeaturedPosts = {
   _type: "featuredPosts";
   title?: string;
-  posts?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "post";
-  }>;
+  posts?: Array<
+    {
+      _key: string;
+    } & PostReference
+  >;
+};
+
+export type SanityImageAssetReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
 };
 
 export type SplitImage = {
@@ -121,12 +95,8 @@ export type SplitImage = {
   orientation?: "imageLeft" | "imageRight";
   title?: string;
   image?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
@@ -136,43 +106,10 @@ export type SplitImage = {
 export type Hero = {
   _type: "hero";
   title?: string;
-  text?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
+  text?: BlockContent;
   image?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
@@ -190,16 +127,21 @@ export type Features = {
   }>;
 };
 
+export type FaqReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "faq";
+};
+
 export type Faqs = {
   _type: "faqs";
   title?: string;
-  faqs?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "faq";
-  }>;
+  faqs?: Array<
+    {
+      _key: string;
+    } & FaqReference
+  >;
 };
 
 export type Faq = {
@@ -209,55 +151,65 @@ export type Faq = {
   _updatedAt: string;
   _rev: string;
   title?: string;
-  body?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
+  body?: BlockContent;
 };
 
-export type PageBuilder = Array<{
-  _key: string;
-} & Hero | {
-  _key: string;
-} & SplitImage | {
-  _key: string;
-} & Features | {
-  _key: string;
-} & Faqs | {
-  _key: string;
-} & FeaturedPosts | {
-  _key: string;
-} & FeaturedArtists | {
-  _key: string;
-} & FeaturedPlatforms | {
-  _key: string;
-} & FeaturedSynchronicity>;
+export type BlockContent = Array<
+  | {
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+      listItem?: "bullet";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }
+  | {
+      asset?: SanityImageAssetReference;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+    }
+>;
+
+export type PageBuilder = Array<
+  | ({
+      _key: string;
+    } & Hero)
+  | ({
+      _key: string;
+    } & SplitImage)
+  | ({
+      _key: string;
+    } & Features)
+  | ({
+      _key: string;
+    } & Faqs)
+  | ({
+      _key: string;
+    } & FeaturedPosts)
+  | ({
+      _key: string;
+    } & FeaturedArtists)
+  | ({
+      _key: string;
+    } & FeaturedPlatforms)
+  | ({
+      _key: string;
+    } & FeaturedSynchronicity)
+>;
 
 export type Logo = {
   _id: string;
@@ -268,39 +220,43 @@ export type Logo = {
   name?: string;
   image?: {
     default?: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
+      asset?: SanityImageAssetReference;
+      media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
       _type: "image";
     };
     light?: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
+      asset?: SanityImageAssetReference;
+      media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
       _type: "image";
     };
     dark?: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
+      asset?: SanityImageAssetReference;
+      media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
       _type: "image";
     };
   };
+};
+
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
 };
 
 export type Metadata = {
@@ -309,12 +265,8 @@ export type Metadata = {
   title?: string;
   description?: string;
   image?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
@@ -322,10 +274,30 @@ export type Metadata = {
   noIndex?: boolean;
 };
 
+export type Slug = {
+  _type: "slug";
+  current?: string;
+  source?: string;
+};
+
 export type Cta = {
   _type: "cta";
   link?: Link;
   style?: "action" | "action-outline" | "ghost" | "link";
+};
+
+export type NavigationReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "navigation";
+};
+
+export type PageReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "page";
 };
 
 export type Site = {
@@ -339,34 +311,22 @@ export type Site = {
     name?: string;
     image?: {
       default?: {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
+        asset?: SanityImageAssetReference;
+        media?: unknown;
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
         _type: "image";
       };
       light?: {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
+        asset?: SanityImageAssetReference;
+        media?: unknown;
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
         _type: "image";
       };
       dark?: {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
+        asset?: SanityImageAssetReference;
+        media?: unknown;
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
         _type: "image";
@@ -374,39 +334,16 @@ export type Site = {
     };
     _type: "logo";
   };
-  ctas?: Array<{
-    _key: string;
-  } & Cta>;
-  headerMenu?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "navigation";
-  };
-  footerMenu?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "navigation";
-  };
-  mobileMenu?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "navigation";
-  };
-  fixedMenu?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "navigation";
-  };
-  social?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "navigation";
-  };
+  ctas?: Array<
+    {
+      _key: string;
+    } & Cta
+  >;
+  headerMenu?: NavigationReference;
+  footerMenu?: NavigationReference;
+  mobileMenu?: NavigationReference;
+  fixedMenu?: NavigationReference;
+  social?: NavigationReference;
   copyright?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -426,22 +363,46 @@ export type Site = {
     _key: string;
   }>;
   ogimage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
   };
-  homePage?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "page";
-  };
+  homePage?: PageReference;
+};
+
+export type CategoryReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "category";
+};
+
+export type EventReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "event";
+};
+
+export type Link = {
+  _type: "link";
+  label?: string;
+  background_color?: Color;
+  text_color?: Color;
+  type?: "internal" | "external" | "collection";
+  collection?: "artists" | "platforms" | "synchronizations";
+  internal?:
+    | PostReference
+    | CategoryReference
+    | EventReference
+    | PageReference
+    | ArtistReference
+    | PlatformReference
+    | SynchronizationReference;
+  external?: string;
+  params?: string;
 };
 
 export type Navigation = {
@@ -452,67 +413,34 @@ export type Navigation = {
   _rev: string;
   title?: string;
   slug?: Slug;
-  items?: Array<{
-    _key: string;
-  } & Link | {
-    _key: string;
-  } & LinkList>;
+  items?: Array<
+    | ({
+        _key: string;
+      } & Link)
+    | ({
+        _key: string;
+      } & LinkList)
+  >;
 };
 
 export type LinkList = {
   _type: "link.list";
   link?: Link;
-  links?: Array<{
-    _key: string;
-  } & Link>;
+  links?: Array<
+    {
+      _key: string;
+    } & Link
+  >;
   background_dropdown?: Color;
 };
 
-export type Link = {
-  _type: "link";
-  label?: string;
-  background_color?: Color;
-  text_color?: Color;
-  type?: "internal" | "external" | "collection";
-  collection?: "artists" | "platforms" | "synchronizations";
-  internal?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "post";
-  } | {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "category";
-  } | {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "event";
-  } | {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "page";
-  } | {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "artist";
-  } | {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "platform";
-  } | {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "synchronization";
-  };
-  external?: string;
-  params?: string;
+export type Color = {
+  _type: "color";
+  hex?: string;
+  alpha?: number;
+  hsl?: HslaColor;
+  hsv?: HsvaColor;
+  rgb?: RgbaColor;
 };
 
 export type Page = {
@@ -525,16 +453,19 @@ export type Page = {
   slug?: Slug;
   content?: PageBuilder;
   mainImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
   };
+};
+
+export type VenueReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "venue";
 };
 
 export type Event = {
@@ -548,25 +479,11 @@ export type Event = {
   eventType?: "in-person" | "virtual";
   date?: string;
   doorsOpen?: number;
-  venue?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "venue";
-  };
-  headline?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "artist";
-  };
+  venue?: VenueReference;
+  headline?: ArtistReference;
   image?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
@@ -602,72 +519,22 @@ export type Synchronization = {
   slug?: Slug;
   background_color?: Color;
   mainImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
   };
-  artist?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "artist";
-  };
-  platform?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "platform";
-  };
-  venue?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "venue";
-  };
+  artist?: ArtistReference;
+  platform?: PlatformReference;
+  venue?: VenueReference;
   date?: string;
-  description?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
+  description?: BlockContent;
+  categories?: Array<
+    {
       _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
-  categories?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "category";
-  }>;
+    } & CategoryReference
+  >;
 };
 
 export type Venue = {
@@ -684,12 +551,8 @@ export type Venue = {
   country?: string;
   website?: string;
   image?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
@@ -706,55 +569,20 @@ export type Platform = {
   slug?: Slug;
   background_color?: Color;
   mainImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
   };
   platformUrl?: string;
   publishedAt?: string;
-  body?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
+  body?: BlockContent;
+  categories?: Array<
+    {
       _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
-  categories?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "category";
-  }>;
+    } & CategoryReference
+  >;
 };
 
 export type Artist = {
@@ -767,61 +595,31 @@ export type Artist = {
   slug?: Slug;
   background_color?: Color;
   mainImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
   };
   publishedAt?: string;
-  body?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
+  body?: BlockContent;
+  categories?: Array<
+    {
       _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
+    } & CategoryReference
+  >;
+  relatedArtists?: Array<
+    {
       _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
-  categories?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "category";
-  }>;
-  relatedArtists?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "artist";
-  }>;
+    } & ArtistReference
+  >;
+};
+
+export type AuthorReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "author";
 };
 
 export type Post = {
@@ -833,69 +631,27 @@ export type Post = {
   title?: string;
   slug?: Slug;
   background_color?: Color;
-  author?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "author";
-  };
+  author?: AuthorReference;
   mainImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
   };
-  categories?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "category";
-  }>;
+  categories?: Array<
+    {
+      _key: string;
+    } & CategoryReference
+  >;
   publishedAt?: string;
-  body?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
+  body?: BlockContent;
+  relatedPosts?: Array<
+    {
       _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
-  relatedPosts?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "post";
-  }>;
+    } & PostReference
+  >;
 };
 
 export type Author = {
@@ -907,12 +663,8 @@ export type Author = {
   name?: string;
   slug?: Slug;
   image?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
@@ -948,57 +700,95 @@ export type Category = {
   description?: string;
 };
 
-export type Slug = {
-  _type: "slug";
-  current?: string;
-  source?: string;
+export type RgbaColor = {
+  _type: "rgbaColor";
+  r?: number;
+  g?: number;
+  b?: number;
+  a?: number;
 };
 
-export type BlockContent = Array<{
-  children?: Array<{
-    marks?: Array<string>;
-    text?: string;
-    _type: "span";
-    _key: string;
-  }>;
-  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-  listItem?: "bullet";
-  markDefs?: Array<{
-    href?: string;
-    _type: "link";
-    _key: string;
-  }>;
-  level?: number;
-  _type: "block";
-  _key: string;
-} | {
-  asset?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-  };
-  hotspot?: SanityImageHotspot;
-  crop?: SanityImageCrop;
-  alt?: string;
-  _type: "image";
-  _key: string;
-}>;
-
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
+export type HsvaColor = {
+  _type: "hsvaColor";
+  h?: number;
+  s?: number;
+  v?: number;
+  a?: number;
 };
 
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x?: number;
-  y?: number;
+export type HslaColor = {
+  _type: "hslaColor";
+  h?: number;
+  s?: number;
+  l?: number;
+  a?: number;
+};
+
+export type SanityImagePaletteSwatch = {
+  _type: "sanity.imagePaletteSwatch";
+  background?: string;
+  foreground?: string;
+  population?: number;
+  title?: string;
+};
+
+export type SanityImagePalette = {
+  _type: "sanity.imagePalette";
+  darkMuted?: SanityImagePaletteSwatch;
+  lightVibrant?: SanityImagePaletteSwatch;
+  darkVibrant?: SanityImagePaletteSwatch;
+  vibrant?: SanityImagePaletteSwatch;
+  dominant?: SanityImagePaletteSwatch;
+  lightMuted?: SanityImagePaletteSwatch;
+  muted?: SanityImagePaletteSwatch;
+};
+
+export type SanityImageDimensions = {
+  _type: "sanity.imageDimensions";
   height?: number;
   width?: number;
+  aspectRatio?: number;
+};
+
+export type SanityImageMetadata = {
+  _type: "sanity.imageMetadata";
+  location?: Geopoint;
+  dimensions?: SanityImageDimensions;
+  palette?: SanityImagePalette;
+  lqip?: string;
+  blurHash?: string;
+  thumbHash?: string;
+  hasAlpha?: boolean;
+  isOpaque?: boolean;
+};
+
+export type SanityFileAsset = {
+  _id: string;
+  _type: "sanity.fileAsset";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  originalFilename?: string;
+  label?: string;
+  title?: string;
+  description?: string;
+  altText?: string;
+  sha1hash?: string;
+  extension?: string;
+  mimeType?: string;
+  size?: number;
+  assetId?: string;
+  uploadId?: string;
+  path?: string;
+  url?: string;
+  source?: SanityAssetSourceData;
+};
+
+export type SanityAssetSourceData = {
+  _type: "sanity.assetSourceData";
+  name?: string;
+  id?: string;
+  url?: string;
 };
 
 export type SanityImageAsset = {
@@ -1024,178 +814,124 @@ export type SanityImageAsset = {
   source?: SanityAssetSourceData;
 };
 
-export type SanityAssetSourceData = {
-  _type: "sanity.assetSourceData";
-  name?: string;
-  id?: string;
-  url?: string;
+export type Geopoint = {
+  _type: "geopoint";
+  lat?: number;
+  lng?: number;
+  alt?: number;
 };
 
-export type SanityImageMetadata = {
-  _type: "sanity.imageMetadata";
-  location?: Geopoint;
-  dimensions?: SanityImageDimensions;
-  palette?: SanityImagePalette;
-  lqip?: string;
-  blurHash?: string;
-  hasAlpha?: boolean;
-  isOpaque?: boolean;
-};
+export type AllSanitySchemaTypes =
+  | SynchronizationReference
+  | FeaturedSynchronicity
+  | PlatformReference
+  | FeaturedPlatforms
+  | ArtistReference
+  | FeaturedArtists
+  | PostReference
+  | FeaturedPosts
+  | SanityImageAssetReference
+  | SplitImage
+  | Hero
+  | Features
+  | FaqReference
+  | Faqs
+  | Faq
+  | BlockContent
+  | PageBuilder
+  | Logo
+  | SanityImageCrop
+  | SanityImageHotspot
+  | Metadata
+  | Slug
+  | Cta
+  | NavigationReference
+  | PageReference
+  | Site
+  | CategoryReference
+  | EventReference
+  | Link
+  | Navigation
+  | LinkList
+  | Color
+  | Page
+  | VenueReference
+  | Event
+  | Synchronization
+  | Venue
+  | Platform
+  | Artist
+  | AuthorReference
+  | Post
+  | Author
+  | Category
+  | RgbaColor
+  | HsvaColor
+  | HslaColor
+  | SanityImagePaletteSwatch
+  | SanityImagePalette
+  | SanityImageDimensions
+  | SanityImageMetadata
+  | SanityFileAsset
+  | SanityAssetSourceData
+  | SanityImageAsset
+  | Geopoint;
 
-export type Color = {
-  _type: "color";
-  hex?: string;
-  alpha?: number;
-  hsl?: HslaColor;
-  hsv?: HsvaColor;
-  rgb?: RgbaColor;
-};
-
-export type RgbaColor = {
-  _type: "rgbaColor";
-  r?: number;
-  g?: number;
-  b?: number;
-  a?: number;
-};
-
-export type HsvaColor = {
-  _type: "hsvaColor";
-  h?: number;
-  s?: number;
-  v?: number;
-  a?: number;
-};
-
-export type HslaColor = {
-  _type: "hslaColor";
-  h?: number;
-  s?: number;
-  l?: number;
-  a?: number;
-};
-
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | FeaturedSynchronicity | FeaturedPlatforms | FeaturedArtists | FeaturedPosts | SplitImage | Hero | Features | Faqs | Faq | PageBuilder | Logo | Metadata | Cta | Site | Navigation | LinkList | Link | Page | Event | Synchronization | Venue | Platform | Artist | Post | Author | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Color | RgbaColor | HsvaColor | HslaColor;
-export declare const internalGroqTypeReferenceTo: unique symbol;
-// Source: ./src/sanity/lib/queries.ts
+// Source: src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
 // Query: *[_type == "post" && defined(slug.current)]|order(publishedAt desc)[0...12]{  _id,  title,  slug,  background_color,  body,  mainImage,  publishedAt,  "categories": coalesce(    categories[]->{      _id,      slug,      title    },    []  ),  author->{    name,    image  }}
-export type POSTS_QUERYResult = Array<{
+export type POSTS_QUERY_RESULT = Array<{
   _id: string;
   title: string | null;
   slug: Slug | null;
   background_color: Color | null;
-  body: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }> | null;
+  body: BlockContent | null;
   mainImage: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
   } | null;
   publishedAt: string | null;
-  categories: Array<{
-    _id: string;
-    slug: Slug | null;
-    title: string | null;
-  }> | Array<never>;
+  categories:
+    | Array<{
+        _id: string;
+        slug: Slug | null;
+        title: string | null;
+      }>
+    | Array<never>;
   author: {
     name: string | null;
     image: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
+      asset?: SanityImageAssetReference;
+      media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
       _type: "image";
     } | null;
   } | null;
 }>;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: POSTS_SLUGS_QUERY
 // Query: *[_type == "post" && defined(slug.current)]{   "slug": slug.current}
-export type POSTS_SLUGS_QUERYResult = Array<{
+export type POSTS_SLUGS_QUERY_RESULT = Array<{
   slug: string | null;
 }>;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: POST_QUERY
 // Query: *[_type == "post" && slug.current == $slug][0]{  _id,  title,  color,  body,  mainImage,  background_color,  publishedAt,  "categories": coalesce(    categories[]->{      _id,      slug,      title    },    []  ),  author->{    name,    image  },  relatedPosts[]{    _key, // required for drag and drop    ...@->{_id, title, slug} // get fields from the referenced post  }}
-export type POST_QUERYResult = {
+export type POST_QUERY_RESULT = {
   _id: string;
   title: string | null;
   color: null;
-  body: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }> | null;
+  body: BlockContent | null;
   mainImage: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
@@ -1203,20 +939,18 @@ export type POST_QUERYResult = {
   } | null;
   background_color: Color | null;
   publishedAt: string | null;
-  categories: Array<{
-    _id: string;
-    slug: Slug | null;
-    title: string | null;
-  }> | Array<never>;
+  categories:
+    | Array<{
+        _id: string;
+        slug: Slug | null;
+        title: string | null;
+      }>
+    | Array<never>;
   author: {
     name: string | null;
     image: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
+      asset?: SanityImageAssetReference;
+      media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
       _type: "image";
@@ -1229,17 +963,21 @@ export type POST_QUERYResult = {
     slug: Slug | null;
   }> | null;
 } | null;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: EVENTS_QUERY
 // Query: *[  _type == "event"  && defined(slug.current)]{_id, name, slug, date}|order(date desc)
-export type EVENTS_QUERYResult = Array<{
+export type EVENTS_QUERY_RESULT = Array<{
   _id: string;
   name: string | null;
   slug: Slug | null;
   date: string | null;
 }>;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: EVENT_QUERY
 // Query: *[  _type == "event" &&  slug.current == $slug][0]{  ...,  "date": coalesce(date, now()),  "doorsOpen": coalesce(doorsOpen, 0),  headline->,  venue->}
-export type EVENT_QUERYResult = {
+export type EVENT_QUERY_RESULT = {
   _id: string;
   _type: "event";
   _createdAt: string;
@@ -1264,12 +1002,8 @@ export type EVENT_QUERYResult = {
     country?: string;
     website?: string;
     image?: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
+      asset?: SanityImageAssetReference;
+      media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
       _type: "image";
@@ -1285,69 +1019,28 @@ export type EVENT_QUERYResult = {
     slug?: Slug;
     background_color?: Color;
     mainImage?: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
+      asset?: SanityImageAssetReference;
+      media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
       _type: "image";
     };
     publishedAt?: string;
-    body?: Array<{
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: "span";
+    body?: BlockContent;
+    categories?: Array<
+      {
         _key: string;
-      }>;
-      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-      listItem?: "bullet";
-      markDefs?: Array<{
-        href?: string;
-        _type: "link";
+      } & CategoryReference
+    >;
+    relatedArtists?: Array<
+      {
         _key: string;
-      }>;
-      level?: number;
-      _type: "block";
-      _key: string;
-    } | {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
-      _key: string;
-    }>;
-    categories?: Array<{
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      _key: string;
-      [internalGroqTypeReferenceTo]?: "category";
-    }>;
-    relatedArtists?: Array<{
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      _key: string;
-      [internalGroqTypeReferenceTo]?: "artist";
-    }>;
+      } & ArtistReference
+    >;
   } | null;
   image?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
@@ -1372,170 +1065,207 @@ export type EVENT_QUERYResult = {
   }>;
   tickets?: string;
 } | null;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: MEDIAHOME_QUERY
 // Query: *[  _type == "media"  && defined(slug.current)]{_id, name, slug, date}|order(date desc)
-export type MEDIAHOME_QUERYResult = Array<never>;
+export type MEDIAHOME_QUERY_RESULT = Array<never>;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: MEDIA_QUERY
 // Query: *[  _type == "media" &&  slug.current == $slug][0]{...,"date": coalesce(date, now()),"doorsOpen": coalesce(doorsOpen, 0),headline->,venue->}
-export type MEDIA_QUERYResult = null;
+export type MEDIA_QUERY_RESULT = null;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: NAV_QUERY
 // Query: *[_type == "navigation"]{ title,    items[] {      ...,      internal->{ _type, title, metadata, _key },    link {          ...,      internal->{ _type, title, metadata, _key },    },    links[] {            ...,      internal->{ _type, title, metadata, _key }    }    }}
-export type NAV_QUERYResult = Array<{
+export type NAV_QUERY_RESULT = Array<{
   title: string | null;
-  items: Array<{
-    _key: string;
-    _type: "link.list";
-    link: {
-      _type: "link";
-      label?: string;
-      background_color?: Color;
-      text_color?: Color;
-      type?: "collection" | "external" | "internal";
-      collection?: "artists" | "platforms" | "synchronizations";
-      internal: {
-        _type: "artist";
-        title: null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "category";
-        title: string | null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "event";
-        title: null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "page";
-        title: string | null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "platform";
-        title: string | null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "post";
-        title: string | null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "synchronization";
-        title: string | null;
-        metadata: null;
-        _key: null;
-      } | null;
-      external?: string;
-      params?: string;
-    } | null;
-    links: Array<{
-      _key: string;
-      _type: "link";
-      label?: string;
-      background_color?: Color;
-      text_color?: Color;
-      type?: "collection" | "external" | "internal";
-      collection?: "artists" | "platforms" | "synchronizations";
-      internal: {
-        _type: "artist";
-        title: null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "category";
-        title: string | null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "event";
-        title: null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "page";
-        title: string | null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "platform";
-        title: string | null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "post";
-        title: string | null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "synchronization";
-        title: string | null;
-        metadata: null;
-        _key: null;
-      } | null;
-      external?: string;
-      params?: string;
-    }> | null;
-    background_dropdown?: Color;
-    internal: null;
-  } | {
-    _key: string;
-    _type: "link";
-    label?: string;
-    background_color?: Color;
-    text_color?: Color;
-    type?: "collection" | "external" | "internal";
-    collection?: "artists" | "platforms" | "synchronizations";
-    internal: {
-      _type: "artist";
-      title: null;
-      metadata: null;
-      _key: null;
-    } | {
-      _type: "category";
-      title: string | null;
-      metadata: null;
-      _key: null;
-    } | {
-      _type: "event";
-      title: null;
-      metadata: null;
-      _key: null;
-    } | {
-      _type: "page";
-      title: string | null;
-      metadata: null;
-      _key: null;
-    } | {
-      _type: "platform";
-      title: string | null;
-      metadata: null;
-      _key: null;
-    } | {
-      _type: "post";
-      title: string | null;
-      metadata: null;
-      _key: null;
-    } | {
-      _type: "synchronization";
-      title: string | null;
-      metadata: null;
-      _key: null;
-    } | null;
-    external?: string;
-    params?: string;
-    link: null;
-    links: null;
-  }> | null;
+  items: Array<
+    | {
+        _key: string;
+        _type: "link.list";
+        link: {
+          _type: "link";
+          label?: string;
+          background_color?: Color;
+          text_color?: Color;
+          type?: "collection" | "external" | "internal";
+          collection?: "artists" | "platforms" | "synchronizations";
+          internal:
+            | {
+                _type: "artist";
+                title: null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "category";
+                title: string | null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "event";
+                title: null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "page";
+                title: string | null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "platform";
+                title: string | null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "post";
+                title: string | null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "synchronization";
+                title: string | null;
+                metadata: null;
+                _key: null;
+              }
+            | null;
+          external?: string;
+          params?: string;
+        } | null;
+        links: Array<{
+          _key: string;
+          _type: "link";
+          label?: string;
+          background_color?: Color;
+          text_color?: Color;
+          type?: "collection" | "external" | "internal";
+          collection?: "artists" | "platforms" | "synchronizations";
+          internal:
+            | {
+                _type: "artist";
+                title: null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "category";
+                title: string | null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "event";
+                title: null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "page";
+                title: string | null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "platform";
+                title: string | null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "post";
+                title: string | null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "synchronization";
+                title: string | null;
+                metadata: null;
+                _key: null;
+              }
+            | null;
+          external?: string;
+          params?: string;
+        }> | null;
+        background_dropdown?: Color;
+        internal: null;
+      }
+    | {
+        _key: string;
+        _type: "link";
+        label?: string;
+        background_color?: Color;
+        text_color?: Color;
+        type?: "collection" | "external" | "internal";
+        collection?: "artists" | "platforms" | "synchronizations";
+        internal:
+          | {
+              _type: "artist";
+              title: null;
+              metadata: null;
+              _key: null;
+            }
+          | {
+              _type: "category";
+              title: string | null;
+              metadata: null;
+              _key: null;
+            }
+          | {
+              _type: "event";
+              title: null;
+              metadata: null;
+              _key: null;
+            }
+          | {
+              _type: "page";
+              title: string | null;
+              metadata: null;
+              _key: null;
+            }
+          | {
+              _type: "platform";
+              title: string | null;
+              metadata: null;
+              _key: null;
+            }
+          | {
+              _type: "post";
+              title: string | null;
+              metadata: null;
+              _key: null;
+            }
+          | {
+              _type: "synchronization";
+              title: string | null;
+              metadata: null;
+              _key: null;
+            }
+          | null;
+        external?: string;
+        params?: string;
+        link: null;
+        links: null;
+      }
+  > | null;
 }>;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: CTA_QUERY
 // Query: *[_type == "cta"]{  ...,link {   ...,  internal->{ _type, title, metadata }  } }
-export type CTA_QUERYResult = Array<never>;
+export type CTA_QUERY_RESULT = Array<never>;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: SITE_QUERY
 // Query: *[_type == "site"][0]{  ...,  headerMenu->{  title,    items[] {      ...,      internal->{ _type, title, metadata, _key },    link {          ...,      internal->{ _type, title, metadata, _key },    },    links[] {            ...,      internal->{ _type, title, metadata, _key }    }    } },    fixedMenu->{  title,    items[] {      ...,      internal->{ _type, title, metadata, _key },    link {          ...,      internal->{ _type, title, metadata, _key },    },    links[] {            ...,      internal->{ _type, title, metadata, _key }    }    } },  footerMenu->{  title,    items[] {      ...,      internal->{ _type, title, metadata, _key },    link {          ...,      internal->{ _type, title, metadata, _key },    },    links[] {            ...,      internal->{ _type, title, metadata, _key }    }    } },  socialMenu->{  title,    items[] {      ...,      internal->{ _type, title, metadata, _key },    link {          ...,      internal->{ _type, title, metadata, _key },    },    links[] {            ...,      internal->{ _type, title, metadata, _key }    }    } },}
-export type SITE_QUERYResult = {
+export type SITE_QUERY_RESULT = {
   _id: string;
   _type: "site";
   _createdAt: string;
@@ -1546,34 +1276,22 @@ export type SITE_QUERYResult = {
     name?: string;
     image?: {
       default?: {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
+        asset?: SanityImageAssetReference;
+        media?: unknown;
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
         _type: "image";
       };
       light?: {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
+        asset?: SanityImageAssetReference;
+        media?: unknown;
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
         _type: "image";
       };
       dark?: {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
+        asset?: SanityImageAssetReference;
+        media?: unknown;
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
         _type: "image";
@@ -1581,471 +1299,544 @@ export type SITE_QUERYResult = {
     };
     _type: "logo";
   };
-  ctas?: Array<{
-    _key: string;
-  } & Cta>;
+  ctas?: Array<
+    {
+      _key: string;
+    } & Cta
+  >;
   headerMenu: {
     title: string | null;
-    items: Array<{
-      _key: string;
-      _type: "link.list";
-      link: {
-        _type: "link";
-        label?: string;
-        background_color?: Color;
-        text_color?: Color;
-        type?: "collection" | "external" | "internal";
-        collection?: "artists" | "platforms" | "synchronizations";
-        internal: {
-          _type: "artist";
-          title: null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "category";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "event";
-          title: null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "page";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "platform";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "post";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "synchronization";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | null;
-        external?: string;
-        params?: string;
-      } | null;
-      links: Array<{
-        _key: string;
-        _type: "link";
-        label?: string;
-        background_color?: Color;
-        text_color?: Color;
-        type?: "collection" | "external" | "internal";
-        collection?: "artists" | "platforms" | "synchronizations";
-        internal: {
-          _type: "artist";
-          title: null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "category";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "event";
-          title: null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "page";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "platform";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "post";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "synchronization";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | null;
-        external?: string;
-        params?: string;
-      }> | null;
-      background_dropdown?: Color;
-      internal: null;
-    } | {
-      _key: string;
-      _type: "link";
-      label?: string;
-      background_color?: Color;
-      text_color?: Color;
-      type?: "collection" | "external" | "internal";
-      collection?: "artists" | "platforms" | "synchronizations";
-      internal: {
-        _type: "artist";
-        title: null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "category";
-        title: string | null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "event";
-        title: null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "page";
-        title: string | null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "platform";
-        title: string | null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "post";
-        title: string | null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "synchronization";
-        title: string | null;
-        metadata: null;
-        _key: null;
-      } | null;
-      external?: string;
-      params?: string;
-      link: null;
-      links: null;
-    }> | null;
+    items: Array<
+      | {
+          _key: string;
+          _type: "link.list";
+          link: {
+            _type: "link";
+            label?: string;
+            background_color?: Color;
+            text_color?: Color;
+            type?: "collection" | "external" | "internal";
+            collection?: "artists" | "platforms" | "synchronizations";
+            internal:
+              | {
+                  _type: "artist";
+                  title: null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "category";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "event";
+                  title: null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "page";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "platform";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "post";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "synchronization";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | null;
+            external?: string;
+            params?: string;
+          } | null;
+          links: Array<{
+            _key: string;
+            _type: "link";
+            label?: string;
+            background_color?: Color;
+            text_color?: Color;
+            type?: "collection" | "external" | "internal";
+            collection?: "artists" | "platforms" | "synchronizations";
+            internal:
+              | {
+                  _type: "artist";
+                  title: null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "category";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "event";
+                  title: null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "page";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "platform";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "post";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "synchronization";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | null;
+            external?: string;
+            params?: string;
+          }> | null;
+          background_dropdown?: Color;
+          internal: null;
+        }
+      | {
+          _key: string;
+          _type: "link";
+          label?: string;
+          background_color?: Color;
+          text_color?: Color;
+          type?: "collection" | "external" | "internal";
+          collection?: "artists" | "platforms" | "synchronizations";
+          internal:
+            | {
+                _type: "artist";
+                title: null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "category";
+                title: string | null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "event";
+                title: null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "page";
+                title: string | null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "platform";
+                title: string | null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "post";
+                title: string | null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "synchronization";
+                title: string | null;
+                metadata: null;
+                _key: null;
+              }
+            | null;
+          external?: string;
+          params?: string;
+          link: null;
+          links: null;
+        }
+    > | null;
   } | null;
   footerMenu: {
     title: string | null;
-    items: Array<{
-      _key: string;
-      _type: "link.list";
-      link: {
-        _type: "link";
-        label?: string;
-        background_color?: Color;
-        text_color?: Color;
-        type?: "collection" | "external" | "internal";
-        collection?: "artists" | "platforms" | "synchronizations";
-        internal: {
-          _type: "artist";
-          title: null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "category";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "event";
-          title: null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "page";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "platform";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "post";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "synchronization";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | null;
-        external?: string;
-        params?: string;
-      } | null;
-      links: Array<{
-        _key: string;
-        _type: "link";
-        label?: string;
-        background_color?: Color;
-        text_color?: Color;
-        type?: "collection" | "external" | "internal";
-        collection?: "artists" | "platforms" | "synchronizations";
-        internal: {
-          _type: "artist";
-          title: null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "category";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "event";
-          title: null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "page";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "platform";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "post";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "synchronization";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | null;
-        external?: string;
-        params?: string;
-      }> | null;
-      background_dropdown?: Color;
-      internal: null;
-    } | {
-      _key: string;
-      _type: "link";
-      label?: string;
-      background_color?: Color;
-      text_color?: Color;
-      type?: "collection" | "external" | "internal";
-      collection?: "artists" | "platforms" | "synchronizations";
-      internal: {
-        _type: "artist";
-        title: null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "category";
-        title: string | null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "event";
-        title: null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "page";
-        title: string | null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "platform";
-        title: string | null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "post";
-        title: string | null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "synchronization";
-        title: string | null;
-        metadata: null;
-        _key: null;
-      } | null;
-      external?: string;
-      params?: string;
-      link: null;
-      links: null;
-    }> | null;
+    items: Array<
+      | {
+          _key: string;
+          _type: "link.list";
+          link: {
+            _type: "link";
+            label?: string;
+            background_color?: Color;
+            text_color?: Color;
+            type?: "collection" | "external" | "internal";
+            collection?: "artists" | "platforms" | "synchronizations";
+            internal:
+              | {
+                  _type: "artist";
+                  title: null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "category";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "event";
+                  title: null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "page";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "platform";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "post";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "synchronization";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | null;
+            external?: string;
+            params?: string;
+          } | null;
+          links: Array<{
+            _key: string;
+            _type: "link";
+            label?: string;
+            background_color?: Color;
+            text_color?: Color;
+            type?: "collection" | "external" | "internal";
+            collection?: "artists" | "platforms" | "synchronizations";
+            internal:
+              | {
+                  _type: "artist";
+                  title: null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "category";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "event";
+                  title: null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "page";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "platform";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "post";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "synchronization";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | null;
+            external?: string;
+            params?: string;
+          }> | null;
+          background_dropdown?: Color;
+          internal: null;
+        }
+      | {
+          _key: string;
+          _type: "link";
+          label?: string;
+          background_color?: Color;
+          text_color?: Color;
+          type?: "collection" | "external" | "internal";
+          collection?: "artists" | "platforms" | "synchronizations";
+          internal:
+            | {
+                _type: "artist";
+                title: null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "category";
+                title: string | null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "event";
+                title: null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "page";
+                title: string | null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "platform";
+                title: string | null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "post";
+                title: string | null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "synchronization";
+                title: string | null;
+                metadata: null;
+                _key: null;
+              }
+            | null;
+          external?: string;
+          params?: string;
+          link: null;
+          links: null;
+        }
+    > | null;
   } | null;
-  mobileMenu?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "navigation";
-  };
+  mobileMenu?: NavigationReference;
   fixedMenu: {
     title: string | null;
-    items: Array<{
-      _key: string;
-      _type: "link.list";
-      link: {
-        _type: "link";
-        label?: string;
-        background_color?: Color;
-        text_color?: Color;
-        type?: "collection" | "external" | "internal";
-        collection?: "artists" | "platforms" | "synchronizations";
-        internal: {
-          _type: "artist";
-          title: null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "category";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "event";
-          title: null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "page";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "platform";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "post";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "synchronization";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | null;
-        external?: string;
-        params?: string;
-      } | null;
-      links: Array<{
-        _key: string;
-        _type: "link";
-        label?: string;
-        background_color?: Color;
-        text_color?: Color;
-        type?: "collection" | "external" | "internal";
-        collection?: "artists" | "platforms" | "synchronizations";
-        internal: {
-          _type: "artist";
-          title: null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "category";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "event";
-          title: null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "page";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "platform";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "post";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | {
-          _type: "synchronization";
-          title: string | null;
-          metadata: null;
-          _key: null;
-        } | null;
-        external?: string;
-        params?: string;
-      }> | null;
-      background_dropdown?: Color;
-      internal: null;
-    } | {
-      _key: string;
-      _type: "link";
-      label?: string;
-      background_color?: Color;
-      text_color?: Color;
-      type?: "collection" | "external" | "internal";
-      collection?: "artists" | "platforms" | "synchronizations";
-      internal: {
-        _type: "artist";
-        title: null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "category";
-        title: string | null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "event";
-        title: null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "page";
-        title: string | null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "platform";
-        title: string | null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "post";
-        title: string | null;
-        metadata: null;
-        _key: null;
-      } | {
-        _type: "synchronization";
-        title: string | null;
-        metadata: null;
-        _key: null;
-      } | null;
-      external?: string;
-      params?: string;
-      link: null;
-      links: null;
-    }> | null;
+    items: Array<
+      | {
+          _key: string;
+          _type: "link.list";
+          link: {
+            _type: "link";
+            label?: string;
+            background_color?: Color;
+            text_color?: Color;
+            type?: "collection" | "external" | "internal";
+            collection?: "artists" | "platforms" | "synchronizations";
+            internal:
+              | {
+                  _type: "artist";
+                  title: null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "category";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "event";
+                  title: null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "page";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "platform";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "post";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "synchronization";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | null;
+            external?: string;
+            params?: string;
+          } | null;
+          links: Array<{
+            _key: string;
+            _type: "link";
+            label?: string;
+            background_color?: Color;
+            text_color?: Color;
+            type?: "collection" | "external" | "internal";
+            collection?: "artists" | "platforms" | "synchronizations";
+            internal:
+              | {
+                  _type: "artist";
+                  title: null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "category";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "event";
+                  title: null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "page";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "platform";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "post";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | {
+                  _type: "synchronization";
+                  title: string | null;
+                  metadata: null;
+                  _key: null;
+                }
+              | null;
+            external?: string;
+            params?: string;
+          }> | null;
+          background_dropdown?: Color;
+          internal: null;
+        }
+      | {
+          _key: string;
+          _type: "link";
+          label?: string;
+          background_color?: Color;
+          text_color?: Color;
+          type?: "collection" | "external" | "internal";
+          collection?: "artists" | "platforms" | "synchronizations";
+          internal:
+            | {
+                _type: "artist";
+                title: null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "category";
+                title: string | null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "event";
+                title: null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "page";
+                title: string | null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "platform";
+                title: string | null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "post";
+                title: string | null;
+                metadata: null;
+                _key: null;
+              }
+            | {
+                _type: "synchronization";
+                title: string | null;
+                metadata: null;
+                _key: null;
+              }
+            | null;
+          external?: string;
+          params?: string;
+          link: null;
+          links: null;
+        }
+    > | null;
   } | null;
-  social?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "navigation";
-  };
+  social?: NavigationReference;
   copyright?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -2065,27 +1856,20 @@ export type SITE_QUERYResult = {
     _key: string;
   }>;
   ogimage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
   };
-  homePage?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "page";
-  };
+  homePage?: PageReference;
   socialMenu: null;
 } | null;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: HEADER_MENU
 // Query: *[_type == "site"][0] {    _id,    _type,    title,    headerMenu {      _key,      ...@->{_id, title, slug, items[]{        ...,        _key,        _type,        label,        background_color,        external,        internal->{           _type,           title,           name,  // Added for artist name          metadata,           _key,           _id,           slug         },        links[] {          ...,          _key,          _type,          label,          background_color,          external,          internal->{             _type,             title,            name,  // Added for artist name             metadata,             _key,             _id,             slug,             label           }        }      }}    }  }
-export type HEADER_MENUResult = {
+export type HEADER_MENU_RESULT = {
   _id: string;
   _type: "site";
   title: string | null;
@@ -2094,327 +1878,369 @@ export type HEADER_MENUResult = {
     _id: string;
     title: string | null;
     slug: Slug | null;
-    items: Array<{
-      _key: string;
-      _type: "link.list";
-      link?: Link;
-      links: Array<{
-        _key: string;
-        _type: "link";
-        label: string | null;
-        background_color: Color | null;
-        text_color?: Color;
-        type?: "collection" | "external" | "internal";
-        collection?: "artists" | "platforms" | "synchronizations";
-        internal: {
-          _type: "artist";
-          title: null;
-          name: string | null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
+    items: Array<
+      | {
+          _key: string;
+          _type: "link.list";
+          link?: Link;
+          links: Array<{
+            _key: string;
+            _type: "link";
+            label: string | null;
+            background_color: Color | null;
+            text_color?: Color;
+            type?: "collection" | "external" | "internal";
+            collection?: "artists" | "platforms" | "synchronizations";
+            internal:
+              | {
+                  _type: "artist";
+                  title: null;
+                  name: string | null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | {
+                  _type: "category";
+                  title: string | null;
+                  name: null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | {
+                  _type: "event";
+                  title: null;
+                  name: string | null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | {
+                  _type: "page";
+                  title: string | null;
+                  name: null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | {
+                  _type: "platform";
+                  title: string | null;
+                  name: null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | {
+                  _type: "post";
+                  title: string | null;
+                  name: null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | {
+                  _type: "synchronization";
+                  title: string | null;
+                  name: null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | null;
+            external: string | null;
+            params?: string;
+          }> | null;
+          background_dropdown?: Color;
           label: null;
-        } | {
-          _type: "category";
-          title: string | null;
-          name: null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
-          label: null;
-        } | {
-          _type: "event";
-          title: null;
-          name: string | null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
-          label: null;
-        } | {
-          _type: "page";
-          title: string | null;
-          name: null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
-          label: null;
-        } | {
-          _type: "platform";
-          title: string | null;
-          name: null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
-          label: null;
-        } | {
-          _type: "post";
-          title: string | null;
-          name: null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
-          label: null;
-        } | {
-          _type: "synchronization";
-          title: string | null;
-          name: null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
-          label: null;
-        } | null;
-        external: string | null;
-        params?: string;
-      }> | null;
-      background_dropdown?: Color;
-      label: null;
-      background_color: null;
-      external: null;
-      internal: null;
-    } | {
-      _key: string;
-      _type: "link";
-      label: string | null;
-      background_color: Color | null;
-      text_color?: Color;
-      type?: "collection" | "external" | "internal";
-      collection?: "artists" | "platforms" | "synchronizations";
-      internal: {
-        _type: "artist";
-        title: null;
-        name: string | null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | {
-        _type: "category";
-        title: string | null;
-        name: null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | {
-        _type: "event";
-        title: null;
-        name: string | null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | {
-        _type: "page";
-        title: string | null;
-        name: null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | {
-        _type: "platform";
-        title: string | null;
-        name: null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | {
-        _type: "post";
-        title: string | null;
-        name: null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | {
-        _type: "synchronization";
-        title: string | null;
-        name: null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | null;
-      external: string | null;
-      params?: string;
-      links: null;
-    }> | null;
+          background_color: null;
+          external: null;
+          internal: null;
+        }
+      | {
+          _key: string;
+          _type: "link";
+          label: string | null;
+          background_color: Color | null;
+          text_color?: Color;
+          type?: "collection" | "external" | "internal";
+          collection?: "artists" | "platforms" | "synchronizations";
+          internal:
+            | {
+                _type: "artist";
+                title: null;
+                name: string | null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | {
+                _type: "category";
+                title: string | null;
+                name: null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | {
+                _type: "event";
+                title: null;
+                name: string | null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | {
+                _type: "page";
+                title: string | null;
+                name: null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | {
+                _type: "platform";
+                title: string | null;
+                name: null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | {
+                _type: "post";
+                title: string | null;
+                name: null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | {
+                _type: "synchronization";
+                title: string | null;
+                name: null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | null;
+          external: string | null;
+          params?: string;
+          links: null;
+        }
+    > | null;
   } | null;
 } | null;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: MOBILE_MENU
 // Query: *[_type == "site"][0] {  mobileMenu{    _key,    ...@->{_id, title, slug, items[]{      ...,      _key,      _type,      label,      background_color,      external,      internal->{         _type,         title,         name,  // Added for artist name        metadata,         _key,         _id,         slug       },      links[] {        ...,        _key,        _type,        label,        background_color,        external,        internal->{           _type,           title,          name,  // Added for artist name           metadata,           _key,           _id,           slug,           label         }      }    }}  }}
-export type MOBILE_MENUResult = {
+export type MOBILE_MENU_RESULT = {
   mobileMenu: {
     _key: null;
     _id: string;
     title: string | null;
     slug: Slug | null;
-    items: Array<{
-      _key: string;
-      _type: "link.list";
-      link?: Link;
-      links: Array<{
-        _key: string;
-        _type: "link";
-        label: string | null;
-        background_color: Color | null;
-        text_color?: Color;
-        type?: "collection" | "external" | "internal";
-        collection?: "artists" | "platforms" | "synchronizations";
-        internal: {
-          _type: "artist";
-          title: null;
-          name: string | null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
+    items: Array<
+      | {
+          _key: string;
+          _type: "link.list";
+          link?: Link;
+          links: Array<{
+            _key: string;
+            _type: "link";
+            label: string | null;
+            background_color: Color | null;
+            text_color?: Color;
+            type?: "collection" | "external" | "internal";
+            collection?: "artists" | "platforms" | "synchronizations";
+            internal:
+              | {
+                  _type: "artist";
+                  title: null;
+                  name: string | null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | {
+                  _type: "category";
+                  title: string | null;
+                  name: null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | {
+                  _type: "event";
+                  title: null;
+                  name: string | null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | {
+                  _type: "page";
+                  title: string | null;
+                  name: null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | {
+                  _type: "platform";
+                  title: string | null;
+                  name: null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | {
+                  _type: "post";
+                  title: string | null;
+                  name: null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | {
+                  _type: "synchronization";
+                  title: string | null;
+                  name: null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | null;
+            external: string | null;
+            params?: string;
+          }> | null;
+          background_dropdown?: Color;
           label: null;
-        } | {
-          _type: "category";
-          title: string | null;
-          name: null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
-          label: null;
-        } | {
-          _type: "event";
-          title: null;
-          name: string | null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
-          label: null;
-        } | {
-          _type: "page";
-          title: string | null;
-          name: null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
-          label: null;
-        } | {
-          _type: "platform";
-          title: string | null;
-          name: null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
-          label: null;
-        } | {
-          _type: "post";
-          title: string | null;
-          name: null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
-          label: null;
-        } | {
-          _type: "synchronization";
-          title: string | null;
-          name: null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
-          label: null;
-        } | null;
-        external: string | null;
-        params?: string;
-      }> | null;
-      background_dropdown?: Color;
-      label: null;
-      background_color: null;
-      external: null;
-      internal: null;
-    } | {
-      _key: string;
-      _type: "link";
-      label: string | null;
-      background_color: Color | null;
-      text_color?: Color;
-      type?: "collection" | "external" | "internal";
-      collection?: "artists" | "platforms" | "synchronizations";
-      internal: {
-        _type: "artist";
-        title: null;
-        name: string | null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | {
-        _type: "category";
-        title: string | null;
-        name: null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | {
-        _type: "event";
-        title: null;
-        name: string | null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | {
-        _type: "page";
-        title: string | null;
-        name: null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | {
-        _type: "platform";
-        title: string | null;
-        name: null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | {
-        _type: "post";
-        title: string | null;
-        name: null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | {
-        _type: "synchronization";
-        title: string | null;
-        name: null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | null;
-      external: string | null;
-      params?: string;
-      links: null;
-    }> | null;
+          background_color: null;
+          external: null;
+          internal: null;
+        }
+      | {
+          _key: string;
+          _type: "link";
+          label: string | null;
+          background_color: Color | null;
+          text_color?: Color;
+          type?: "collection" | "external" | "internal";
+          collection?: "artists" | "platforms" | "synchronizations";
+          internal:
+            | {
+                _type: "artist";
+                title: null;
+                name: string | null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | {
+                _type: "category";
+                title: string | null;
+                name: null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | {
+                _type: "event";
+                title: null;
+                name: string | null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | {
+                _type: "page";
+                title: string | null;
+                name: null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | {
+                _type: "platform";
+                title: string | null;
+                name: null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | {
+                _type: "post";
+                title: string | null;
+                name: null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | {
+                _type: "synchronization";
+                title: string | null;
+                name: null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | null;
+          external: string | null;
+          params?: string;
+          links: null;
+        }
+    > | null;
   } | null;
 } | null;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: FIXED_MENU
 // Query: *[_type == "site"][1] {  _id, _type,  title,  fixedMenu{    _key,    ...@->{_id, title, slug, items[]{      ...,      _key,      _type,      label,      background_color,      external,      internal->{         _type,         title,         name,  // Added for artist name        metadata,         _key,         _id,         slug       },      links[] {        ...,        _key,        _type,        label,        background_color,        external,        internal->{           _type,           title,          name,  // Added for artist name           metadata,           _key,           _id,           slug,           label         }      },      background_dropdown,    }}  }}
-export type FIXED_MENUResult = {
+export type FIXED_MENU_RESULT = {
   _id: string;
   _type: "site";
   title: string | null;
@@ -2423,165 +2249,186 @@ export type FIXED_MENUResult = {
     _id: string;
     title: string | null;
     slug: Slug | null;
-    items: Array<{
-      _key: string;
-      _type: "link.list";
-      link?: Link;
-      links: Array<{
-        _key: string;
-        _type: "link";
-        label: string | null;
-        background_color: Color | null;
-        text_color?: Color;
-        type?: "collection" | "external" | "internal";
-        collection?: "artists" | "platforms" | "synchronizations";
-        internal: {
-          _type: "artist";
-          title: null;
-          name: string | null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
+    items: Array<
+      | {
+          _key: string;
+          _type: "link.list";
+          link?: Link;
+          links: Array<{
+            _key: string;
+            _type: "link";
+            label: string | null;
+            background_color: Color | null;
+            text_color?: Color;
+            type?: "collection" | "external" | "internal";
+            collection?: "artists" | "platforms" | "synchronizations";
+            internal:
+              | {
+                  _type: "artist";
+                  title: null;
+                  name: string | null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | {
+                  _type: "category";
+                  title: string | null;
+                  name: null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | {
+                  _type: "event";
+                  title: null;
+                  name: string | null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | {
+                  _type: "page";
+                  title: string | null;
+                  name: null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | {
+                  _type: "platform";
+                  title: string | null;
+                  name: null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | {
+                  _type: "post";
+                  title: string | null;
+                  name: null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | {
+                  _type: "synchronization";
+                  title: string | null;
+                  name: null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | null;
+            external: string | null;
+            params?: string;
+          }> | null;
+          background_dropdown: Color | null;
           label: null;
-        } | {
-          _type: "category";
-          title: string | null;
-          name: null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
-          label: null;
-        } | {
-          _type: "event";
-          title: null;
-          name: string | null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
-          label: null;
-        } | {
-          _type: "page";
-          title: string | null;
-          name: null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
-          label: null;
-        } | {
-          _type: "platform";
-          title: string | null;
-          name: null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
-          label: null;
-        } | {
-          _type: "post";
-          title: string | null;
-          name: null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
-          label: null;
-        } | {
-          _type: "synchronization";
-          title: string | null;
-          name: null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
-          label: null;
-        } | null;
-        external: string | null;
-        params?: string;
-      }> | null;
-      background_dropdown: Color | null;
-      label: null;
-      background_color: null;
-      external: null;
-      internal: null;
-    } | {
-      _key: string;
-      _type: "link";
-      label: string | null;
-      background_color: Color | null;
-      text_color?: Color;
-      type?: "collection" | "external" | "internal";
-      collection?: "artists" | "platforms" | "synchronizations";
-      internal: {
-        _type: "artist";
-        title: null;
-        name: string | null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | {
-        _type: "category";
-        title: string | null;
-        name: null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | {
-        _type: "event";
-        title: null;
-        name: string | null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | {
-        _type: "page";
-        title: string | null;
-        name: null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | {
-        _type: "platform";
-        title: string | null;
-        name: null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | {
-        _type: "post";
-        title: string | null;
-        name: null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | {
-        _type: "synchronization";
-        title: string | null;
-        name: null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | null;
-      external: string | null;
-      params?: string;
-      links: null;
-      background_dropdown: null;
-    }> | null;
+          background_color: null;
+          external: null;
+          internal: null;
+        }
+      | {
+          _key: string;
+          _type: "link";
+          label: string | null;
+          background_color: Color | null;
+          text_color?: Color;
+          type?: "collection" | "external" | "internal";
+          collection?: "artists" | "platforms" | "synchronizations";
+          internal:
+            | {
+                _type: "artist";
+                title: null;
+                name: string | null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | {
+                _type: "category";
+                title: string | null;
+                name: null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | {
+                _type: "event";
+                title: null;
+                name: string | null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | {
+                _type: "page";
+                title: string | null;
+                name: null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | {
+                _type: "platform";
+                title: string | null;
+                name: null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | {
+                _type: "post";
+                title: string | null;
+                name: null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | {
+                _type: "synchronization";
+                title: string | null;
+                name: null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | null;
+          external: string | null;
+          params?: string;
+          links: null;
+          background_dropdown: null;
+        }
+    > | null;
   } | null;
 } | null;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: FOOTER_MENU
 // Query: *[_type == "site"][1] {  _id, _type,  title,  footerMenu{    _key,    ...@->{_id, title, slug, items[]{      ...,      _key,      _type,      label,      background_color,      external,      internal->{         _type,         title,         name,  // Added for artist name        metadata,         _key,         _id,         slug       },      links[] {        ...,        _key,        _type,        label,        background_color,        external,        internal->{           _type,           title,          name,  // Added for artist name           metadata,           _key,           _id,           slug,           label         }      },      background_dropdown,    }}  }}
-export type FOOTER_MENUResult = {
+export type FOOTER_MENU_RESULT = {
   _id: string;
   _type: "site";
   title: string | null;
@@ -2590,165 +2437,186 @@ export type FOOTER_MENUResult = {
     _id: string;
     title: string | null;
     slug: Slug | null;
-    items: Array<{
-      _key: string;
-      _type: "link.list";
-      link?: Link;
-      links: Array<{
-        _key: string;
-        _type: "link";
-        label: string | null;
-        background_color: Color | null;
-        text_color?: Color;
-        type?: "collection" | "external" | "internal";
-        collection?: "artists" | "platforms" | "synchronizations";
-        internal: {
-          _type: "artist";
-          title: null;
-          name: string | null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
+    items: Array<
+      | {
+          _key: string;
+          _type: "link.list";
+          link?: Link;
+          links: Array<{
+            _key: string;
+            _type: "link";
+            label: string | null;
+            background_color: Color | null;
+            text_color?: Color;
+            type?: "collection" | "external" | "internal";
+            collection?: "artists" | "platforms" | "synchronizations";
+            internal:
+              | {
+                  _type: "artist";
+                  title: null;
+                  name: string | null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | {
+                  _type: "category";
+                  title: string | null;
+                  name: null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | {
+                  _type: "event";
+                  title: null;
+                  name: string | null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | {
+                  _type: "page";
+                  title: string | null;
+                  name: null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | {
+                  _type: "platform";
+                  title: string | null;
+                  name: null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | {
+                  _type: "post";
+                  title: string | null;
+                  name: null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | {
+                  _type: "synchronization";
+                  title: string | null;
+                  name: null;
+                  metadata: null;
+                  _key: null;
+                  _id: string;
+                  slug: Slug | null;
+                  label: null;
+                }
+              | null;
+            external: string | null;
+            params?: string;
+          }> | null;
+          background_dropdown: Color | null;
           label: null;
-        } | {
-          _type: "category";
-          title: string | null;
-          name: null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
-          label: null;
-        } | {
-          _type: "event";
-          title: null;
-          name: string | null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
-          label: null;
-        } | {
-          _type: "page";
-          title: string | null;
-          name: null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
-          label: null;
-        } | {
-          _type: "platform";
-          title: string | null;
-          name: null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
-          label: null;
-        } | {
-          _type: "post";
-          title: string | null;
-          name: null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
-          label: null;
-        } | {
-          _type: "synchronization";
-          title: string | null;
-          name: null;
-          metadata: null;
-          _key: null;
-          _id: string;
-          slug: Slug | null;
-          label: null;
-        } | null;
-        external: string | null;
-        params?: string;
-      }> | null;
-      background_dropdown: Color | null;
-      label: null;
-      background_color: null;
-      external: null;
-      internal: null;
-    } | {
-      _key: string;
-      _type: "link";
-      label: string | null;
-      background_color: Color | null;
-      text_color?: Color;
-      type?: "collection" | "external" | "internal";
-      collection?: "artists" | "platforms" | "synchronizations";
-      internal: {
-        _type: "artist";
-        title: null;
-        name: string | null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | {
-        _type: "category";
-        title: string | null;
-        name: null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | {
-        _type: "event";
-        title: null;
-        name: string | null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | {
-        _type: "page";
-        title: string | null;
-        name: null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | {
-        _type: "platform";
-        title: string | null;
-        name: null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | {
-        _type: "post";
-        title: string | null;
-        name: null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | {
-        _type: "synchronization";
-        title: string | null;
-        name: null;
-        metadata: null;
-        _key: null;
-        _id: string;
-        slug: Slug | null;
-      } | null;
-      external: string | null;
-      params?: string;
-      links: null;
-      background_dropdown: null;
-    }> | null;
+          background_color: null;
+          external: null;
+          internal: null;
+        }
+      | {
+          _key: string;
+          _type: "link";
+          label: string | null;
+          background_color: Color | null;
+          text_color?: Color;
+          type?: "collection" | "external" | "internal";
+          collection?: "artists" | "platforms" | "synchronizations";
+          internal:
+            | {
+                _type: "artist";
+                title: null;
+                name: string | null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | {
+                _type: "category";
+                title: string | null;
+                name: null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | {
+                _type: "event";
+                title: null;
+                name: string | null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | {
+                _type: "page";
+                title: string | null;
+                name: null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | {
+                _type: "platform";
+                title: string | null;
+                name: null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | {
+                _type: "post";
+                title: string | null;
+                name: null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | {
+                _type: "synchronization";
+                title: string | null;
+                name: null;
+                metadata: null;
+                _key: null;
+                _id: string;
+                slug: Slug | null;
+              }
+            | null;
+          external: string | null;
+          params?: string;
+          links: null;
+          background_dropdown: null;
+        }
+    > | null;
   } | null;
 } | null;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: PAGE_QUERY
 // Query: *[_type == "page"&& slug.current == $slug][0]{     ...,    content[]{      ...,      _type == "faqs" => {        ...,        faqs[]->      },      _type == "featuredPosts" => {        ...,        "posts": posts[]->{          _id,          _type,          title,          slug,          background_color,          body,          mainImage {            asset->{              _id,              url            }          }        }      },      _type == "featuredArtists" => {        ...,        "artists": artists[]->{          _id,          _type,          name,          slug,          background_color,          body,          mainImage {            asset->{              _id,              url            }          }        }      },      _type == "featuredPlatforms" => {        ...,        "platforms": platforms[]->{          _id,          _type,          title,          slug,          background_color,          body,          mainImage {            asset->{              _id,              url            }          }        }      },      _type == "featuredSynchronicity" => {        ...,        "synchronicity": synchronicity[]->{          _id,          _type,          title,          slug,          background_color,          body,          mainImage {            asset->{              _id,              url            }          }        }      }    }  }
-export type PAGE_QUERYResult = {
+export type PAGE_QUERY_RESULT = {
   _id: string;
   _type: "page";
   _createdAt: string;
@@ -2756,611 +2624,327 @@ export type PAGE_QUERYResult = {
   _rev: string;
   title?: string;
   slug?: Slug;
-  content: Array<{
-    _key: string;
-    _type: "faqs";
-    title?: string;
-    faqs: Array<{
-      _id: string;
-      _type: "faq";
-      _createdAt: string;
-      _updatedAt: string;
-      _rev: string;
-      title?: string;
-      body?: Array<{
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: "span";
-          _key: string;
-        }>;
-        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-        listItem?: "bullet";
-        markDefs?: Array<{
-          href?: string;
-          _type: "link";
-          _key: string;
-        }>;
-        level?: number;
-        _type: "block";
+  content: Array<
+    | {
         _key: string;
-      } | {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: "image";
-        _key: string;
-      }>;
-    }> | null;
-  } | {
-    _key: string;
-    _type: "featuredArtists";
-    title?: string;
-    artists: Array<{
-      _id: string;
-      _type: "artist";
-      name: string | null;
-      slug: Slug | null;
-      background_color: Color | null;
-      body: Array<{
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: "span";
-          _key: string;
-        }>;
-        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-        listItem?: "bullet";
-        markDefs?: Array<{
-          href?: string;
-          _type: "link";
-          _key: string;
-        }>;
-        level?: number;
-        _type: "block";
-        _key: string;
-      } | {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: "image";
-        _key: string;
-      }> | null;
-      mainImage: {
-        asset: {
+        _type: "faqs";
+        title?: string;
+        faqs: Array<{
           _id: string;
-          url: string | null;
-        } | null;
-      } | null;
-    }> | null;
-  } | {
-    _key: string;
-    _type: "featuredPlatforms";
-    title?: string;
-    platforms: Array<{
-      _id: string;
-      _type: "platform";
-      title: string | null;
-      slug: Slug | null;
-      background_color: Color | null;
-      body: Array<{
-        children?: Array<{
-          marks?: Array<string>;
+          _type: "faq";
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          title?: string;
+          body?: BlockContent;
+        }> | null;
+      }
+    | {
+        _key: string;
+        _type: "featuredArtists";
+        title?: string;
+        artists: Array<{
+          _id: string;
+          _type: "artist";
+          name: string | null;
+          slug: Slug | null;
+          background_color: Color | null;
+          body: BlockContent | null;
+          mainImage: {
+            asset: {
+              _id: string;
+              url: string | null;
+            } | null;
+          } | null;
+        }> | null;
+      }
+    | {
+        _key: string;
+        _type: "featuredPlatforms";
+        title?: string;
+        platforms: Array<{
+          _id: string;
+          _type: "platform";
+          title: string | null;
+          slug: Slug | null;
+          background_color: Color | null;
+          body: BlockContent | null;
+          mainImage: {
+            asset: {
+              _id: string;
+              url: string | null;
+            } | null;
+          } | null;
+        }> | null;
+      }
+    | {
+        _key: string;
+        _type: "featuredPosts";
+        title?: string;
+        posts: Array<{
+          _id: string;
+          _type: "post";
+          title: string | null;
+          slug: Slug | null;
+          background_color: Color | null;
+          body: BlockContent | null;
+          mainImage: {
+            asset: {
+              _id: string;
+              url: string | null;
+            } | null;
+          } | null;
+        }> | null;
+      }
+    | {
+        _key: string;
+        _type: "featuredSynchronicity";
+        title?: string;
+        synchronicity: Array<{
+          _id: string;
+          _type: "synchronization";
+          title: string | null;
+          slug: Slug | null;
+          background_color: Color | null;
+          body: null;
+          mainImage: {
+            asset: {
+              _id: string;
+              url: string | null;
+            } | null;
+          } | null;
+        }> | null;
+      }
+    | {
+        _key: string;
+        _type: "features";
+        title?: string;
+        features?: Array<{
+          title?: string;
           text?: string;
-          _type: "span";
+          _type: "feature";
           _key: string;
         }>;
-        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-        listItem?: "bullet";
-        markDefs?: Array<{
-          href?: string;
-          _type: "link";
-          _key: string;
-        }>;
-        level?: number;
-        _type: "block";
+      }
+    | {
         _key: string;
-      } | {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        _type: "hero";
+        title?: string;
+        text?: BlockContent;
+        image?: {
+          asset?: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          _type: "image";
         };
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: "image";
+      }
+    | {
         _key: string;
-      }> | null;
-      mainImage: {
-        asset: {
-          _id: string;
-          url: string | null;
-        } | null;
-      } | null;
-    }> | null;
-  } | {
-    _key: string;
-    _type: "featuredPosts";
-    title?: string;
-    posts: Array<{
-      _id: string;
-      _type: "post";
-      title: string | null;
-      slug: Slug | null;
-      background_color: Color | null;
-      body: Array<{
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: "span";
-          _key: string;
-        }>;
-        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-        listItem?: "bullet";
-        markDefs?: Array<{
-          href?: string;
-          _type: "link";
-          _key: string;
-        }>;
-        level?: number;
-        _type: "block";
-        _key: string;
-      } | {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        _type: "splitImage";
+        orientation?: "imageLeft" | "imageRight";
+        title?: string;
+        image?: {
+          asset?: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          _type: "image";
         };
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: "image";
-        _key: string;
-      }> | null;
-      mainImage: {
-        asset: {
-          _id: string;
-          url: string | null;
-        } | null;
-      } | null;
-    }> | null;
-  } | {
-    _key: string;
-    _type: "featuredSynchronicity";
-    title?: string;
-    synchronicity: Array<{
-      _id: string;
-      _type: "synchronization";
-      title: string | null;
-      slug: Slug | null;
-      background_color: Color | null;
-      body: null;
-      mainImage: {
-        asset: {
-          _id: string;
-          url: string | null;
-        } | null;
-      } | null;
-    }> | null;
-  } | {
-    _key: string;
-    _type: "features";
-    title?: string;
-    features?: Array<{
-      title?: string;
-      text?: string;
-      _type: "feature";
-      _key: string;
-    }>;
-  } | {
-    _key: string;
-    _type: "hero";
-    title?: string;
-    text?: Array<{
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: "span";
-        _key: string;
-      }>;
-      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-      listItem?: "bullet";
-      markDefs?: Array<{
-        href?: string;
-        _type: "link";
-        _key: string;
-      }>;
-      level?: number;
-      _type: "block";
-      _key: string;
-    } | {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
-      _key: string;
-    }>;
-    image?: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      _type: "image";
-    };
-  } | {
-    _key: string;
-    _type: "splitImage";
-    orientation?: "imageLeft" | "imageRight";
-    title?: string;
-    image?: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      _type: "image";
-    };
-  }> | null;
+      }
+  > | null;
   mainImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
   };
 } | null;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: HOME_PAGE_QUERY
 // Query: *[_id == "site"][0]{  homePage->{    ...,    content[]{      ...,      _type == "faqs" => {        ...,        faqs[]->      },      _type == "featuredPosts" => {        ...,        "posts": posts[]->{          _id,          _type,          title,          slug,          background_color,          body,          mainImage {            asset->{              _id,              url            }          }        }      },      _type == "featuredArtists" => {        ...,        "artists": artists[]->{          _id,          _type,          name,          slug,          background_color,          body,          mainImage {            asset->{              _id,              url            }          }        }      },      _type == "featuredPlatforms" => {        ...,        "platforms": platforms[]->{          _id,          _type,          title,          slug,          background_color,          body,          mainImage {            asset->{              _id,              url            }          }        }      },      _type == "featuredSynchronicity" => {        ...,        "synchronicity": synchronicity[]->{          _id,          _type,          title,          slug,          background_color,          body,          mainImage {            asset->{              _id,              url            }          }        }      }    }  }}
-export type HOME_PAGE_QUERYResult = {
-  homePage: null;
-} | {
-  homePage: {
-    _id: string;
-    _type: "page";
-    _createdAt: string;
-    _updatedAt: string;
-    _rev: string;
-    title?: string;
-    slug?: Slug;
-    content: Array<{
-      _key: string;
-      _type: "faqs";
-      title?: string;
-      faqs: Array<{
+export type HOME_PAGE_QUERY_RESULT =
+  | {
+      homePage: null;
+    }
+  | {
+      homePage: {
         _id: string;
-        _type: "faq";
+        _type: "page";
         _createdAt: string;
         _updatedAt: string;
         _rev: string;
         title?: string;
-        body?: Array<{
-          children?: Array<{
-            marks?: Array<string>;
-            text?: string;
-            _type: "span";
-            _key: string;
-          }>;
-          style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-          listItem?: "bullet";
-          markDefs?: Array<{
-            href?: string;
-            _type: "link";
-            _key: string;
-          }>;
-          level?: number;
-          _type: "block";
-          _key: string;
-        } | {
-          asset?: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-          };
+        slug?: Slug;
+        content: Array<
+          | {
+              _key: string;
+              _type: "faqs";
+              title?: string;
+              faqs: Array<{
+                _id: string;
+                _type: "faq";
+                _createdAt: string;
+                _updatedAt: string;
+                _rev: string;
+                title?: string;
+                body?: BlockContent;
+              }> | null;
+            }
+          | {
+              _key: string;
+              _type: "featuredArtists";
+              title?: string;
+              artists: Array<{
+                _id: string;
+                _type: "artist";
+                name: string | null;
+                slug: Slug | null;
+                background_color: Color | null;
+                body: BlockContent | null;
+                mainImage: {
+                  asset: {
+                    _id: string;
+                    url: string | null;
+                  } | null;
+                } | null;
+              }> | null;
+            }
+          | {
+              _key: string;
+              _type: "featuredPlatforms";
+              title?: string;
+              platforms: Array<{
+                _id: string;
+                _type: "platform";
+                title: string | null;
+                slug: Slug | null;
+                background_color: Color | null;
+                body: BlockContent | null;
+                mainImage: {
+                  asset: {
+                    _id: string;
+                    url: string | null;
+                  } | null;
+                } | null;
+              }> | null;
+            }
+          | {
+              _key: string;
+              _type: "featuredPosts";
+              title?: string;
+              posts: Array<{
+                _id: string;
+                _type: "post";
+                title: string | null;
+                slug: Slug | null;
+                background_color: Color | null;
+                body: BlockContent | null;
+                mainImage: {
+                  asset: {
+                    _id: string;
+                    url: string | null;
+                  } | null;
+                } | null;
+              }> | null;
+            }
+          | {
+              _key: string;
+              _type: "featuredSynchronicity";
+              title?: string;
+              synchronicity: Array<{
+                _id: string;
+                _type: "synchronization";
+                title: string | null;
+                slug: Slug | null;
+                background_color: Color | null;
+                body: null;
+                mainImage: {
+                  asset: {
+                    _id: string;
+                    url: string | null;
+                  } | null;
+                } | null;
+              }> | null;
+            }
+          | {
+              _key: string;
+              _type: "features";
+              title?: string;
+              features?: Array<{
+                title?: string;
+                text?: string;
+                _type: "feature";
+                _key: string;
+              }>;
+            }
+          | {
+              _key: string;
+              _type: "hero";
+              title?: string;
+              text?: BlockContent;
+              image?: {
+                asset?: SanityImageAssetReference;
+                media?: unknown;
+                hotspot?: SanityImageHotspot;
+                crop?: SanityImageCrop;
+                _type: "image";
+              };
+            }
+          | {
+              _key: string;
+              _type: "splitImage";
+              orientation?: "imageLeft" | "imageRight";
+              title?: string;
+              image?: {
+                asset?: SanityImageAssetReference;
+                media?: unknown;
+                hotspot?: SanityImageHotspot;
+                crop?: SanityImageCrop;
+                _type: "image";
+              };
+            }
+        > | null;
+        mainImage?: {
+          asset?: SanityImageAssetReference;
+          media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
-          alt?: string;
           _type: "image";
-          _key: string;
-        }>;
-      }> | null;
-    } | {
-      _key: string;
-      _type: "featuredArtists";
-      title?: string;
-      artists: Array<{
-        _id: string;
-        _type: "artist";
-        name: string | null;
-        slug: Slug | null;
-        background_color: Color | null;
-        body: Array<{
-          children?: Array<{
-            marks?: Array<string>;
-            text?: string;
-            _type: "span";
-            _key: string;
-          }>;
-          style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-          listItem?: "bullet";
-          markDefs?: Array<{
-            href?: string;
-            _type: "link";
-            _key: string;
-          }>;
-          level?: number;
-          _type: "block";
-          _key: string;
-        } | {
-          asset?: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-          };
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt?: string;
-          _type: "image";
-          _key: string;
-        }> | null;
-        mainImage: {
-          asset: {
-            _id: string;
-            url: string | null;
-          } | null;
-        } | null;
-      }> | null;
-    } | {
-      _key: string;
-      _type: "featuredPlatforms";
-      title?: string;
-      platforms: Array<{
-        _id: string;
-        _type: "platform";
-        title: string | null;
-        slug: Slug | null;
-        background_color: Color | null;
-        body: Array<{
-          children?: Array<{
-            marks?: Array<string>;
-            text?: string;
-            _type: "span";
-            _key: string;
-          }>;
-          style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-          listItem?: "bullet";
-          markDefs?: Array<{
-            href?: string;
-            _type: "link";
-            _key: string;
-          }>;
-          level?: number;
-          _type: "block";
-          _key: string;
-        } | {
-          asset?: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-          };
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt?: string;
-          _type: "image";
-          _key: string;
-        }> | null;
-        mainImage: {
-          asset: {
-            _id: string;
-            url: string | null;
-          } | null;
-        } | null;
-      }> | null;
-    } | {
-      _key: string;
-      _type: "featuredPosts";
-      title?: string;
-      posts: Array<{
-        _id: string;
-        _type: "post";
-        title: string | null;
-        slug: Slug | null;
-        background_color: Color | null;
-        body: Array<{
-          children?: Array<{
-            marks?: Array<string>;
-            text?: string;
-            _type: "span";
-            _key: string;
-          }>;
-          style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-          listItem?: "bullet";
-          markDefs?: Array<{
-            href?: string;
-            _type: "link";
-            _key: string;
-          }>;
-          level?: number;
-          _type: "block";
-          _key: string;
-        } | {
-          asset?: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-          };
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt?: string;
-          _type: "image";
-          _key: string;
-        }> | null;
-        mainImage: {
-          asset: {
-            _id: string;
-            url: string | null;
-          } | null;
-        } | null;
-      }> | null;
-    } | {
-      _key: string;
-      _type: "featuredSynchronicity";
-      title?: string;
-      synchronicity: Array<{
-        _id: string;
-        _type: "synchronization";
-        title: string | null;
-        slug: Slug | null;
-        background_color: Color | null;
-        body: null;
-        mainImage: {
-          asset: {
-            _id: string;
-            url: string | null;
-          } | null;
-        } | null;
-      }> | null;
-    } | {
-      _key: string;
-      _type: "features";
-      title?: string;
-      features?: Array<{
-        title?: string;
-        text?: string;
-        _type: "feature";
-        _key: string;
-      }>;
-    } | {
-      _key: string;
-      _type: "hero";
-      title?: string;
-      text?: Array<{
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: "span";
-          _key: string;
-        }>;
-        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-        listItem?: "bullet";
-        markDefs?: Array<{
-          href?: string;
-          _type: "link";
-          _key: string;
-        }>;
-        level?: number;
-        _type: "block";
-        _key: string;
-      } | {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
         };
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: "image";
-        _key: string;
-      }>;
-      image?: {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        _type: "image";
-      };
-    } | {
-      _key: string;
-      _type: "splitImage";
-      orientation?: "imageLeft" | "imageRight";
-      title?: string;
-      image?: {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        _type: "image";
-      };
-    }> | null;
-    mainImage?: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      _type: "image";
-    };
-  } | null;
-} | null;
+      } | null;
+    }
+  | null;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: LOGO_QUERY
 // Query: *[_id == "site"][0] {  logo {    name,    "default": image.default.asset->{      _id,      url    },    "light": image.light.asset->{      _id,      url    },    "dark": image.dark.asset->{      _id,      url    }  }}
-export type LOGO_QUERYResult = {
-  logo: null;
-} | {
-  logo: {
-    name: string | null;
-    default: {
-      _id: string;
-      url: string | null;
-    } | null;
-    light: {
-      _id: string;
-      url: string | null;
-    } | null;
-    dark: {
-      _id: string;
-      url: string | null;
-    } | null;
-  } | null;
-} | null;
+export type LOGO_QUERY_RESULT =
+  | {
+      logo: null;
+    }
+  | {
+      logo: {
+        name: string | null;
+        default: {
+          _id: string;
+          url: string | null;
+        } | null;
+        light: {
+          _id: string;
+          url: string | null;
+        } | null;
+        dark: {
+          _id: string;
+          url: string | null;
+        } | null;
+      } | null;
+    }
+  | null;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: artistsQuery
 // Query: *[_type == "artist" && defined(slug.current)]|order(publishedAt desc)[0...12] {  _id,  name,  slug,  mainImage,  background_color,  categories[]->{     _id,    title  }}
 export type ArtistsQueryResult = Array<{
@@ -3368,12 +2952,8 @@ export type ArtistsQueryResult = Array<{
   name: string | null;
   slug: Slug | null;
   mainImage: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
@@ -3384,53 +2964,22 @@ export type ArtistsQueryResult = Array<{
     title: string | null;
   }> | null;
 }>;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: artistQuery
 // Query: *[_type == "artist" && slug.current == $slug][0] {    _id,    name,    mainImage,    background_color,    body,    publishedAt,    categories[]->,    "relatedArtists": relatedArtists[]->{ name, slug }  }
 export type ArtistQueryResult = {
   _id: string;
   name: string | null;
   mainImage: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
   background_color: Color | null;
-  body: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }> | null;
+  body: BlockContent | null;
   publishedAt: string | null;
   categories: Array<{
     _id: string;
@@ -3447,6 +2996,8 @@ export type ArtistQueryResult = {
     slug: Slug | null;
   }> | null;
 } | null;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: platformsQuery
 // Query: *[_type == "platform"] | order(publishedAt desc) {    _id,    title,    background_color,    slug {      current    },    mainImage {      asset,      hotspot,      crop,      _type    },    platformType,    platformUrl,    publishedAt,    categories[]-> {      _id,      _type,      _createdAt,      _updatedAt,      _rev,      title,      slug,      description    }  }
 export type PlatformsQueryResult = Array<{
@@ -3457,12 +3008,7 @@ export type PlatformsQueryResult = Array<{
     current: string | null;
   } | null;
   mainImage: {
-    asset: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    } | null;
+    asset: SanityImageAssetReference | null;
     hotspot: SanityImageHotspot | null;
     crop: SanityImageCrop | null;
     _type: "image";
@@ -3481,6 +3027,8 @@ export type PlatformsQueryResult = Array<{
     description: string | null;
   }> | null;
 }>;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: platformQuery
 // Query: *[_type == "platform" && slug.current == $slug][0] {    _id,    title,    slug,    background_color,    mainImage,    platformType,    platformUrl,    publishedAt,    body,    categories[]->  }
 export type PlatformQueryResult = {
@@ -3489,12 +3037,8 @@ export type PlatformQueryResult = {
   slug: Slug | null;
   background_color: Color | null;
   mainImage: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
@@ -3502,36 +3046,7 @@ export type PlatformQueryResult = {
   platformType: null;
   platformUrl: string | null;
   publishedAt: string | null;
-  body: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }> | null;
+  body: BlockContent | null;
   categories: Array<{
     _id: string;
     _type: "category";
@@ -3543,9 +3058,11 @@ export type PlatformQueryResult = {
     description?: string;
   }> | null;
 } | null;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: SYNCHRONIZATIONS_QUERY
 // Query: *[  _type == "synchronization"  && defined(slug.current)]{  _id,  title,  slug,  background_color,  date,  artist->{    _id,    name,    mainImage,    background_color,    body,    publishedAt,    categories[]->,  },  platform->{    _id,    title,    slug,    background_color,    mainImage,    platformType,    platformUrl,    publishedAt,    body,  },  venue->{    name  }}|order(date desc)
-export type SYNCHRONIZATIONS_QUERYResult = Array<{
+export type SYNCHRONIZATIONS_QUERY_RESULT = Array<{
   _id: string;
   title: string | null;
   slug: Slug | null;
@@ -3555,47 +3072,14 @@ export type SYNCHRONIZATIONS_QUERYResult = Array<{
     _id: string;
     name: string | null;
     mainImage: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
+      asset?: SanityImageAssetReference;
+      media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
       _type: "image";
     } | null;
     background_color: Color | null;
-    body: Array<{
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: "span";
-        _key: string;
-      }>;
-      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-      listItem?: "bullet";
-      markDefs?: Array<{
-        href?: string;
-        _type: "link";
-        _key: string;
-      }>;
-      level?: number;
-      _type: "block";
-      _key: string;
-    } | {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
-      _key: string;
-    }> | null;
+    body: BlockContent | null;
     publishedAt: string | null;
     categories: Array<{
       _id: string;
@@ -3614,12 +3098,8 @@ export type SYNCHRONIZATIONS_QUERYResult = Array<{
     slug: Slug | null;
     background_color: Color | null;
     mainImage: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
+      asset?: SanityImageAssetReference;
+      media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
       _type: "image";
@@ -3627,124 +3107,35 @@ export type SYNCHRONIZATIONS_QUERYResult = Array<{
     platformType: null;
     platformUrl: string | null;
     publishedAt: string | null;
-    body: Array<{
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: "span";
-        _key: string;
-      }>;
-      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-      listItem?: "bullet";
-      markDefs?: Array<{
-        href?: string;
-        _type: "link";
-        _key: string;
-      }>;
-      level?: number;
-      _type: "block";
-      _key: string;
-    } | {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
-      _key: string;
-    }> | null;
+    body: BlockContent | null;
   } | null;
   venue: {
     name: string | null;
   } | null;
 }>;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: SYNCHRONIZATION_QUERY
 // Query: *[  _type == "synchronization" &&  slug.current == $slug][0]{  _id,  title,  background_color,  date,  description,  artist->{    _id,    name,    slug,    mainImage,    background_color,    body,    publishedAt,    categories[]->,  },  platform->{    _id,    title,    slug,    background_color,    mainImage,    platformType,    platformUrl,    publishedAt,    body,  },  venue->{    name,    address  },  categories[]->}
-export type SYNCHRONIZATION_QUERYResult = {
+export type SYNCHRONIZATION_QUERY_RESULT = {
   _id: string;
   title: string | null;
   background_color: Color | null;
   date: string | null;
-  description: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }> | null;
+  description: BlockContent | null;
   artist: {
     _id: string;
     name: string | null;
     slug: Slug | null;
     mainImage: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
+      asset?: SanityImageAssetReference;
+      media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
       _type: "image";
     } | null;
     background_color: Color | null;
-    body: Array<{
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: "span";
-        _key: string;
-      }>;
-      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-      listItem?: "bullet";
-      markDefs?: Array<{
-        href?: string;
-        _type: "link";
-        _key: string;
-      }>;
-      level?: number;
-      _type: "block";
-      _key: string;
-    } | {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
-      _key: string;
-    }> | null;
+    body: BlockContent | null;
     publishedAt: string | null;
     categories: Array<{
       _id: string;
@@ -3763,12 +3154,8 @@ export type SYNCHRONIZATION_QUERYResult = {
     slug: Slug | null;
     background_color: Color | null;
     mainImage: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
+      asset?: SanityImageAssetReference;
+      media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
       _type: "image";
@@ -3776,36 +3163,7 @@ export type SYNCHRONIZATION_QUERYResult = {
     platformType: null;
     platformUrl: string | null;
     publishedAt: string | null;
-    body: Array<{
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: "span";
-        _key: string;
-      }>;
-      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-      listItem?: "bullet";
-      markDefs?: Array<{
-        href?: string;
-        _type: "link";
-        _key: string;
-      }>;
-      level?: number;
-      _type: "block";
-      _key: string;
-    } | {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
-      _key: string;
-    }> | null;
+    body: BlockContent | null;
   } | null;
   venue: {
     name: string | null;
@@ -3824,31 +3182,34 @@ export type SYNCHRONIZATION_QUERYResult = {
 } | null;
 
 // Query TypeMap
-import "@sanity/client";
-declare module "@sanity/client" {
+declare global {
   interface SanityQueries {
-    "*[_type == \"post\" && defined(slug.current)]|order(publishedAt desc)[0...12]{\n  _id,\n  title,\n  slug,\n  background_color,\n  body,\n  mainImage,\n  publishedAt,\n  \"categories\": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  ),\n  author->{\n    name,\n    image\n  }\n}": POSTS_QUERYResult;
-    "*[_type == \"post\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": POSTS_SLUGS_QUERYResult;
-    "*[_type == \"post\" && slug.current == $slug][0]{\n  _id,\n  title,\n  color,\n  body,\n  mainImage,\n  background_color,\n  publishedAt,\n  \"categories\": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  ),\n  author->{\n    name,\n    image\n  },\n  relatedPosts[]{\n    _key, // required for drag and drop\n    ...@->{_id, title, slug} // get fields from the referenced post\n  }\n}": POST_QUERYResult;
-    "*[\n  _type == \"event\"\n  && defined(slug.current)\n]{_id, name, slug, date}|order(date desc)": EVENTS_QUERYResult;
-    "*[\n  _type == \"event\" &&\n  slug.current == $slug\n][0]{\n  ...,\n  \"date\": coalesce(date, now()),\n  \"doorsOpen\": coalesce(doorsOpen, 0),\n  headline->,\n  venue->\n}": EVENT_QUERYResult;
-    "*[\n  _type == \"media\"\n  && defined(slug.current)\n]{_id, name, slug, date}|order(date desc)": MEDIAHOME_QUERYResult;
-    "*[\n  _type == \"media\" &&\n  slug.current == $slug\n][0]{\n...,\n\"date\": coalesce(date, now()),\n\"doorsOpen\": coalesce(doorsOpen, 0),\nheadline->,\nvenue->\n}": MEDIA_QUERYResult;
-    "*[_type == \"navigation\"]{\n title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    }\n}": NAV_QUERYResult;
-    "*[_type == \"cta\"]{\n  ...,\nlink { \n  ...,\n  internal->{ _type, title, metadata }\n  }\n }": CTA_QUERYResult;
-    "*[_type == \"site\"][0]{\n  ...,\n  headerMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n    fixedMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n  footerMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n  socialMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n}": SITE_QUERYResult;
-    "*[_type == \"site\"][0] {\n    _id,\n    _type,\n    title,\n    headerMenu {\n      _key,\n      ...@->{_id, title, slug, items[]{\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{ \n          _type, \n          title, \n          name,  // Added for artist name\n          metadata, \n          _key, \n          _id, \n          slug \n        },\n        links[] {\n          ...,\n          _key,\n          _type,\n          label,\n          background_color,\n          external,\n          internal->{ \n            _type, \n            title,\n            name,  // Added for artist name \n            metadata, \n            _key, \n            _id, \n            slug, \n            label \n          }\n        }\n      }}\n    }\n  }": HEADER_MENUResult;
-    "*[_type == \"site\"][0] {\n  mobileMenu{\n    _key,\n    ...@->{_id, title, slug, items[]{\n      ...,\n      _key,\n      _type,\n      label,\n      background_color,\n      external,\n      internal->{ \n        _type, \n        title, \n        name,  // Added for artist name\n        metadata, \n        _key, \n        _id, \n        slug \n      },\n      links[] {\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{ \n          _type, \n          title,\n          name,  // Added for artist name \n          metadata, \n          _key, \n          _id, \n          slug, \n          label \n        }\n      }\n    }}\n  }\n}": MOBILE_MENUResult;
-    "*[_type == \"site\"][1] {\n  _id,\n _type,\n  title,\n  fixedMenu{\n    _key,\n    ...@->{_id, title, slug, items[]{\n      ...,\n      _key,\n      _type,\n      label,\n      background_color,\n      external,\n      internal->{ \n        _type, \n        title, \n        name,  // Added for artist name\n        metadata, \n        _key, \n        _id, \n        slug \n      },\n      links[] {\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{ \n          _type, \n          title,\n          name,  // Added for artist name \n          metadata, \n          _key, \n          _id, \n          slug, \n          label \n        }\n      },\n      background_dropdown,\n    }}\n  }\n}": FIXED_MENUResult;
-    "*[_type == \"site\"][1] {\n  _id,\n _type,\n  title,\n  footerMenu{\n    _key,\n    ...@->{_id, title, slug, items[]{\n      ...,\n      _key,\n      _type,\n      label,\n      background_color,\n      external,\n      internal->{ \n        _type, \n        title, \n        name,  // Added for artist name\n        metadata, \n        _key, \n        _id, \n        slug \n      },\n      links[] {\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{ \n          _type, \n          title,\n          name,  // Added for artist name \n          metadata, \n          _key, \n          _id, \n          slug, \n          label \n        }\n      },\n      background_dropdown,\n    }}\n  }\n}": FOOTER_MENUResult;
-    "*[_type == \"page\"&& slug.current == $slug][0]{\n     ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"featuredPosts\" => {\n        ...,\n        \"posts\": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredArtists\" => {\n        ...,\n        \"artists\": artists[]->{\n          _id,\n          _type,\n          name,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredPlatforms\" => {\n        ...,\n        \"platforms\": platforms[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredSynchronicity\" => {\n        ...,\n        \"synchronicity\": synchronicity[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n  }": PAGE_QUERYResult;
-    "*[_id == \"site\"][0]{\n  homePage->{\n    ...,\n    content[]{\n      ...,\n      _type == \"faqs\" => {\n        ...,\n        faqs[]->\n      },\n      _type == \"featuredPosts\" => {\n        ...,\n        \"posts\": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredArtists\" => {\n        ...,\n        \"artists\": artists[]->{\n          _id,\n          _type,\n          name,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredPlatforms\" => {\n        ...,\n        \"platforms\": platforms[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == \"featuredSynchronicity\" => {\n        ...,\n        \"synchronicity\": synchronicity[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n  }\n}": HOME_PAGE_QUERYResult;
-    "*[_id == \"site\"][0] {\n  logo {\n    name,\n    \"default\": image.default.asset->{\n      _id,\n      url\n    },\n    \"light\": image.light.asset->{\n      _id,\n      url\n    },\n    \"dark\": image.dark.asset->{\n      _id,\n      url\n    }\n  }\n}": LOGO_QUERYResult;
-    "*[_type == \"artist\" && defined(slug.current)]|order(publishedAt desc)[0...12] {\n  _id,\n  name,\n  slug,\n  mainImage,\n  background_color,\n  categories[]->{ \n    _id,\n    title\n  }\n}": ArtistsQueryResult;
-    "\n  *[_type == \"artist\" && slug.current == $slug][0] {\n    _id,\n    name,\n    mainImage,\n    background_color,\n    body,\n    publishedAt,\n    categories[]->,\n    \"relatedArtists\": relatedArtists[]->{ name, slug }\n  }\n": ArtistQueryResult;
-    "\n  *[_type == \"platform\"] | order(publishedAt desc) {\n    _id,\n    title,\n    background_color,\n    slug {\n      current\n    },\n    mainImage {\n      asset,\n      hotspot,\n      crop,\n      _type\n    },\n    platformType,\n    platformUrl,\n    publishedAt,\n    categories[]-> {\n      _id,\n      _type,\n      _createdAt,\n      _updatedAt,\n      _rev,\n      title,\n      slug,\n      description\n    }\n  }\n": PlatformsQueryResult;
-    "\n  *[_type == \"platform\" && slug.current == $slug][0] {\n    _id,\n    title,\n    slug,\n    background_color,\n    mainImage,\n    platformType,\n    platformUrl,\n    publishedAt,\n    body,\n    categories[]->\n  }\n": PlatformQueryResult;
-    "*[\n  _type == \"synchronization\"\n  && defined(slug.current)\n]{\n  _id,\n  title,\n  slug,\n  background_color,\n  date,\n  artist->{\n    _id,\n    name,\n    mainImage,\n    background_color,\n    body,\n    publishedAt,\n    categories[]->,\n  },\n  platform->{\n    _id,\n    title,\n    slug,\n    background_color,\n    mainImage,\n    platformType,\n    platformUrl,\n    publishedAt,\n    body,\n  },\n  venue->{\n    name\n  }\n}|order(date desc)": SYNCHRONIZATIONS_QUERYResult;
-    "*[\n  _type == \"synchronization\" &&\n  slug.current == $slug\n][0]{\n  _id,\n  title,\n  background_color,\n  date,\n  description,\n  artist->{\n    _id,\n    name,\n    slug,\n    mainImage,\n    background_color,\n    body,\n    publishedAt,\n    categories[]->,\n  },\n  platform->{\n    _id,\n    title,\n    slug,\n    background_color,\n    mainImage,\n    platformType,\n    platformUrl,\n    publishedAt,\n    body,\n  },\n  venue->{\n    name,\n    address\n  },\n  categories[]->\n}": SYNCHRONIZATION_QUERYResult;
+    '*[_type == "post" && defined(slug.current)]|order(publishedAt desc)[0...12]{\n  _id,\n  title,\n  slug,\n  background_color,\n  body,\n  mainImage,\n  publishedAt,\n  "categories": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  ),\n  author->{\n    name,\n    image\n  }\n}': POSTS_QUERY_RESULT;
+    '*[_type == "post" && defined(slug.current)]{ \n  "slug": slug.current\n}': POSTS_SLUGS_QUERY_RESULT;
+    '*[_type == "post" && slug.current == $slug][0]{\n  _id,\n  title,\n  color,\n  body,\n  mainImage,\n  background_color,\n  publishedAt,\n  "categories": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  ),\n  author->{\n    name,\n    image\n  },\n  relatedPosts[]{\n    _key, // required for drag and drop\n    ...@->{_id, title, slug} // get fields from the referenced post\n  }\n}': POST_QUERY_RESULT;
+    '*[\n  _type == "event"\n  && defined(slug.current)\n]{_id, name, slug, date}|order(date desc)': EVENTS_QUERY_RESULT;
+    '*[\n  _type == "event" &&\n  slug.current == $slug\n][0]{\n  ...,\n  "date": coalesce(date, now()),\n  "doorsOpen": coalesce(doorsOpen, 0),\n  headline->,\n  venue->\n}': EVENT_QUERY_RESULT;
+    '*[\n  _type == "media"\n  && defined(slug.current)\n]{_id, name, slug, date}|order(date desc)': MEDIAHOME_QUERY_RESULT;
+    '*[\n  _type == "media" &&\n  slug.current == $slug\n][0]{\n...,\n"date": coalesce(date, now()),\n"doorsOpen": coalesce(doorsOpen, 0),\nheadline->,\nvenue->\n}': MEDIA_QUERY_RESULT;
+    '*[_type == "navigation"]{\n title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    }\n}': NAV_QUERY_RESULT;
+    '*[_type == "cta"]{\n  ...,\nlink { \n  ...,\n  internal->{ _type, title, metadata }\n  }\n }': CTA_QUERY_RESULT;
+    '*[_type == "site"][0]{\n  ...,\n  headerMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n    fixedMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n  footerMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n  socialMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n}': SITE_QUERY_RESULT;
+    '*[_type == "site"][0] {\n    _id,\n    _type,\n    title,\n    headerMenu {\n      _key,\n      ...@->{_id, title, slug, items[]{\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{ \n          _type, \n          title, \n          name,  // Added for artist name\n          metadata, \n          _key, \n          _id, \n          slug \n        },\n        links[] {\n          ...,\n          _key,\n          _type,\n          label,\n          background_color,\n          external,\n          internal->{ \n            _type, \n            title,\n            name,  // Added for artist name \n            metadata, \n            _key, \n            _id, \n            slug, \n            label \n          }\n        }\n      }}\n    }\n  }': HEADER_MENU_RESULT;
+    '*[_type == "site"][0] {\n  mobileMenu{\n    _key,\n    ...@->{_id, title, slug, items[]{\n      ...,\n      _key,\n      _type,\n      label,\n      background_color,\n      external,\n      internal->{ \n        _type, \n        title, \n        name,  // Added for artist name\n        metadata, \n        _key, \n        _id, \n        slug \n      },\n      links[] {\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{ \n          _type, \n          title,\n          name,  // Added for artist name \n          metadata, \n          _key, \n          _id, \n          slug, \n          label \n        }\n      }\n    }}\n  }\n}': MOBILE_MENU_RESULT;
+    '*[_type == "site"][1] {\n  _id,\n _type,\n  title,\n  fixedMenu{\n    _key,\n    ...@->{_id, title, slug, items[]{\n      ...,\n      _key,\n      _type,\n      label,\n      background_color,\n      external,\n      internal->{ \n        _type, \n        title, \n        name,  // Added for artist name\n        metadata, \n        _key, \n        _id, \n        slug \n      },\n      links[] {\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{ \n          _type, \n          title,\n          name,  // Added for artist name \n          metadata, \n          _key, \n          _id, \n          slug, \n          label \n        }\n      },\n      background_dropdown,\n    }}\n  }\n}': FIXED_MENU_RESULT;
+    '*[_type == "site"][1] {\n  _id,\n _type,\n  title,\n  footerMenu{\n    _key,\n    ...@->{_id, title, slug, items[]{\n      ...,\n      _key,\n      _type,\n      label,\n      background_color,\n      external,\n      internal->{ \n        _type, \n        title, \n        name,  // Added for artist name\n        metadata, \n        _key, \n        _id, \n        slug \n      },\n      links[] {\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{ \n          _type, \n          title,\n          name,  // Added for artist name \n          metadata, \n          _key, \n          _id, \n          slug, \n          label \n        }\n      },\n      background_dropdown,\n    }}\n  }\n}': FOOTER_MENU_RESULT;
+    '*[_type == "page"&& slug.current == $slug][0]{\n     ...,\n    content[]{\n      ...,\n      _type == "faqs" => {\n        ...,\n        faqs[]->\n      },\n      _type == "featuredPosts" => {\n        ...,\n        "posts": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == "featuredArtists" => {\n        ...,\n        "artists": artists[]->{\n          _id,\n          _type,\n          name,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == "featuredPlatforms" => {\n        ...,\n        "platforms": platforms[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == "featuredSynchronicity" => {\n        ...,\n        "synchronicity": synchronicity[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n  }': PAGE_QUERY_RESULT;
+    '*[_id == "site"][0]{\n  homePage->{\n    ...,\n    content[]{\n      ...,\n      _type == "faqs" => {\n        ...,\n        faqs[]->\n      },\n      _type == "featuredPosts" => {\n        ...,\n        "posts": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == "featuredArtists" => {\n        ...,\n        "artists": artists[]->{\n          _id,\n          _type,\n          name,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == "featuredPlatforms" => {\n        ...,\n        "platforms": platforms[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == "featuredSynchronicity" => {\n        ...,\n        "synchronicity": synchronicity[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n  }\n}': HOME_PAGE_QUERY_RESULT;
+    '*[_id == "site"][0] {\n  logo {\n    name,\n    "default": image.default.asset->{\n      _id,\n      url\n    },\n    "light": image.light.asset->{\n      _id,\n      url\n    },\n    "dark": image.dark.asset->{\n      _id,\n      url\n    }\n  }\n}': LOGO_QUERY_RESULT;
+    '*[_type == "artist" && defined(slug.current)]|order(publishedAt desc)[0...12] {\n  _id,\n  name,\n  slug,\n  mainImage,\n  background_color,\n  categories[]->{ \n    _id,\n    title\n  }\n}': ArtistsQueryResult;
+    '\n  *[_type == "artist" && slug.current == $slug][0] {\n    _id,\n    name,\n    mainImage,\n    background_color,\n    body,\n    publishedAt,\n    categories[]->,\n    "relatedArtists": relatedArtists[]->{ name, slug }\n  }\n': ArtistQueryResult;
+    '\n  *[_type == "platform"] | order(publishedAt desc) {\n    _id,\n    title,\n    background_color,\n    slug {\n      current\n    },\n    mainImage {\n      asset,\n      hotspot,\n      crop,\n      _type\n    },\n    platformType,\n    platformUrl,\n    publishedAt,\n    categories[]-> {\n      _id,\n      _type,\n      _createdAt,\n      _updatedAt,\n      _rev,\n      title,\n      slug,\n      description\n    }\n  }\n': PlatformsQueryResult;
+    '\n  *[_type == "platform" && slug.current == $slug][0] {\n    _id,\n    title,\n    slug,\n    background_color,\n    mainImage,\n    platformType,\n    platformUrl,\n    publishedAt,\n    body,\n    categories[]->\n  }\n': PlatformQueryResult;
+    '*[\n  _type == "synchronization"\n  && defined(slug.current)\n]{\n  _id,\n  title,\n  slug,\n  background_color,\n  date,\n  artist->{\n    _id,\n    name,\n    mainImage,\n    background_color,\n    body,\n    publishedAt,\n    categories[]->,\n  },\n  platform->{\n    _id,\n    title,\n    slug,\n    background_color,\n    mainImage,\n    platformType,\n    platformUrl,\n    publishedAt,\n    body,\n  },\n  venue->{\n    name\n  }\n}|order(date desc)': SYNCHRONIZATIONS_QUERY_RESULT;
+    '*[\n  _type == "synchronization" &&\n  slug.current == $slug\n][0]{\n  _id,\n  title,\n  background_color,\n  date,\n  description,\n  artist->{\n    _id,\n    name,\n    slug,\n    mainImage,\n    background_color,\n    body,\n    publishedAt,\n    categories[]->,\n  },\n  platform->{\n    _id,\n    title,\n    slug,\n    background_color,\n    mainImage,\n    platformType,\n    platformUrl,\n    publishedAt,\n    body,\n  },\n  venue->{\n    name,\n    address\n  },\n  categories[]->\n}': SYNCHRONIZATION_QUERY_RESULT;
   }
+}
+// Lets @sanity/client releases that predate the global registry read it too
+declare module "@sanity/client" {
+  interface SanityQueries extends globalThis.SanityQueries {}
 }
