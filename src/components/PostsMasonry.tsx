@@ -29,11 +29,9 @@ export function PostsMasonry({ posts }: PostsMasonryProps) {
   className="masonry-container"
   columnClassName="masonry-column"
 >
-    <div className="masonry-item">
       {posts.map((post) => (
         <PostCard key={post._id} {...post} />
       ))}
-        </div>
       </Masonry>
   </main>
   );
