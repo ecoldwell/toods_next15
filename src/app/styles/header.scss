@@ -52,7 +52,7 @@
 
 .header_menu {
     @include mobile {
-        
+
     }
 }
 
@@ -66,13 +66,13 @@
     border: solid;
     li {
         border-color:black;
-    
+
         &:hover {
             a{
                 text-decoration: underline;
             }
-       
-            
+
+
         }
     }
 }
@@ -127,7 +127,7 @@
 
 
 
-// NEW MOBILE MENU STYLE/FUNCTION ///// CLEANING CODE UP 
+// NEW MOBILE MENU STYLE/FUNCTION ///// CLEANING CODE UP
 
 .desktop_nav_wrapper {
     @include mobile {

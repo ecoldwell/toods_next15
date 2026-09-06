@@ -7,7 +7,7 @@ export default async function Page() {
   const {data: posts} = await sanityFetch({query: POSTS_QUERY});
 
   return (
-    <main className="main_wrapper">
+    <main className="masonry-container-wrapper">
       <Title>Post Index</Title>
       <PostsMasonry posts={posts} />
     </main>

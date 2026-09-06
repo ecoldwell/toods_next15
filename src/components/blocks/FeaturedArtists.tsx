@@ -8,51 +8,53 @@ type FeaturedArtistsProps = Extract<
   { _type: "featuredArtists" }
 >;
 
-export function FeaturedArtists({ artists = [], title }: FeaturedArtistsProps) {
+export function FeaturedArtists({ artists = [] }: FeaturedArtistsProps) {
+  if (!artists || artists.length === 0) {
+    return (
+      <p className="text-center text-lg text-slate-500 py-4">
+        No featured artists available.
+      </p>
+    );
+  }
+
   return (
-    <Link href={`/artists/${artists[0].slug?.current}`} className="container mx-auto flex flex-col gap-8">
-    {artists.length > 0 ? (
-      <div className="post_container">
-        {artists.map((artist, index) => {
-          // Get the background color for the current post
-          const backgroundColor = artist.background_color?.hex || "#fff";
+    <>
+      {artists.flatMap((artist, index) => {
+        const backgroundColor = artist.background_color?.hex || "#fff";
 
-          return (
-            <div key={artist._id || `post-${index}`} className="flex flex-col">
-              <div className="post_title_wrapper">
-                <div className="eclipse"></div>
-                {/* Apply the dynamic background color */}
-                <h1 className="post_title shape" style={{ background: backgroundColor }}>
-                  {artist.name}
-                </h1>
-              </div>
+        return (
+          <Link
+            href={`/artists/${artist.slug?.current || ""}`}
+            key={artist._id || `artist-${index}`}
+            className="flex flex-col gap-4 w-full"
+          >
+            <div className="post_title_wrapper">
+              <div className="eclipse"></div>
+              <h1 className="post_title shape" style={{ background: backgroundColor }}>
+                {artist.name}
+              </h1>
+            </div>
 
-              <div className="post_image_wrapper">
-                {artist.mainImage?.asset?.url && (
-                  <Image
-                    src={artist.mainImage.asset.url}
-                    alt={artist.name || "Artist post image"}
-                    className="w-full h-auto rounded-lg"
-                    width={400}
-                    height={400}
-                  />
-                )}
-              </div>
-
-              {artist.body && (
-                <div className="lg:col-span-7 lg:col-start-6 prose lg:prose-lg post_text_wrapper">
-                  <PortableText value={artist.body} />
-                </div>
+            <div className="post_image_wrapper">
+              {artist.mainImage?.asset?.url && (
+                <Image
+                  src={artist.mainImage.asset.url}
+                  alt={artist.name || "Artist post image"}
+                  className="w-full h-auto rounded-lg"
+                  width={400}
+                  height={400}
+                />
               )}
             </div>
-          );
-        })}
-      </div>
-    ) : (
-      <p className="text-center text-lg text-slate-500">
-        No featured posts available.
-      </p>
-    )}
-  </Link>
+
+            {artist.body && (
+              <div className="prose post_text_wrapper">
+                <PortableText value={artist.body} />
+              </div>
+            )}
+          </Link>
+        );
+      })}
+    </>
   );
-} 
+}

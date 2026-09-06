@@ -70,7 +70,7 @@ export function PageBuilder({
     className="masonry-container"
     columnClassName="masonry-column"
   >
-      {blocks.map((block) => {
+      {blocks.flatMap((block) => {
         const DragHandle = ({ children }: { children: React.ReactNode }) => (
           <div className = "masonry-item"
             data-sanity={createDataAttribute({
@@ -110,11 +110,16 @@ export function PageBuilder({
               </DragHandle>
             );
             case "featuredPosts":
-              return (
-                <DragHandle key={block._key}>
-                  <FeaturedPosts {...block} />
-                </DragHandle>
-              );
+              if (Array.isArray(block.posts)) {
+                return block.posts.map((post, index) => (
+                  <DragHandle
+                    key={post._key || `${block._key}-${index}`}
+
+                  >
+                    <FeaturedPosts {...block} posts={[post]} />
+                  </DragHandle>
+                ));
+              }
             case "featuredArtists":
               return (
                 <DragHandle key={block._key}>
@@ -137,7 +142,7 @@ export function PageBuilder({
             // This is a fallback for when we don't have a block type
             // return <div key={block._key}>Block not found: {block._type}</div>;
         }
-        
+
       })}
       </Masonry>
     </main>

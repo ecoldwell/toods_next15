@@ -22,10 +22,12 @@
             padding-right:0;
         }
         .single_post_image {
-            height:50vh;
+            // height:50vh;
+            height:auto;
             border:3px solid;
             img {
                 border-radius:37%;
+                position:relative !important;
             }
         }
         &:hover {
