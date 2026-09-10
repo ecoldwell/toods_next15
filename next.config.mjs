@@ -14,7 +14,11 @@ const nextConfig = {
           hostname: "cdn.sanity.io",
         },
       ],
-    },
+  },
+  sassOptions: {
+    // 💡 This tells Sass to treat @import warnings as text logs instead of building errors
+    silenceDeprecations: ['import'],
+  },
     experimental: {
       taint: true,
     },
