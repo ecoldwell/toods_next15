@@ -11,12 +11,13 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "predev": "npm run typegen",
+    "typegen": "sanity schema extract --path=./src/sanity/extract.json --force && sanity typegen generate",
     "prebuild": "npm run typegen",
-    "build": "sanity schema extract --path=./src/sanity/extract.json --force && sanity typegen generate"  },
+    "build": "next build"
+  },
   "dependencies": {
     "@sanity/color-input": "^6.1.4",
     "@sanity/icons": "^3.4.0",
