@@ -11,22 +11,19 @@ export default async function MobileHeader() {
     query: HEADER_MENU,
   });
 
-  console.log(siteConfig, "siteConfig output"); // Check the data
-  console.log(siteConfig?.headerMenu, "end");    // Ensure it exists
-
   if (!siteConfig || !siteConfig.headerMenu || !siteConfig.headerMenu.items) {
-    console.error("Missing header menu data", siteConfig);  
+    console.error("Missing header menu data", siteConfig);
     return notFound();  // Handle the missing data gracefully
   }
 
   const headerNavigation = siteConfig.headerMenu.items;
 
   function showNav() {
-    console.log("increment like count")
+
   }
 
 
- 
+
 
   return (
     <div className="mobile_nav_wrapper">
@@ -35,7 +32,7 @@ export default async function MobileHeader() {
         <MobileHamburger></MobileHamburger>
        </div>
       <MobileOverlay menuItems={headerNavigation} />
-    
+
     </div>
 
   );

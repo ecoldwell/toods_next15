@@ -8,11 +8,7 @@ export default async function Navigation() {
     query: HEADER_MENU,
   });
 
-  console.log(siteConfig, "siteConfig output"); // Check the data
-  console.log(siteConfig?.headerMenu, "end");    // Ensure it exists
-
   if (!siteConfig || !siteConfig.headerMenu || !siteConfig.headerMenu.items) {
-    console.error("Missing header menu data", siteConfig);  
     return notFound();  // Handle the missing data gracefully
   }
 

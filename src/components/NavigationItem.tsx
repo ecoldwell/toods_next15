@@ -78,42 +78,42 @@ export const Menu = ({ menuItems }: { menuItems: MenuItem[] }) => {
     <nav className="header_menu">
       <ul className="flex header_navigation">
         {menuItems.map((item) => {
-          const linkBackground = 
-            item.background_color?.hex ||                      
-            item.internal?.background_color?.hex ||            
-            item.link?.background_color?.hex || "#fff";        
+          const linkBackground =
+            item.background_color?.hex ||
+            item.internal?.background_color?.hex ||
+            item.link?.background_color?.hex || "#fff";
 
-          const textColor = 
-            item.text_color?.hex || 
-            item.internal?.text_color?.hex || 
+          const textColor =
+            item.text_color?.hex ||
+            item.internal?.text_color?.hex ||
             item.link?.text_color?.hex || "#000";
 
           return (
             <li key={item._key} className="nav_item">
               <div style={{ background: linkBackground }} className="nav_link_feature_color"></div>
               {item.type === "internal" && item.internal ? (
-                <Link 
-                  href={getInternalLink(item.internal)} 
+                <Link
+                  href={getInternalLink(item.internal)}
                   className="hover:underline p-2 rounded"
                   style={{ color: textColor }}
                 >
                   {item.label}
                 </Link>
-              ) : 
+              ) :
               item.type === "external" && item.external ? (
-                <a 
-                  href={item.external} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href={item.external}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:underline p-2 rounded"
                   style={{ color: textColor }}
                 >
                   {item.label}
                 </a>
-              ) : 
+              ) :
               item.type === "collection" ? (
-                <Link 
-                  href={getLink(item)} 
+                <Link
+                  href={getLink(item)}
                   className="hover:underline p-2 rounded"
                   style={{ color: textColor }}
                 >
@@ -134,15 +134,13 @@ export const Menu = ({ menuItems }: { menuItems: MenuItem[] }) => {
 /** Dropdown Component */
 const DropdownMenu = ({ item }: { item: MenuItem }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const textColor = 
-    item.text_color?.hex || 
-    item.internal?.text_color?.hex || 
+  const textColor =
+    item.text_color?.hex ||
+    item.internal?.text_color?.hex ||
     item.link?.text_color?.hex || "#000";
 
-    const dropdownBackground = 
-    item.background_dropdown?.hex || "#000";                          
-
-  console.log("Dropdown item:", item); // Debug to confirm structure
+    const dropdownBackground =
+    item.background_dropdown?.hex || "#000";
 
   return (
     <div className="dropdown_wrapper">
@@ -152,8 +150,8 @@ const DropdownMenu = ({ item }: { item: MenuItem }) => {
         key={item._key}
         style={{ color: textColor }}
       >
-        {item.link?.label || "Menu"}  
-     
+        {item.link?.label || "Menu"}
+
       </button>
 
       {isOpen && (
@@ -161,17 +159,17 @@ const DropdownMenu = ({ item }: { item: MenuItem }) => {
           {item.links?.map((subItem) => (
             <li key={subItem._key} className="border-b last:border-none link_title_wraper">
               {subItem.type === "internal" && subItem.internal ? (
-                <Link 
-                  href={getInternalLink(subItem.internal)} 
-                  className="block px-4 py-2 hover:bg-gray-100 link_title" 
+                <Link
+                  href={getInternalLink(subItem.internal)}
+                  className="block px-4 py-2 hover:bg-gray-100 link_title"
                   style={{ color: textColor }}
                 >
                   {subItem.label}
                 </Link>
               ) : (
-                <a 
-                  href={subItem.external} 
-                  className="block px-4 py-2 hover:bg-gray-100" 
+                <a
+                  href={subItem.external}
+                  className="block px-4 py-2 hover:bg-gray-100"
                   style={{ color: textColor }}
                 >
                   {subItem.label}

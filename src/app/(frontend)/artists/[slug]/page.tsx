@@ -7,10 +7,11 @@ export default async function Page({
   params,
 }: {
   params: { slug: string };
-}) {
-  const { data: artist } = await sanityFetch({ 
+  }) {
+  const { slug } = await params;
+  const { data: artist } = await sanityFetch({
     query: artistQuery,
-    params: { slug: params.slug }
+    params: { slug }
   });
 
   if (!artist) {
@@ -18,7 +19,7 @@ export default async function Page({
   }
 
   return (
-    <main className="main_wrapper">
+    <main className="main_wrapper post_page">
       <Artist {...artist} />
     </main>
   )

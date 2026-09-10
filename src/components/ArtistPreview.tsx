@@ -28,9 +28,7 @@ type ArtistPreviewProps = {
 export default function ArtistPreview({ name, slug, mainImage, categories, background_color }: ArtistPreviewProps) {
   if (!slug?.current) {
     return null; // Or some fallback UI
-    console.log(background_color, "background colour object")
   }
-  console.log(background_color.hex , "background colour object")
   const backgroundColor = background_color.hex;
   return (
     <div className="single_post">

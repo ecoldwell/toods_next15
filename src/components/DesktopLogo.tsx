@@ -9,19 +9,16 @@ export default async function LogoHeader() {
   const { data: logos } = await sanityFetch({
     query: LOGO_QUERY,
   });
-  console.log(logos?.logo, "end")
-//   const headerNavigation = .headerMenu.items;
-//   console.log(headerNavigation, "uycdgcgsucgcgcuyg")
 
 if (!logos?.logo) {
     return <p>Logo not found</p>;
-  }  
+  }
 
 
   return (
     <nav>
       <Link href="/">
-      <Logo 
+      <Logo
         default={logos.logo.default?.url}
         // removing this feature for now
         // light={logos.logo.light?.url}

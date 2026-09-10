@@ -7,12 +7,8 @@ export default async function FooterNavigation() {
   const { data: siteData } = await sanityFetch({
     query: FOOTER_MENU,
   });
-
-  console.log(siteData, "siteData output"); // Check the data
-  console.log(siteData?.footerMenu, "end");    // Ensure it exists
-
   if (!siteData || !siteData.footerMenu || !siteData.footerMenu.items) {
-    console.error("Missing fixed menu data", siteData);  
+    console.error("Missing fixed menu data", siteData);
     return notFound();  // Handle the missing data gracefully
   }
 

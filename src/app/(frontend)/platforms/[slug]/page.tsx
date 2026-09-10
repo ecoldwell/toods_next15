@@ -15,8 +15,8 @@ export default async function Page({
   }
 
   return (
-    <main className="main_wrapper">
+    <main className="main_wrapper post_page">
       <Platform {...platform} />
     </main>
   )
-} 
+}

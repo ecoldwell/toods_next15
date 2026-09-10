@@ -30,11 +30,11 @@ export default async function Page({
   const backgroundColor = sync.background_color?.hex || "#fff";
 
   return (
-    <main className="main_wrapper">
+    <main className="main_wrapper post_page">
     <div className="post_container syncro_wrapper">
       <div className="post_image">
       <div className="artist">
-      <Link 
+      <Link
                 href={`/artists/${sync.artist.slug.current}`}
                 className="hover:underline"
               >
@@ -60,7 +60,7 @@ export default async function Page({
       </div>
 
       <div className="platform">
-        <Link 
+        <Link
                 href={`/platforms/${sync.platform.slug.current}`}
                 className="hover:underline"
               >
@@ -68,7 +68,7 @@ export default async function Page({
           <h1>
 
                 {sync.platform.title}
-         
+
             </h1>
         </header>
         {sync.platform.mainImage && (
@@ -103,4 +103,4 @@ export default async function Page({
     </main>
 
   );
-} 
+}

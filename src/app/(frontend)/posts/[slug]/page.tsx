@@ -15,7 +15,7 @@ const {data: post} = await sanityFetch({query: POST_QUERY, params: await params}
   }
 
   return (
-    <main className="main_wrapper">
+    <main className="main_wrapper post_page">
       <Post {...post} />
     </main>
   )

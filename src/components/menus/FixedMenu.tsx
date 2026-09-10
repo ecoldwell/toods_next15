@@ -8,11 +8,11 @@ export default async function FixedNavigation() {
     query: FIXED_MENU,
   });
 
-  console.log(siteData, "siteData output"); // Check the data
-  console.log(siteData?.fixedMenu, "end");    // Ensure it exists
+ // Check the data
+ // Ensure it exists
 
   if (!siteData || !siteData.fixedMenu || !siteData.fixedMenu.items) {
-    console.error("Missing fixed menu data", siteData);  
+    console.error("Missing fixed menu data", siteData);
     return notFound();  // Handle the missing data gracefully
   }
 

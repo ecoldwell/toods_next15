@@ -13,6 +13,8 @@ export default async function FrontendLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Await the draftMode() promise to read its properties safely
+  const { isEnabled } = await draftMode();
   return (
     <section className="bg-white min-h-screen og_body">
 <svg width="0" height="0" style={{ position: "absolute" }}>
@@ -23,7 +25,7 @@ export default async function FrontendLayout({
 
       <Footer></Footer>
       <SanityLive />
-      {draftMode().isEnabled && (
+      {isEnabled && (
         <>
           <DisableDraftMode />
           <VisualEditing />

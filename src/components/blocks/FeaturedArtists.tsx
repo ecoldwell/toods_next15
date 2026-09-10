@@ -26,7 +26,7 @@ export function FeaturedArtists({ artists = [] }: FeaturedArtistsProps) {
           <Link
             href={`/artists/${artist.slug?.current || ""}`}
             key={artist._id || `artist-${index}`}
-            className="flex flex-col gap-4 w-full"
+            className="post_container"
           >
             <div className="post_title_wrapper">
               <div className="eclipse"></div>
