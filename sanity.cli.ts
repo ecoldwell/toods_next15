@@ -10,5 +10,10 @@ const studioHost = process.env.SANITY_STUDIO_HOSTNAME!
 
 export default defineCliConfig({
   api: { projectId, dataset },
-  studioHost
+  studioHost,
+  typegen: {
+    path: './src/**/*.{ts,tsx}',
+    schema: './schema.json',
+    generates: './src/sanity.types.ts',
+  },
 })

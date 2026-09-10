@@ -74,6 +74,11 @@
 
 }
 
-.post_page .post_container {
-    display:flex;
+.post_page {
+    .post_container {
+        display:flex;
+    }
+   .post_content {
+       width:60%;
+   }
 }
