@@ -16,8 +16,7 @@
     "lint": "next lint",
     "predev": "npm run typegen",
     "prebuild": "npm run typegen",
-    "typegen": "sanity schema extract --path=./src/sanity/extract.json && sanity typegen generate"
-  },
+    "build": "sanity schema extract --path=./src/sanity/extract.json --force && sanity typegen generate"  },
   "dependencies": {
     "@sanity/color-input": "^6.1.4",
     "@sanity/icons": "^3.4.0",
