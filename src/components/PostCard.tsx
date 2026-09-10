@@ -8,8 +8,12 @@ import Link from 'next/link'
 import { PortableText } from "@portabletext/react";
 
 export function PostCard(props: POSTS_QUERYResult[0]) {
-  const { title, author, mainImage, publishedAt, categories, body } = props
-
+  const { title, author, mainImage, publishedAt, categories, body, gallery } = props
+  const backgroundColor = props.background_color?.hex || "#fff";
+  console.log(props, 'i am props')
+  const cardImage = gallery && gallery.length > 0 && gallery[0]?.asset
+    ? gallery[0]
+    : mainImage?.asset ? mainImage : null;
 
   return (
     <Link className="masonry-item group" href={`/posts/${props.slug!.current}`}>
@@ -29,14 +33,15 @@ export function PostCard(props: POSTS_QUERYResult[0]) {
             <PublishedAt publishedAt={publishedAt} />
           </div>*/}
         </div>
+        {/* Render only the selected primary card image */}
         <div className="post_image_wrapper">
-          {mainImage ? (
+          {cardImage?.asset ? (
             <Image
-              src={urlFor(mainImage).url()}
-              className="w-full h-auto rounded-lg"
+              src={urlFor(cardImage).width(400).height(400).url()}
+              className="w-full h-auto"
               width={400}
               height={400}
-              alt={mainImage.alt || title || ''}
+              alt={cardImage.alt || title || ''}
             />
           ) : null}
         </div>

@@ -632,6 +632,15 @@ export type Post = {
   slug?: Slug;
   background_color?: Color;
   author?: AuthorReference;
+  images?: Array<{
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }>;
   mainImage?: {
     asset?: SanityImageAssetReference;
     media?: unknown;
@@ -879,7 +888,7 @@ export type AllSanitySchemaTypes =
 
 // Source: src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
-// Query: *[_type == "post" && defined(slug.current)]|order(publishedAt desc)[0...12]{  _id,  title,  slug,  background_color,  body,  mainImage,  publishedAt,  "categories": coalesce(    categories[]->{      _id,      slug,      title    },    []  ),  author->{    name,    image  }}
+// Query: *[_type == "post" && defined(slug.current)]|order(publishedAt desc)[0...12]{  _id,  title,  slug,  background_color,  body,  mainImage,  "gallery": images[]{     asset->{       _id,       url     },     alt   },  publishedAt,  "categories": coalesce(    categories[]->{      _id,      slug,      title    },    []  ),  author->{    name,    image  }}
 export type POSTS_QUERY_RESULT = Array<{
   _id: string;
   title: string | null;
@@ -894,6 +903,13 @@ export type POSTS_QUERY_RESULT = Array<{
     alt?: string;
     _type: "image";
   } | null;
+  gallery: Array<{
+    asset: {
+      _id: string;
+      url: string | null;
+    } | null;
+    alt: string | null;
+  }> | null;
   publishedAt: string | null;
   categories:
     | Array<{
@@ -916,14 +932,14 @@ export type POSTS_QUERY_RESULT = Array<{
 
 // Source: src/sanity/lib/queries.ts
 // Variable: POSTS_SLUGS_QUERY
-// Query: *[_type == "post" && defined(slug.current)]{   "slug": slug.current}
+// Query: *[_type == "post" && defined(slug.current)]{  "slug": slug.current}
 export type POSTS_SLUGS_QUERY_RESULT = Array<{
   slug: string | null;
 }>;
 
 // Source: src/sanity/lib/queries.ts
 // Variable: POST_QUERY
-// Query: *[_type == "post" && slug.current == $slug][0]{  _id,  title,  color,  body,  mainImage,  background_color,  publishedAt,  "categories": coalesce(    categories[]->{      _id,      slug,      title    },    []  ),  author->{    name,    image  },  relatedPosts[]{    _key, // required for drag and drop    ...@->{_id, title, slug} // get fields from the referenced post  }}
+// Query: *[_type == "post" && slug.current == $slug][0]{  _id,  title,  color,  body,  mainImage,  "gallery": images[]{     asset->{       _id,       url     },     alt   },  background_color,  publishedAt,  "categories": coalesce(    categories[]->{      _id,      slug,      title    },    []  ),  author->{    name,    image  },  relatedPosts[]{    _key, // required for drag and drop    ...@->{_id, title, slug} // get fields from the referenced post  }}
 export type POST_QUERY_RESULT = {
   _id: string;
   title: string | null;
@@ -937,6 +953,13 @@ export type POST_QUERY_RESULT = {
     alt?: string;
     _type: "image";
   } | null;
+  gallery: Array<{
+    asset: {
+      _id: string;
+      url: string | null;
+    } | null;
+    alt: string | null;
+  }> | null;
   background_color: Color | null;
   publishedAt: string | null;
   categories:
@@ -1259,7 +1282,7 @@ export type NAV_QUERY_RESULT = Array<{
 
 // Source: src/sanity/lib/queries.ts
 // Variable: CTA_QUERY
-// Query: *[_type == "cta"]{  ...,link {   ...,  internal->{ _type, title, metadata }  } }
+// Query: *[_type == "cta"]{  ...,link {  ...,  internal->{ _type, title, metadata }  } }
 export type CTA_QUERY_RESULT = Array<never>;
 
 // Source: src/sanity/lib/queries.ts
@@ -1868,7 +1891,7 @@ export type SITE_QUERY_RESULT = {
 
 // Source: src/sanity/lib/queries.ts
 // Variable: HEADER_MENU
-// Query: *[_type == "site"][0] {    _id,    _type,    title,    headerMenu {      _key,      ...@->{_id, title, slug, items[]{        ...,        _key,        _type,        label,        background_color,        external,        internal->{           _type,           title,           name,  // Added for artist name          metadata,           _key,           _id,           slug         },        links[] {          ...,          _key,          _type,          label,          background_color,          external,          internal->{             _type,             title,            name,  // Added for artist name             metadata,             _key,             _id,             slug,             label           }        }      }}    }  }
+// Query: *[_type == "site"][0] {    _id,    _type,    title,    headerMenu {      _key,      ...@->{_id, title, slug, items[]{        ...,        _key,        _type,        label,        background_color,        external,        internal->{          _type,          title,          name,  // Added for artist name          metadata,          _key,          _id,          slug        },        links[] {          ...,          _key,          _type,          label,          background_color,          external,          internal->{            _type,            title,            name,  // Added for artist name            metadata,            _key,            _id,            slug,            label          }        }      }}    }  }
 export type HEADER_MENU_RESULT = {
   _id: string;
   _type: "site";
@@ -2055,7 +2078,7 @@ export type HEADER_MENU_RESULT = {
 
 // Source: src/sanity/lib/queries.ts
 // Variable: MOBILE_MENU
-// Query: *[_type == "site"][0] {  mobileMenu{    _key,    ...@->{_id, title, slug, items[]{      ...,      _key,      _type,      label,      background_color,      external,      internal->{         _type,         title,         name,  // Added for artist name        metadata,         _key,         _id,         slug       },      links[] {        ...,        _key,        _type,        label,        background_color,        external,        internal->{           _type,           title,          name,  // Added for artist name           metadata,           _key,           _id,           slug,           label         }      }    }}  }}
+// Query: *[_type == "site"][0] {  mobileMenu{    _key,    ...@->{_id, title, slug, items[]{      ...,      _key,      _type,      label,      background_color,      external,      internal->{        _type,        title,        name,  // Added for artist name        metadata,        _key,        _id,        slug      },      links[] {        ...,        _key,        _type,        label,        background_color,        external,        internal->{          _type,          title,          name,  // Added for artist name          metadata,          _key,          _id,          slug,          label        }      }    }}  }}
 export type MOBILE_MENU_RESULT = {
   mobileMenu: {
     _key: null;
@@ -2239,7 +2262,7 @@ export type MOBILE_MENU_RESULT = {
 
 // Source: src/sanity/lib/queries.ts
 // Variable: FIXED_MENU
-// Query: *[_type == "site"][1] {  _id, _type,  title,  fixedMenu{    _key,    ...@->{_id, title, slug, items[]{      ...,      _key,      _type,      label,      background_color,      external,      internal->{         _type,         title,         name,  // Added for artist name        metadata,         _key,         _id,         slug       },      links[] {        ...,        _key,        _type,        label,        background_color,        external,        internal->{           _type,           title,          name,  // Added for artist name           metadata,           _key,           _id,           slug,           label         }      },      background_dropdown,    }}  }}
+// Query: *[_type == "site"][1] {  _id, _type,  title,  fixedMenu{    _key,    ...@->{_id, title, slug, items[]{      ...,      _key,      _type,      label,      background_color,      external,      internal->{        _type,        title,        name,  // Added for artist name        metadata,        _key,        _id,        slug      },      links[] {        ...,        _key,        _type,        label,        background_color,        external,        internal->{          _type,          title,          name,  // Added for artist name          metadata,          _key,          _id,          slug,          label        }      },      background_dropdown,    }}  }}
 export type FIXED_MENU_RESULT = {
   _id: string;
   _type: "site";
@@ -2427,7 +2450,7 @@ export type FIXED_MENU_RESULT = {
 
 // Source: src/sanity/lib/queries.ts
 // Variable: FOOTER_MENU
-// Query: *[_type == "site"][1] {  _id, _type,  title,  footerMenu{    _key,    ...@->{_id, title, slug, items[]{      ...,      _key,      _type,      label,      background_color,      external,      internal->{         _type,         title,         name,  // Added for artist name        metadata,         _key,         _id,         slug       },      links[] {        ...,        _key,        _type,        label,        background_color,        external,        internal->{           _type,           title,          name,  // Added for artist name           metadata,           _key,           _id,           slug,           label         }      },      background_dropdown,    }}  }}
+// Query: *[_type == "site"][1] {  _id, _type,  title,  footerMenu{    _key,    ...@->{_id, title, slug, items[]{      ...,      _key,      _type,      label,      background_color,      external,      internal->{        _type,        title,        name,  // Added for artist name        metadata,        _key,        _id,        slug      },      links[] {        ...,        _key,        _type,        label,        background_color,        external,        internal->{          _type,          title,          name,  // Added for artist name          metadata,          _key,          _id,          slug,          label        }      },      background_dropdown,    }}  }}
 export type FOOTER_MENU_RESULT = {
   _id: string;
   _type: "site";
@@ -2946,7 +2969,7 @@ export type LOGO_QUERY_RESULT =
 
 // Source: src/sanity/lib/queries.ts
 // Variable: artistsQuery
-// Query: *[_type == "artist" && defined(slug.current)]|order(publishedAt desc)[0...12] {  _id,  name,  slug,  mainImage,  background_color,  categories[]->{     _id,    title  }}
+// Query: *[_type == "artist" && defined(slug.current)]|order(publishedAt desc)[0...12] {  _id,  name,  slug,  mainImage,  background_color,  categories[]->{    _id,    title  }}
 export type ArtistsQueryResult = Array<{
   _id: string;
   name: string | null;
@@ -3184,24 +3207,24 @@ export type SYNCHRONIZATION_QUERY_RESULT = {
 // Query TypeMap
 declare global {
   interface SanityQueries {
-    '*[_type == "post" && defined(slug.current)]|order(publishedAt desc)[0...12]{\n  _id,\n  title,\n  slug,\n  background_color,\n  body,\n  mainImage,\n  publishedAt,\n  "categories": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  ),\n  author->{\n    name,\n    image\n  }\n}': POSTS_QUERY_RESULT;
-    '*[_type == "post" && defined(slug.current)]{ \n  "slug": slug.current\n}': POSTS_SLUGS_QUERY_RESULT;
-    '*[_type == "post" && slug.current == $slug][0]{\n  _id,\n  title,\n  color,\n  body,\n  mainImage,\n  background_color,\n  publishedAt,\n  "categories": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  ),\n  author->{\n    name,\n    image\n  },\n  relatedPosts[]{\n    _key, // required for drag and drop\n    ...@->{_id, title, slug} // get fields from the referenced post\n  }\n}': POST_QUERY_RESULT;
+    '*[_type == "post" && defined(slug.current)]|order(publishedAt desc)[0...12]{\n  _id,\n  title,\n  slug,\n  background_color,\n  body,\n  mainImage,\n  "gallery": images[]{\n     asset->{\n       _id,\n       url\n     },\n     alt\n   },\n  publishedAt,\n  "categories": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  ),\n  author->{\n    name,\n    image\n  }\n}': POSTS_QUERY_RESULT;
+    '*[_type == "post" && defined(slug.current)]{\n  "slug": slug.current\n}': POSTS_SLUGS_QUERY_RESULT;
+    '*[_type == "post" && slug.current == $slug][0]{\n  _id,\n  title,\n  color,\n  body,\n  mainImage,\n  "gallery": images[]{\n     asset->{\n       _id,\n       url\n     },\n     alt\n   },\n  background_color,\n  publishedAt,\n  "categories": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  ),\n  author->{\n    name,\n    image\n  },\n  relatedPosts[]{\n    _key, // required for drag and drop\n    ...@->{_id, title, slug} // get fields from the referenced post\n  }\n}': POST_QUERY_RESULT;
     '*[\n  _type == "event"\n  && defined(slug.current)\n]{_id, name, slug, date}|order(date desc)': EVENTS_QUERY_RESULT;
     '*[\n  _type == "event" &&\n  slug.current == $slug\n][0]{\n  ...,\n  "date": coalesce(date, now()),\n  "doorsOpen": coalesce(doorsOpen, 0),\n  headline->,\n  venue->\n}': EVENT_QUERY_RESULT;
     '*[\n  _type == "media"\n  && defined(slug.current)\n]{_id, name, slug, date}|order(date desc)': MEDIAHOME_QUERY_RESULT;
     '*[\n  _type == "media" &&\n  slug.current == $slug\n][0]{\n...,\n"date": coalesce(date, now()),\n"doorsOpen": coalesce(doorsOpen, 0),\nheadline->,\nvenue->\n}': MEDIA_QUERY_RESULT;
     '*[_type == "navigation"]{\n title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    }\n}': NAV_QUERY_RESULT;
-    '*[_type == "cta"]{\n  ...,\nlink { \n  ...,\n  internal->{ _type, title, metadata }\n  }\n }': CTA_QUERY_RESULT;
+    '*[_type == "cta"]{\n  ...,\nlink {\n  ...,\n  internal->{ _type, title, metadata }\n  }\n }': CTA_QUERY_RESULT;
     '*[_type == "site"][0]{\n  ...,\n  headerMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n    fixedMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n  footerMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n  socialMenu->{  title,\n    items[] {\n      ...,\n      internal->{ _type, title, metadata, _key },\n    link {\n          ...,\n      internal->{ _type, title, metadata, _key },\n    },\n    links[] {\n            ...,\n      internal->{ _type, title, metadata, _key }\n    }\n    } },\n}': SITE_QUERY_RESULT;
-    '*[_type == "site"][0] {\n    _id,\n    _type,\n    title,\n    headerMenu {\n      _key,\n      ...@->{_id, title, slug, items[]{\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{ \n          _type, \n          title, \n          name,  // Added for artist name\n          metadata, \n          _key, \n          _id, \n          slug \n        },\n        links[] {\n          ...,\n          _key,\n          _type,\n          label,\n          background_color,\n          external,\n          internal->{ \n            _type, \n            title,\n            name,  // Added for artist name \n            metadata, \n            _key, \n            _id, \n            slug, \n            label \n          }\n        }\n      }}\n    }\n  }': HEADER_MENU_RESULT;
-    '*[_type == "site"][0] {\n  mobileMenu{\n    _key,\n    ...@->{_id, title, slug, items[]{\n      ...,\n      _key,\n      _type,\n      label,\n      background_color,\n      external,\n      internal->{ \n        _type, \n        title, \n        name,  // Added for artist name\n        metadata, \n        _key, \n        _id, \n        slug \n      },\n      links[] {\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{ \n          _type, \n          title,\n          name,  // Added for artist name \n          metadata, \n          _key, \n          _id, \n          slug, \n          label \n        }\n      }\n    }}\n  }\n}': MOBILE_MENU_RESULT;
-    '*[_type == "site"][1] {\n  _id,\n _type,\n  title,\n  fixedMenu{\n    _key,\n    ...@->{_id, title, slug, items[]{\n      ...,\n      _key,\n      _type,\n      label,\n      background_color,\n      external,\n      internal->{ \n        _type, \n        title, \n        name,  // Added for artist name\n        metadata, \n        _key, \n        _id, \n        slug \n      },\n      links[] {\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{ \n          _type, \n          title,\n          name,  // Added for artist name \n          metadata, \n          _key, \n          _id, \n          slug, \n          label \n        }\n      },\n      background_dropdown,\n    }}\n  }\n}': FIXED_MENU_RESULT;
-    '*[_type == "site"][1] {\n  _id,\n _type,\n  title,\n  footerMenu{\n    _key,\n    ...@->{_id, title, slug, items[]{\n      ...,\n      _key,\n      _type,\n      label,\n      background_color,\n      external,\n      internal->{ \n        _type, \n        title, \n        name,  // Added for artist name\n        metadata, \n        _key, \n        _id, \n        slug \n      },\n      links[] {\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{ \n          _type, \n          title,\n          name,  // Added for artist name \n          metadata, \n          _key, \n          _id, \n          slug, \n          label \n        }\n      },\n      background_dropdown,\n    }}\n  }\n}': FOOTER_MENU_RESULT;
+    '*[_type == "site"][0] {\n    _id,\n    _type,\n    title,\n    headerMenu {\n      _key,\n      ...@->{_id, title, slug, items[]{\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{\n          _type,\n          title,\n          name,  // Added for artist name\n          metadata,\n          _key,\n          _id,\n          slug\n        },\n        links[] {\n          ...,\n          _key,\n          _type,\n          label,\n          background_color,\n          external,\n          internal->{\n            _type,\n            title,\n            name,  // Added for artist name\n            metadata,\n            _key,\n            _id,\n            slug,\n            label\n          }\n        }\n      }}\n    }\n  }': HEADER_MENU_RESULT;
+    '*[_type == "site"][0] {\n  mobileMenu{\n    _key,\n    ...@->{_id, title, slug, items[]{\n      ...,\n      _key,\n      _type,\n      label,\n      background_color,\n      external,\n      internal->{\n        _type,\n        title,\n        name,  // Added for artist name\n        metadata,\n        _key,\n        _id,\n        slug\n      },\n      links[] {\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{\n          _type,\n          title,\n          name,  // Added for artist name\n          metadata,\n          _key,\n          _id,\n          slug,\n          label\n        }\n      }\n    }}\n  }\n}': MOBILE_MENU_RESULT;
+    '*[_type == "site"][1] {\n  _id,\n _type,\n  title,\n  fixedMenu{\n    _key,\n    ...@->{_id, title, slug, items[]{\n      ...,\n      _key,\n      _type,\n      label,\n      background_color,\n      external,\n      internal->{\n        _type,\n        title,\n        name,  // Added for artist name\n        metadata,\n        _key,\n        _id,\n        slug\n      },\n      links[] {\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{\n          _type,\n          title,\n          name,  // Added for artist name\n          metadata,\n          _key,\n          _id,\n          slug,\n          label\n        }\n      },\n      background_dropdown,\n    }}\n  }\n}': FIXED_MENU_RESULT;
+    '*[_type == "site"][1] {\n  _id,\n _type,\n  title,\n  footerMenu{\n    _key,\n    ...@->{_id, title, slug, items[]{\n      ...,\n      _key,\n      _type,\n      label,\n      background_color,\n      external,\n      internal->{\n        _type,\n        title,\n        name,  // Added for artist name\n        metadata,\n        _key,\n        _id,\n        slug\n      },\n      links[] {\n        ...,\n        _key,\n        _type,\n        label,\n        background_color,\n        external,\n        internal->{\n          _type,\n          title,\n          name,  // Added for artist name\n          metadata,\n          _key,\n          _id,\n          slug,\n          label\n        }\n      },\n      background_dropdown,\n    }}\n  }\n}': FOOTER_MENU_RESULT;
     '*[_type == "page"&& slug.current == $slug][0]{\n     ...,\n    content[]{\n      ...,\n      _type == "faqs" => {\n        ...,\n        faqs[]->\n      },\n      _type == "featuredPosts" => {\n        ...,\n        "posts": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == "featuredArtists" => {\n        ...,\n        "artists": artists[]->{\n          _id,\n          _type,\n          name,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == "featuredPlatforms" => {\n        ...,\n        "platforms": platforms[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == "featuredSynchronicity" => {\n        ...,\n        "synchronicity": synchronicity[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n  }': PAGE_QUERY_RESULT;
     '*[_id == "site"][0]{\n  homePage->{\n    ...,\n    content[]{\n      ...,\n      _type == "faqs" => {\n        ...,\n        faqs[]->\n      },\n      _type == "featuredPosts" => {\n        ...,\n        "posts": posts[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == "featuredArtists" => {\n        ...,\n        "artists": artists[]->{\n          _id,\n          _type,\n          name,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == "featuredPlatforms" => {\n        ...,\n        "platforms": platforms[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      },\n      _type == "featuredSynchronicity" => {\n        ...,\n        "synchronicity": synchronicity[]->{\n          _id,\n          _type,\n          title,\n          slug,\n          background_color,\n          body,\n          mainImage {\n            asset->{\n              _id,\n              url\n            }\n          }\n        }\n      }\n    }\n  }\n}': HOME_PAGE_QUERY_RESULT;
     '*[_id == "site"][0] {\n  logo {\n    name,\n    "default": image.default.asset->{\n      _id,\n      url\n    },\n    "light": image.light.asset->{\n      _id,\n      url\n    },\n    "dark": image.dark.asset->{\n      _id,\n      url\n    }\n  }\n}': LOGO_QUERY_RESULT;
-    '*[_type == "artist" && defined(slug.current)]|order(publishedAt desc)[0...12] {\n  _id,\n  name,\n  slug,\n  mainImage,\n  background_color,\n  categories[]->{ \n    _id,\n    title\n  }\n}': ArtistsQueryResult;
+    '*[_type == "artist" && defined(slug.current)]|order(publishedAt desc)[0...12] {\n  _id,\n  name,\n  slug,\n  mainImage,\n  background_color,\n  categories[]->{\n    _id,\n    title\n  }\n}': ArtistsQueryResult;
     '\n  *[_type == "artist" && slug.current == $slug][0] {\n    _id,\n    name,\n    mainImage,\n    background_color,\n    body,\n    publishedAt,\n    categories[]->,\n    "relatedArtists": relatedArtists[]->{ name, slug }\n  }\n': ArtistQueryResult;
     '\n  *[_type == "platform"] | order(publishedAt desc) {\n    _id,\n    title,\n    background_color,\n    slug {\n      current\n    },\n    mainImage {\n      asset,\n      hotspot,\n      crop,\n      _type\n    },\n    platformType,\n    platformUrl,\n    publishedAt,\n    categories[]-> {\n      _id,\n      _type,\n      _createdAt,\n      _updatedAt,\n      _rev,\n      title,\n      slug,\n      description\n    }\n  }\n': PlatformsQueryResult;
     '\n  *[_type == "platform" && slug.current == $slug][0] {\n    _id,\n    title,\n    slug,\n    background_color,\n    mainImage,\n    platformType,\n    platformUrl,\n    publishedAt,\n    body,\n    categories[]->\n  }\n': PlatformQueryResult;

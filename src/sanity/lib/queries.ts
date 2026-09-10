@@ -11,6 +11,13 @@ export const POSTS_QUERY =
   background_color,
   body,
   mainImage,
+  "gallery": images[]{
+     asset->{
+       _id,
+       url
+     },
+     alt
+   },
   publishedAt,
   "categories": coalesce(
     categories[]->{
@@ -27,7 +34,7 @@ export const POSTS_QUERY =
 }`)
 
 export const POSTS_SLUGS_QUERY =
-  defineQuery(`*[_type == "post" && defined(slug.current)]{ 
+  defineQuery(`*[_type == "post" && defined(slug.current)]{
   "slug": slug.current
 }`)
 
@@ -38,6 +45,13 @@ export const POST_QUERY =
   color,
   body,
   mainImage,
+  "gallery": images[]{
+     asset->{
+       _id,
+       url
+     },
+     alt
+   },
   background_color,
   publishedAt,
   "categories": coalesce(
@@ -108,16 +122,16 @@ venue->
     }
 }`)
 
-export const CTA_QUERY = 
+export const CTA_QUERY =
 defineQuery(`*[_type == "cta"]{
   ...,
-link { 
+link {
   ...,
   internal->{ _type, title, metadata }
   }
  }`)
 
-export const SITE_QUERY = 
+export const SITE_QUERY =
 defineQuery(`*[_type == "site"][0]{
   ...,
   headerMenu->{  title,
@@ -188,14 +202,14 @@ export const HEADER_MENU =
         label,
         background_color,
         external,
-        internal->{ 
-          _type, 
-          title, 
+        internal->{
+          _type,
+          title,
           name,  // Added for artist name
-          metadata, 
-          _key, 
-          _id, 
-          slug 
+          metadata,
+          _key,
+          _id,
+          slug
         },
         links[] {
           ...,
@@ -204,15 +218,15 @@ export const HEADER_MENU =
           label,
           background_color,
           external,
-          internal->{ 
-            _type, 
+          internal->{
+            _type,
             title,
-            name,  // Added for artist name 
-            metadata, 
-            _key, 
-            _id, 
-            slug, 
-            label 
+            name,  // Added for artist name
+            metadata,
+            _key,
+            _id,
+            slug,
+            label
           }
         }
       }}
@@ -230,14 +244,14 @@ defineQuery(`*[_type == "site"][0] {
       label,
       background_color,
       external,
-      internal->{ 
-        _type, 
-        title, 
+      internal->{
+        _type,
+        title,
         name,  // Added for artist name
-        metadata, 
-        _key, 
-        _id, 
-        slug 
+        metadata,
+        _key,
+        _id,
+        slug
       },
       links[] {
         ...,
@@ -246,15 +260,15 @@ defineQuery(`*[_type == "site"][0] {
         label,
         background_color,
         external,
-        internal->{ 
-          _type, 
+        internal->{
+          _type,
           title,
-          name,  // Added for artist name 
-          metadata, 
-          _key, 
-          _id, 
-          slug, 
-          label 
+          name,  // Added for artist name
+          metadata,
+          _key,
+          _id,
+          slug,
+          label
         }
       }
     }}
@@ -275,14 +289,14 @@ defineQuery(`*[_type == "site"][1] {
       label,
       background_color,
       external,
-      internal->{ 
-        _type, 
-        title, 
+      internal->{
+        _type,
+        title,
         name,  // Added for artist name
-        metadata, 
-        _key, 
-        _id, 
-        slug 
+        metadata,
+        _key,
+        _id,
+        slug
       },
       links[] {
         ...,
@@ -291,15 +305,15 @@ defineQuery(`*[_type == "site"][1] {
         label,
         background_color,
         external,
-        internal->{ 
-          _type, 
+        internal->{
+          _type,
           title,
-          name,  // Added for artist name 
-          metadata, 
-          _key, 
-          _id, 
-          slug, 
-          label 
+          name,  // Added for artist name
+          metadata,
+          _key,
+          _id,
+          slug,
+          label
         }
       },
       background_dropdown,
@@ -321,14 +335,14 @@ defineQuery(`*[_type == "site"][1] {
       label,
       background_color,
       external,
-      internal->{ 
-        _type, 
-        title, 
+      internal->{
+        _type,
+        title,
         name,  // Added for artist name
-        metadata, 
-        _key, 
-        _id, 
-        slug 
+        metadata,
+        _key,
+        _id,
+        slug
       },
       links[] {
         ...,
@@ -337,15 +351,15 @@ defineQuery(`*[_type == "site"][1] {
         label,
         background_color,
         external,
-        internal->{ 
-          _type, 
+        internal->{
+          _type,
           title,
-          name,  // Added for artist name 
-          metadata, 
-          _key, 
-          _id, 
-          slug, 
-          label 
+          name,  // Added for artist name
+          metadata,
+          _key,
+          _id,
+          slug,
+          label
         }
       },
       background_dropdown,
@@ -371,6 +385,13 @@ export const PAGE_QUERY =
           slug,
           background_color,
           body,
+          "gallery": images[]{
+             asset->{
+               _id,
+               url
+             },
+             alt
+           },
           mainImage {
             asset->{
               _id,
@@ -388,6 +409,13 @@ export const PAGE_QUERY =
           slug,
           background_color,
           body,
+          "gallery": images[]{
+             asset->{
+               _id,
+               url
+             },
+             alt
+           },
           mainImage {
             asset->{
               _id,
@@ -405,6 +433,20 @@ export const PAGE_QUERY =
           slug,
           background_color,
           body,
+          "gallery": images[]{
+             asset->{
+               _id,
+               url
+             },
+             alt
+           },
+           "gallery": images[]{
+              asset->{
+                _id,
+                url
+              },
+              alt
+            },
           mainImage {
             asset->{
               _id,
@@ -422,6 +464,13 @@ export const PAGE_QUERY =
           slug,
           background_color,
           body,
+          "gallery": images[]{
+             asset->{
+               _id,
+               url
+             },
+             alt
+           },
           mainImage {
             asset->{
               _id,
@@ -453,6 +502,13 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "site"][0]{
           slug,
           background_color,
           body,
+          "gallery": images[]{
+             asset->{
+               _id,
+               url
+             },
+             alt
+           },
           mainImage {
             asset->{
               _id,
@@ -470,6 +526,13 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "site"][0]{
           slug,
           background_color,
           body,
+          "gallery": images[]{
+             asset->{
+               _id,
+               url
+             },
+             alt
+           },
           mainImage {
             asset->{
               _id,
@@ -487,6 +550,13 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "site"][0]{
           slug,
           background_color,
           body,
+          "gallery": images[]{
+             asset->{
+               _id,
+               url
+             },
+             alt
+           },
           mainImage {
             asset->{
               _id,
@@ -504,6 +574,13 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "site"][0]{
           slug,
           background_color,
           body,
+          "gallery": images[]{
+             asset->{
+               _id,
+               url
+             },
+             alt
+           },
           mainImage {
             asset->{
               _id,
@@ -516,7 +593,7 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "site"][0]{
   }
 }`);
 
-export const LOGO_QUERY = 
+export const LOGO_QUERY =
 defineQuery(`*[_id == "site"][0] {
   logo {
     name,
@@ -539,9 +616,16 @@ export const artistsQuery = defineQuery(`*[_type == "artist" && defined(slug.cur
   _id,
   name,
   slug,
+  "gallery": images[]{
+     asset->{
+       _id,
+       url
+     },
+     alt
+   },
   mainImage,
   background_color,
-  categories[]->{ 
+  categories[]->{
     _id,
     title
   }
@@ -551,6 +635,13 @@ export const artistQuery = defineQuery(groq`
   *[_type == "artist" && slug.current == $slug][0] {
     _id,
     name,
+    "gallery": images[]{
+       asset->{
+         _id,
+         url
+       },
+       alt
+     },
     mainImage,
     background_color,
     body,
@@ -568,6 +659,13 @@ export const platformsQuery = defineQuery(groq`
     slug {
       current
     },
+    "gallery": images[]{
+       asset->{
+         _id,
+         url
+       },
+       alt
+     },
     mainImage {
       asset,
       hotspot,
@@ -596,6 +694,13 @@ export const platformQuery = defineQuery(groq`
     title,
     slug,
     background_color,
+    "gallery": images[]{
+       asset->{
+         _id,
+         url
+       },
+       alt
+     },
     mainImage,
     platformType,
     platformUrl,
@@ -617,6 +722,13 @@ export const SYNCHRONIZATIONS_QUERY = defineQuery(`*[
   artist->{
     _id,
     name,
+    "gallery": images[]{
+       asset->{
+         _id,
+         url
+       },
+       alt
+     },
     mainImage,
     background_color,
     body,
@@ -628,6 +740,13 @@ export const SYNCHRONIZATIONS_QUERY = defineQuery(`*[
     title,
     slug,
     background_color,
+    "gallery": images[]{
+       asset->{
+         _id,
+         url
+       },
+       alt
+     },
     mainImage,
     platformType,
     platformUrl,
@@ -652,6 +771,13 @@ export const SYNCHRONIZATION_QUERY = defineQuery(`*[
     _id,
     name,
     slug,
+    "gallery": images[]{
+       asset->{
+         _id,
+         url
+       },
+       alt
+     },
     mainImage,
     background_color,
     body,
@@ -663,6 +789,13 @@ export const SYNCHRONIZATION_QUERY = defineQuery(`*[
     title,
     slug,
     background_color,
+    "gallery": images[]{
+       asset->{
+         _id,
+         url
+       },
+       alt
+     },
     mainImage,
     platformType,
     platformUrl,

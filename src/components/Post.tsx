@@ -1,68 +1,67 @@
-import { Author } from "@/components/Author";
-import { Categories } from "@/components/Categories";
+"use client";
+
 import { components } from "@/sanity/portableTextComponents";
 import { PortableText } from "next-sanity";
 import { POST_QUERYResult } from "@/sanity/types";
-import { PublishedAt } from "@/components/PublishedAt";
-import { Title } from "@/components/Title";
 import { urlFor } from "@/sanity/lib/image";
-import Image from "next/image";
 import { RelatedPosts } from "@/components/RelatedPosts";
+import { LightboxImage } from "@/components/Lightbox"; // Moved into its own tidy file
 
 export function Post(props: NonNullable<POST_QUERYResult>) {
   const {
     _id,
     title,
-    author,
     mainImage,
     background_color,
     body,
-    publishedAt,
-    categories,
     relatedPosts,
+    gallery,
   } = props;
-
+  console.log(props, 'i am props')
   const backgroundColor = props.background_color?.hex || "#fff";
-    
-      return (
-        <div className="post_container">
-          <div className="post_image">
-          {mainImage ? (
-            <div className="post_image_wrapper">
-              <Image
-                src={urlFor(mainImage).width(400).height(400).url()}
-                width={400}
-                height={400}
-                alt=""
-              />
-            </div>
-          ) : null}
-          </div>
-          <div className="post_content">
-          <header className="title">
-            <div className="flex gap-4 items-center">
-              {/* <Categories categories={categories} />
-              <PublishedAt publishedAt={publishedAt} /> */}
-            </div>
-            <div className="post_title_wrapper max-w-3xl">
-        <h1 className="post_title shape" style={{ background: backgroundColor }}>
-          {props.title}
-        </h1>
-        </div>
-          </header>
-    
-          {body ? (
-            <div className="lg:col-span-7 lg:col-start-6 prose lg:prose-lg post_text_wrapper">
-              <PortableText value={body} components={components} />
-              <RelatedPosts
-      relatedPosts={relatedPosts}
-      documentId={_id}
-      documentType="post"/>
 
-            </div>
-          ) : null}
+  const displayImages = gallery && gallery.length > 0
+    ? gallery
+    : mainImage?.asset ? [mainImage] : [];
+
+  return (
+    <div className="post_container">
+      {/* Dynamic Stacked Column with Interactive Lightboxes */}
+      <div className="post_image flex flex-col gap-6">
+        {displayImages.map((img: any, index: number) => {
+          if (!img?.asset) return null;
+
+          return (
+            <LightboxImage
+              key={img.asset._id || index}
+              src={urlFor(img).width(400).height(400).url()}
+              rawSrc={urlFor(img).url()}
+              alt={img.alt || ""}
+            />
+          );
+        })}
+      </div>
+
+      <div className="post_content">
+        <header className="title">
+          <div className="post_title_wrapper max-w-3xl">
+            <h1 className="post_title shape" style={{ background: backgroundColor }}>
+              {title}
+            </h1>
           </div>
-          
-        </div>
-      );
-    } 
+        </header>
+
+        {body ? (
+          <div className="lg:col-span-7 lg:col-start-6 prose lg:prose-lg post_text_wrapper">
+            <PortableText value={body} components={components} />
+            <RelatedPosts
+              relatedPosts={relatedPosts}
+              documentId={_id}
+              documentType="post"
+            />
+          </div>
+        ) : null}
+      </div>
+    </div>
+  );
+}
