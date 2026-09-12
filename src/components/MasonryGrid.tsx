@@ -56,9 +56,13 @@ export function MasonryGrid({ items = [] }: MasonryGridProps) {
           // Extract preview image exactly like before
           const cardImage = item.gallery && item.gallery.length > 0 ? item.gallery[0] : item.mainImage;
 
+          // 💡 Create an absolutely guaranteed unique key string for this item row block instance
+          const stableItemKey = `${item._id || item.slug?.current || index}-${index}`;
+
           return (
-            <div className="masonry-item group">
-            <Link key={item._id || index}  href={itemHref}>
+            // 💡 FIXED: The key property has been successfully relocated to the outermost wrapping element layer!
+            <div key={stableItemKey} className="masonry-item group">
+              <Link href={itemHref} className="block w-full h-full">
               <article className="post_container">
 
 

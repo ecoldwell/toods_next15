@@ -3,6 +3,19 @@ import { defineQuery } from 'next-sanity'
 // Reusable nested content blueprint for both flexible dynamic page templates
 const contentBlocksBlueprint = `
   ...,
+  _type == "postLayoutBlock" => {
+    ...,
+    title,
+    background_color,
+    body,
+    "gallery": images[]{
+       asset->{
+         _id,
+         url
+       },
+       alt
+     }
+  },
   _type == "faqs" => {
     ...,
     faqs[]->
@@ -74,8 +87,15 @@ const contentBlocksBlueprint = `
 `
 
 export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slug][0]{
-  ...,
+  _id,
+  _type,
+  title,
+  background_color,
   body,
+  "gallery": images[]{
+     asset->{ _id, url },
+     alt
+   },
   content[]{ ${contentBlocksBlueprint} }
 }`)
 

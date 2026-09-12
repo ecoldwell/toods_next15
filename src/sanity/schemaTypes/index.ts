@@ -27,6 +27,7 @@ import {synchronizationType} from './synchronizationType'
 import { featuredArtists } from './blocks/featuredArtists'
 import { featuredPlatforms } from './blocks/featuredPlatforms'
 import { featuredSynchronicity } from './blocks/featuredSynchronicity'
+import { postLayoutBlock } from './blocks/postLayoutBlock'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -56,6 +57,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     featuredPosts,
     featuredArtists,
     featuredPlatforms,
-    featuredSynchronicity
+    featuredSynchronicity,
+    postLayoutBlock,
   ],
 }

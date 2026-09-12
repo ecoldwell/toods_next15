@@ -11,7 +11,8 @@ export const pageBuilderType = defineType({
     defineArrayMember({ type: "featuredPosts"}),
     defineArrayMember({ type: "featuredArtists"}),
     defineArrayMember({ type: "featuredPlatforms"}),
-    defineArrayMember({ type: "featuredSynchronicity"}),
+    defineArrayMember({ type: "featuredSynchronicity" }),
+    defineArrayMember({ type: "postLayoutBlock" }),
   ],
   options: {
     insertMenu: {

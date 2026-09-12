@@ -173,6 +173,64 @@ export function PageBuilder({
                   <Hero {...block} />
                 </DragHandle>
               );
+              case "postLayoutBlock":
+                  const blockBg = (block as any).background_color?.hex || "#fff";
+                  const blockGallery = (block as any).gallery || [];
+
+                  const hasImages = blockGallery.length > 0 && blockGallery.some((img: any) => img?.asset);
+
+                   return (
+                     <DragHandle key={block._key} reactKey={block._key}>
+                       {/*
+                         Tailwind Flex/Grid layout conditional toggle:
+                         If it has images, it uses a 2-column flex setup gap-8.
+                         If it does NOT have images, the items collapse and text naturally spans full-width.
+                       */}
+                       <div className={`post_container flex flex-col md:flex-row ${hasImages ? 'gap-8' : 'gap-0'}`}>
+
+                         {/* Left Column: Stacked Images (Only renders if images are present!) */}
+                         {hasImages && (
+                           <div className="post_image flex flex-col gap-6 w-full md:w-1/3">
+                             {blockGallery.map((img: any, idx: number) => {
+                               if (!img?.asset) return null;
+                               return (
+                                 <div key={img.asset._id || idx} className="post_image_wrapper rounded-lg overflow-hidden">
+                                   <img
+                                     src={`${img.asset.url}?w=400&h=400&fit=crop`}
+                                     className="w-full h-auto"
+                                     alt={img.alt || ""}
+                                   />
+                                 </div>
+                               );
+                             })}
+                           </div>
+                         )}
+
+                         {/* Right Column: Title and PortableText Body */}
+                         {/*
+                           Conditional Width Logic:
+                           If it has images -> Content column gets 2/3 width ('w-full md:w-2/3')
+                           If it has NO images -> Content column spans 100% full width ('w-full max-w-4xl mx-auto')
+                         */}
+                         <div className={`post_content w-full ${hasImages ? 'md:w-2/3' : 'max-w-4xl mx-auto'}`}>
+                           <header className="title mb-6">
+                             <div className="post_title_wrapper max-w-3xl">
+                               <h1 className="post_title shape" style={{ background: blockBg }}>
+                                 {block.title || 'Untitled Block'}
+                               </h1>
+                             </div>
+                           </header>
+
+                           {(block as any).body && (
+                             <div className="prose lg:prose-lg post_text_wrapper max-w-none">
+                               <PortableText value={(block as any).body} />
+                             </div>
+                           )}
+                         </div>
+
+                       </div>
+                     </DragHandle>
+                   );
             case "features":
               return (
                 <DragHandle key={block._key} reactKey={block._key}>
