@@ -18,27 +18,42 @@ type ArtistPreviewProps = {
     hotspot: SanityImageHotspot | null;
     crop: SanityImageCrop | null;
     _type: "image";
+    alt?: string; // Included alt fallback property
   } | null;
+  // 1. Added the new gallery array definition to your props type
+  gallery?: Array<{
+    asset: any;
+    alt?: string;
+  }> | null;
   categories: Array<{
     _id: string;
     title: string | null;
   }> | null;
 }
 
-export default function ArtistPreview({ name, slug, mainImage, categories, background_color }: ArtistPreviewProps) {
+export default function ArtistPreview({ name, slug, mainImage, gallery, categories, background_color }: ArtistPreviewProps) {
   if (!slug?.current) {
     return null; // Or some fallback UI
   }
-  const backgroundColor = background_color.hex;
+
+  const backgroundColor = background_color?.hex || "#fff";
+
+  // 2. Exact same extraction logic used in PostCard
+  const cardImage = gallery && gallery.length > 0 && gallery[0]?.asset
+    ? gallery[0]
+    : mainImage?.asset ? mainImage : null;
+
   return (
     <div className="single_post">
-      {mainImage && (
+      {/* 3. Render using the unified cardImage configuration */}
+      {cardImage?.asset && (
         <div className="relative single_post_image">
           <Image
             className="object-cover"
-            src={urlFor(mainImage).url()}
+            src={urlFor(cardImage).width(400).height(400).url()}
             fill
-            alt={name || ''}
+            alt={cardImage.alt || name || ''}
+            sizes="(max-width: 768px) 100vw, 400px"
           />
         </div>
       )}

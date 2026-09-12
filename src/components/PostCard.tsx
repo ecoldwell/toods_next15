@@ -16,7 +16,8 @@ export function PostCard(props: POSTS_QUERYResult[0]) {
     : mainImage?.asset ? mainImage : null;
 
   return (
-    <Link className="masonry-item group" href={`/posts/${props.slug!.current}`}>
+     <div className="masonry-item group">
+    <Link href={`/posts/${props.slug!.current}`}>
       <article className="post_container">
 
         <div className="">
@@ -49,6 +50,7 @@ export function PostCard(props: POSTS_QUERYResult[0]) {
           <PortableText value={body} />
         </div>
       </article>
-    </Link>
+      </Link>
+     </div>
   )
 }

@@ -24,17 +24,34 @@ export const pageType = defineType({
       type: "pageBuilder",
     }),
     defineField({
+      name: 'body',
+      type: 'blockContent',
+    }),
+    defineField({
       name: "mainImage",
       type: "image",
       options: {
         hotspot: true,
       },
-    }),    
+    }),
   ],
-  preview: {
-    select: {
-      title: "title",
-      subtitle: "slug.current",
-    },
-  },
+  // 🔽 UPDATE YOUR PREVIEW BLOCK TO LOOK LIKE THIS 🔽
+   preview: {
+     select: {
+       title: 'title',
+       subtitle: 'slug.current',
+       // Grab both fields so they are available to evaluate
+       galleryImage: 'images.0',
+       legacyImage: 'mainImage'
+     },
+     prepare(selection) {
+       const { title, galleryImage, legacyImage } = selection;
+
+       return {
+         title: title,
+         // Fallback pipeline: prioritize the new gallery image, fall back to legacy
+         media: galleryImage || legacyImage
+       };
+     }
+   }
 });

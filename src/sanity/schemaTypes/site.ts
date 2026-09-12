@@ -35,7 +35,7 @@ export const siteSettingsType = defineType({
 		// }),
 		defineField({
 			name: 'ctas',
-			title: 'Call-to-action (Site-wide)',
+			title: 'Call-to-action (Under Construction 🚧)',
 			description: 'Typically used in the header and/or footer.',
 			type: 'array',
 			of: [{ type: 'cta' }],

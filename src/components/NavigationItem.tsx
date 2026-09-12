@@ -39,7 +39,7 @@ const getInternalLink = (internal: InternalLink): string => {
     case "event":
       return `/events/${slug}`;
     case "page":
-      return `/page/${slug}`;
+      return `/${slug}`;
     case "category":
       return `/category/${slug}`;
     case "artist":

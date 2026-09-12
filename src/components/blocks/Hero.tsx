@@ -14,7 +14,7 @@ export function Hero({ title, text, image }: HeroProps) {
     <section className="hero_wrapper post_image_wrapper">
       <div className="flex flex-col justify-center z-20 hero_content">
         {title ? (
-          <h1 className="">
+          <h1 className="hidden">
             {title}
           </h1>
         ) : null}

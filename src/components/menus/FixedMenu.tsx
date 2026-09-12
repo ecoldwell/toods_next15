@@ -19,7 +19,7 @@ export default async function FixedNavigation() {
   const fixedNavigation = siteData.fixedMenu.items;
 
   return (
-    <div className="fixed_menu">
+  <div id="​FixedNavigation" className="fixed_menu">
         <Menu menuItems={fixedNavigation} />
     </div>
 

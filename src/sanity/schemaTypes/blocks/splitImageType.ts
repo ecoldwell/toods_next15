@@ -21,6 +21,13 @@ export const splitImageType = defineType({
       type: "string",
     }),
     defineField({
+      name: 'body',
+      title: 'Content Text Block (Rich Text)',
+      type: 'array',
+      description: 'Optional descriptive paragraphs, links, or text block layouts to accompany the main heading.',
+      of: [{ type: 'block' }] // Exposes the standard raw portable text array block canvas!
+    }),
+    defineField({
       name: "image",
       type: "image",
     }),

@@ -26,9 +26,17 @@ export default defineType({
 			link: 'link',
 			links: 'links',
 		},
-		prepare: ({ link, links }) => ({
-			title: link.label || link.internal?.title,
-			subtitle: count(links, 'link'),
-		}),
-	},
+		prepare: ({ link, links }) => {
+  // Safe extraction checks with default fallbacks
+  const titleLabel = link?.label || link?.internal?.title || link?.internal?.name || 'Untitled Dropdown Menu';
+
+  // Calculate total links if links array is active
+  const subCount = Array.isArray(links) ? links.length : 0;
+
+  return {
+    title: titleLabel,
+    subtitle: `${subCount} nested menu link${subCount === 1 ? '' : 's'}`,
+  };
+    }
+	}
 })
