@@ -16,7 +16,7 @@ export function LightboxImage({ src, alt, rawSrc }: { src: string; alt: string; 
         <Image
           src={src}
           width={400}
-          height={400}
+          height={0}
           alt={alt}
           className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.01]"
         />

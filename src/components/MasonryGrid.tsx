@@ -63,7 +63,7 @@ export function MasonryGrid({ items = [] }: MasonryGridProps) {
             // 💡 FIXED: The key property has been successfully relocated to the outermost wrapping element layer!
             <div key={stableItemKey} className="masonry-item group">
               <Link href={itemHref} className="block w-full h-full">
-              <article className="post_container">
+              <article key={`${stableItemKey}-inner`} className="post_container">
 
 
                 {/*<div>
@@ -83,10 +83,10 @@ export function MasonryGrid({ items = [] }: MasonryGridProps) {
                 <div className="post_image_wrapper">
                   {cardImage?.asset ? (
                     <Image
-                      src={urlFor(cardImage).width(400).height(400).url()}
+                      src={urlFor(cardImage).width(400).url()}
                       className="w-full h-auto rounded-lg"
                       width={400}
-                      height={400}
+                      height={0}
                       alt={cardImage.alt || cardTitle}
                     />
                   ) : null}

@@ -17,18 +17,18 @@ export function Platform(props: NonNullable<PlatformQueryResult>) {
         publishedAt,
         categories,
       } = props;
-    
+
       const backgroundColor = props.background_color?.hex || "#fff";
-    
+
       return (
         <div className="post_container">
           <div className="post_image">
           {mainImage ? (
             <div className="post_image_wrapper">
               <Image
-                src={urlFor(mainImage).width(400).height(400).url()}
+                src={urlFor(mainImage).width(400).url()}
                 width={400}
-                height={400}
+                height={0}
                 alt=""
               />
             </div>
@@ -46,14 +46,14 @@ export function Platform(props: NonNullable<PlatformQueryResult>) {
         </h1>
         </div>
           </header>
-    
+
           {body ? (
             <div className="lg:col-span-7 lg:col-start-6 prose lg:prose-lg post_text_wrapper">
               <PortableText value={body} components={components} />
             </div>
           ) : null}
           </div>
-          
+
         </div>
       );
-    } 
+    }

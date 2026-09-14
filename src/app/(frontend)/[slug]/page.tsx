@@ -47,7 +47,7 @@ export default async function PageRoute({ params }: { params: { slug: string } }
                 return (
                   <LightboxImage
                     key={img.asset._id || index}
-                    src={urlFor(img).width(400).height(400).url()}
+                    src={urlFor(img).width(400).url()}
                     rawSrc={urlFor(img).url()}
                     alt={img.alt || ""}
                   />

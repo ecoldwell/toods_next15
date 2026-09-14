@@ -144,10 +144,10 @@ export function PageBuilder({
                       <div className="post_image_wrapper">
                         {cardImage?.asset ? (
                           <Image
-                            src={urlFor(cardImage).width(400).height(400).url()}
+                            src={urlFor(cardImage).width(400).url()}
                             className="w-full h-auto rounded-lg"
                             width={400}
-                            height={400}
+                            height={0}
                             alt={cardImage.alt || cardTitle}
                           />
                         ) : null}

@@ -50,7 +50,7 @@ export default function ArtistPreview({ name, slug, mainImage, gallery, categori
         <div className="relative single_post_image">
           <Image
             className="object-cover"
-            src={urlFor(cardImage).width(400).height(400).url()}
+            src={urlFor(cardImage).width(400).url()}
             fill
             alt={cardImage.alt || name || ''}
             sizes="(max-width: 768px) 100vw, 400px"

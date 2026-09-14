@@ -38,11 +38,11 @@ export function FeaturedPlatforms({ platforms = [], title }: FeaturedPlatformsPr
                   {/* Safe asset check utilizing urlFor */}
                   {featuredImage?.asset && (
                     <Image
-                      src={urlFor(featuredImage).width(400).height(400).url()}
+                      src={urlFor(featuredImage).width(400).url()}
                       alt={featuredImage.alt || platform.title || "Featured platform image"}
                       className="w-full h-auto rounded-lg"
                       width={400}
-                      height={400}
+                      height={0}
                     />
                   )}
                 </div>

@@ -48,10 +48,10 @@ export default async function Page({
         {sync.artist.mainImage && (
             <div className="post_image_wrapper">
               <Image
-                src={urlFor(sync.artist.mainImage).width(400).height(400).url()}
+                src={urlFor(sync.artist.mainImage).width(400).url()}
                 alt={sync.artist.name}
                 width={400}
-                height={400}
+                height={0}
                 className="object-cover"
               />
             </div>
@@ -74,9 +74,9 @@ export default async function Page({
         {sync.platform.mainImage && (
             <div className="post_image_wrapper">
               <Image
-                src={urlFor(sync.platform.mainImage).width(400).height(400).url()}
+                src={urlFor(sync.platform.mainImage).width(400).url()}
                 width={400}
-                height={400}
+                height={0}
                 alt={sync.platform.title}
                 className="object-cover"
               />
