@@ -16,13 +16,26 @@ export default function PlatformPreview({ title, slug, mainImage, background_col
     return null;
   }
 
+  let safeImageUrl = null;
+
+  if (mainImage?.asset) {
+    try {
+      // If the data is valid, this works exactly like normal
+      safeImageUrl = urlFor(mainImage).url();
+    } catch (error) {
+      // If the data is corrupt, it catches the error and silently moves on instead of crashing Vercel!
+      console.warn("Skipped a malformed image asset reference:", mainImage);
+    }
+  }
+
+
   return (
     <div className="flex flex-col overflow-hidden rounded-lg shadow-lg">
-      {mainImage && (
+      {safeImageUrl && (
         <div className="relative h-48">
           <Image
             className="object-cover"
-            src={urlFor(mainImage).url()}
+            src={urlFor(safeImageUrl).url()}
             fill
             alt={title || ''}
           />
