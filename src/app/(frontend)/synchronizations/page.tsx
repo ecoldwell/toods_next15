@@ -24,9 +24,12 @@ export default async function SynchronizationsPage() {
                 {sync.title}
               </p>
               <div className="mt-2 text-sm text-gray-300">
-                <p>{sync.artist.name}</p>
-                <p>{sync.platform.title} ({sync.platform.platformType})</p>
-                {sync.venue && <p>at {sync.venue.name}</p>}
+                {/* Optional chaining safely falls back to undefined if the object is missing */}
+                {sync.artist?.name && <p>{sync.artist.name}</p>}
+                {sync.platform?.title && (
+                  <p>{sync.platform.title} {sync.platform.platformType ? `(${sync.platform.platformType})` : ''}</p>
+                )}
+                {sync.venue?.name && <p>at {sync.venue.name}</p>}
               </div>
             </div>
           </Link>
@@ -34,4 +37,4 @@ export default async function SynchronizationsPage() {
       </div>
     </section>
   );
-} 
+}
