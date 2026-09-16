@@ -58,6 +58,17 @@ export function MasonryGrid({ items = [] }: MasonryGridProps) {
 
           // 💡 Create an absolutely guaranteed unique key string for this item row block instance
           const stableItemKey = `${item._id || item.slug?.current || index}-${index}`;
+          // 💡 1. Add this safe image URL checker with the try/catch block
+          let safeImageUrl = null;
+          if (cardImage?.asset) {
+            try {
+              // If the asset format is authentic, this runs normally
+              safeImageUrl = urlFor(cardImage).width(400).url();
+            } catch (error) {
+              // If the asset string is corrupt, it skips it safely instead of crashing Vercel!
+              console.warn("Skipped a malformed card image asset reference:", cardImage);
+            }
+          }
 
           return (
             // 💡 FIXED: The key property has been successfully relocated to the outermost wrapping element layer!
@@ -81,9 +92,9 @@ export function MasonryGrid({ items = [] }: MasonryGridProps) {
                 </div>
 
                 <div className="post_image_wrapper">
-                  {cardImage?.asset ? (
+                  {safeImageUrl ? (
                     <Image
-                      src={urlFor(cardImage).width(400).url()}
+                      src={safeImageUrl}
                       className="w-full h-auto rounded-lg"
                       width={400}
                       height={0}
